@@ -5,75 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curse of Strahd: Shadows of Barovia</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=IM+Fell+English:ital@0;1&display=swap');
+        
         :root {
-            --background-dark: #1a1a1a;
             --background-main: #ffffff;
-            --box-bg: #332b26;
+            --background-dark: #f0f0f0;
+            --box-bg: #f8f8f8;
             --border-color: #8b0000;
-            --border-light: #4a0000;
-            --title-color: #d0a85c;
-            --subtitle-color: #a68a64;
-            --text-color: #d8d8d8;
-            --font-main: Georgia, serif;
+            --border-light: #d4af37;
+            --title-color: #8b0000;
+            --subtitle-color: #5c5c5c;
+            --text-color: #333333;
+            --accent-gold: #d4af37;
+            --font-header: 'Cinzel Decorative', serif;
+            --font-main: 'Crimson Text', serif;
+            --font-accent: 'IM Fell English', serif;
         }
         
         body {
-            background-color: var(--background-dark);
+            background-color: var(--background-main);
             font-family: var(--font-main);
             color: var(--text-color);
             margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
+            padding: 0;
             line-height: 1.6;
+            background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
+            background-blend-mode: multiply;
+            background-opacity: 0.03;
         }
         
         .container {
             background-color: var(--background-main);
-            border: 2px solid var(--border-color);
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+            position: relative;
+        }
+        
+        .logo-container {
+            max-width: 500px;
+            margin: 0 auto 20px;
+            padding: 20px;
+        }
+        
+        .logo-container img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 5px rgba(139, 0, 0, 0.3));
         }
         
         .page-title {
-            text-align: center;
+            font-family: var(--font-header);
             color: var(--title-color);
-            font-size: 36px;
+            font-size: 42px;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin: 10px 0 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
         }
         
         .page-subtitle {
-            text-align: center;
+            font-family: var(--font-accent);
             color: var(--subtitle-color);
-            font-size: 22px;
+            font-size: 24px;
             font-style: italic;
-            margin-top: 0;
-            margin-bottom: 30px;
+            margin: 0 0 20px;
         }
         
         .divider {
             height: 3px;
-            background-color: var(--border-color);
-            margin: 20px auto;
-            width: 70%;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+            margin: 30px auto;
+            width: 80%;
+            border: none;
         }
         
         .divider-thin {
             height: 1px;
-            background-color: var(--border-light);
-            margin: 15px auto 25px;
+            background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+            margin: 20px auto;
             width: 60%;
+            border: none;
         }
         
         .section-title {
+            font-family: var(--font-header);
             color: var(--title-color);
-            font-size: 22px;
+            font-size: 28px;
             font-weight: bold;
-            margin-top: 40px;
+            margin-top: 50px;
             margin-bottom: 25px;
             border-bottom: 1px solid var(--border-light);
             padding-bottom: 8px;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+        
+        .section-title:after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background-color: var(--border-color);
         }
         
         .row {
@@ -86,45 +129,75 @@
             flex: 1;
             padding: 0 15px;
             min-width: 300px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         
         .box {
             background-color: var(--box-bg);
-            border: 1px solid var(--border-light);
+            border-left: 4px solid var(--border-color);
             padding: 25px;
-            margin-bottom: 40px;
-            border-radius: 3px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .box:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .box:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212,175,55,0.05) 0%, rgba(139,0,0,0.05) 100%);
+            pointer-events: none;
         }
         
         .box-title {
+            font-family: var(--font-header);
             color: var(--title-color);
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             margin-top: 0;
             margin-bottom: 20px;
             border-bottom: 1px solid var(--border-light);
             padding-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        
+        .box-subtitle {
+            font-family: var(--font-header);
+            color: var(--title-color);
+            font-weight: bold;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 18px;
         }
         
         .box-row {
             display: flex;
             justify-content: space-between;
             margin-bottom: 12px;
+            padding: 8px 0;
+            border-bottom: 1px dotted #ddd;
         }
         
-        .box-subtitle {
-            color: var(--title-color);
-            font-weight: bold;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            font-size: 16px;
+        .box-row:last-child {
+            border-bottom: none;
         }
         
         ul, ol {
-            list-style-type: none;
             padding-left: 25px;
             margin: 15px 0;
+        }
+        
+        ul {
+            list-style-type: none;
         }
         
         li {
@@ -133,29 +206,32 @@
             line-height: 1.5;
         }
         
-        li::before {
-            content: "•";
+        ul li::before {
+            content: "❖";
             position: absolute;
-            left: -15px;
-            color: var(--title-color);
+            left: -20px;
+            color: var(--border-color);
+            font-size: 12px;
+            top: 5px;
         }
         
         ol {
             counter-reset: item;
-            padding-left: 25px;
         }
         
         ol li {
             counter-increment: item;
             margin-bottom: 15px;
+            padding-left: 25px;
         }
         
         ol li::before {
             content: counter(item) ".";
             position: absolute;
-            left: -25px;
-            color: var(--title-color);
+            left: 0;
+            color: var(--border-color);
             font-weight: bold;
+            font-family: var(--font-header);
         }
         
         .table-header {
@@ -166,6 +242,7 @@
             margin-bottom: 15px;
             border-bottom: 1px solid var(--border-light);
             padding-bottom: 8px;
+            font-family: var(--font-header);
         }
         
         .table-col-1 {
@@ -184,13 +261,20 @@
         }
         
         th, td {
-            padding: 10px;
+            padding: 12px 15px;
             text-align: left;
-            border-bottom: 1px solid var(--border-light);
+            border-bottom: 1px solid #ddd;
         }
         
         th {
             color: var(--title-color);
+            font-family: var(--font-header);
+            font-weight: bold;
+            background-color: rgba(139, 0, 0, 0.05);
+        }
+        
+        tr:hover {
+            background-color: rgba(212, 175, 55, 0.05);
         }
         
         p {
@@ -204,6 +288,49 @@
         
         strong {
             color: var(--title-color);
+            font-weight: bold;
+        }
+        
+        a.nav-link {
+            color: var(--title-color);
+            text-decoration: none;
+            padding: 8px 15px;
+            border: 1px solid var(--border-light);
+            border-radius: 3px;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+            font-family: var(--font-header);
+            font-size: 14px;
+            display: inline-block;
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+        
+        a.nav-link:hover {
+            background-color: var(--border-color);
+            color: white;
+            border-color: var(--border-color);
+        }
+        
+        .quick-nav {
+            margin-bottom: 30px;
+            text-align: center;
+            padding: 20px;
+            background-color: var(--box-bg);
+            border: 1px solid #eee;
+            border-left: 4px solid var(--border-color);
+        }
+        
+        .quick-nav h3 {
+            margin-top: 0;
+            color: var(--title-color);
+            font-family: var(--font-header);
+        }
+        
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
         }
         
         @media (max-width: 768px) {
@@ -222,47 +349,66 @@
             .box {
                 padding: 20px;
             }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .page-subtitle {
+                font-size: 20px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
         }
-            /* Add to your style section */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Style for navigation links */
-a.nav-link {
-  color: var(--title-color);
-  text-decoration: none;
-  padding: 5px 10px;
-  border: 1px solid var(--border-light);
-  border-radius: 3px;
-  margin: 0 5px;
-  transition: all 0.3s ease;
-}
-
-a.nav-link:hover {
-  background-color: var(--border-light);
-  color: var(--text-color);
-}
         
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b0000;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="box" style="margin-bottom: 20px; text-align: center;">
-        <h3 class="box-subtitle">QUICK NAVIGATION</h3>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-            <a href="#core-mechanics" style="color: var(--title-color); text-decoration: none; padding: 5px 10px; border: 1px solid var(--border-light); border-radius: 3px;">Core Mechanics</a>
-            <a href="#fear-horror" style="color: var(--title-color); text-decoration: none; padding: 5px 10px; border: 1px solid var(--border-light); border-radius: 3px;">Fear & Horror</a>
-            <a href="#despair" style="color: var(--title-color); text-decoration: none; padding: 5px 10px; border: 1px solid var(--border-light); border-radius: 3px;">Despair</a>
-            <a href="#nightmares" style="color: var(--title-color); text-decoration: none; padding: 5px 10px; border: 1px solid var(--border-light); border-radius: 3px;">Nightmares</a>
-            <a href="#curse-removal" style="color: var(--title-color); text-decoration: none; padding: 5px 10px; border: 1px solid var(--border-light); border-radius: 3px;">Curse Removal</a>
-            <a href="#vistani" style="color: var(--title-color); text-decoration: none; padding: 5px 10px; border: 1px solid var(--border-light); border-radius: 3px;">Vistani</a>
-            <a href="#calendar" style="color: var(--title-color); text-decoration: none; padding: 5px 10px; border: 1px solid var(--border-light); border-radius: 3px;">Calendar</a>
-            <a href="#descriptors" style="color: var(--title-color); text-decoration: none; padding: 5px 10px; border: 1px solid var(--border-light); border-radius: 3px;">Descriptors</a>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://www.tribality.com/wp-content/uploads/2016/01/Curse-of-Strahd-Logo.png" alt="Curse of Strahd Logo">
+            </div>
+            <h1 class="page-title">Curse of Strahd</h1>
+            <h2 class="page-subtitle">Shadows of Barovia: Cheat Sheet</h2>
         </div>
-    </div>
-        <h1 class="page-title">Curse of Strahd</h1>
-        <h2 class="page-subtitle">Shadows of Barovia: Cheat Sheet</h2>
+        
+        <div class="quick-nav">
+            <h3>QUICK NAVIGATION</h3>
+            <div class="nav-links">
+                <a href="#core-mechanics" class="nav-link">Core Mechanics</a>
+                <a href="#fear-horror" class="nav-link">Fear & Horror</a>
+                <a href="#despair" class="nav-link">Despair</a>
+                <a href="#nightmares" class="nav-link">Nightmares</a>
+                <a href="#curse-removal" class="nav-link">Curse Removal</a>
+                <a href="#vistani" class="nav-link">Vistani</a>
+                <a href="#calendar" class="nav-link">Calendar</a>
+                <a href="#descriptors" class="nav-link">Descriptors</a>
+            </div>
+        </div>
         
         <div class="divider"></div>
         <div class="divider-thin"></div>
