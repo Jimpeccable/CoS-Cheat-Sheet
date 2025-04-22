@@ -2651,6 +2651,7 @@ body.dark-mode .sidebar {
     <h3>PLAYER TRACKER</h3>
     <div id="player-list">
         <!-- Players will be added here -->
+    </div>
 </div>
 
 <button class="dark-mode-toggle" onclick="toggleDarkMode()">☀️</button>
@@ -2669,37 +2670,136 @@ body.dark-mode .sidebar {
 
 
 <script>
-
-window.onscroll = function() {
-  const btn = document.querySelector('.back-to-top');
-  btn.style.display = (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) ? 'block' : 'none';
-};
-    // Collapsible sections
-    document.querySelectorAll('.section-title').forEach(title => {
-        title.addEventListener('click', () => {
-            const content = title.nextElementSibling;
-            content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
-        });
-    });
+// Player Tracker Functions
+function addPlayer() {
+    const playerList = document.getElementById('player-list');
+    const playerId = 'player-' + Date.now();
     
-    // Tab system
-    function openTab(evt, tabName) {
-        const tabContents = document.getElementsByClassName('tab-content');
-        for (let i = 0; i < tabContents.length; i++) {
-            tabContents[i].classList.remove('active');
+    const playerCard = document.createElement('div');
+    playerCard.className = 'player-card';
+    playerCard.id = playerId;
+    
+    playerCard.innerHTML = `
+        <input type="text" placeholder="Player Name" class="player-name">
+        <div class="player-status">
+            <input type="text" placeholder="AC" class="player-ac" style="width: 40px;">
+            <input type="text" placeholder="HP" class="player-hp" style="width: 40px;">
+            <button class="status-toggle" onclick="toggleStatus('${playerId}')">Normal</button>
+            <button onclick="removePlayer('${playerId}')">X</button>
+        </div>
+        <div class="player-effects"></div>
+    `;
+    
+    playerList.appendChild(playerCard);
+}
+
+function removePlayer(id) {
+    const player = document.getElementById(id);
+    if (player) player.remove();
+}
+
+function toggleStatus(id) {
+    const button = document.getElementById(id)?.querySelector('.status-toggle');
+    if (!button) return;
+    
+    const statuses = ['Normal', 'Affected', 'Madness', 'Despair', 'Corrupted'];
+    const currentIndex = statuses.indexOf(button.textContent);
+    const nextIndex = (currentIndex + 1) % statuses.length;
+    button.textContent = statuses[nextIndex];
+    
+    button.className = 'status-toggle';
+    if (nextIndex > 0) {
+        button.classList.add('active');
+    }
+}
+
+// Sidebar toggle functionality
+function toggleSidebar() {
+    const sidebar = document.getElementById('player-sidebar');
+    if (!sidebar) return;
+    
+    sidebar.classList.toggle('open');
+    
+    const toggleBtn = document.querySelector('.sidebar-toggle');
+    if (toggleBtn) {
+        if (sidebar.classList.contains('open')) {
+            toggleBtn.textContent = '◄';
+            toggleBtn.style.right = '270px';
+        } else {
+            toggleBtn.textContent = 'PLAYERS ►';
+            toggleBtn.style.right = '20px';
         }
-        
-        const tabButtons = document.getElementsByClassName('tab-button');
-        for (let i = 0; i < tabButtons.length; i++) {
-            tabButtons[i].classList.remove('active');
+    }
+}
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize with 4 empty player slots
+    const playerList = document.getElementById('player-list');
+    if (playerList) {
+        for (let i = 0; i < 4; i++) {
+            addPlayer();
         }
-        
-        document.getElementById(tabName).classList.add('active');
-        evt.currentTarget.classList.add('active');
     }
     
-    // Search functionality
-    document.getElementById('search-input').addEventListener('input', function() {
+    // Initialize sidebar in closed state
+    const sidebar = document.getElementById('player-sidebar');
+    if (sidebar) sidebar.classList.remove('open');
+    
+    // Add sidebar toggle button if it doesn't exist
+    if (!document.querySelector('.sidebar-toggle')) {
+        const toggleBtn = document.createElement('button');
+        toggleBtn.className = 'sidebar-toggle';
+        toggleBtn.textContent = 'PLAYERS ►';
+        toggleBtn.onclick = toggleSidebar;
+        toggleBtn.style.position = 'fixed';
+        toggleBtn.style.right = '20px';
+        toggleBtn.style.top = '20px';
+        toggleBtn.style.zIndex = '1001';
+        document.body.appendChild(toggleBtn);
+    }
+});
+
+// Dark mode toggle
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const button = document.querySelector('.dark-mode-toggle');
+    if (button) {
+        button.textContent = document.body.classList.contains('dark-mode') ? '🌙' : '☀️';
+    }
+}
+
+// Collapsible sections
+document.querySelectorAll('.section-title').forEach(title => {
+    title.addEventListener('click', () => {
+        const content = title.nextElementSibling;
+        if (content) {
+            content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+            title.classList.toggle('active');
+        }
+    });
+});
+
+// Tab system
+function openTab(evt, tabName) {
+    const tabContents = document.getElementsByClassName('tab-content');
+    for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove('active');
+    }
+    
+    const tabButtons = document.getElementsByClassName('tab-button');
+    for (let i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove('active');
+    }
+    
+    document.getElementById(tabName)?.classList.add('active');
+    evt.currentTarget?.classList.add('active');
+}
+
+// Search functionality
+const searchInput = document.getElementById('search-input');
+if (searchInput) {
+    searchInput.addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
         if (searchTerm.length < 3) {
             removeHighlights();
@@ -2743,303 +2843,55 @@ window.onscroll = function() {
             }
         });
     });
+}
+
+function removeHighlights() {
+    const highlights = document.querySelectorAll('.highlight');
+    highlights.forEach(highlight => {
+        const parent = highlight.parentNode;
+        parent.replaceWith(parent.textContent);
+    });
+}
+
+// Quick roll buttons
+function rollDice(dice) {
+    const [numDice, numSides] = dice.split('d');
+    let result = 0;
+    let rolls = [];
     
-    function removeHighlights() {
-        const highlights = document.querySelectorAll('.highlight');
-        highlights.forEach(highlight => {
-            const parent = highlight.parentNode;
-            parent.replaceWith(parent.textContent);
-        });
-    }
-    
-    // Quick roll buttons
-    function rollDice(dice) {
-        const [numDice, numSides] = dice.split('d');
-        let result = 0;
-        let rolls = [];
+    if (dice.includes('+')) {
+        const parts = dice.split('+');
+        const bonus = parseInt(parts[1]);
+        const [d, s] = parts[0].split('d');
         
-        if (dice.includes('+')) {
-            const parts = dice.split('+');
-            const bonus = parseInt(parts[1]);
-            const [d, s] = parts[0].split('d');
-            
-            for (let i = 0; i < parseInt(d); i++) {
-                const roll = Math.floor(Math.random() * parseInt(s)) + 1;
-                rolls.push(roll);
-                result += roll;
-            }
-            
-            result += bonus;
-            alert(`Rolled ${dice}: ${rolls.join(' + ')} + ${bonus} = ${result}`);
+        for (let i = 0; i < parseInt(d); i++) {
+            const roll = Math.floor(Math.random() * parseInt(s)) + 1;
+            rolls.push(roll);
+            result += roll;
+        }
+        
+        result += bonus;
+        alert(`Rolled ${dice}: ${rolls.join(' + ')} + ${bonus} = ${result}`);
+    } else {
+        for (let i = 0; i < parseInt(numDice); i++) {
+            const roll = Math.floor(Math.random() * parseInt(numSides)) + 1;
+            rolls.push(roll);
+            result += roll;
+        }
+        
+        if (numDice > 1) {
+            alert(`Rolled ${dice}: ${rolls.join(' + ')} = ${result}`);
         } else {
-            for (let i = 0; i < parseInt(numDice); i++) {
-                const roll = Math.floor(Math.random() * parseInt(numSides)) + 1;
-                rolls.push(roll);
-                result += roll;
-            }
-            
-            if (numDice > 1) {
-                alert(`Rolled ${dice}: ${rolls.join(' + ')} = ${result}`);
-            } else {
-                alert(`Rolled ${dice}: ${result}`);
-            }
+            alert(`Rolled ${dice}: ${result}`);
         }
     }
-    
-    // Dark mode toggle
-    function toggleDarkMode() {
-        document.body.classList.toggle('dark-mode');
-        const button = document.querySelector('.dark-mode-toggle');
-        if (document.body.classList.contains('dark-mode')) {
-            button.textContent = '🌙';
-        } else {
-            button.textContent = '☀️';
-        }
-    }
-
-// Player Tracker Functions
-function addPlayer() {
-    const playerList = document.getElementById('player-list');
-    const playerId = 'player-' + Date.now();
-    
-    const playerCard = document.createElement('div');
-    playerCard.className = 'player-card';
-    playerCard.id = playerId;
-    
-    playerCard.innerHTML = `
-        <input type="text" placeholder="Player Name" class="player-name">
-        <div class="player-status">
-            <input type="text" placeholder="AC" class="player-ac" style="width: 40px;">
-            <input type="text" placeholder="HP" class="player-hp" style="width: 40px;">
-            <button class="status-toggle" onclick="toggleStatus('${playerId}')">Normal</button>
-            <button onclick="removePlayer('${playerId}')">X</button>
-        </div>
-        <div class="player-effects"></div>
-    `;
-    
-    playerList.appendChild(playerCard);
 }
 
-function removePlayer(id) {
-    document.getElementById(id).remove();
-}
-
-function toggleStatus(id) {
-    const button = document.getElementById(id).querySelector('.status-toggle');
-    const statuses = ['Normal', 'Affected', 'Madness', 'Despair', 'Corrupted'];
-    const currentIndex = statuses.indexOf(button.textContent);
-    const nextIndex = (currentIndex + 1) % statuses.length;
-    button.textContent = statuses[nextIndex];
-    
-    // Update button appearance
-    button.className = 'status-toggle';
-    if (nextIndex > 0) {
-        button.classList.add('active');
-    }
-}
-
-// Initialize with 4 empty player slots
-window.onload = function() {
-    for (let i = 0; i < 4; i++) {
-        addPlayer();
+// Back to top button
+window.onscroll = function() {
+    const btn = document.querySelector('.back-to-top');
+    if (btn) {
+        btn.style.display = (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) ? 'block' : 'none';
     }
 };
-    
-// Sidebar toggle functionality
-function toggleSidebar() {
-    const sidebar = document.getElementById('player-sidebar');
-    sidebar.classList.toggle('open');
-    
-    const toggleBtn = document.querySelector('.sidebar-toggle');
-    if (sidebar.classList.contains('open')) {
-        toggleBtn.textContent = '◄';
-        toggleBtn.style.right = '270px'; // Adjust based on your sidebar width
-    } else {
-        toggleBtn.textContent = 'PLAYERS ►';
-        toggleBtn.style.right = '20px';
-    }
-}
-
-// Initialize sidebar on load
-window.onload = function() {
-    // Initialize player slots
-    for (let i = 0; i < 4; i++) {
-        addPlayer();
-    }
-    
-    // Initialize sidebar in closed state
-    document.getElementById('player-sidebar').classList.remove('open');
-    
-    // Initialize collapsible sections
-    document.querySelectorAll('.section-title').forEach(title => {
-        const content = title.nextElementSibling;
-        content.style.maxHeight = null; // Start with all sections collapsed
-        
-        title.addEventListener('click', () => {
-            content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
-            title.classList.toggle('active');
-        });
-    });
-};
-
-
-// Drag and Drop Functionality
-function initializeDragAndDrop() {
-  // Add draggable attribute to section titles
-  document.querySelectorAll('.section-title').forEach(section => {
-    section.setAttribute('draggable', 'true');
-    
-    section.addEventListener('dragstart', function(e) {
-      e.dataTransfer.setData('text/plain', this.id);
-      this.classList.add('dragging');
-    });
-    
-    section.addEventListener('dragend', function() {
-      this.classList.remove('dragging');
-    });
-  });
-
-  // Make the container a drop zone
-  const container = document.querySelector('.container');
-  if (!container) {
-    console.error('Container element not found');
-    return;
-  }
-
-  container.addEventListener('dragover', function(e) {
-    e.preventDefault();
-    const dragging = document.querySelector('.dragging');
-    if (!dragging) return;
-    
-    // Get the section element being dragged over
-    const afterElement = getDragAfterElement(container, e.clientY);
-    const content = document.getElementById(dragging.id + '-content');
-    
-    if (!afterElement) {
-      // Append to end
-      container.appendChild(dragging);
-      if (content) container.appendChild(content);
-    } else {
-      // Get the next element after the drop position
-      const nextElement = afterElement.nextElementSibling;
-      
-      // Insert title before the afterElement
-      container.insertBefore(dragging, afterElement);
-      
-      // Insert content right after its title
-      if (content) {
-        container.insertBefore(content, afterElement);
-      }
-    }
-  });
-
-  function getDragAfterElement(container, y) {
-    const draggableElements = [...container.querySelectorAll('.section-title:not(.dragging)')];
-    
-    return draggableElements.reduce((closest, child) => {
-      const box = child.getBoundingClientRect();
-      const offset = y - box.top - box.height / 2;
-      
-      if (offset < 0 && offset > closest.offset) {
-        return { offset: offset, element: child };
-      } else {
-        return closest;
-      }
-    }, { offset: Number.NEGATIVE_INFINITY }).element;
-  }
-
-  // Save and load section order
-  function saveSectionOrder() {
-    const sections = Array.from(document.querySelectorAll('.section-title')).map(section => section.id);
-    localStorage.setItem('dmCheatSheetSectionOrder', JSON.stringify(sections));
-  }
-
-  function loadSectionOrder() {
-    const savedOrder = localStorage.getItem('dmCheatSheetSectionOrder');
-    if (savedOrder) {
-      try {
-        const order = JSON.parse(savedOrder);
-        const container = document.querySelector('.container');
-        
-        order.forEach(sectionId => {
-          const section = document.getElementById(sectionId);
-          const content = document.getElementById(sectionId + '-content');
-          if (section) {
-            container.appendChild(section);
-            if (content) {
-              container.appendChild(content);
-            }
-          }
-        });
-      } catch (e) {
-        console.error('Error loading saved order:', e);
-        localStorage.removeItem('dmCheatSheetSectionOrder');
-      }
-    }
-  }
-
-  // Initialize
-  loadSectionOrder();
-  container.addEventListener('dragend', saveSectionOrder);
-}
-
-// Initialize when DOM is fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-  // Add IDs to content divs for easier reference
-  document.querySelectorAll('.section-title').forEach(section => {
-    const content = section.nextElementSibling;
-    if (content && content.classList.contains('collapsible-content')) {
-      content.id = section.id + '-content';
-    }
-  });
-  
-  // Initialize drag and drop after setting up IDs
-  initializeDragAndDrop();
-});
-
-async function loadCampaign() {
-    const url = document.getElementById('campaign-url').value;
-
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-
-        // Clear existing players
-        document.getElementById('player-list').innerHTML = '';
-
-        // Add players from the data
-        data.players.forEach(player => {
-            const playerId = 'player-' + Date.now() + Math.random();
-
-            const playerCard = document.createElement('div');
-            playerCard.className = 'player-card';
-            playerCard.id = playerId;
-
-            playerCard.innerHTML = `
-                <input type="text" value="${player.name}" class="player-name">
-                <div class="player-status">
-                    <input type="text" value="${player.ac}" class="player-ac" style="width: 40px;">
-                    <input type="text" value="${player.hp}" class="player-hp" style="width: 40px;">
-                    <button class="status-toggle" onclick="toggleStatus('${playerId}')">Normal</button>
-                    <button onclick="removePlayer('${playerId}')">X</button>
-                </div>
-                <div class="player-effects"></div>
-            `;
-
-            document.getElementById('player-list').appendChild(playerCard);
-        });
-    } catch (error) {
-        alert("Failed to load campaign. Please check the link and try again.");
-        console.error(error);
-    }
-}
-
-
-
-  function showTab(tabId) {
-    const tabs = document.querySelectorAll('.tab-content');
-    tabs.forEach(tab => tab.style.display = 'none');
-    document.getElementById(tabId).style.display = 'block';
-  }
-
 </script>
