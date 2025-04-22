@@ -874,6 +874,28 @@ body.dark-mode .sidebar {
     margin: 15px 0;
 }
 
+.legendary-actions-help {
+    background-color: #f0f7ff;
+    border-left: 3px solid #4a90e2;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 0 4px 4px 0;
+}
+.legendary-note {
+    margin: 0;
+    font-size: 0.9em;
+    color: #2c3e50;
+}
+.action-example {
+    font-size: 0.8em;
+    color: #666;
+    font-style: italic;
+    margin: 3px 0 10px 20px;
+}
+.dice-result {
+    margin: 5px 0;
+}
+
 </style>
 </head>
 <body>
@@ -3140,17 +3162,27 @@ body.dark-mode .sidebar {
                 </p>
                 
                 <h3 class="box-subtitle">LEGENDARY ACTIONS (3/round)</h3>
-                <ul>
-                    <li><strong>Move:</strong> Move up to speed without provoking</li>
-                    <li><strong>Unarmed Strike:</strong> 
-                        <button class="roll-button" onclick="rollAttack(9, '1d8+4', '4d6', 'necrotic')">Attack</button>
-                        <div id="unarmedResult" class="dice-result"></div>
-                    </li>
-                    <li><strong>Bite (Costs 2):</strong> 
-                        <button class="roll-button" onclick="rollAttack(9, '1d8+4', '4d6', 'necrotic (max HP reduction)')">Attack</button>
-                        <div id="biteResult" class="dice-result"></div>
-                    </li>
-                </ul>
+<div class="legendary-actions-help">
+    <p class="legendary-note">🔄 <strong>Special turns between turns:</strong> Strahd can take 3 extra actions per round, spread out between other creatures' turns.</p>
+</div>
+<ul>
+    <li>
+        <strong>Move:</strong> Strahd glides up to 30 feet without provoking opportunity attacks
+        <div class="action-example">Example: Moves behind cover after a player's attack</div>
+    </li>
+    <li>
+        <strong>Unarmed Strike:</strong> 
+        <button class="roll-button" onclick="rollAttack(9, '1d8+4', '4d6', 'necrotic')">Attack</button>
+        <div id="unarmedResult" class="dice-result"></div>
+        <div class="action-example">Example: Punches a cleric who just cast healing</div>
+    </li>
+    <li>
+        <strong>Bite (Costs 2 actions):</strong> 
+        <button class="roll-button" onclick="rollAttack(9, '1d8+4', '4d6', 'necrotic (max HP reduction)')">Attack</button>
+        <div id="biteResult" class="dice-result"></div>
+        <div class="action-example">Example: Drains blood from a grappled foe</div>
+    </li>
+</ul>
             </div>
             <div class="col">
                 <h3 class="box-subtitle">COMBAT STATS</h3>
