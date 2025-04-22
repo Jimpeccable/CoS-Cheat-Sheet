@@ -2226,7 +2226,7 @@ body.dark-mode .sidebar {
     <div class="row">
         <div class="col">
             <div class="box">
-                <h3 class="box-title">BAROVIAN MEALS (INFLATED PRICES)</h3>
+                <h3 class="box-title">BAROVIAN MEALS (QUESTIONABLE FOOD)</h3>
                 <table>
                     <tr><th>Item</th><th>Normal Cost</th><th>Barovian Cost</th><th>Notes</th></tr>
                     <tr><td>Moldy Bread (loaf)</td><td>2 cp</td><td>1 sp</td><td class="text-danger">Disadvantage on CON save vs. disease</td></tr>
@@ -2238,9 +2238,44 @@ body.dark-mode .sidebar {
                 </table>
                 <p class="text-muted"><em>Prices double in Vallaki during festivals or shortages.</em></p>
             </div>
+            
+            <!-- NEW TABLE: EDIBLE BUT POOR QUALITY FOOD -->
+            <div class="box" style="margin-top: 20px;">
+                <h3 class="box-title">EDIBLE BUT DREARY FARE</h3>
+                <table>
+                    <tr><th>Item</th><th>Cost</th><th>Description</th></tr>
+                    <tr><td>Gruel</td><td>3 cp</td><td>Thin oat porridge that sticks to the ribs like paste</td></tr>
+                    <tr><td>Hardtack</td><td>1 cp each</td><td>Rock-hard biscuits that taste vaguely of dust</td></tr>
+                    <tr><td>Root Soup</td><td>5 cp</td><td>Mud-colored broth with floating turnip chunks</td></tr>
+                    <tr><td>Salt Pork</td><td>2 sp</td><td>Over-salted meat that leaves you desperately thirsty</td></tr>
+                    <tr><td>Barley Bread</td><td>4 cp</td><td>Dense loaf with visible husks, lasts weeks without molding</td></tr>
+                    <tr><td>Pickled Eggs</td><td>3 cp each</td><td>Rubbery whites with sulfurous yolks floating in brine</td></tr>
+                    <tr><td>Dried Apples</td><td>1 sp/handful</td><td>Leathery slices that taste like sweetened bark</td></tr>
+                    <tr><td>Goat Cheese</td><td>8 sp/wheel</td><td>Pungent rounds that crumble like chalk</td></tr>
+                </table>
+                <p class="text-muted"><em>"Festival prices" in Vallaki add +1d4 cp to all items.</em></p>
+            </div>
         </div>
+        
         <div class="col">
             <div class="box">
+                <h3 class="box-title">TAVERN ATMOSPHERES</h3>
+                <table>
+                    <tr><th>Location</th><th>Atmosphere</th><th>Notable Patrons</th></tr>
+                    <tr><td>Blood of the Vine (Barovia)</td><td>Oppressive silence broken by occasional sobbing</td><td>Drunken mourners, Ismark nursing ale</td></tr>
+                    <tr><td>Blue Water Inn (Vallaki)</td><td>Forced merriment with strained laughter</td><td>Wereravens in disguise, Rictavio at the bar</td></tr>
+                    <tr><td>Krezk's Empty Barrel</td><td>Paranoid whispers behind raised tankards</td><td>Off-duty guards, Abbot's mongrelfolk</td></tr>
+                    <tr><td>Vistani Camp</td><td>Raucous music covering tense negotiations</td><td>Spy masters, fortune tellers, Strahd's informants</td></tr>
+                    <tr><td>Bonegrinder "Tavern"</td><td>Sweet smells masking underlying rot</td><td>Hags pretending to be grandmothers</td></tr>
+                    <tr><td>St. Andral's Orphanage</td><td>Eerily cheerful children's singing</td><td>Empty chairs that creak on their own</td></tr>
+                    <tr><td>Old Svalich Road Camp</td><td>Nervous travelers jumping at owl hoots</td><td>Werewolf spies, desperate merchants</td></tr>
+                    <tr><td>Ravenloft's Cellar</td><td>Chill air carrying phantom banquet sounds</td><td>Strahd's brides, ghostly servants</td></tr>
+                    <tr><td>Berez's Ruined Pub</td><td>Moldy tables with fresh wine stains</td><td>Swamp creatures, Baba Lysaga's spies</td></tr>
+                    <tr><td>Tsolenka Pass Outpost</td><td>Howling wind drowning out conversation</td><td>Frozen corpses propped in chairs</td></tr>
+                </table>
+            </div>
+            
+            <div class="box" style="margin-top: 20px;">
                 <h3 class="box-title">LODGING & CONSEQUENCES</h3>
                 <table>
                     <tr><th>Location</th><th>Cost/Night</th><th>Risks</th></tr>
@@ -2261,227 +2296,168 @@ body.dark-mode .sidebar {
         </div>
     </div>
 </div>
-
     
     <!-- Locations Tab System -->
-    <h2 class="section-title" id="locations">LOCATIONS OF BAROVIA</h2>
-    <div class="collapsible-content">
-        <div class="tab-system">
-            <div class="tab-buttons">
-                <button class="tab-button active" onclick="openTab(event, 'village-barovia')">Village of Barovia</button>
-                <button class="tab-button" onclick="openTab(event, 'vallaki')">Vallaki</button>
-                <button class="tab-button" onclick="openTab(event, 'krezk')">Krezk</button>
-                <button class="tab-button" onclick="openTab(event, 'castle-ravenloft')">Castle Ravenloft</button>
-            </div>
-            
-            <div id="village-barovia" class="tab-content active">
-                <div class="row">
-                    <div class="col">
-                        <div class="box">
-                            <h3 class="box-title">VILLAGE OF BAROVIA OVERVIEW</h3>
-                            <p>The first settlement players encounter, a miserable town in Strahd's shadow.</p>
-                            
-                            <h3 class="box-subtitle">KEY LOCATIONS:</h3>
-                            <ul>
-                                <li><strong>Blood of the Vine Tavern:</strong> Only gathering place, run by a soulless barkeep</li>
-                                <li><strong>Burgomaster's Mansion:</strong> Abandoned after recent deaths</li>
-                                <li><strong>Church of Barovia:</strong> Contains a corrupted priest and haunted graveyard</li>
-                                <li><strong>Mad Mary's Townhouse:</strong> Grieving mother who wails nightly</li>
-                                <li><strong>Gates of Barovia:</strong> Ancient stone arches leading to Svalich Woods</li>
-                            </ul>
-                            
-                            <h3 class="box-subtitle">NOTABLE NPCs:</h3>
-                            <ul>
-                                <li><strong>Ismark the Lesser:</strong> New burgomaster, seeks help burying his father</li>
-                                <li><strong>Ireena Kolyana:</strong> Ismark's sister, target of Strahd's obsession</li>
-                                <li><strong>Father Donavich:</strong> Failing priest hiding a monstrous secret</li>
-                                <li><strong>Mad Mary:</strong> Mother mourning her missing daughter Gertruda</li>
-                            </ul>
-                        </div>
+<h2 class="section-title" id="locations">LOCATIONS OF BAROVIA</h2>
+<div class="collapsible-content">
+    <div class="tab-system">
+        <div class="tab-buttons">
+            <button class="tab-button active" onclick="openTab(event, 'village-barovia')">Village of Barovia</button>
+            <button class="tab-button" onclick="openTab(event, 'vallaki')">Vallaki</button>
+            <button class="tab-button" onclick="openTab(event, 'krezk')">Krezk</button>
+            <button class="tab-button" onclick="openTab(event, 'castle-ravenloft')">Castle Ravenloft</button>
+        </div>
+        
+        <!-- Village of Barovia -->
+        <div id="village-barovia" class="tab-content active">
+            <div class="row">
+                <div class="col">
+                    <img src="https://pyramking.com/wp-content/uploads/2022/09/village-of-Barovia.jpg" alt="Village of Barovia" style="width:100%; border-radius:5px; margin-bottom:15px;">
+                    <div class="box">
+                        <h3 class="box-title">VILLAGE OF BAROVIA OVERVIEW</h3>
+                        <p>The original settlement from which Strahd carved his domain, now a ghost of its former self. Founded as a military outpost during Strahd's conquest, the village became his first prison when the mists descended. Its crumbling buildings bear silent witness to centuries of despair, with the burgomaster's mansion standing as a monument to failed resistance against the vampire lord.</p>
+                        
+                        <h3 class="box-subtitle">KEY LOCATIONS:</h3>
+                        <ul>
+                            <li><strong>Blood of the Vine Tavern:</strong> Only gathering place, run by a soulless barkeep</li>
+                            <li><strong>Burgomaster's Mansion:</strong> Abandoned after recent deaths</li>
+                            <li><strong>Church of Barovia:</strong> Contains a corrupted priest and haunted graveyard</li>
+                            <li><strong>Mad Mary's Townhouse:</strong> Grieving mother who wails nightly</li>
+                            <li><strong>Gates of Barovia:</strong> Ancient stone arches leading to Svalich Woods</li>
+                        </ul>
                     </div>
-                    <div class="col">
-                        <div class="box">
-                            <h3 class="box-title">VILLAGE ENCOUNTERS</h3>
-                            <p>When players spend time in the village:</p>
-                            
-                            <h3 class="box-subtitle">DAYTIME ENCOUNTERS (d6):</h3>
-                            <ol>
-                                <li><strong>Funeral Procession:</strong> Villagers carry a wrapped body to graveyard</li>
-                                <li><strong>Beggar:</strong> Pleads for food, reveals cryptic warning if helped</li>
-                                <li><strong>Bar Fight:</strong> Drunks brawl over imagined slights</li>
-                                <li><strong>Strahd's Spy:</strong> Raven or wolf watches conspicuously</li>
-                                <li><strong>Wandering Merchant:</strong> Sells questionable goods at high prices</li>
-                                <li><strong>Prophet:</strong> Madperson shouts doomsday predictions</li>
-                            </ol>
-                            
-                            <h3 class="box-subtitle">NIGHTTIME ENCOUNTERS (d6):</h3>
-                            <ol>
-                                <li><strong>Wolves Howling:</strong> Close by, but never seen</li>
-                                <li><strong>Ghostly Figure:</strong> Disappears when approached</li>
-                                <li><strong>Mad Mary's Wails:</strong> Echo through empty streets</li>
-                                <li><strong>Shambling Figure:</strong> Turns out to be sleepwalker</li>
-                                <li><strong>Strange Lights:</strong> In abandoned buildings</li>
-                                <li><strong>Vampire Spawn:</strong> Watching from rooftops</li>
-                            </ol>
-                        </div>
+                </div>
+                <div class="col">
+                    <div class="box">
+                        <h3 class="box-title">HISTORICAL SIGNIFICANCE</h3>
+                        <p>This was where Strahd first tasted Barovian soil after his conquest, where he murdered his brother Sergei in the chapel ruins, and where Tatyana first leaped to her death. The village's perpetual fog carries echoes of these tragedies, sometimes forming ghostly tableaus of the past at dusk.</p>
+                        
+                        <h3 class="box-title">VILLAGE ENCOUNTERS</h3>
+                        <h3 class="box-subtitle">DAYTIME ENCOUNTERS (d6):</h3>
+                        <ol>
+                            <li><strong>Funeral Procession:</strong> Villagers carry a wrapped body to graveyard</li>
+                            <li><strong>Beggar:</strong> Pleads for food, reveals cryptic warning if helped</li>
+                            <li><strong>Bar Fight:</strong> Drunks brawl over imagined slights</li>
+                            <li><strong>Strahd's Spy:</strong> Raven or wolf watches conspicuously</li>
+                            <li><strong>Wandering Merchant:</strong> Sells questionable goods at high prices</li>
+                            <li><strong>Prophet:</strong> Madperson shouts doomsday predictions</li>
+                        </ol>
                     </div>
                 </div>
             </div>
-            
-            <div id="vallaki" class="tab-content">
-                <div class="row">
-                    <div class="col">
-                        <div class="box">
-                            <h3 class="box-title">VALLAKI OVERVIEW</h3>
-                            <p>The "safest" town in Barovia, ruled by a delusional burgomaster.</p>
-                            
-                            <h3 class="box-subtitle">KEY LOCATIONS:</h3>
-                            <ul>
-                                <li><strong>Blue Water Inn:</strong> Run by wereravens, safe haven</li>
-                                <li><strong>Burgomaster's Mansion:</strong> Extravagant home of Vargas Vallakovich</li>
-                                <li><strong>St. Andral's Church:</strong> Site of sacred bones that repel Strahd</li>
-                                <li><strong>Coffin Maker's Shop:</strong> Hides vampire spawn in attic</li>
-                                <li><strong>Wachterhaus:</strong> Home of Lady Wachter's cult</li>
-                            </ul>
-                            
-                            <h3 class="box-subtitle">NOTABLE NPCs:</h3>
-                            <ul>
-                                <li><strong>Burgomaster Vargas Vallakovich:</strong> Insists on mandatory happiness</li>
-                                <li><strong>Lady Fiona Wachter:</strong> Cult leader who wants to overthrow Vargas</li>
-                                <li><strong>Father Lucian Petrovich:</strong> Keeper of St. Andral's bones</li>
-                                <li><strong>Rictavio:</strong> Van Richten in disguise</li>
-                                <li><strong>Blinsky:</strong> Mad toymaker with creepy dolls</li>
-                            </ul>
-                        </div>
+        </div>
+        
+        <!-- Vallaki -->
+        <div id="vallaki" class="tab-content">
+            <div class="row">
+                <div class="col">
+                    <img src="https://pyramking.com/wp-content/uploads/2022/09/ezgif.com-gif-maker.jpg" alt="Vallaki" style="width:100%; border-radius:5px; margin-bottom:15px;">
+                    <div class="box">
+                        <h3 class="box-title">VALLAKI OVERVIEW</h3>
+                        <p>Founded by refugees fleeing Strahd's early reign, Vallaki's high walls contain both desperate hope and festering corruption. The town's motto - "All will be well!" - rings hollow after generations of burgomasters enforcing mandatory happiness under threat of punishment. Beneath colorful festival banners, the townsfolk whisper of missing children and the cult growing in Lady Wachter's manor.</p>
+                        
+                        <h3 class="box-subtitle">KEY LOCATIONS:</h3>
+                        <ul>
+                            <li><strong>Blue Water Inn:</strong> Run by wereravens, safe haven</li>
+                            <li><strong>Burgomaster's Mansion:</strong> Extravagant home of Vargas Vallakovich</li>
+                            <li><strong>St. Andral's Church:</strong> Site of sacred bones that repel Strahd</li>
+                            <li><strong>Coffin Maker's Shop:</strong> Hides vampire spawn in attic</li>
+                            <li><strong>Wachterhaus:</strong> Home of Lady Wachter's cult</li>
+                        </ul>
                     </div>
-                    <div class="col">
-                        <div class="box">
-                            <h3 class="box-title">VALLAKI POLITICS</h3>
-                            <p>The tension between factions:</p>
-                            
-                            <h3 class="box-subtitle">FACTIONS:</h3>
-                            <ol>
-                                <li><strong>Vallakovich Loyalists:</strong> Believe in forced happiness</li>
-                                <li><strong>Wachter Cultists:</strong> Worship Strahd secretly</li>
-                                <li><strong>Wereravens:</strong> Secretly oppose Strahd</li>
-                                <li><strong>Common Folk:</strong> Just trying to survive</li>
-                            </ol>
-                            
-                            <h3 class="box-subtitle">EVENT CHAIN:</h3>
-                            <p>Possible sequence of events:</p>
-                            <ol>
-                                <li>Festival of the Blazing Sun (mandatory celebration)</li>
-                                <li>Discovery of missing bones from church</li>
-                                <li>Vampire spawn attack at coffin maker's shop</li>
-                                <li>Wachter's coup attempt</li>
-                                <li>Strahd's eventual intervention</li>
-                            </ol>
-                        </div>
+                </div>
+                <div class="col">
+                    <div class="box">
+                        <h3 class="box-title">HISTORICAL SIGNIFICANCE</h3>
+                        <p>Vallaki was the last settlement to resist Strahd before his curse was complete. The town's original church was where the first priest attempted - and failed - to destroy Strahd with holy magic. Now the bones of St. Andral hidden beneath the new church represent the town's last hope, though few remember their true significance.</p>
+                        
+                        <h3 class="box-title">VALLAKI POLITICS</h3>
+                        <h3 class="box-subtitle">FACTIONS:</h3>
+                        <ol>
+                            <li><strong>Vallakovich Loyalists:</strong> Believe in forced happiness</li>
+                            <li><strong>Wachter Cultists:</strong> Worship Strahd secretly</li>
+                            <li><strong>Wereravens:</strong> Secretly oppose Strahd</li>
+                            <li><strong>Common Folk:</strong> Just trying to survive</li>
+                        </ol>
                     </div>
                 </div>
             </div>
-            
-            <div id="krezk" class="tab-content">
-                <div class="row">
-                    <div class="col">
-                        <div class="box">
-                            <h3 class="box-title">KREZK OVERVIEW</h3>
-                            <p>Isolated mountain village with dark secrets.</p>
-                            
-                            <h3 class="box-subtitle">KEY LOCATIONS:</h3>
-                            <ul>
-                                <li><strong>Gates:</strong> Heavily guarded against outsiders</li>
-                                <li><strong>Abbey of St. Markovia:</strong> Run by the "Abbot," a celestial gone mad</li>
-                                <li><strong>Pool in the Woods:</strong> Possible escape for Ireena</li>
-                                <li><strong>Winery:</strong> Source of Barovia's wine (when operational)</li>
-                            </ul>
-                            
-                            <h3 class="box-subtitle">NOTABLE NPCs:</h3>
-                            <ul>
-                                <li><strong>The Abbot:</strong> Deva creating flesh golem bride for Strahd</li>
-                                <li><strong>Burgomaster Dmitri Krezkov:</strong> Desperate to keep village safe</li>
-                                <li><strong>The Mongrelfolk:</strong> Abbot's failed experiments</li>
-                                <li><strong>Vasilka:</strong> Flesh golem "bride"</li>
-                            </ul>
-                        </div>
+        </div>
+        
+        <!-- Krezk -->
+        <div id="krezk" class="tab-content">
+            <div class="row">
+                <div class="col">
+                    <img src="https://pyramking.com/wp-content/uploads/2022/09/Krezek.jpg" alt="Krezk" style="width:100%; border-radius:5px; margin-bottom:15px;">
+                    <div class="box">
+                        <h3 class="box-title">KREZK OVERVIEW</h3>
+                        <p>Perched high in the Balinok Mountains, Krezk began as a monastery before becoming a fortified village. Its isolation preserved some sanity, but the arrival of the Abbot - a celestial being slowly corrupted by Barovia - has twisted its purpose. The villagers now bar their doors at night, not just against wolves, but against the Abbot's mongrelfolk and the terrible sounds from the Abbey's bell tower.</p>
+                        
+                        <h3 class="box-subtitle">KEY LOCATIONS:</h3>
+                        <ul>
+                            <li><strong>Gates:</strong> Heavily guarded against outsiders</li>
+                            <li><strong>Abbey of St. Markovia:</strong> Run by the "Abbot," a celestial gone mad</li>
+                            <li><strong>Pool in the Woods:</strong> Possible escape for Ireena</li>
+                            <li><strong>Winery:</strong> Source of Barovia's wine (when operational)</li>
+                        </ul>
                     </div>
-                    <div class="col">
-                        <div class="box">
-                            <h3 class="box-title">KREZK SECRETS</h3>
-                            <p>Hidden truths about the village:</p>
-                            
-                            <h3 class="box-subtitle">ABBEY SECRETS:</h3>
-                            <ol>
-                                <li>The Abbot believes he's helping Strahd find peace</li>
-                                <li>Vasilka is made from parts of dead women</li>
-                                <li>The bell tower houses a dangerous creature</li>
-                                <li>Mongrelfolk were once normal villagers</li>
-                            </ol>
-                            
-                            <h3 class="box-subtitle">POOL EVENT:</h3>
-                            <p>If Ireena reaches the pool:</p>
-                            <ul>
-                                <li>She may merge with Tatyana's spirit</li>
-                                <li>This enrages Strahd terribly</li>
-                                <li>Could trigger his direct intervention</li>
-                                <li>May provide temporary respite</li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="col">
+                    <div class="box">
+                        <h3 class="box-title">HISTORICAL SIGNIFICANCE</h3>
+                        <p>The Abbey was once home to Saint Markovia, who led a failed rebellion against Strahd. Her crucifixion on the gates lasted forty days before she died - the same gates that now keep Krezk "safe." The pool where Tatyana's spirit sometimes appears was sacred to the mountain folk Strahd slaughtered during his conquest.</p>
+                        
+                        <h3 class="box-title">KREZK SECRETS</h3>
+                        <h3 class="box-subtitle">ABBEY SECRETS:</h3>
+                        <ol>
+                            <li>The Abbot believes he's helping Strahd find peace</li>
+                            <li>Vasilka is made from parts of dead women</li>
+                            <li>The bell tower houses a dangerous creature</li>
+                            <li>Mongrelfolk were once normal villagers</li>
+                        </ol>
                     </div>
                 </div>
             </div>
-            
-            <div id="castle-ravenloft" class="tab-content">
-                <div class="row">
-                    <div class="col">
-                        <div class="box">
-                            <h3 class="box-title">CASTLE RAVENLOFT OVERVIEW</h3>
-                            <p>Strahd's ancient fortress, filled with horrors.</p>
-                            
-                            <h3 class="box-subtitle">KEY LOCATIONS:</h3>
-                            <ul>
-                                <li><strong>Great Entrance:</strong> Massive doors with carvings of Strahd's conquests</li>
-                                <li><strong>Dining Hall:</strong> Set for a feast with rotten food</li>
-                                <li><strong>Heart of Sorrow:</strong> Crystal heart that absorbs damage for Strahd</li>
-                                <li><strong>Crypts:</strong> Final resting place of Strahd's family</li>
-                                <li><strong>Spires:</strong> Highest points with terrifying drops</li>
-                            </ul>
-                            
-                            <h3 class="box-subtitle">NOTABLE NPCs:</h3>
-                            <ul>
-                                <li><strong>Rahadin:</strong> Strahd's loyal chamberlain</li>
-                                <li><strong>Cyrus Belview:</strong> Mongrelfolk servant</li>
-                                <li><strong>The Brides:</strong> Strahd's vampire spawn consorts</li>
-                                <li><strong>Patrina Velikovna:</strong> Ghost of a powerful spellcaster</li>
-                            </ul>
-                        </div>
+        </div>
+        
+        <!-- Castle Ravenloft -->
+        <div id="castle-ravenloft" class="tab-content">
+            <div class="row">
+                <div class="col">
+                    <img src="https://static.wikia.nocookie.net/forgottenrealms/images/b/b3/Castle_Ravenloft-5e.jpg/revision/latest?cb=20190929004529" alt="Castle Ravenloft" style="width:100%; border-radius:5px; margin-bottom:15px;">
+                    <div class="box">
+                        <h3 class="box-title">CASTLE RAVENLOFT OVERVIEW</h3>
+                        <p>More than a fortress, Ravenloft is a manifestation of Strahd's damned soul - its spires like claws grasping at the storm-wracked sky. Built upon the ruins of a Tergish watchtower, every stone was laid under Strahd's exacting supervision. The castle breathes with its master's moods, halls lengthening for his amusement, doors locking to trap intruders, shadows moving with malicious intent.</p>
+                        
+                        <h3 class="box-subtitle">KEY LOCATIONS:</h3>
+                        <ul>
+                            <li><strong>Great Entrance:</strong> Massive doors with carvings of Strahd's conquests</li>
+                            <li><strong>Dining Hall:</strong> Set for a feast with rotten food</li>
+                            <li><strong>Heart of Sorrow:</strong> Crystal heart that absorbs damage for Strahd</li>
+                            <li><strong>Crypts:</strong> Final resting place of Strahd's family</li>
+                            <li><strong>Spires:</strong> Highest points with terrifying drops</li>
+                        </ul>
                     </div>
-                    <div class="col">
-                        <div class="box">
-                            <h3 class="box-title">CASTLE FEATURES</h3>
-                            <p>Unique aspects of Ravenloft:</p>
-                            
-                            <h3 class="box-subtitle">SUPERNATURAL EFFECTS:</h3>
-                            <ol>
-                                <li><strong>Shifting Architecture:</strong> Rooms move when unobserved</li>
-                                <li><strong>Echoes of the Past:</strong> Phantom sounds of long-ago events</li>
-                                <li><strong>Living Shadows:</strong> Dark corners move independently</li>
-                                <li><strong>Strahd's Eyes:</strong> Portraits and statues seem to watch</li>
-                            </ol>
-                            
-                            <h3 class="box-subtitle">STRATEGIC POINTS:</h3>
-                            <ul>
-                                <li><strong>Heart of Sorrow:</strong> Destroying it weakens Strahd</li>
-                                <li><strong>Holy Symbol:</strong> Hidden in mother's tomb</li>
-                                <li><strong>Sunsword:</strong> May be in Vladimir's crypt</li>
-                                <li><strong>Strahd's Tomb:</strong> Where he rests during the day</li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="col">
+                    <div class="box">
+                        <h3 class="box-title">HISTORICAL SIGNIFICANCE</h3>
+                        <p>The castle's foundation stones were mortared with the blood of conquered warriors. In its chapel, Strahd murdered his brother Sergei on their wedding day. From its tallest tower, Tatyana flung herself rather than submit to Strahd's embrace. Every anniversary of these events, phantom screams echo through the halls, and the portraits bleed.</p>
+                        
+                        <h3 class="box-title">CASTLE FEATURES</h3>
+                        <h3 class="box-subtitle">SUPERNATURAL EFFECTS:</h3>
+                        <ol>
+                            <li><strong>Shifting Architecture:</strong> Rooms move when unobserved</li>
+                            <li><strong>Echoes of the Past:</strong> Phantom sounds of long-ago events</li>
+                            <li><strong>Living Shadows:</strong> Dark corners move independently</li>
+                            <li><strong>Strahd's Eyes:</strong> Portraits and statues seem to watch</li>
+                        </ol>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
     
     <!-- Curse Removal & Revenant Resurrection -->
     <h2 class="section-title" id="curse-removal">CURSE REMOVAL</h2>
@@ -2665,15 +2641,34 @@ body.dark-mode .sidebar {
                                 <li><strong><span class="tooltip">The Soulless<span class="tooltiptext">Many Barovians lack true souls - they're empty, emotionless shells going through the motions of life.</span></span>:</strong> Many Barovians lack souls - they're empty, joyless shells</li>
                             </ul>
 
-                            <h3 class="box-subtitle">NPC QUIRKS (d6): <button class="roll-button" onclick="rollDice('1d6')">Roll</button></h3>
-                            <ol style="margin-bottom: 20px;">
-                                <li><strong>Soulless Tell:</strong> Never blinks. Food has no taste to them.</li>
-                                <li><strong>Paranoid Ritual:</strong> Knocks 3x before entering, spits over left shoulder.</li>
-                                <li><strong>Strahd's Pawn:</strong> Knows one random PC secret. Casually mentions it.</li>
-                                <li><strong>Ghostly Echo:</strong> Repeats same action daily (e.g., always drops a cup at 3pm).</li>
-                                <li><strong>Hidden Hunger:</strong> Stares at necks/wrists. Refuses garlic.</li>
-                                <li><strong>Living Omen:</strong> Speaks in riddles that foreshadow nearby danger.</li>
-                            </ol>
+                            <h3 class="box-subtitle">NPC QUIRKS (d20): <button class="roll-button" onclick="rollDice('1d20')">Roll</button></h3>
+<ol style="margin-bottom: 20px;">
+    <!-- Innocent Quirks -->
+    <li><strong>Childlike Wonder:</strong> Collects mundane objects (stones, buttons) as "magic treasures".</li>
+    <li><strong>Sunflower Soul:</strong> Tries to grow flowers in impossible places (rooftops, crypts).</li>
+    <li><strong>Story Collector:</strong> Begs travelers for tales of places beyond the mists.</li>
+    <li><strong>Shadow Puppeteer:</strong> Makes elaborate shadow plays to comfort children.</li>
+    <li><strong>Hopeful Baker:</strong> Always baking "welcome pies" that taste like sawdust.</li>
+    
+    <!-- Caring Quirks -->
+    <li><strong>Mother Hen:</strong> Forces food on everyone while muttering "you're too thin".</li>
+    <li><strong>Knot Master:</strong> Carries rope to fix travelers' frayed gear without being asked.</li>
+    <li><strong>Nightwatch Whisperer:</strong> Sings lullabies to ward off nightmares (works 50% of time).</li>
+    <li><strong>Herb Witch:</strong> Presses foul-smelling "protective" sachets into palms.</li>
+    <li><strong>Memory Keeper:</strong> Maintains shrine with names of every deceased villager.</li>
+    
+    <!-- Strange Quirks -->
+    <li><strong>Soulless Tell:</strong> Never blinks. Food has no taste to them.</li>
+    <li><strong>Paranoid Ritual:</strong> Knocks 3x before entering, spits over left shoulder.</li>
+    <li><strong>Strahd's Pawn:</strong> Knows one random PC secret. Casually mentions it.</li>
+    <li><strong>Ghostly Echo:</strong> Repeats same action daily (e.g., always drops a cup at 3pm).</li>
+    <li><strong>Hidden Hunger:</strong> Stares at necks/wrists. Refuses garlic.</li>
+    <li><strong>Living Omen:</strong> Speaks in riddles that foreshadow nearby danger.</li>
+    <li><strong>Flesh Scribbler:</strong> Writes names on their skin that disappear by dawn.</li>
+    <li><strong>Mirror Mumbler:</strong> Holds conversations with reflections when alone.</li>
+    <li><strong>Grave Dancer:</strong> Waltzes in cemeteries during thunderstorms.</li>
+    <li><strong>Puppet Master:</strong> Carries a doll that "speaks" for them in falsetto.</li>
+</ol>
                             <p><em>Tip:</em> Assign to 1-in-4 NPCs. Reveal quirks through interaction.</p>
                         </div>
                         <div class="col" style="min-width: 200px;">
