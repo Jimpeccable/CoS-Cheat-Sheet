@@ -729,6 +729,48 @@ body.dark-mode .sidebar {
 .section-title.active::before {
     content: "-";
 }
+
+.back-to-top {
+  position: fixed;
+  bottom: 80px;
+  right: 60px;
+  background-color: var(--border-color);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--shadow-dark);
+  z-index: 1000;
+  display: none;
+}
+
+.tab-button.dragging {
+  opacity: 0.5;
+  background: rgba(139, 0, 0, 0.1);
+}
+
+.tab-buttons {
+  user-select: none;
+}
+
+/* Add these styles to your existing CSS */
+.section-title.dragging {
+  opacity: 0.5;
+  background: rgba(139, 0, 0, 0.1);
+  border: 2px dashed var(--border-color);
+}
+
+.section-title {
+  user-select: none;
+  cursor: grab;
+}
+
+.section-title:active {
+  cursor: grabbing;
+}
+
+
 </style>
 </head>
 <body>
@@ -2077,6 +2119,8 @@ body.dark-mode .sidebar {
     </div>
 </div>
 
+<button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
 <!-- Player Sidebar -->
 <div id="player-sidebar" class="sidebar">
     <h3>PLAYER TRACKER</h3>
@@ -2102,6 +2146,11 @@ body.dark-mode .sidebar {
 
 
 <script>
+
+window.onscroll = function() {
+  const btn = document.querySelector('.back-to-top');
+  btn.style.display = (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) ? 'block' : 'none';
+};
     // Collapsible sections
     document.querySelectorAll('.section-title').forEach(title => {
         title.addEventListener('click', () => {
@@ -2309,5 +2358,103 @@ window.onload = function() {
         });
     });
 };
+
+
+// Add draggable attribute to section titles
+document.querySelectorAll('.section-title').forEach(section => {
+  section.setAttribute('draggable', 'true');
+  
+  section.addEventListener('dragstart', function(e) {
+    e.dataTransfer.setData('text/plain', this.id);
+    this.classList.add('dragging');
+    // Store the height of the content to maintain during drag
+    const content = this.nextElementSibling;
+    this.dataset.contentHeight = content.scrollHeight;
+  });
+  
+  section.addEventListener('dragend', function() {
+    this.classList.remove('dragging');
+  });
+});
+
+// Make the container a drop zone
+document.querySelector('.container').addEventListener('dragover', function(e) {
+  e.preventDefault();
+  const dragging = document.querySelector('.dragging');
+  if (!dragging) return;
+  
+  // Get the section element being dragged over (using closest to find the section-title)
+  const afterElement = getDragAfterSection(this, e.clientY);
+  const container = this;
+  
+  if (afterElement == null) {
+    // Append to end
+    const lastSection = container.querySelector('.section-title:last-of-type');
+    if (lastSection !== dragging) {
+      container.appendChild(dragging);
+      container.appendChild(dragging.nextElementSibling);
+    }
+  } else {
+    // Insert before the afterElement
+    if (afterElement !== dragging) {
+      container.insertBefore(dragging, afterElement);
+      container.insertBefore(dragging.nextElementSibling, afterElement);
+    }
+  }
+});
+
+function getDragAfterSection(container, y) {
+  const sections = [...container.querySelectorAll('.section-title:not(.dragging)')];
+  
+  return sections.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offset = y - box.top - box.height / 2;
+    
+    if (offset < 0 && offset > closest.offset) {
+      return { offset: offset, element: child };
+    } else {
+      return closest;
+    }
+  }, { offset: Number.NEGATIVE_INFINITY }).element;
+}
+
+// Save and load section order
+function saveSectionOrder() {
+  const sections = Array.from(document.querySelectorAll('.section-title')).map(section => section.id);
+  localStorage.setItem('dmCheatSheetSectionOrder', JSON.stringify(sections));
+}
+
+function loadSectionOrder() {
+  const savedOrder = localStorage.getItem('dmCheatSheetSectionOrder');
+  if (savedOrder) {
+    const order = JSON.parse(savedOrder);
+    const container = document.querySelector('.container');
+    
+    order.forEach(sectionId => {
+      const section = document.getElementById(sectionId);
+      const content = section.nextElementSibling;
+      if (section && content) {
+        container.appendChild(section);
+        container.appendChild(content);
+      }
+    });
+  }
+}
+
+// Call loadSectionOrder when the page loads
+window.addEventListener('load', function() {
+  loadSectionOrder();
+  
+  // Save order whenever sections are rearranged
+  document.querySelector('.container').addEventListener('dragend', function() {
+    saveSectionOrder();
+    
+    // Restore the content height after reordering
+    const dragging = document.querySelector('.dragging');
+    if (dragging && dragging.dataset.contentHeight) {
+      dragging.nextElementSibling.style.maxHeight = dragging.dataset.contentHeight + 'px';
+    }
+  });
+});
 
 </script>
