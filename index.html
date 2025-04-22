@@ -771,6 +771,109 @@ body.dark-mode .sidebar {
 }
 
 
+.relationship-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.relationship-table th, .relationship-table td {
+  border: 1px solid #444;
+  padding: 8px;
+  text-align: left;
+}
+.relationship-table th {
+  background-color: #2a2a2a;
+}
+.relationship-table tr:nth-child(even) {
+  background-color: #1e1e1e;
+}
+
+.dm-notes {
+    background-color: #f8f8f8;
+    border-left: 4px solid #c7254e;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 0.9em;
+}
+.dm-notes h4 {
+    color: #c7254e;
+    margin-top: 0;
+}
+.box-highlight {
+    background-color: #fff9e6;
+    border: 1px solid #ffe0b2;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 15px 0;
+}
+.mood-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.mood-table th, .mood-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.mood-table th {
+    background-color: #f2f2f2;
+}
+
+.npc-relationship-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.npc-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+.npc-header {
+    background: #4a2c82;
+    color: white;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.npc-header h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+.npc-status {
+    background: #2a1a4a;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+}
+.npc-body {
+    padding: 15px;
+}
+.npc-body p {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+.dm-notes {
+    background-color: #f8f8f8;
+    border-left: 4px solid #c7254e;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 0.9em;
+}
+.dm-notes h4 {
+    color: #c7254e;
+    margin: 8px 0 5px 0;
+}
+.box-highlight {
+    background-color: #fff9e6;
+    border: 1px solid #ffe0b2;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
 </style>
 </head>
 <body>
@@ -796,6 +899,7 @@ body.dark-mode .sidebar {
     <button class="roll-button" onclick="showTab('madness')">Madness & Horror</button>
     <button class="roll-button" onclick="showTab('survival')">Survival Rules</button>
     <button class="roll-button" onclick="showTab('world')">World Lore</button>
+    <button class="roll-button" onclick="showTab('strahd')">Strahd Lore</button>
   </div>
 
   <!-- Core Mechanics Tab -->
@@ -833,8 +937,18 @@ body.dark-mode .sidebar {
     <a href="#calendar" class="nav-link">Calendar</a>
     <a href="#descriptors" class="nav-link">Descriptors</a>
   </div>
+
+<!-- In your quick-nav div -->
+<div class="nav-links tab-content" id="strahd" style="display:none;">
+  <a href="#strahd-profile" class="nav-link">Strahd Profile</a>
+  <a href="#strahd-abilities" class="nav-link">Strahd's Abilities</a>
+  <a href="#npc-relationships" class="nav-link">NPC Relationships</a>
+  <a href="#barovian-lore" class="nav-link">Barovian Lore</a>
 </div>
-        
+
+</div>
+
+         
         <div class="divider"></div>
         <div class="divider-thin"></div>
         
@@ -2574,6 +2688,514 @@ body.dark-mode .sidebar {
         </div>
     </div>
 
+<!-- Strahd von Zarovich -->
+<h2 class="section-title" id="strahd-profile">STRAHD VON ZAROVICH</h2>
+<div class="collapsible-content">
+    <div class="box">
+        <div class="row">
+            <div class="col">
+                <img src="https://pyramking.com/wp-content/uploads/2022/12/Strahd_1.webp" alt="Strahd von Zarovich" style="width:100%; border-radius:5px; margin-bottom:15px;">
+                <h3 class="box-subtitle">THE VAMPIRE LORD OF BAROVIA</h3>
+                <table>
+                    <tr>
+                        <td><strong>Full Name:</strong></td>
+                        <td>Strahd von Zarovich VI</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Titles:</strong></td>
+                        <td>The Ancient, The Land, Count of Barovia</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Age:</strong></td>
+                        <td>Over 400 years old</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Alignment:</strong></td>
+                        <td>Lawful Evil</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Domain:</strong></td>
+                        <td>Castle Ravenloft, Barovia</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Signature Weapon:</strong></td>
+                        <td>The Sword of the Morning (Sunblade, now corrupted)</td>
+                    </tr>
+                </table>
+                
+                <div class="dm-notes">
+                    <h4>DM Notes:</h4>
+                    <ul>
+                        <li>Strahd is always 3 steps ahead - he's been doing this for centuries</li>
+                        <li>Remember: He's a brilliant military tactician, not just a monster</li>
+                        <li>Use his spies (rats, bats, Vistani) to show he's always watching</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <h3 class="box-title">HISTORY & TRAGEDY</h3>
+                <p><strong>The Conqueror:</strong> Once a noble warrior who expanded his father's empire, Strahd conquered Barovia through brilliant military campaigns in his prime. The valley's original inhabitants called him "the Devil Strahd."</p>
+                
+                <p><strong>The Bargain:</strong> Fearing old age while his brother Sergei remained youthful, Strahd made his fateful pact on the night of Sergei's wedding to Tatyana. The ceremony became a bloodbath - Sergei murdered, Tatyana dead by suicide, and Strahd transformed into the first vampire.</p>
+                
+                <p><strong>The Curse:</strong> The Dark Powers granted Strahd's wish for immortality but cursed him to forever pursue Tatyana's reincarnations, only to lose her each time. Each cycle renews his torment.</p>
+                
+                <div class="dm-notes">
+                    <h4>Key Story Beats:</h4>
+                    <ul>
+                        <li>Strahd sees himself as the tragic hero of his story</li>
+                        <li>He genuinely believes Tatyana is his by right</li>
+                        <li>His journal (found in Ravenloft) reveals his descent into madness</li>
+                    </ul>
+                </div>
+                
+                <h3 class="box-subtitle">PERSONALITY TRAITS</h3>
+                <ul>
+                    <li><strong>"I am the ancient, I am the land."</strong> - He sees Barovia as an extension of himself</li>
+                    <li><strong>"All who oppose me shall perish."</strong> - Challenges to his rule enrage him</li>
+                    <li><strong>"Tatyana is mine by right."</strong> - An obsession bordering on madness</li>
+                    <li><strong>"I suffer no insult."</strong> - Punishes slights with cruel creativity</li>
+                    <li><strong>"You remind me of my brother..."</strong> - Both nostalgic and dangerous</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="box-highlight">
+            <h3 class="box-title">RUNNING STRAHD: DM GUIDELINES</h3>
+            <div class="row">
+                <div class="col">
+                    <h4>Strahd's Goals:</h4>
+                    <ol>
+                        <li><strong>Claim Tatyana's current incarnation (Ireena)</strong> - His primary obsession</li>
+                        <li><strong>Find a worthy successor</strong> - But will ultimately reject all candidates</li>
+                        <li><strong>Break his curse</strong> - Though he doesn't fully understand it</li>
+                        <li><strong>Entertain himself</strong> - Adventurers are rare distractions</li>
+                    </ol>
+                </div>
+                <div class="col">
+                    <h4>Strahd's Tactics:</h4>
+                    <ul>
+                        <li>Tests the party through proxies before confronting them directly</li>
+                        <li>Uses charm and intellect more than brute force</li>
+                        <li>Will retreat and regroup if seriously threatened</li>
+                        <li>Plays party members against each other</li>
+                        <li>Always has an escape plan (Misty Escape)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Barovian Lore -->
+<h2 class="section-title" id="barovian-lore">BAROVIAN LORE</h2>
+<div class="collapsible-content">
+    <div class="box">
+        <div class="row">
+            <div class="col">
+                <h3 class="box-subtitle">THE MISTS OF BAROVIA</h3>
+                <p>The ever-present fog serves as Strahd's prison walls and psychological weapon. Key features:</p>
+                <ul>
+                    <li><strong>Psychological Horror:</strong> The mists whisper and show visions</li>
+                    <li><strong>Navigation Hazard:</strong> DC 15 Survival check or become lost</li>
+                    <li><strong>Strahd's Will:</strong> He can intensify them as a lair action</li>
+                    <li><strong>Escape Attempts:</strong> Those who try to leave find themselves back in Barovia</li>
+                </ul>
+                
+                <div class="dm-notes">
+                    <h4>DM Tips:</h4>
+                    <ul>
+                        <li>Use mists to cut off retreats or separate party members</li>
+                        <li>Have them react to Strahd's emotions (turn blood-red when angry)</li>
+                        <li>Let players hear ghostly whispers of "He is the Ancient..."</li>
+                    </ul>
+                </div>
+                
+                <h3 class="box-subtitle">THE LAND ITSELF</h3>
+                <p>Strahd's connection to Barovia is supernatural - the land reflects his moods:</p>
+                <table class="mood-table">
+                    <tr>
+                        <th>Strahd's Mood</th>
+                        <th>Environmental Effects</th>
+                    </tr>
+                    <tr>
+                        <td>Angry</td>
+                        <td>Thunderstorms, howling winds</td>
+                    </tr>
+                    <tr>
+                        <td>Melancholy</td>
+                        <td>Constant dreary rain</td>
+                    </tr>
+                    <tr>
+                        <td>Amused</td>
+                        <td>Unnatural stillness</td>
+                    </tr>
+                    <tr>
+                        <td>Romantic</td>
+                        <td>Blood-red moon appears</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col">
+                <h3 class="box-subtitle">FACTIONS OF BAROVIA</h3>
+                
+                <h4>The Vistani</h4>
+                <p>Strahd's nomadic spies granted special privileges:</p>
+                <ul>
+                    <li>Only ones who can freely pass through the mists</li>
+                    <li>Not all serve Strahd willingly (Madam Eva's faction resists)</li>
+                    <li>Excellent source of cryptic prophecies</li>
+                </ul>
+                
+                <h4>The Burgomasters</h4>
+                <p>Local leaders who maintain the illusion of order:</p>
+                <ul>
+                    <li><strong>Vargas Vallakovich (Vallaki):</strong> Delusional tyrant enforcing "happiness"</li>
+                    <li><strong>Kolyan Indirovich (Barovia):</strong> Deceased father of Ireena</li>
+                    <li><strong>Davian Martikov (Wizard of Wines):</strong> Secretly wereraven leader</li>
+                </ul>
+                
+                <h3 class="box-subtitle">THE DARK POWERS</h3>
+                <p>The mysterious entities behind the Curse of Strahd:</p>
+                <ul>
+                    <li>Not gods but ancient malevolent forces</li>
+                    <li>May offer players corrupting bargains</li>
+                    <li>Delight in Strahd's endless torment</li>
+                    <li>Can manifest as shadowy figures or through the Amber Temple</li>
+                </ul>
+                
+                <div class="box-highlight">
+                    <h4>Strahd's Torment Cycle:</h4>
+                    <ol>
+                        <li>Tatyana reincarnates</li>
+                        <li>Strahd pursues her</li>
+                        <li>She dies tragically</li>
+                        <li>Barovia resets</li>
+                        <li>The mists bring new victims</li>
+                    </ol>
+                    <p>This has repeated for centuries - the current Ireena incarnation is just the latest.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- NPC Relationships -->
+<h2 class="section-title" id="npc-relationships">NPC RELATIONSHIPS</h2>
+<div class="collapsible-content">
+    <div class="box">
+        <div class="npc-relationship-grid">
+            <!-- Ireena Kolyana -->
+            <div class="npc-card">
+                <div class="npc-header">
+                    <h3>Ireena Kolyana</h3>
+                    <span class="npc-status">Tatyana's Reincarnation</span>
+                </div>
+                <div class="npc-body">
+                    <p><strong>Strahd's View:</strong> "My beloved returned to me at last" (Obsessive romantic fixation)</p>
+                    <p><strong>Current Status:</strong> Being "courted" through calculated appearances and manipulations</p>
+                    
+                    <div class="dm-notes">
+                        <h4>DM Notes:</h4>
+                        <ul>
+                            <li>Strahd believes he's being romantic, not predatory</li>
+                            <li>Will intervene violently if she's harmed (but won't kill perpetrators - prefers to turn them into spawn)</li>
+                            <li>Secretly arranges "chance meetings" in different guises</li>
+                        </ul>
+                        
+                        <h4>Story Hooks:</h4>
+                        <ul>
+                            <li>Strahd sends gifts signed "Your Most Admiring"</li>
+                            <li>Vistani deliver "invitations" to dinner at Ravenloft</li>
+                            <li>Werewolves appear to "protect" her from perceived threats</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rahadin -->
+            <div class="npc-card">
+                <div class="npc-header">
+                    <h3>Rahadin</h3>
+                    <span class="npc-status">Eternal Chamberlain</span>
+                </div>
+                <div class="npc-body">
+                    <p><strong>Strahd's View:</strong> "My most trusted blade" (Loyal executioner and confidant)</p>
+                    <p><strong>Current Status:</strong> Oversees daily operations of Ravenloft</p>
+                    
+                    <div class="dm-notes">
+                        <h4>DM Notes:</h4>
+                        <ul>
+                            <li>The only being Strahd genuinely trusts</li>
+                            <li>Knows all of Strahd's secrets except his true feelings about Sergei</li>
+                            <li>Will take initiative to eliminate threats without orders</li>
+                        </ul>
+                        
+                        <h4>Behavior Patterns:</h4>
+                        <ul>
+                            <li>Always addresses Strahd as "My Lord" never "Master"</li>
+                            <li>Wears Elven mourning garb for the people he slaughtered</li>
+                            <li>Deathly whisper ability reflects his guilt</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Escher -->
+            <div class="npc-card">
+                <div class="npc-header">
+                    <h3>Escher</h3>
+                    <span class="npc-status">Consort in Waiting</span>
+                </div>
+                <div class="npc-body">
+                    <p><strong>Strahd's View:</strong> "An amusing diversion" (Kept for resemblance to Sergei)</p>
+                    <p><strong>Current Status:</strong> Growing jealous of Ireena</p>
+                    
+                    <div class="dm-notes">
+                        <h4>DM Notes:</h4>
+                        <ul>
+                            <li>Strahd turns a blind eye to Escher's petty schemes</li>
+                            <li>Will sacrifice Escher without hesitation if needed</li>
+                            <li>Secretly hopes to replace Ireena in Strahd's affections</li>
+                        </ul>
+                        
+                        <h4>Potential Scenes:</h4>
+                        <ul>
+                            <li>Escher leaks information to players to undermine Strahd</li>
+                            <li>Attempts to sabotage Ireena's safety</li>
+                            <li>Dramatic final confrontation when discarded</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Madam Eva -->
+            <div class="npc-card">
+                <div class="npc-header">
+                    <h3>Madam Eva</h3>
+                    <span class="npc-status">Vistani Matriarch</span>
+                </div>
+                <div class="npc-body">
+                    <p><strong>Strahd's View:</strong> "A useful oracle" (Respects but doesn't trust)</p>
+                    <p><strong>Current Status:</strong> Maintains careful neutrality</p>
+                    
+                    <div class="dm-notes">
+                        <h4>DM Notes:</h4>
+                        <ul>
+                            <li>Strahd suspects she helps adventurers but can't prove it</li>
+                            <li>Their relationship is a delicate balance of power</li>
+                            <li>She knows more about the curse than she reveals</li>
+                        </ul>
+                        
+                        <h4>Roleplaying Tips:</h4>
+                        <ul>
+                            <li>Always speaks in riddles around Strahd</li>
+                            <li>Uses tarokka cards to warn without directly opposing</li>
+                            <li>Her wagon is neutral ground even Strahd honors</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Van Richten -->
+            <div class="npc-card">
+                <div class="npc-header">
+                    <h3>Van Richten</h3>
+                    <span class="npc-status">The Vampire Hunter</span>
+                </div>
+                <div class="npc-body">
+                    <p><strong>Strahd's View:</strong> "Finally, worthy prey" (Dangerous but entertaining)</p>
+                    <p><strong>Current Status:</strong> Active but hidden in Vallaki</p>
+                    
+                    <div class="dm-notes">
+                        <h4>DM Notes:</h4>
+                        <ul>
+                            <li>Strahd could kill him anytime but enjoys the game</li>
+                            <li>Allows Van Richten to operate as a challenge</li>
+                            <li>Secretly hopes he'll find a way to break the curse</li>
+                        </ul>
+                        
+                        <h4>Cat & Mouse Game:</h4>
+                        <ul>
+                            <li>Strahd leaves cryptic notes signed "Your Greatest Fan"</li>
+                            <li>Arranges for monsters to attack at dramatic moments</li>
+                            <li>Never attacks directly - always through proxies first</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Abbot -->
+            <div class="npc-card">
+                <div class="npc-header">
+                    <h3>The Abbot</h3>
+                    <span class="npc-status">Fallen Deva</span>
+                </div>
+                <div class="npc-body">
+                    <p><strong>Strahd's View:</strong> "A fascinating experiment" (Scientific curiosity)</p>
+                    <p><strong>Current Status:</strong> Tolerated for his creations</p>
+                    
+                    <div class="dm-notes">
+                        <h4>DM Notes:</h4>
+                        <ul>
+                            <li>Strahd provides corpses for the Abbot's work</li>
+                            <li>Considers him a case study in celestial corruption</li>
+                            <li>Will destroy him if he actually threatens the status quo</li>
+                        </ul>
+                        
+                        <h4>Twisted Dynamics:</h4>
+                        <ul>
+                            <li>Strahd visits the Abbey for "philosophical discussions"</li>
+                            <li>Leads the Abbot deeper into madness with false hope</li>
+                            <li>Uses Vasilka as potential leverage over Ireena</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Baba Lysaga -->
+            <div class="npc-card">
+                <div class="npc-header">
+                    <h3>Baba Lysaga</h3>
+                    <span class="npc-status">Witch Mother</span>
+                </div>
+                <div class="npc-body">
+                    <p><strong>Strahd's View:</strong> "A persistent delusion" (Denies their connection)</p>
+                    <p><strong>Current Status:</strong> Secretly protects him from afar</p>
+                    
+                    <div class="dm-notes">
+                        <h4>DM Notes:</h4>
+                        <ul>
+                            <li>Strahd knows the truth but refuses to acknowledge it</li>
+                            <li>Allows her to live only because she's useful</li>
+                            <li>Her death would trigger rare genuine anger</li>
+                        </ul>
+                        
+                        <h4>Complex Relationship:</h4>
+                        <ul>
+                            <li>She attacks anyone who mentions being his mother</li>
+                            <li>Her hut moves to intercept threats to Ravenloft</li>
+                            <li>Strahd never visits Berez but knows everything happening there</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="box-highlight">
+            <h3>Running NPC Interactions: Advanced DM Tips</h3>
+            <div class="row">
+                <div class="col">
+                    <h4>Strahd's Social Tactics</h4>
+                    <ul>
+                        <li><strong>The Aristocrat:</strong> Flawless manners when first meeting NPCs</li>
+                        <li><strong>The Benefactor:</strong> Offers gifts with hidden strings attached</li>
+                        <li><strong>The Confessor:</strong> Shares "vulnerabilities" to test loyalty</li>
+                        <li><strong>The Patron:</strong> Sponsors artists/scholars to corrupt them</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h4>Relationship Arcs</h4>
+                    <ul>
+                        <li><strong>Ireena:</strong> Obsession → Possession → Tragedy</li>
+                        <li><strong>Van Richten:</strong> Amusement → Respect → Final Confrontation</li>
+                        <li><strong>The Abbot:</strong> Curiosity → Disappointment → Disposal</li>
+                        <li><strong>Baba Lysaga:</strong> Denial → Crisis → Violent Rejection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Strahd's Abilities -->
+<h2 class="section-title" id="strahd-abilities">STRAHD'S ABILITIES</h2>
+<div class="collapsible-content">
+    <div class="box">
+        <div class="row">
+            <div class="col">
+                <h3 class="box-subtitle">VAMPIRE TRAITS</h3>
+                <p><strong>Shapechanger:</strong> Can transform into a bat, wolf, or mist</p>
+                <p><strong>Legendary Resistance (3/Day):</strong> Can succeed on failed saving throw</p>
+                <p><strong>Misty Escape:</strong> When dropping to 0 HP outside sunlight/running water, transforms into mist</p>
+                <p><strong>Regeneration:</strong> 20 HP at start of turn (unless took radiant damage or in running water)</p>
+                <p><strong>Spider Climb:</strong> Can move on walls/ceilings without ability checks</p>
+                <p><strong>Vampire Weaknesses:</strong> 
+                    <button class="roll-button" onclick="rollRandomWeakness()">Random Weakness</button>
+                    <div id="weaknessResult" class="dice-result"></div>
+                    <ol>
+                        <li><strong>Running Water:</strong> Takes 20 acid damage when starts turn in it</li>
+                        <li><strong>Sunlight:</strong> Disables regeneration, takes 20 radiant damage per turn</li>
+                        <li><strong>Stake to Heart:</strong> Paralyzed if wooden stake pierces heart</li>
+                        <li><strong>Holy Symbols:</strong> Can't touch or willingly enter space with one</li>
+                    </ol>
+                </p>
+                
+                <h3 class="box-subtitle">LEGENDARY ACTIONS (3/round)</h3>
+                <ul>
+                    <li><strong>Move:</strong> Move up to speed without provoking</li>
+                    <li><strong>Unarmed Strike:</strong> 
+                        <button class="roll-button" onclick="rollAttack(9, '1d8+4', '4d6', 'necrotic')">Attack</button>
+                        <div id="unarmedResult" class="dice-result"></div>
+                    </li>
+                    <li><strong>Bite (Costs 2):</strong> 
+                        <button class="roll-button" onclick="rollAttack(9, '1d8+4', '4d6', 'necrotic (max HP reduction)')">Attack</button>
+                        <div id="biteResult" class="dice-result"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <h3 class="box-subtitle">COMBAT STATS</h3>
+                <table>
+                    <tr>
+                        <td><strong>AC:</strong></td>
+                        <td>16 (natural armor)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HP:</strong></td>
+                        <td>144 (17d8 + 68)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Saving Throws:</strong></td>
+                        <td>
+                            <button class="roll-button" onclick="rollSavingThrow('Dexterity', 9)">Dex +9</button>
+                            <button class="roll-button" onclick="rollSavingThrow('Wisdom', 7)">Wis +7</button>
+                            <button class="roll-button" onclick="rollSavingThrow('Charisma', 9)">Cha +9</button>
+                            <div id="savingThrowResult" class="dice-result"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Skills:</strong></td>
+                        <td>
+                            <button class="roll-button" onclick="rollSkillCheck('Arcana', 15)">Arcana +15</button>
+                            <button class="roll-button" onclick="rollSkillCheck('Perception', 12)">Perception +12</button>
+                            <button class="roll-button" onclick="rollSkillCheck('Religion', 10)">Religion +10</button>
+                            <button class="roll-button" onclick="rollSkillCheck('Stealth', 14)">Stealth +14</button>
+                            <div id="skillCheckResult" class="dice-result"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Resistances:</strong></td>
+                        <td>necrotic; bludgeoning, piercing, and slashing from nonmagical attacks</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Challenge:</strong></td>
+                        <td>15 (13,000 XP)</td>
+                    </tr>
+                </table>
+                
+                <h3 class="box-subtitle">SPELLS (Caster Level 9)</h3>
+                <p><strong>Cantrips (at will):</strong> Mage Hand, Prestidigitation</p>
+                <p><strong>1st (4 slots):</strong> Charm Person, Sleep</p>
+                <p><strong>2nd (3 slots):</strong> Invisibility, Misty Step</p>
+                <p><strong>3rd (3 slots):</strong> Fear, Fireball</p>
+                <p><strong>4th (3 slots):</strong> Greater Invisibility, Polymorph</p>
+                <p><strong>5th (1 slot):</strong> Animate Objects, Scrying</p>
+            </div>
+        </div>
+    </div>
+</div>
+
     <!-- Visceral Descriptors -->
     <h2 class="section-title" id="descriptors">VISERAL DESCRIPTORS</h2>
     <div class="collapsible-content">
@@ -2894,4 +3516,117 @@ window.onscroll = function() {
         btn.style.display = (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) ? 'block' : 'none';
     }
 };
+
+
+// Tab system for quick navigation
+function showTab(tabName) {
+  // Hide all tab contents
+  const tabContents = document.querySelectorAll('.quick-nav .tab-content');
+  tabContents.forEach(tab => {
+    tab.style.display = 'none';
+  });
+  
+  // Show the selected tab content
+  const tabToShow = document.getElementById(tabName);
+  if (tabToShow) {
+    tabToShow.style.display = 'block';
+  }
+}
+
+// Function to roll a single die
+function rollDie(sides) {
+    return Math.floor(Math.random() * sides) + 1;
+}
+
+// Function to parse and roll dice notation (like "2d6+3")
+function rollDiceNotation(notation) {
+    const parts = notation.split(/([+-])/);
+    let total = 0;
+    let currentOp = '+';
+    
+    for (let part of parts) {
+        if (part === '+' || part === '-') {
+            currentOp = part;
+            continue;
+        }
+        
+        if (part.includes('d')) {
+            const [count, sides] = part.split('d').map(Number);
+            let sum = 0;
+            for (let i = 0; i < count; i++) {
+                sum += rollDie(sides);
+            }
+            total = currentOp === '+' ? total + sum : total - sum;
+        } else if (part) {
+            const num = parseInt(part, 10);
+            total = currentOp === '+' ? total + num : total - num;
+        }
+    }
+    
+    return total;
+}
+
+// Roll a saving throw
+function rollSavingThrow(ability, modifier) {
+    const roll = rollDie(20);
+    const total = roll + modifier;
+    const resultElement = document.getElementById('savingThrowResult');
+    resultElement.innerHTML = `
+        <strong>${ability} Save:</strong> ${roll} + ${modifier} = <strong>${total}</strong>
+        ${roll === 20 ? ' (CRITICAL SUCCESS!)' : roll === 1 ? ' (CRITICAL FAILURE!)' : ''}
+    `;
+}
+
+// Roll a skill check
+function rollSkillCheck(skill, modifier) {
+    const roll = rollDie(20);
+    const total = roll + modifier;
+    const resultElement = document.getElementById('skillCheckResult');
+    resultElement.innerHTML = `
+        <strong>${skill}:</strong> ${roll} + ${modifier} = <strong>${total}</strong>
+        ${roll === 20 ? ' (CRITICAL SUCCESS!)' : roll === 1 ? ' (CRITICAL FAILURE!)' : ''}
+    `;
+}
+
+// Roll an attack
+function rollAttack(toHitBonus, damageDice, extraDamageDice, damageType) {
+    // Roll to hit
+    const attackRoll = rollDie(20);
+    const attackTotal = attackRoll + toHitBonus;
+    const isCrit = attackRoll === 20;
+    
+    // Roll damage
+    const baseDamage = rollDiceNotation(damageDice);
+    let extraDamage = 0;
+    if (extraDamageDice) {
+        extraDamage = rollDiceNotation(extraDamageDice);
+        if (isCrit) {
+            extraDamage += rollDiceNotation(extraDamageDice); // Double extra dice on crit
+        }
+    }
+    
+    const totalDamage = isCrit ? (baseDamage * 2) + extraDamage : baseDamage + extraDamage;
+    
+    const resultElement = isCrit ? document.getElementById('biteResult') : document.getElementById('unarmedResult');
+    resultElement.innerHTML = `
+        <strong>Attack Roll:</strong> ${attackRoll} + ${toHitBonus} = <strong>${attackTotal}</strong>
+        ${isCrit ? ' (CRITICAL HIT!)' : attackRoll === 1 ? ' (CRITICAL MISS!)' : ''}<br>
+        <strong>Damage:</strong> ${baseDamage}${extraDamage ? ` + ${extraDamage}` : ''} ${damageType} = <strong>${totalDamage}</strong>
+    `;
+}
+
+// Roll random weakness
+function rollRandomWeakness() {
+    const weaknessRoll = rollDie(4);
+    const weaknesses = [
+        "Running Water: Takes 20 acid damage when starts turn in it",
+        "Sunlight: Disables regeneration, takes 20 radiant damage per turn",
+        "Stake to Heart: Paralyzed if wooden stake pierces heart",
+        "Holy Symbols: Can't touch or willingly enter space with one"
+    ];
+    document.getElementById('weaknessResult').innerHTML = `
+        <strong>Weakness:</strong> ${weaknessRoll}. ${weaknesses[weaknessRoll-1]}
+    `;
+}
+
 </script>
