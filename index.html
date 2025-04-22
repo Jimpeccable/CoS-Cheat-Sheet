@@ -594,7 +594,120 @@
 .section-title {
     margin-bottom: 15px !important;
 }
-    </style>
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px; /* Start off-screen */
+    width: 250px;
+    height: 100vh;
+    background-color: var(--box-bg);
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    border-left: 3px solid var(--border-color);
+}
+
+.sidebar.open {
+    transform: translateX(-250px); /* Slide in when open */
+}
+
+.sidebar-toggle {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    background-color: var(--border-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    z-index: 1001;
+    font-family: var(--font-header);
+    transition: all 0.3s ease;
+}
+
+.sidebar h3 {
+    color: var(--title-color);
+    font-family: var(--font-header);
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 8px;
+    margin-top: 0;
+}
+
+.player-card {
+    background-color: var(--background-dark);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 3px solid var(--border-color);
+    border-radius: 3px;
+}
+
+.player-card input {
+    width: 100%;
+    margin-bottom: 5px;
+    background-color: var(--background-main);
+    border: 1px solid var(--border-light);
+    color: var(--text-color);
+    padding: 5px;
+    font-family: var(--font-main);
+}
+
+.player-status {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    gap: 5px;
+}
+
+.status-toggle {
+    background: none;
+    border: 1px solid var(--border-light);
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 2px 5px;
+    font-size: 12px;
+    flex-grow: 1;
+    transition: all 0.3s ease;
+}
+
+.status-toggle.active {
+    background-color: var(--border-color);
+    color: white;
+}
+
+.player-card button:last-child {
+    background-color: #8b0000;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+body.dark-mode .sidebar {
+    box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+        right: -200px;
+    }
+    
+    .sidebar.open {
+        transform: translateX(-200px);
+    }
+    
+    .player-card input {
+        padding: 3px;
+        font-size: 14px;
+    }
+}    </style>
 </head>
 <body>
     <div class="container">
@@ -605,10 +718,10 @@
             <h1 class="page-title">Curse of Strahd</h1>
             <h2 class="page-subtitle">Shadows of Barovia: Enhanced Cheat Sheet</h2>
         </div>
+
+<button class="sidebar-toggle" onclick="toggleSidebar()">PLAYERS ►</button>
         
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Search the cheat sheet...">
-        </div>
+
         
         <div class="quick-nav">
             <h3>QUICK NAVIGATION</h3>
@@ -911,7 +1024,7 @@
                             <li><strong>Offering Dark Gift:</strong> Presents "solution" to their torment</li>
                         </ol>
                         
-                        <h3 class="box-subtitle">PSYCHOLOGICAL EFFECTS TABLE (d8):</h3>
+                        <h3 class="box-subtitle">PSYCHOLOGICAL EFFECTS TABLE (d8): <button class="roll-button" onclick="rollDice('1d8')">Roll</button></h3>
                         <ol>
                             <li><strong>Paranoia:</strong> Disadvantage on Insight checks</li>
                             <li><strong>Hypervigilance:</strong> Advantage on Perception, disadvantage on Concentration</li>
@@ -937,7 +1050,6 @@
                         <p>When confronting overwhelming threats, a failed WIS save causes the frightened condition for 1 minute.</p>
                         
                         <h3 class="box-subtitle">HORROR:</h3>
-                        <h3 class="box-subtitle">HORROR:</h3>
 <p>When experiencing something horrific, a failed <span class="tooltip">CHA save<span class="tooltiptext">Charisma saving throws represent resistance to effects that would force a change in personality or challenge your sense of self.</span></span> results in <span class="tooltip">madness<span class="tooltiptext">Madness can be short-term (1d10 minutes), long-term (1d10 hours), or indefinite until cured by magic or rest.</span></span>.</p>
                         <p><em>Examples:</em> Seeing a mangled body, witnessing a creature devouring a human, learning a terrible truth, watching a horrible death.</p>
 
@@ -951,7 +1063,7 @@
                     <div class="box">
                         <h3 class="box-title">EXPANDED MADNESS TABLES</h3>
                         
-                        <h3 class="box-subtitle">SHORT-TERM MADNESS (d10):</h3>
+                        <h3 class="box-subtitle">SHORT-TERM MADNESS (d10): <button class="roll-button" onclick="rollDice('1d10')">Roll</button></h3>
                         <ol>
                             <li><strong>Incorrigible Flirt:</strong> Must compliment everyone excessively</li>
                             <li><strong>Nervous Laughter:</strong> Can't stop giggling inappropriately</li>
@@ -965,7 +1077,7 @@
 			    <li><strong>Synesthesia:</strong> Experiences crossed senses ("I can taste the color red")</li>
 			</ol>
 
-                    <h3 class="box-subtitle">LONG-TERM MADNESS (d10):</h3>
+                    <h3 class="box-subtitle">LONG-TERM MADNESS (d10): <button class="roll-button" onclick="rollDice('1d10')">Roll</button></h3>
                     <ol>
                         <li><strong>Phantom Pain:</strong> Random limbs hurt (disadvantage on physical checks 1/day)</li>
                         <li><strong>Face Blindness:</strong> Can't recognize friends (Wisdom check to identify)</li>
@@ -985,7 +1097,7 @@
         <div class="row">
             <div class="col">
                 <div class="box">
-                    <h3 class="box-title">INDEFINITE MADNESS (d10):</h3>
+                    <h3 class="box-title">INDEFINITE MADNESS (d10): <button class="roll-button" onclick="rollDice('1d10')">Roll</button></h3>
                     <ol>
                         <li><strong>Split Personality:</strong> Alternate identity emerges under stress</li>
                         <li><strong>Reality Fracture:</strong> Sees ghosts of possible futures/pasts</li>
@@ -1012,7 +1124,7 @@
                     <h3 class="box-title">PHYSICAL MANIFESTATIONS OF FEAR</h3>
                     <p>When failing fear saves by 5+:</p>
                     
-                    <h3 class="box-subtitle">PHYSICAL EFFECTS (d8):</h3>
+                    <h3 class="box-subtitle">PHYSICAL EFFECTS (d8): <button class="roll-button" onclick="rollDice('1d8')">Roll</button></h3>
                     <ol>
                         <li><strong>Hair Whitening:</strong> Patch of hair turns white permanently</li>
                         <li><strong>Nervous Tic:</strong> Eye twitch, lip biting, etc.</li>
@@ -1024,7 +1136,7 @@
                         <li><strong>Aging:</strong> Visibly look older from stress</li>
                     </ol>
                     
-                    <h3 class="box-subtitle">FEAR-BASED FLAWS (d6):</h3>
+                    <h3 class="box-subtitle">FEAR-BASED FLAWS (d6): <button class="roll-button" onclick="rollDice('1d6')">Roll</button></h3>
                     <ol>
                         <li>"I can't sleep without a light source"</li>
                         <li>"I must check corners for hidden threats"</li>
@@ -1130,7 +1242,7 @@
                     <h3 class="box-title">NIGHTMARE CONSEQUENCES</h3>
                     <p>Failed saves vs nightmares cause lingering effects:</p>
                     
-                    <h3 class="box-subtitle">WAKING EFFECTS (d8):</h3>
+                    <h3 class="box-subtitle">WAKING EFFECTS (d8): <button class="roll-button" onclick="rollDice('1d8')">Roll</button></h3>
                     <ol>
                         <li><strong>Exhaustion:</strong> Gain 1 level that can't be removed until next sunset</li>
                         <li><strong>Phantom Pain:</strong> Random limb hurts (-5ft speed or disadvantage with that limb)</li>
@@ -1142,7 +1254,7 @@
                         <li><strong>Reality Warp:</strong> Minor detail from dream changes in real world</li>
                     </ol>
                     
-                    <h3 class="box-subtitle">NIGHTMARE ITEMS (d6):</h3>
+                    <h3 class="box-subtitle">NIGHTMARE ITEMS (d6): <button class="roll-button" onclick="rollDice('1d6')">Roll</button></h3>
                     <p>Objects that appear after nightmares:</p>
                     <ol>
                         <li><strong>Black Rose:</strong> Crumbles to dust at sunset</li>
@@ -1159,7 +1271,7 @@
         <div class="row">
             <div class="col">
                 <div class="box">
-                    <h3 class="box-title">NIGHTMARE TABLE (d20):</h3>
+                    <h3 class="box-title">NIGHTMARE TABLE (d20): <button class="roll-button" onclick="rollDice('1d20')">Roll</button></h3>
                     <ol>
                         <li><strong>Pursued by Wolves:</strong> You're running through endless woods as a pack of wolves closes in, their hot breath on your neck.</li>
                         <li><strong>Family Slayer:</strong> You murder your own family members one by one, waking just as your blade strikes the last.</li>
@@ -1189,7 +1301,7 @@
                     <h3 class="box-title">SOLVING NIGHTMARES</h3>
                     <p>Shared nightmares can be solved cooperatively:</p>
                     
-                    <h3 class="box-subtitle">NIGHTMARE SOLUTIONS (d6):</h3>
+                    <h3 class="box-subtitle">NIGHTMARE SOLUTIONS (d6): <button class="roll-button" onclick="rollDice('1d6')">Roll</button></h3>
                     <ol>
                         <li><strong>Confrontation:</strong> Face the nightmare's source directly</li>
                         <li><strong>Acceptance:</strong> Embrace the horror to dispel its power</li>
@@ -1266,7 +1378,7 @@
                     <h3 class="box-title">PHYSICAL CORRUPTION</h3>
                     <p>At 3, 6, and 9 CP, roll for physical changes:</p>
                     
-                    <h3 class="box-subtitle">CORRUPTION MANIFESTATIONS (d12):</h3>
+                    <h3 class="box-subtitle">CORRUPTION MANIFESTATIONS (d12): <button class="roll-button" onclick="rollDice('1d12')">Roll</button></h3>
                     <ol>
                         <li><strong>Eyes:</strong> Pupils become slitted or solid black</li>
                         <li><strong>Skin:</strong> Pale with visible veins or patchy scales</li>
@@ -1291,7 +1403,7 @@
                     <h3 class="box-title">DARK GIFTS</h3>
                     <p>At 10+ CP, dark powers offer gifts:</p>
                     
-                    <h3 class="box-subtitle">DARK GIFTS TABLE (d8):</h3>
+                    <h3 class="box-subtitle">DARK GIFTS TABLE (d8): <button class="roll-button" onclick="rollDice('1d8')">Roll</button></h3>
                     <ol>
                         <li><strong>Vampiric Hunger:</strong> Heal 1d6 HP when you deal killing blow to living humanoid. Lose 1 max HP/day until you feed.</li>
                         <li><strong>Shadow Pact:</strong> Gain <em>Misty Step</em> 1/day. Each use turns your eyes blacker permanently.</li>
@@ -1355,7 +1467,7 @@
                     <h3 class="box-title">WEATHER MECHANICS</h3>
                     <p>Roll weather 1d3 times per day (morning/afternoon/evening):</p>
                     
-                    <h3 class="box-subtitle">WEATHER TABLE (d20):</h3>
+                    <h3 class="box-subtitle">WEATHER TABLE (d20): <button class="roll-button" onclick="rollDice('1d20')">Roll</button></h3>
                     <table>
                         <tr><th>Roll</th><th>Weather</th><th>Effects</th></tr>
                         <tr><td>1-5</td><td>Thick Fog</td><td>Disadvantage on Perception, -20ft visibility</td></tr>
@@ -1663,7 +1775,7 @@
                     <h3 class="box-subtitle">SPECIAL RULE:</h3>
                     <p>Spellcaster must make ability check with spellcasting ability. On natural 1, suffer 1d12 psychic damage and can't cast remove curse until after a long rest.</p>
 
-                    <h3 class="box-subtitle">LIVING CURSES (d6):</h3>
+                    <h3 class="box-subtitle">LIVING CURSES (d6): <button class="roll-button" onclick="rollDice('1d6')">Roll</button></h3>
                     <ol>
                         <li><strong>Wandering Wound:</strong> 1d4 damage appears daily on body. Heals normally.</li>
                         <li><strong>Hungry Shadow:</strong> Consumes light sources 2x faster within 10ft.</li>
@@ -1828,7 +1940,7 @@
                                 <li><strong><span class="tooltip">The Soulless<span class="tooltiptext">Many Barovians lack true souls - they're empty, emotionless shells going through the motions of life.</span></span>:</strong> Many Barovians lack souls - they're empty, joyless shells</li>
                             </ul>
 
-                            <h3 class="box-subtitle">NPC QUIRKS (d6):</h3>
+                            <h3 class="box-subtitle">NPC QUIRKS (d6): <button class="roll-button" onclick="rollDice('1d6')">Roll</button></h3>
                             <ol style="margin-bottom: 20px;">
                                 <li><strong>Soulless Tell:</strong> Never blinks. Food has no taste to them.</li>
                                 <li><strong>Paranoid Ritual:</strong> Knocks 3x before entering, spits over left shoulder.</li>
@@ -1857,7 +1969,7 @@
                     </div>
 
                     <div class="box" style="margin-top: 25px;">
-                        <h3 class="box-subtitle">GHOSTLY ECHOES (d6):</h3>
+                        <h3 class="box-subtitle">GHOSTLY ECHOES (d6): <button class="roll-button" onclick="rollDice('1d6')">Roll</button></h3>
                         <ol>
                             <li><strong>Battle Replay:</strong> Phantom soldiers fight and die at dusk. No interaction.</li>
                             <li><strong>Weeping Stone:</strong> A wall/statue bleeds when specific lore is mentioned.</li>
@@ -1926,7 +2038,7 @@
                     </div>
 
                     <div class="box" style="margin-top: 25px;">
-                        <h3 class="box-subtitle">UNSETTLING SENSATIONS (d6):</h3>
+                        <h3 class="box-subtitle">UNSETTLING SENSATIONS (d6): <button class="roll-button" onclick="rollDice('1d6')">Roll</button></h3>
                         <ol>
                             <li><strong>Tactile:</strong> Cobwebs that cling like fingers. Stones that feel warm as flesh.</li>
                             <li><strong>Auditory:</strong> Children's laughter in empty rooms. Your name whispered from behind.</li>
@@ -1941,6 +2053,15 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Player Sidebar -->
+<div id="player-sidebar" class="sidebar">
+    <h3>PLAYER TRACKER</h3>
+    <div id="player-list">
+        <!-- Players will be added here -->
+    </div>
+    <button class="roll-button" onclick="addPlayer()" style="width: 100%; margin-top: 10px;">ADD PLAYER</button>
 </div>
 
 <button class="dark-mode-toggle" onclick="toggleDarkMode()">☀️</button>
@@ -2081,6 +2202,90 @@
             button.textContent = '☀️';
         }
     }
+
+// Player Tracker Functions
+function addPlayer() {
+    const playerList = document.getElementById('player-list');
+    const playerId = 'player-' + Date.now();
     
+    const playerCard = document.createElement('div');
+    playerCard.className = 'player-card';
+    playerCard.id = playerId;
+    
+    playerCard.innerHTML = `
+        <input type="text" placeholder="Player Name" class="player-name">
+        <div class="player-status">
+            <input type="text" placeholder="AC" class="player-ac" style="width: 40px;">
+            <input type="text" placeholder="HP" class="player-hp" style="width: 40px;">
+            <button class="status-toggle" onclick="toggleStatus('${playerId}')">Normal</button>
+            <button onclick="removePlayer('${playerId}')">X</button>
+        </div>
+        <div class="player-effects"></div>
+    `;
+    
+    playerList.appendChild(playerCard);
+}
+
+function removePlayer(id) {
+    document.getElementById(id).remove();
+}
+
+function toggleStatus(id) {
+    const button = document.getElementById(id).querySelector('.status-toggle');
+    const statuses = ['Normal', 'Affected', 'Madness', 'Despair', 'Corrupted'];
+    const currentIndex = statuses.indexOf(button.textContent);
+    const nextIndex = (currentIndex + 1) % statuses.length;
+    button.textContent = statuses[nextIndex];
+    
+    // Update button appearance
+    button.className = 'status-toggle';
+    if (nextIndex > 0) {
+        button.classList.add('active');
+    }
+}
+
+// Initialize with 4 empty player slots
+window.onload = function() {
+    for (let i = 0; i < 4; i++) {
+        addPlayer();
+    }
+};
+    
+// Sidebar toggle functionality
+function toggleSidebar() {
+    const sidebar = document.getElementById('player-sidebar');
+    sidebar.classList.toggle('open');
+    
+    const toggleBtn = document.querySelector('.sidebar-toggle');
+    if (sidebar.classList.contains('open')) {
+        toggleBtn.textContent = '◄';
+        toggleBtn.style.right = '270px'; // Adjust based on your sidebar width
+    } else {
+        toggleBtn.textContent = 'PLAYERS ►';
+        toggleBtn.style.right = '20px';
+    }
+}
+
+// Initialize sidebar on load
+window.onload = function() {
+    // Initialize player slots
+    for (let i = 0; i < 4; i++) {
+        addPlayer();
+    }
+    
+    // Initialize sidebar in closed state
+    document.getElementById('player-sidebar').classList.remove('open');
+    
+    // Initialize collapsible sections
+    document.querySelectorAll('.section-title').forEach(title => {
+        const content = title.nextElementSibling;
+        content.style.maxHeight = null; // Start with all sections collapsed
+        
+        title.addEventListener('click', () => {
+            content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+            title.classList.toggle('active');
+        });
+    });
+};
 
 </script>
