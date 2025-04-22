@@ -896,6 +896,190 @@ body.dark-mode .sidebar {
     margin: 5px 0;
 }
 
+/* NPC Mini-Card Styles - Updated to match your theme */
+    .npc-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        margin-top: 15px;
+    }
+    
+    .npc-card-mini {
+        background: var(--box-bg);
+        border: 1px solid var(--border-light);
+        border-left: 4px solid var(--border-color);
+        border-radius: 4px;
+        padding: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-light);
+    }
+    
+    .npc-card-mini:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        border-left-color: #a30000;
+    }
+    
+    .npc-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border-light);
+    }
+    
+    .npc-header h4 {
+        margin: 0;
+        color: white;
+        font-family: 'Crimson Text', serif;
+        font-size: 18px;
+        letter-spacing: 0.5px;
+    }
+    
+    .npc-tag {
+        font-size: 0.75em;
+        padding: 3px 8px;
+        border-radius: 12px;
+        color: white;
+        font-family: var(--font-header);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .npc-tag.obsession { background: #8b0000; }
+    .npc-tag.protector { background: #1a5276; }
+    .npc-tag.broken { background: #6c757d; }
+    .npc-tag.enemy { background: #c0392b; }
+    .npc-tag.pawn { background: #d35400; }
+    .npc-tag.cultist { background: #6c3483; }
+    .npc-tag.experiment { background: #138d75; }
+    .npc-tag.loyal { background: #196f3d; }
+    .npc-tag.consort { background: #7d6608; }
+    
+    .npc-quote {
+        font-style: italic;
+        color: var(--subtitle-color);
+        margin: 10px 0;
+        padding-left: 10px;
+        border-left: 2px solid var(--border-light);
+        font-family: var(--font-accent);
+    }
+    
+    .npc-status-line {
+        color: var(--text-color);
+        margin: 8px 0;
+        font-size: 0.95em;
+    }
+    
+    .npc-link {
+        display: inline-block;
+        color: var(--border-color);
+        font-size: 0.85em;
+        margin-top: 10px;
+        text-decoration: none;
+        font-family: var(--font-header);
+        transition: all 0.3s ease;
+    }
+    
+    .npc-link:hover {
+        color: #a30000;
+        text-decoration: underline;
+    }
+    
+    .clickable {
+        cursor: pointer;
+        user-select: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .clickable:hover {
+        color: var(--title-color);
+    }
+    
+/* Locations Tab System Styles */
+.tab-system {
+    margin: 30px 0;
+}
+
+.tab-buttons {
+    display: flex;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-family: var(--font-header);
+    color: var(--title-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.tab-button:hover {
+    color: #6b0000;
+}
+
+.tab-button.active {
+    border-bottom: 3px solid var(--border-color);
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Map Image Styles */
+.tab-content img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: var(--shadow-light);
+}
+
+/* NPC Grid Styles */
+.npc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .tab-buttons {
+        flex-direction: column;
+    }
+    
+    .tab-button {
+        margin-bottom: 5px;
+        text-align: left;
+    }
+    
+    .npc-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tab-content img {
+        max-height: 200px;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -2297,7 +2481,7 @@ body.dark-mode .sidebar {
     </div>
 </div>
     
-    <!-- Locations Tab System -->
+<!-- Locations Tab System -->
 <h2 class="section-title" id="locations">LOCATIONS OF BAROVIA</h2>
 <div class="collapsible-content">
     <div class="tab-system">
@@ -2312,9 +2496,11 @@ body.dark-mode .sidebar {
         <div id="village-barovia" class="tab-content active">
             <div class="row">
                 <div class="col">
-                    <img src="https://pyramking.com/wp-content/uploads/2022/09/village-of-Barovia.jpg" alt="Village of Barovia" style="width:100%; border-radius:5px; margin-bottom:15px;">
+                    <img src="https://pyramking.com/wp-content/uploads/2022/09/village-of-Barovia.jpg" alt="Village of Barovia">
                     <div class="box">
-                        <h3 class="box-title">VILLAGE OF BAROVIA OVERVIEW</h3>
+                        <div class="npc-header">
+                            <h3>VILLAGE OF BAROVIA OVERVIEW</h3>
+                        </div>
                         <p>The original settlement from which Strahd carved his domain, now a ghost of its former self. Founded as a military outpost during Strahd's conquest, the village became his first prison when the mists descended. Its crumbling buildings bear silent witness to centuries of despair, with the burgomaster's mansion standing as a monument to failed resistance against the vampire lord.</p>
                         
                         <h3 class="box-subtitle">KEY LOCATIONS:</h3>
@@ -2327,12 +2513,17 @@ body.dark-mode .sidebar {
                         </ul>
                     </div>
                 </div>
+                
                 <div class="col">
                     <div class="box">
-                        <h3 class="box-title">HISTORICAL SIGNIFICANCE</h3>
+                        <div class="npc-header">
+                            <h3>HISTORICAL SIGNIFICANCE</h3>
+                        </div>
                         <p>This was where Strahd first tasted Barovian soil after his conquest, where he murdered his brother Sergei in the chapel ruins, and where Tatyana first leaped to her death. The village's perpetual fog carries echoes of these tragedies, sometimes forming ghostly tableaus of the past at dusk.</p>
                         
-                        <h3 class="box-title">VILLAGE ENCOUNTERS</h3>
+                        <div class="npc-header">
+                            <h3>VILLAGE ENCOUNTERS</h3>
+                        </div>
                         <h3 class="box-subtitle">DAYTIME ENCOUNTERS (d6):</h3>
                         <ol>
                             <li><strong>Funeral Procession:</strong> Villagers carry a wrapped body to graveyard</li>
@@ -2345,15 +2536,58 @@ body.dark-mode .sidebar {
                     </div>
                 </div>
             </div>
+            
+            <!-- NPC Cards -->
+            <div class="box">
+                <div class="npc-header">
+                    <h3>NOTABLE NPCS</h3>
+                </div>
+                <div class="npc-grid">
+                    <!-- Ireena -->
+                    <div class="npc-card-mini" onclick="highlightNPC('ireena')">
+                        <div class="npc-header">
+                            <h4>Ireena Kolyana</h4>
+                            <span class="npc-tag obsession">Obsession</span>
+                        </div>
+                        <p class="npc-quote"><em>"My beloved returned to me at last"</em> — Strahd</p>
+                        <div class="npc-status-line">Being "courted" through calculated appearances</div>
+                        <a href="#npc-relationships" class="npc-link">View Full Details →</a>
+                    </div>
+                    
+                    <!-- Ismark -->
+                    <div class="npc-card-mini" onclick="highlightNPC('ismark')">
+                        <div class="npc-header">
+                            <h4>Ismark the Lesser</h4>
+                            <span class="npc-tag protector">Protector</span>
+                        </div>
+                        <p class="npc-quote"><em>"A gnat buzzing around Tatyana"</em> — Strahd</p>
+                        <div class="npc-status-line">Begging adventurers to escort Ireena</div>
+                        <a href="#npc-relationships" class="npc-link">View Full Details →</a>
+                    </div>
+                    
+                    <!-- Donavich -->
+                    <div class="npc-card-mini" onclick="highlightNPC('donavich')">
+                        <div class="npc-header">
+                            <h4>Father Donavich</h4>
+                            <span class="npc-tag broken">Broken Faith</span>
+                        </div>
+                        <p class="npc-quote"><em>"A broken toy"</em> — Strahd</p>
+                        <div class="npc-status-line">Hiding vampiric son Doru in church</div>
+                        <a href="#npc-relationships" class="npc-link">View Full Details →</a>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- Vallaki -->
         <div id="vallaki" class="tab-content">
             <div class="row">
                 <div class="col">
-                    <img src="https://pyramking.com/wp-content/uploads/2022/09/ezgif.com-gif-maker.jpg" alt="Vallaki" style="width:100%; border-radius:5px; margin-bottom:15px;">
+                    <img src="https://pyramking.com/wp-content/uploads/2022/09/ezgif.com-gif-maker.jpg" alt="Vallaki">
                     <div class="box">
-                        <h3 class="box-title">VALLAKI OVERVIEW</h3>
+                        <div class="npc-header">
+                            <h3>VALLAKI OVERVIEW</h3>
+                        </div>
                         <p>Founded by refugees fleeing Strahd's early reign, Vallaki's high walls contain both desperate hope and festering corruption. The town's motto - "All will be well!" - rings hollow after generations of burgomasters enforcing mandatory happiness under threat of punishment. Beneath colorful festival banners, the townsfolk whisper of missing children and the cult growing in Lady Wachter's manor.</p>
                         
                         <h3 class="box-subtitle">KEY LOCATIONS:</h3>
@@ -2366,12 +2600,17 @@ body.dark-mode .sidebar {
                         </ul>
                     </div>
                 </div>
+                
                 <div class="col">
                     <div class="box">
-                        <h3 class="box-title">HISTORICAL SIGNIFICANCE</h3>
+                        <div class="npc-header">
+                            <h3>HISTORICAL SIGNIFICANCE</h3>
+                        </div>
                         <p>Vallaki was the last settlement to resist Strahd before his curse was complete. The town's original church was where the first priest attempted - and failed - to destroy Strahd with holy magic. Now the bones of St. Andral hidden beneath the new church represent the town's last hope, though few remember their true significance.</p>
                         
-                        <h3 class="box-title">VALLAKI POLITICS</h3>
+                        <div class="npc-header">
+                            <h3>VALLAKI POLITICS</h3>
+                        </div>
                         <h3 class="box-subtitle">FACTIONS:</h3>
                         <ol>
                             <li><strong>Vallakovich Loyalists:</strong> Believe in forced happiness</li>
@@ -2382,15 +2621,69 @@ body.dark-mode .sidebar {
                     </div>
                 </div>
             </div>
+            
+            <!-- NPC Cards -->
+            <div class="box">
+                <div class="npc-header">
+                    <h3>NOTABLE NPCS</h3>
+                </div>
+                <div class="npc-grid">
+                    <!-- Van Richten -->
+                    <div class="npc-card-mini" onclick="highlightNPC('van-richten')">
+                        <div class="npc-header">
+                            <h4>Van Richten</h4>
+                            <span class="npc-tag enemy">Enemy</span>
+                        </div>
+                        <p class="npc-quote"><em>"Finally, worthy prey"</em> — Strahd</p>
+                        <div class="npc-status-line">Disguised as Rictavio the bard</div>
+                        <a href="#npc-relationships" class="npc-link">View Full Details →</a>
+                    </div>
+                    
+                    <!-- Vargas -->
+                    <div class="npc-card-mini" onclick="highlightNPC('vargas')">
+                        <div class="npc-header">
+                            <h4>Vargas Vallakovich</h4>
+                            <span class="npc-tag pawn">Pawn</span>
+                        </div>
+                        <p class="npc-quote"><em>"A useful fool"</em> — Strahd</p>
+                        <div class="npc-status-line">Enforcing mandatory happiness</div>
+                        <a href="#npc-relationships" class="npc-link">View Full Details →</a>
+                    </div>
+                    
+                    <!-- Fiona -->
+                    <div class="npc-card-mini" onclick="highlightNPC('fiona')">
+                        <div class="npc-header">
+                            <h4>Lady Fiona Wachter</h4>
+                            <span class="npc-tag cultist">Cult Leader</span>
+                        </div>
+                        <p class="npc-quote"><em>"A useful fanatic"</em> — Strahd</p>
+                        <div class="npc-status-line">Plotting to overthrow Vargas</div>
+                        <a href="#npc-relationships" class="npc-link">View Full Details →</a>
+                    </div>
+                    
+                    <!-- Blinsky -->
+                    <div class="npc-card-mini" onclick="highlightNPC('blinsky')">
+                        <div class="npc-header">
+                            <h4>Blinsky</h4>
+                            <span class="npc-tag broken">Toymaker</span>
+                        </div>
+                        <p class="npc-quote"><em>"A harmless curiosity"</em> — Strahd</p>
+                        <div class="npc-status-line">Making creepy dolls for Izek</div>
+                        <a href="#npc-relationships" class="npc-link">View Full Details →</a>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- Krezk -->
         <div id="krezk" class="tab-content">
             <div class="row">
                 <div class="col">
-                    <img src="https://pyramking.com/wp-content/uploads/2022/09/Krezek.jpg" alt="Krezk" style="width:100%; border-radius:5px; margin-bottom:15px;">
+                    <img src="https://pyramking.com/wp-content/uploads/2022/09/Krezek.jpg" alt="Krezk">
                     <div class="box">
-                        <h3 class="box-title">KREZK OVERVIEW</h3>
+                        <div class="npc-header">
+                            <h3>KREZK OVERVIEW</h3>
+                        </div>
                         <p>Perched high in the Balinok Mountains, Krezk began as a monastery before becoming a fortified village. Its isolation preserved some sanity, but the arrival of the Abbot - a celestial being slowly corrupted by Barovia - has twisted its purpose. The villagers now bar their doors at night, not just against wolves, but against the Abbot's mongrelfolk and the terrible sounds from the Abbey's bell tower.</p>
                         
                         <h3 class="box-subtitle">KEY LOCATIONS:</h3>
@@ -2402,12 +2695,17 @@ body.dark-mode .sidebar {
                         </ul>
                     </div>
                 </div>
+                
                 <div class="col">
                     <div class="box">
-                        <h3 class="box-title">HISTORICAL SIGNIFICANCE</h3>
+                        <div class="npc-header">
+                            <h3>HISTORICAL SIGNIFICANCE</h3>
+                        </div>
                         <p>The Abbey was once home to Saint Markovia, who led a failed rebellion against Strahd. Her crucifixion on the gates lasted forty days before she died - the same gates that now keep Krezk "safe." The pool where Tatyana's spirit sometimes appears was sacred to the mountain folk Strahd slaughtered during his conquest.</p>
                         
-                        <h3 class="box-title">KREZK SECRETS</h3>
+                        <div class="npc-header">
+                            <h3>KREZK SECRETS</h3>
+                        </div>
                         <h3 class="box-subtitle">ABBEY SECRETS:</h3>
                         <ol>
                             <li>The Abbot believes he's helping Strahd find peace</li>
@@ -2418,15 +2716,47 @@ body.dark-mode .sidebar {
                     </div>
                 </div>
             </div>
+            
+            <!-- NPC Cards -->
+            <div class="box">
+                <div class="npc-header">
+                    <h3>NOTABLE NPCS</h3>
+                </div>
+                <div class="npc-grid">
+                    <!-- The Abbot -->
+                    <div class="npc-card-mini" onclick="highlightNPC('abbot')">
+                        <div class="npc-header">
+                            <h4>The Abbot</h4>
+                            <span class="npc-tag experiment">Experiment</span>
+                        </div>
+                        <p class="npc-quote"><em>"A fascinating case study"</em> — Strahd</p>
+                        <div class="npc-status-line">Creating flesh golem bride</div>
+                        <a href="#npc-relationships" class="npc-link">View Full Details →</a>
+                    </div>
+                    
+                    <!-- Dmitri Krezkov -->
+                    <div class="npc-card-mini" onclick="highlightNPC('dmitri')">
+                        <div class="npc-header">
+                            <h4>Dmitri Krezkov</h4>
+                            <span class="npc-tag protector">Burgomaster</span>
+                        </div>
+                        <p class="npc-quote"><em>"A stubborn mule"</em> — Strahd</p>
+                        <div class="npc-status-line">Maintaining Krezk's isolation</div>
+                        <a href="#npc-relationships" class="npc-link">View Full Details →</a>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- Castle Ravenloft -->
         <div id="castle-ravenloft" class="tab-content">
             <div class="row">
                 <div class="col">
-                    <img src="https://static.wikia.nocookie.net/forgottenrealms/images/b/b3/Castle_Ravenloft-5e.jpg/revision/latest?cb=20190929004529" alt="Castle Ravenloft" style="width:100%; border-radius:5px; margin-bottom:15px;">
+                    <img src="https://static.wikia.nocookie.net/forgottenrealms/images/b/b3/Castle_Ravenloft-5e.jpg/revision/latest?cb=20190929004529" alt="Castle Ravenloft">
                     <div class="box">
-                        <h3 class="box-title">CASTLE RAVENLOFT OVERVIEW</h3>
+                        <div class="npc-header">
+                            <h3>CASTLE RAVENLOFT OVERVIEW</h3>
+                        </div>
                         <p>More than a fortress, Ravenloft is a manifestation of Strahd's damned soul - its spires like claws grasping at the storm-wracked sky. Built upon the ruins of a Tergish watchtower, every stone was laid under Strahd's exacting supervision. The castle breathes with its master's moods, halls lengthening for his amusement, doors locking to trap intruders, shadows moving with malicious intent.</p>
                         
                         <h3 class="box-subtitle">KEY LOCATIONS:</h3>
@@ -2439,12 +2769,17 @@ body.dark-mode .sidebar {
                         </ul>
                     </div>
                 </div>
+                
                 <div class="col">
                     <div class="box">
-                        <h3 class="box-title">HISTORICAL SIGNIFICANCE</h3>
+                        <div class="npc-header">
+                            <h3>HISTORICAL SIGNIFICANCE</h3>
+                        </div>
                         <p>The castle's foundation stones were mortared with the blood of conquered warriors. In its chapel, Strahd murdered his brother Sergei on their wedding day. From its tallest tower, Tatyana flung herself rather than submit to Strahd's embrace. Every anniversary of these events, phantom screams echo through the halls, and the portraits bleed.</p>
                         
-                        <h3 class="box-title">CASTLE FEATURES</h3>
+                        <div class="npc-header">
+                            <h3>CASTLE FEATURES</h3>
+                        </div>
                         <h3 class="box-subtitle">SUPERNATURAL EFFECTS:</h3>
                         <ol>
                             <li><strong>Shifting Architecture:</strong> Rooms move when unobserved</li>
@@ -2455,10 +2790,61 @@ body.dark-mode .sidebar {
                     </div>
                 </div>
             </div>
+            
+            <!-- NPC Cards -->
+            <div class="box">
+                <div class="npc-header">
+                    <h3>NOTABLE NPCS</h3>
+                </div>
+                <div class="npc-grid">
+                    <!-- Rahadin -->
+                    <div class="npc-card-mini" onclick="highlightNPC('rahadin')">
+                        <div class="npc-header">
+                            <h4>Rahadin</h4>
+                            <span class="npc-tag loyal">Eternal Chamberlain</span>
+                        </div>
+                        <p class="npc-quote"><em>"My most trusted blade"</em> — Strahd</p>
+                        <div class="npc-status-line">Oversees castle operations</div>
+                        <a href="#npc-relationships" class="npc-link">View Full Details →</a>
+                    </div>
+                    
+                    <!-- Escher -->
+                    <div class="npc-card-mini" onclick="highlightNPC('escher')">
+                        <div class="npc-header">
+                            <h4>Escher</h4>
+                            <span class="npc-tag consort">Consort</span>
+                        </div>
+                        <p class="npc-quote"><em>"An amusing diversion"</em> — Strahd</p>
+                        <div class="npc-status-line">Growing jealous of Ireena</div>
+                        <a href="#npc-relationships" class="npc-link">View Full Details →</a>
+                    </div>
+                    
+                    <!-- Cyrus -->
+                    <div class="npc-card-mini" onclick="highlightNPC('cyrus')">
+                        <div class="npc-header">
+                            <h4>Cyrus Belview</h4>
+                            <span class="npc-tag experiment">Broken Butler</span>
+                        </div>
+                        <p class="npc-quote"><em>"A living joke"</em> — Strahd</p>
+                        <div class="npc-status-line">Mongrelfolk servant</div>
+                        <a href="#npc-relationships" class="npc-link">View Full Details →</a>
+                    </div>
+                    
+                    <!-- Strahd's Brides -->
+                    <div class="npc-card-mini" onclick="highlightNPC('brides')">
+                        <div class="npc-header">
+                            <h4>Strahd's Brides</h4>
+                            <span class="npc-tag consort">Consorts</span>
+                        </div>
+                        <p class="npc-quote"><em>"Pretty decorations"</em> — Strahd</p>
+                        <div class="npc-status-line">Lurking throughout the castle</div>
+                        <a href="#npc-relationships" class="npc-link">View Full Details →</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-    
+</div>    
     <!-- Curse Removal & Revenant Resurrection -->
     <h2 class="section-title" id="curse-removal">CURSE REMOVAL</h2>
     <div class="collapsible-content">
@@ -2910,7 +3296,9 @@ body.dark-mode .sidebar {
 <div class="collapsible-content">
     <div class="box">
         <div class="npc-relationship-grid">
-            <!-- Ireena Kolyana -->
+            
+            <!-- Village of Barovia NPCs -->
+            <!-- Ireena Kolyana (Existing) -->
             <div class="npc-card">
                 <div class="npc-header">
                     <h3>Ireena Kolyana</h3>
@@ -2919,7 +3307,6 @@ body.dark-mode .sidebar {
                 <div class="npc-body">
                     <p><strong>Strahd's View:</strong> "My beloved returned to me at last" (Obsessive romantic fixation)</p>
                     <p><strong>Current Status:</strong> Being "courted" through calculated appearances and manipulations</p>
-                    
                     <div class="dm-notes">
                         <h4>DM Notes:</h4>
                         <ul>
@@ -2927,7 +3314,6 @@ body.dark-mode .sidebar {
                             <li>Will intervene violently if she's harmed (but won't kill perpetrators - prefers to turn them into spawn)</li>
                             <li>Secretly arranges "chance meetings" in different guises</li>
                         </ul>
-                        
                         <h4>Story Hooks:</h4>
                         <ul>
                             <li>Strahd sends gifts signed "Your Most Admiring"</li>
@@ -2938,91 +3324,60 @@ body.dark-mode .sidebar {
                 </div>
             </div>
 
-            <!-- Rahadin -->
+            <!-- Ismark the Lesser (NEW) -->
             <div class="npc-card">
                 <div class="npc-header">
-                    <h3>Rahadin</h3>
-                    <span class="npc-status">Eternal Chamberlain</span>
+                    <h3>Ismark the Lesser</h3>
+                    <span class="npc-status">The Broken Bulwark</span>
                 </div>
                 <div class="npc-body">
-                    <p><strong>Strahd's View:</strong> "My most trusted blade" (Loyal executioner and confidant)</p>
-                    <p><strong>Current Status:</strong> Oversees daily operations of Ravenloft</p>
-                    
+                    <p><strong>Strahd's View:</strong> "A gnat buzzing around Tatyana" (Barely acknowledges)</p>
+                    <p><strong>Current Status:</strong> Begging adventurers to escort Ireena to safety</p>
                     <div class="dm-notes">
                         <h4>DM Notes:</h4>
                         <ul>
-                            <li>The only being Strahd genuinely trusts</li>
-                            <li>Knows all of Strahd's secrets except his true feelings about Sergei</li>
-                            <li>Will take initiative to eliminate threats without orders</li>
+                            <li>Strahd could kill him instantly but finds his efforts pitifully amusing</li>
+                            <li>Ismark's sword is a silent family heirloom from Sergei</li>
+                            <li>Will drink himself to death if Ireena dies or turns</li>
                         </ul>
-                        
-                        <h4>Behavior Patterns:</h4>
-                        <ul>
-                            <li>Always addresses Strahd as "My Lord" never "Master"</li>
-                            <li>Wears Elven mourning garb for the people he slaughtered</li>
-                            <li>Deathly whisper ability reflects his guilt</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Escher -->
-            <div class="npc-card">
-                <div class="npc-header">
-                    <h3>Escher</h3>
-                    <span class="npc-status">Consort in Waiting</span>
-                </div>
-                <div class="npc-body">
-                    <p><strong>Strahd's View:</strong> "An amusing diversion" (Kept for resemblance to Sergei)</p>
-                    <p><strong>Current Status:</strong> Growing jealous of Ireena</p>
-                    
-                    <div class="dm-notes">
-                        <h4>DM Notes:</h4>
-                        <ul>
-                            <li>Strahd turns a blind eye to Escher's petty schemes</li>
-                            <li>Will sacrifice Escher without hesitation if needed</li>
-                            <li>Secretly hopes to replace Ireena in Strahd's affections</li>
-                        </ul>
-                        
-                        <h4>Potential Scenes:</h4>
-                        <ul>
-                            <li>Escher leaks information to players to undermine Strahd</li>
-                            <li>Attempts to sabotage Ireena's safety</li>
-                            <li>Dramatic final confrontation when discarded</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Madam Eva -->
-            <div class="npc-card">
-                <div class="npc-header">
-                    <h3>Madam Eva</h3>
-                    <span class="npc-status">Vistani Matriarch</span>
-                </div>
-                <div class="npc-body">
-                    <p><strong>Strahd's View:</strong> "A useful oracle" (Respects but doesn't trust)</p>
-                    <p><strong>Current Status:</strong> Maintains careful neutrality</p>
-                    
-                    <div class="dm-notes">
-                        <h4>DM Notes:</h4>
-                        <ul>
-                            <li>Strahd suspects she helps adventurers but can't prove it</li>
-                            <li>Their relationship is a delicate balance of power</li>
-                            <li>She knows more about the curse than she reveals</li>
-                        </ul>
-                        
                         <h4>Roleplaying Tips:</h4>
                         <ul>
-                            <li>Always speaks in riddles around Strahd</li>
-                            <li>Uses tarokka cards to warn without directly opposing</li>
-                            <li>Her wagon is neutral ground even Strahd honors</li>
+                            <li>Desperate but honorable - won't abandon his people</li>
+                            <li>Secretly fears he's as ineffective as his late father</li>
+                            <li>His full title is "Ismark the Lesser, Burgomaster of Barovia"</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- Van Richten -->
+            <!-- Father Donavich (NEW) -->
+            <div class="npc-card">
+                <div class="npc-header">
+                    <h3>Father Donavich</h3>
+                    <span class="npc-status">The Broken Shepherd</span>
+                </div>
+                <div class="npc-body">
+                    <p><strong>Strahd's View:</strong> "A broken toy" (Ignores him)</p>
+                    <p><strong>Current Status:</strong> Keeping son Doru chained in church basement</p>
+                    <div class="dm-notes">
+                        <h4>DM Notes:</h4>
+                        <ul>
+                            <li>Strahd turned Doru to punish the village's faith</li>
+                            <li>If Doru is killed, Donavich hangs himself in the bell tower</li>
+                            <li>His holy symbol is cracked but still faintly glows</li>
+                        </ul>
+                        <h4>Potential Scenes:</h4>
+                        <ul>
+                            <li>Begs PCs to find a "cure" for vampirism</li>
+                            <li>Attempts to feed his own blood to Doru in secret</li>
+                            <li>Final prayer scene if Doru is destroyed</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vallaki NPCs -->
+            <!-- Van Richten (Existing) -->
             <div class="npc-card">
                 <div class="npc-header">
                     <h3>Van Richten</h3>
@@ -3031,7 +3386,6 @@ body.dark-mode .sidebar {
                 <div class="npc-body">
                     <p><strong>Strahd's View:</strong> "Finally, worthy prey" (Dangerous but entertaining)</p>
                     <p><strong>Current Status:</strong> Active but hidden in Vallaki</p>
-                    
                     <div class="dm-notes">
                         <h4>DM Notes:</h4>
                         <ul>
@@ -3039,7 +3393,6 @@ body.dark-mode .sidebar {
                             <li>Allows Van Richten to operate as a challenge</li>
                             <li>Secretly hopes he'll find a way to break the curse</li>
                         </ul>
-                        
                         <h4>Cat & Mouse Game:</h4>
                         <ul>
                             <li>Strahd leaves cryptic notes signed "Your Greatest Fan"</li>
@@ -3050,7 +3403,86 @@ body.dark-mode .sidebar {
                 </div>
             </div>
 
-            <!-- The Abbot -->
+            <!-- Vargas Vallakovich (NEW) -->
+            <div class="npc-card">
+                <div class="npc-header">
+                    <h3>Vargas Vallakovich</h3>
+                    <span class="npc-status">The Happiness Tyrant</span>
+                </div>
+                <div class="npc-body">
+                    <p><strong>Strahd's View:</strong> "A useful fool" (Lets him enforce order)</p>
+                    <p><strong>Current Status:</strong> Enforcing mandatory festivals</p>
+                    <div class="dm-notes">
+                        <h4>DM Notes:</h4>
+                        <ul>
+                            <li>Strahd allows his rule because it breeds despair</li>
+                            <li>His son Victor is secretly practicing dangerous magic</li>
+                            <li>Will be publicly executed if Wachter takes over</li>
+                        </ul>
+                        <h4>Festival Madness:</h4>
+                        <ul>
+                            <li>Forces townsfolk to smile or face the stocks</li>
+                            <li>Claims "Strahd is just a story" despite knowing the truth</li>
+                            <li>His wife Lydia is heavily sedated</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lady Fiona Wachter (NEW) -->
+            <div class="npc-card">
+                <div class="npc-header">
+                    <h3>Lady Fiona Wachter</h3>
+                    <span class="npc-status">The Serpent of Vallaki</span>
+                </div>
+                <div class="npc-body">
+                    <p><strong>Strahd's View:</strong> "A useful fanatic" (Exploits her devotion)</p>
+                    <p><strong>Current Status:</strong> Planting cultists to overthrow Vargas</p>
+                    <div class="dm-notes">
+                        <h4>DM Notes:</h4>
+                        <ul>
+                            <li>Strahd sends her cryptic dreams to manipulate her</li>
+                            <li>Her cultists wear raven feathers (mocking the wereravens)</li>
+                            <li>Her late husband was fed to Strahd's consorts</li>
+                        </ul>
+                        <h4>Political Plays:</h4>
+                        <ul>
+                            <li>Frames Vargas' supporters for crimes</li>
+                            <li>Uses her sons as enforcers</li>
+                            <li>Keeps a Strahd "shrine" hidden in her attic</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blinsky (NEW) -->
+            <div class="npc-card">
+                <div class="npc-header">
+                    <h3>Blinsky</h3>
+                    <span class="npc-status">The Toymaker</span>
+                </div>
+                <div class="npc-body">
+                    <p><strong>Strahd's View:</strong> "A harmless curiosity" (Occasionally amused)</p>
+                    <p><strong>Current Status:</strong> Making creepy dolls for Izek</p>
+                    <div class="dm-notes">
+                        <h4>DM Notes:</h4>
+                        <ul>
+                            <li>His "Is No Fun, Is No Blinsky!" catchphrase hides deep sadness</li>
+                            <li>Unwittingly makes dolls resembling past Tatyana incarnations</li>
+                            <li>Will be killed by Izek if the dolls stop coming</li>
+                        </ul>
+                        <h4>Creepy Details:</h4>
+                        <ul>
+                            <li>Dolls sometimes move when no one's looking</li>
+                            <li>His workshop has a hidden door to the orphanage</li>
+                            <li>Knows Izek's childhood secrets but is too afraid to tell</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Krezk NPCs -->
+            <!-- The Abbot (Existing) -->
             <div class="npc-card">
                 <div class="npc-header">
                     <h3>The Abbot</h3>
@@ -3059,7 +3491,6 @@ body.dark-mode .sidebar {
                 <div class="npc-body">
                     <p><strong>Strahd's View:</strong> "A fascinating experiment" (Scientific curiosity)</p>
                     <p><strong>Current Status:</strong> Tolerated for his creations</p>
-                    
                     <div class="dm-notes">
                         <h4>DM Notes:</h4>
                         <ul>
@@ -3067,7 +3498,6 @@ body.dark-mode .sidebar {
                             <li>Considers him a case study in celestial corruption</li>
                             <li>Will destroy him if he actually threatens the status quo</li>
                         </ul>
-                        
                         <h4>Twisted Dynamics:</h4>
                         <ul>
                             <li>Strahd visits the Abbey for "philosophical discussions"</li>
@@ -3078,7 +3508,113 @@ body.dark-mode .sidebar {
                 </div>
             </div>
 
-            <!-- Baba Lysaga -->
+            <!-- Castle Ravenloft NPCs -->
+            <!-- Rahadin (Existing) -->
+            <div class="npc-card">
+                <div class="npc-header">
+                    <h3>Rahadin</h3>
+                    <span class="npc-status">Eternal Chamberlain</span>
+                </div>
+                <div class="npc-body">
+                    <p><strong>Strahd's View:</strong> "My most trusted blade" (Loyal executioner and confidant)</p>
+                    <p><strong>Current Status:</strong> Oversees daily operations of Ravenloft</p>
+                    <div class="dm-notes">
+                        <h4>DM Notes:</h4>
+                        <ul>
+                            <li>The only being Strahd genuinely trusts</li>
+                            <li>Knows all of Strahd's secrets except his true feelings about Sergei</li>
+                            <li>Will take initiative to eliminate threats without orders</li>
+                        </ul>
+                        <h4>Behavior Patterns:</h4>
+                        <ul>
+                            <li>Always addresses Strahd as "My Lord" never "Master"</li>
+                            <li>Wears Elven mourning garb for the people he slaughtered</li>
+                            <li>Deathly whisper ability reflects his guilt</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Escher (Existing) -->
+            <div class="npc-card">
+                <div class="npc-header">
+                    <h3>Escher</h3>
+                    <span class="npc-status">Consort in Waiting</span>
+                </div>
+                <div class="npc-body">
+                    <p><strong>Strahd's View:</strong> "An amusing diversion" (Kept for resemblance to Sergei)</p>
+                    <p><strong>Current Status:</strong> Growing jealous of Ireena</p>
+                    <div class="dm-notes">
+                        <h4>DM Notes:</h4>
+                        <ul>
+                            <li>Strahd turns a blind eye to Escher's petty schemes</li>
+                            <li>Will sacrifice Escher without hesitation if needed</li>
+                            <li>Secretly hopes to replace Ireena in Strahd's affections</li>
+                        </ul>
+                        <h4>Potential Scenes:</h4>
+                        <ul>
+                            <li>Escher leaks information to players to undermine Strahd</li>
+                            <li>Attempts to sabotage Ireena's safety</li>
+                            <li>Dramatic final confrontation when discarded</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cyrus Belview (NEW) -->
+            <div class="npc-card">
+                <div class="npc-header">
+                    <h3>Cyrus Belview</h3>
+                    <span class="npc-status">The Broken Butler</span>
+                </div>
+                <div class="npc-body">
+                    <p><strong>Strahd's View:</strong> "A living joke" (Mocking tolerance)</p>
+                    <p><strong>Current Status:</strong> Serving dinner to guests</p>
+                    <div class="dm-notes">
+                        <h4>DM Notes:</h4>
+                        <ul>
+                            <li>Strahd keeps him as proof of the Abbot's "failures"</li>
+                            <li>Will cry if treated kindly (hasn't experienced kindness in decades)</li>
+                            <li>Knows secret passages but is too afraid to reveal them</li>
+                        </ul>
+                        <h4>Tragic Details:</h4>
+                        <ul>
+                            <li>His face is stitched together from multiple people</li>
+                            <li>Whispers "please don't look at me" when serving food</li>
+                            <li>Carries a tiny doll made from dinner napkins</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Major NPCs -->
+            <!-- Madam Eva (Existing) -->
+            <div class="npc-card">
+                <div class="npc-header">
+                    <h3>Madam Eva</h3>
+                    <span class="npc-status">Vistani Matriarch</span>
+                </div>
+                <div class="npc-body">
+                    <p><strong>Strahd's View:</strong> "A useful oracle" (Respects but doesn't trust)</p>
+                    <p><strong>Current Status:</strong> Maintains careful neutrality</p>
+                    <div class="dm-notes">
+                        <h4>DM Notes:</h4>
+                        <ul>
+                            <li>Strahd suspects she helps adventurers but can't prove it</li>
+                            <li>Their relationship is a delicate balance of power</li>
+                            <li>She knows more about the curse than she reveals</li>
+                        </ul>
+                        <h4>Roleplaying Tips:</h4>
+                        <ul>
+                            <li>Always speaks in riddles around Strahd</li>
+                            <li>Uses tarokka cards to warn without directly opposing</li>
+                            <li>Her wagon is neutral ground even Strahd honors</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Baba Lysaga (Existing) -->
             <div class="npc-card">
                 <div class="npc-header">
                     <h3>Baba Lysaga</h3>
@@ -3087,7 +3623,6 @@ body.dark-mode .sidebar {
                 <div class="npc-body">
                     <p><strong>Strahd's View:</strong> "A persistent delusion" (Denies their connection)</p>
                     <p><strong>Current Status:</strong> Secretly protects him from afar</p>
-                    
                     <div class="dm-notes">
                         <h4>DM Notes:</h4>
                         <ul>
@@ -3095,7 +3630,6 @@ body.dark-mode .sidebar {
                             <li>Allows her to live only because she's useful</li>
                             <li>Her death would trigger rare genuine anger</li>
                         </ul>
-                        
                         <h4>Complex Relationship:</h4>
                         <ul>
                             <li>She attacks anyone who mentions being his mother</li>
@@ -3105,8 +3639,10 @@ body.dark-mode .sidebar {
                     </div>
                 </div>
             </div>
+
         </div>
         
+        <!-- DM Tips Section (Existing) -->
         <div class="box-highlight">
             <h3>Running NPC Interactions: Advanced DM Tips</h3>
             <div class="row">
@@ -3126,13 +3662,14 @@ body.dark-mode .sidebar {
                         <li><strong>Van Richten:</strong> Amusement → Respect → Final Confrontation</li>
                         <li><strong>The Abbot:</strong> Curiosity → Disappointment → Disposal</li>
                         <li><strong>Baba Lysaga:</strong> Denial → Crisis → Violent Rejection</li>
+                        <li><strong>Vargas:</strong> Tolerance → Contempt → Execution</li>
+                        <li><strong>Fiona:</strong> Amusement → Annoyance → Discard</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <!-- Strahd's Abilities -->
 <h2 class="section-title" id="strahd-abilities">STRAHD'S ABILITIES</h2>
 <div class="collapsible-content">
@@ -3663,5 +4200,69 @@ function rollRandomWeakness() {
         <strong>Weakness:</strong> ${weaknessRoll}. ${weaknesses[weaknessRoll-1]}
     `;
 }
+
+/// Enhanced NPC section toggle with animation
+    function toggleSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        const title = section.previousElementSibling;
+        
+        if (section.style.display === 'none' || !section.style.display) {
+            section.style.display = 'grid';
+            section.style.maxHeight = '0';
+            setTimeout(() => {
+                section.style.maxHeight = section.scrollHeight + 'px';
+            }, 10);
+            title.classList.add('active');
+        } else {
+            section.style.maxHeight = '0';
+            setTimeout(() => {
+                section.style.display = 'none';
+            }, 300);
+            title.classList.remove('active');
+        }
+    }
+    
+    // Highlight NPC in relationships section
+    function highlightNPC(npcId) {
+        // Remove previous highlights
+        document.querySelectorAll('.npc-card').forEach(card => {
+            card.style.boxShadow = 'none';
+            card.style.borderLeft = '4px solid var(--border-color)';
+        });
+        
+        // Add highlight
+        const npcCard = document.getElementById(`npc-${npcId}`);
+        if (npcCard) {
+            npcCard.style.boxShadow = '0 0 10px rgba(139, 0, 0, 0.3)';
+            npcCard.style.borderLeft = '4px solid #a30000';
+            setTimeout(() => {
+                npcCard.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center',
+                    inline: 'nearest'
+                });
+            }, 100);
+        }
+    }
+    
+    // Initialize - hide all NPC sections by default
+    document.addEventListener('DOMContentLoaded', function() {
+        ['village-npcs', 'vallaki-npcs', 'krezk-npcs', 'castle-npcs'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.style.display = 'none';
+                el.style.transition = 'max-height 0.3s ease-out';
+                el.style.overflow = 'hidden';
+            }
+        });
+        
+        // Add click handlers to all NPC cards
+        document.querySelectorAll('.npc-card-mini').forEach(card => {
+            card.addEventListener('click', function() {
+                const npcId = this.getAttribute('onclick').match(/highlightNPC\('(.*?)'\)/)[1];
+                highlightNPC(npcId);
+            });
+        });
+    });
 
 </script>
