@@ -20,6 +20,8 @@
             --font-header: 'Cinzel Decorative', serif;
             --font-main: 'Crimson Text', serif;
             --font-accent: 'IM Fell English', serif;
+            --shadow-dark: 0 4px 8px rgba(0, 0, 0, 0.3);
+            --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         body {
@@ -39,7 +41,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-dark);
         }
         
         .header-container {
@@ -107,6 +109,12 @@
             padding-bottom: 8px;
             position: relative;
             letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .section-title:hover {
+            color: #6b0000;
         }
         
         .section-title:after {
@@ -137,7 +145,7 @@
             border-left: 4px solid var(--border-color);
             padding: 25px;
             margin-bottom: 30px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            box-shadow: var(--shadow-light);
             position: relative;
             transition: all 0.3s ease;
         }
@@ -333,6 +341,156 @@
             gap: 10px;
         }
         
+        /* Tab System */
+        .tab-system {
+            margin: 30px 0;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 20px;
+        }
+        
+        .tab-button {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-family: var(--font-header);
+            color: var(--title-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button:hover {
+            color: #6b0000;
+        }
+        
+        .tab-button.active {
+            border-bottom: 3px solid var(--border-color);
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Tooltip System */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted var(--border-color);
+            cursor: help;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--title-color);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-family: var(--font-main);
+            font-size: 14px;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* Collapsible Sections */
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        /* Search System */
+        .search-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        #search-input {
+            padding: 10px 15px;
+            width: 60%;
+            border: 1px solid var(--border-light);
+            border-radius: 3px;
+            font-family: var(--font-main);
+        }
+        
+        .highlight {
+            background-color: rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Quick Roll Buttons */
+        .roll-button {
+            background-color: var(--border-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: var(--font-header);
+            font-size: 12px;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .roll-button:hover {
+            background-color: #6b0000;
+        }
+        
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--border-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: var(--shadow-dark);
+            z-index: 1000;
+        }
+        
+        /* Dark Mode Styles */
+        body.dark-mode {
+            --background-main: #1a1a1a;
+            --background-dark: #0d0d0d;
+            --box-bg: #262626;
+            --border-color: #a30000;
+            --border-light: #d4af37;
+            --title-color: #d4af37;
+            --subtitle-color: #a3a3a3;
+            --text-color: #e6e6e6;
+            background-image: url('https://www.transparenttextures.com/patterns/dark-wood.png');
+        }
+        
+        body.dark-mode .box {
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode th {
+            background-color: rgba(163, 0, 0, 0.1);
+        }
+        
         @media (max-width: 768px) {
             .col {
                 flex: 100%;
@@ -361,6 +519,10 @@
             .section-title {
                 font-size: 24px;
             }
+            
+            #search-input {
+                width: 80%;
+            }
         }
         
         /* Smooth scrolling */
@@ -384,6 +546,54 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #6b0000;
         }
+        
+        body.dark-mode ::-webkit-scrollbar-track {
+            background: #262626;
+        }
+        
+        body.dark-mode ::-webkit-scrollbar-thumb {
+            background: #a30000;
+        }
+        
+        body.dark-mode ::-webkit-scrollbar-thumb:hover {
+            background: #8b0000;
+        }
+
+	/* Collapsible Section Styles */
+.collapsible {
+    position: relative;
+    cursor: pointer;
+    padding-left: 25px;
+}
+
+.collapsible::before {
+    content: "+";
+    position: absolute;
+    left: 0;
+    color: var(--border-color);
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+.collapsible.active::before {
+    content: "-";
+    transform: rotate(0deg);
+}
+
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    margin-left: 15px;
+    border-left: 2px solid var(--border-light);
+    padding-left: 10px;
+}
+
+/* Add some margin to section titles for better spacing */
+.section-title {
+    margin-bottom: 15px !important;
+}
     </style>
 </head>
 <body>
@@ -393,16 +603,24 @@
                 <img src="https://www.tribality.com/wp-content/uploads/2016/01/Curse-of-Strahd-Logo.png" alt="Curse of Strahd Logo">
             </div>
             <h1 class="page-title">Curse of Strahd</h1>
-            <h2 class="page-subtitle">Shadows of Barovia: Cheat Sheet</h2>
+            <h2 class="page-subtitle">Shadows of Barovia: Enhanced Cheat Sheet</h2>
+        </div>
+        
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search the cheat sheet...">
         </div>
         
         <div class="quick-nav">
             <h3>QUICK NAVIGATION</h3>
             <div class="nav-links">
                 <a href="#core-mechanics" class="nav-link">Core Mechanics</a>
+                <a href="#psychological-warfare" class="nav-link">Psychological Warfare</a>
                 <a href="#fear-horror" class="nav-link">Fear & Horror</a>
                 <a href="#despair" class="nav-link">Despair</a>
                 <a href="#nightmares" class="nav-link">Nightmares</a>
+                <a href="#corruption" class="nav-link">Corruption</a>
+                <a href="#weather" class="nav-link">Weather</a>
+                <a href="#locations" class="nav-link">Locations</a>
                 <a href="#curse-removal" class="nav-link">Curse Removal</a>
                 <a href="#vistani" class="nav-link">Vistani</a>
                 <a href="#calendar" class="nav-link">Calendar</a>
@@ -415,70 +633,231 @@
         
         <!-- Core Mechanics -->
         <h2 class="section-title" id="core-mechanics">CORE MECHANICS</h2>
-        <div class="row">
-            <div class="col">
-                <div class="box">
-                    <h3 class="box-title">DIFFICULTY CLASS RANGES</h3>
-                    <div class="table-header">
-                        <div class="table-col-1">DIFFICULTY</div>
-                        <div class="table-col-2">DC</div>
-                        <div class="table-col-3">PROF DICE</div>
+        <div class="collapsible-content">
+            <div class="row">
+                <div class="col">
+                    <div class="box">
+                        <h3 class="box-title">DIFFICULTY CLASS RANGES</h3>
+                        <div class="table-header">
+                            <div class="table-col-1">DIFFICULTY</div>
+                            <div class="table-col-2">DC</div>
+                            <div class="table-col-3">PROF DICE</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Very Easy</div>
+                            <div class="table-col-2">5-9</div>
+                            <div class="table-col-3">+2 → d4</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Easy</div>
+                            <div class="table-col-2">10-14</div>
+                            <div class="table-col-3">+3 → d6</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Moderate</div>
+                            <div class="table-col-2">15-19</div>
+                            <div class="table-col-3">+4 → d8</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Hard</div>
+                            <div class="table-col-2">20-24</div>
+                            <div class="table-col-3">+5 → d10</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Very Hard</div>
+                            <div class="table-col-2">25-29</div>
+                            <div class="table-col-3">+6 → d12</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Nearly Impossible</div>
+                            <div class="table-col-2">30+</div>
+                            <div class="table-col-3"></div>
+                        </div>
                     </div>
-                    <div class="box-row">
-                        <div class="table-col-1">Very Easy</div>
-                        <div class="table-col-2">5-9</div>
-                        <div class="table-col-3">+2 → d4</div>
-                    </div>
-                    <div class="box-row">
-                        <div class="table-col-1">Easy</div>
-                        <div class="table-col-2">10-14</div>
-                        <div class="table-col-3">+3 → d6</div>
-                    </div>
-                    <div class="box-row">
-                        <div class="table-col-1">Moderate</div>
-                        <div class="table-col-2">15-19</div>
-                        <div class="table-col-3">+4 → d8</div>
-                    </div>
-                    <div class="box-row">
-                        <div class="table-col-1">Hard</div>
-                        <div class="table-col-2">20-24</div>
-                        <div class="table-col-3">+5 → d10</div>
-                    </div>
-                    <div class="box-row">
-                        <div class="table-col-1">Very Hard</div>
-                        <div class="table-col-2">25-29</div>
-                        <div class="table-col-3">+6 → d12</div>
-                    </div>
-                    <div class="box-row">
-                        <div class="table-col-1">Nearly Impossible</div>
-                        <div class="table-col-2">30+</div>
-                        <div class="table-col-3"></div>
+                </div>
+                <div class="col">
+                    <div class="box">
+                        <h3 class="box-title">SECRET DCs</h3>
+                        <p>Never reveal exact <span class="tooltip">DCs<span class="tooltiptext">Difficulty Class: The target number a player must meet or exceed on a d20 roll to succeed at a task.</span></span> for checks or saves. Instead, inform players if a task is easy, moderate, hard, etc.</p>
+
+<p>Rather than flat bonuses, use <span class="tooltip">proficiency dice<span class="tooltiptext">Instead of a fixed bonus, roll a die (d4-d12 based on level) adding to checks. This adds variability to skilled actions.</span></span> (d4-d12 based on level) to add volatility to skill checks.</p>
+                        <h3 class="box-subtitle">PROFICIENCY DICE:</h3>
+                        <p>Rather than flat bonuses, use proficiency dice (d4-d12 based on level) to add volatility to skill checks.</p>
+                        
+                        <h3 class="box-subtitle">STRAHD'S GAZE <span class="tooltip">ℹ️<span class="tooltiptext">When Strahd is scrying on the party</span></span></h3>
+                        <p>When Strahd is watching through magical means or spies:</p>
+                        <ul>
+                            <li>Disadvantage on Perception checks to notice hidden threats</li>
+                            <li>Subtle changes in environment (shadows move oddly, reflections show someone behind you)</li>
+                            <li>Animal behavior changes (ravens watch intently, wolves avoid the area)</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="box">
-                    <h3 class="box-title">SECRET DCs</h3>
-                    <p>Never reveal exact DCs for checks or saves. Instead, inform players if a task is easy, moderate, hard, etc.</p>
-                    <h3 class="box-subtitle">PROFICIENCY DICE:</h3>
-                    <p>Rather than flat bonuses, use proficiency dice (d4-d12 based on level) to add volatility to skill checks.</p>
+            
+            <div class="row">
+                <div class="col">
+                    <div class="box">
+                        <h3 class="box-title">ADVANCED SANITY SYSTEM (OPTIONAL)</h3>
+                        <p>Track Sanity Points (SP) starting at 10 + WIS modifier. Lose SP when encountering horrors. At 0 SP, gain indefinite madness.</p>
+                        
+                        <h3 class="box-subtitle">SANITY LOSS:</h3>
+                        <div class="table-header">
+                            <div class="table-col-1">EVENT</div>
+                            <div class="table-col-2">SANITY LOSS</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Witnessing a brutal death</div>
+                            <div class="table-col-2">1d4</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Seeing a ghost</div>
+                            <div class="table-col-2">1d6</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Encountering Strahd</div>
+                            <div class="table-col-2">1d8</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Experiencing a nightmare</div>
+                            <div class="table-col-2">1d4</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Learning a terrible truth</div>
+                            <div class="table-col-2">1d6</div>
+                        </div>
+                        
+                        <h3 class="box-subtitle">RECOVERY:</h3>
+			<h3 class="box-subtitle">RECOVERY:</h3>
+<p>After <span class="tooltip">short rest<span class="tooltiptext">A period of downtime (at least 1 hour) where characters tend wounds and regain some resources.</span></span>, attempt WIS save to end despair. <span class="tooltip">Calm emotions<span class="tooltiptext">2nd-level spell: Suppresses strong emotions or removes frightened/charmed conditions.</span></span>, <span class="tooltip">lesser/greater restoration<span class="tooltiptext">Lesser: 2nd-level, ends conditions like paralyzed or poisoned. Greater: 5th-level, reduces exhaustion or removes curses.</span></span> remove despair.</p>
+                        <ul>
+                            <li>Regain 1 SP after a safe long rest</li>
+                            <li>Greater Restoration restores all SP</li>
+                            <li>Calm Emotions restores 1d4 SP</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="box">
+                        <h3 class="box-title">REST MECHANICS</h3>
+                        <h3 class="box-subtitle">SHORT REST:</h3>
+                        <ul>
+                            <li>Roll only 1 Hit Die + CON modifier</li>
+                        </ul>
+                        
+                        <h3 class="box-subtitle">LONG REST (UNSECURED):</h3>
+                        <ul>
+                            <li>Roll remaining Hit Dice + CON modifier</li>
+                            <li>Regain 1 Hit Die</li>
+                            <li>Prepare spells</li>
+                        </ul>
+                        
+                        <h3 class="box-subtitle">LONG REST (SECURED):</h3>
+                        <ul>
+                            <li>Regain all hit points</li>
+                            <li>Regain half Hit Dice</li>
+                            <li>Prepare spells</li>
+                        </ul>
+                        
+                        <h3 class="box-subtitle">EXHAUSTION:</h3>
+                        <p>Gain 1 level every 12 hours without long rest</p>
+                        
+                        <h3 class="box-subtitle">HOPE POINTS <span class="tooltip">ℹ️<span class="tooltiptext">Counterbalance to despair mechanics</span></span></h3>
+                        <p>Players can earn Hope Points through:</p>
+                        <ul>
+                            <li>Helping NPCs (1 point)</li>
+                            <li>Defeating major threats (1-3 points)</li>
+                            <li>Discovering comforting truths (1 point)</li>
+                        </ul>
+                        <p>Spend Hope Points to:</p>
+                        <ul>
+                            <li>Reroll a failed save (1 point)</li>
+                            <li>Remove 1 level of exhaustion (2 points)</li>
+                            <li>End despair effects (3 points)</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- Fear & Horror -->
-        <h2 class="section-title" id="fear-horror">FEAR & HORROR</h2>
-        <div class="row">
-            <div class="col">
-                <div class="box">
-                    <h3 class="box-subtitle">FEAR:</h3>
-                    <p>When confronting overwhelming threats, a failed WIS save causes the frightened condition for 1 minute.</p>
-                    
-                    <h3 class="box-subtitle">HORROR:</h3>
-                    <p>When experiencing something horrific, a failed CHA save results in madness.</p>
-                    <p><em>Examples:</em> Seeing a mangled body, witnessing a creature devouring a human, learning a terrible truth, watching a horrible death.</p>
-
-                    <div class="box" style="margin-top: 25px;">
+        <!-- Psychological Warfare -->
+        <h2 class="section-title" id="psychological-warfare">STRAHD'S PSYCHOLOGICAL WARFARE</h2>
+        <div class="collapsible-content">
+            <div class="row">
+                <div class="col">
+                    <div class="box">
+                        <h3 class="box-title">PERSONALIZED TORMENT</h3>
+                        <p>Strahd tailors his psychological attacks based on character backgrounds and classes:</p>
+                        
+                        <h3 class="box-subtitle">CLASS-SPECIFIC TORMENTS:</h3>
+                        <div class="table-header">
+                            <div class="table-col-1">CLASS</div>
+                            <div class="table-col-2">TORMENT</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Fighter</div>
+                            <div class="table-col-2">Dreams of being powerless while loved ones die</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Rogue</div>
+                            <div class="table-col-2">Framed for crimes they didn't commit</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Wizard</div>
+                            <div class="table-col-2">Spells fail at critical moments</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Cleric</div>
+                            <div class="table-col-2">Divine connection feels distant or silent</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Paladin</div>
+                            <div class="table-col-2">Forced to compromise ideals to save others</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Ranger</div>
+                            <div class="table-col-2">Animals turn against them</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Bard</div>
+                            <div class="table-col-2">Performances fall flat or inspire horror</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Barbarian</div>
+                            <div class="table-col-2">Rage leads to accidental harm of allies</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Druid</div>
+                            <div class="table-col-2">Nature itself seems corrupted</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Monk</div>
+                            <div class="table-col-2">Meditation reveals disturbing visions</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Warlock</div>
+                            <div class="table-col-2">Patron demands questionable acts</div>
+                        </div>
+                        <div class="box-row">
+                            <div class="table-col-1">Sorcerer</div>
+                            <div class="table-col-2">Magic feels tainted or unstable</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="box">
+                        <h3 class="box-title">GASLIGHTING TECHNIQUES</h3>
+                        <p>Strahd makes players question their reality:</p>
+                        
+                        <h3 class="box-subtitle">GASLIGHTING METHODS:</h3>
+                        <ol>
+                            <li><strong>False Memories:</strong> NPCs recall events differently than players</li>
+                            <li><strong>Changing Environments:</strong> Subtle shifts in room layouts or decorations</li>
+                            <li><strong>Time Distortion:</strong> Players lose/gain time unexpectedly</li>
+                            <li><strong>Doppelgängers:</strong> NPCs claim they saw a PC somewhere else</li>
+                            <li><strong>Fabricated Evidence:</strong> Letters or items appear with false information</li>
+                        </ol>
+                        
                         <h3 class="box-subtitle">STRAHD'S MESSAGES (d6):</h3>
                         <ol>
                             <li><strong>"I tasted your fear last night."</strong> PC wakes with two puncture wounds but no HP loss.</li>
@@ -492,16 +871,176 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="box">
-                    <h3 class="box-subtitle">CALM EMOTIONS:</h3>
-                    <p>Removes frightened condition, short-term madness (long-term if combined with short rest), and despair (if combined with short rest).</p>
+            
+            <div class="row">
+                <div class="col">
+                    <div class="box">
+                        <h3 class="box-title">STRAHD'S CHESSBOARD</h3>
+                        <p>Strahd manipulates players by:</p>
+                        <ul>
+                            <li><strong>Seeding Mistrust:</strong> Forged letters "from allies" with false warnings.</li>
+                            <li><strong>False Safety:</strong> Lets players "overhear" his plans (50% are traps).</li>
+                            <li><strong>Petty Cruelty:</strong> Burns down a shelter after they upgrade it.</li>
+                            <li><strong>Gifts with Hooks:</strong> Magic items that report their location.</li>
+                            <li><strong>Divide and Conquer:</strong> Spreads rumors to turn NPCs against PCs.</li>
+                            <li><strong>False Hope:</strong> Allows small victories before crushing them.</li>
+                        </ul>
+                        <p><em>Rule:</em> Never more than 1 major manipulation per 2 sessions.</p>
+                        
+                        <h3 class="box-subtitle">STRAHD'S ROMANCE TACTICS <span class="tooltip">ℹ️<span class="tooltiptext">For campaigns involving Ireena/Tatyana</span></span></h3>
+                        <ol>
+                            <li><strong>Chivalrous Acts:</strong> Appears to rescue NPCs from danger</li>
+                            <li><strong>Gifts:</strong> Leaves rare books, fine wines, or sentimental items</li>
+                            <li><strong>Poetic Flattery:</strong> Compliments in iambic pentameter</li>
+                            <li><strong>Jealousy:</strong> Shows displeasure when PC interacts with others</li>
+                            <li><strong>Isolation:</strong> Separates target from allies "for their safety"</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="box">
+                        <h3 class="box-title">PSYCHOLOGICAL WARFARE TRACKER</h3>
+                        <p>Track Strahd's psychological attacks on each PC:</p>
+                        
+                        <h3 class="box-subtitle">ESCALATION PHASES:</h3>
+                        <ol>
+                            <li><strong>Observation:</strong> Strahd learns fears and weaknesses (scrying, spies)</li>
+                            <li><strong>Testing:</strong> Minor torments to gauge reactions (1-2 sessions)</li>
+                            <li><strong>Targeted Attacks:</strong> Personalizes torments based on reactions (3-5 sessions)</li>
+                            <li><strong>Breaking Point:</strong> Major psychological assault (after significant progress)</li>
+                            <li><strong>Offering Dark Gift:</strong> Presents "solution" to their torment</li>
+                        </ol>
+                        
+                        <h3 class="box-subtitle">PSYCHOLOGICAL EFFECTS TABLE (d8):</h3>
+                        <ol>
+                            <li><strong>Paranoia:</strong> Disadvantage on Insight checks</li>
+                            <li><strong>Hypervigilance:</strong> Advantage on Perception, disadvantage on Concentration</li>
+                            <li><strong>Emotional Numbing:</strong> Disadvantage on Persuasion, advantage on Intimidation</li>
+                            <li><strong>Flashbacks:</strong> Chance to freeze in combat (DC 15 WIS save)</li>
+                            <li><strong>Insomnia:</strong> Long rests only count as short rests</li>
+                            <li><strong>Substance Abuse:</strong> Seeks escape in alcohol/drugs (disadvantage on DEX)</li>
+                            <li><strong>Self-Harm:</strong> Takes 1d4 damage when stressed (voluntary)</li>
+                            <li><strong>Dissociation:</strong> Occasionally unresponsive (DM controls for brief periods)</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- Despair -->
-        <h2 class="section-title" id="despair">DESPAIR</h2>
+        <!-- Fear & Horror -->
+        <h2 class="section-title" id="fear-horror">FEAR & HORROR</h2>
+        <div class="collapsible-content">
+            <div class="row">
+                <div class="col">
+                    <div class="box">
+                        <h3 class="box-subtitle">FEAR:</h3>
+                        <p>When confronting overwhelming threats, a failed WIS save causes the frightened condition for 1 minute.</p>
+                        
+                        <h3 class="box-subtitle">HORROR:</h3>
+                        <h3 class="box-subtitle">HORROR:</h3>
+<p>When experiencing something horrific, a failed <span class="tooltip">CHA save<span class="tooltiptext">Charisma saving throws represent resistance to effects that would force a change in personality or challenge your sense of self.</span></span> results in <span class="tooltip">madness<span class="tooltiptext">Madness can be short-term (1d10 minutes), long-term (1d10 hours), or indefinite until cured by magic or rest.</span></span>.</p>
+                        <p><em>Examples:</em> Seeing a mangled body, witnessing a creature devouring a human, learning a terrible truth, watching a horrible death.</p>
+
+                        <div class="box" style="margin-top: 25px;">
+                            <h3 class="box-subtitle">CALM EMOTIONS:</h3>
+                            <p>Removes frightened condition, short-term madness (long-term if combined with short rest), and despair (if combined with short rest).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="box">
+                        <h3 class="box-title">EXPANDED MADNESS TABLES</h3>
+                        
+                        <h3 class="box-subtitle">SHORT-TERM MADNESS (d10):</h3>
+                        <ol>
+                            <li><strong>Incorrigible Flirt:</strong> Must compliment everyone excessively</li>
+                            <li><strong>Nervous Laughter:</strong> Can't stop giggling inappropriately</li>
+                            <li><strong>Selective Mutism:</strong> Can only whisper for 1d10 minutes</li>
+                            <li><strong>Paranoia:</strong> Convinced someone is watching (might be true)</li>
+                            <li><strong>Flashbacks:</strong> Relives traumatic event (disadvantage on next check)</li>
+			    <li><strong>Hyperactivity:</strong> Can't stop moving/talking (disadvantage on Stealth)</li>
+			    <li><strong>Catatonia:</strong> Stares blankly for 1d10 minutes</li>
+			    <li><strong>Phobia:</strong> Develops temporary fear of something nearby</li>
+			    <li><strong>Echolalia:</strong> Repeats last words heard (disadvantage on social checks)</li>
+			    <li><strong>Synesthesia:</strong> Experiences crossed senses ("I can taste the color red")</li>
+			</ol>
+
+                    <h3 class="box-subtitle">LONG-TERM MADNESS (d10):</h3>
+                    <ol>
+                        <li><strong>Phantom Pain:</strong> Random limbs hurt (disadvantage on physical checks 1/day)</li>
+                        <li><strong>Face Blindness:</strong> Can't recognize friends (Wisdom check to identify)</li>
+                        <li><strong>Time Skips:</strong> Loses minutes/hours with no memory</li>
+                        <li><strong>Compulsive Ritual:</strong> Must perform specific action when stressed</li>
+                        <li><strong>Emotional Inversion:</strong> Laughs at sad things, cries at happy things</li>
+                        <li><strong>Doppelgänger Fear:</strong> Convinced someone has been replaced</li>
+                        <li><strong>Blood Fascination:</strong> Compelled to touch/stare at blood</li>
+                        <li><strong>Mirror Phobia:</strong> Can't look at reflections without panic</li>
+                        <li><strong>Sleepwalker:</strong> Acts out dreams with no memory</li>
+                        <li><strong>Psychic Echo:</strong> Hears thoughts of nearby creatures occasionally</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                <div class="box">
+                    <h3 class="box-title">INDEFINITE MADNESS (d10):</h3>
+                    <ol>
+                        <li><strong>Split Personality:</strong> Alternate identity emerges under stress</li>
+                        <li><strong>Reality Fracture:</strong> Sees ghosts of possible futures/pasts</li>
+                        <li><strong>Corpse Empathy:</strong> Believes dead bodies are just "resting"</li>
+                        <li><strong>Vampiric Delusion:</strong> Convinced they're becoming a vampire</li>
+                        <li><strong>Strahd Worship:</strong> Develops twisted admiration for the Count</li>
+                        <li><strong>Body Dysmorphia:</strong> Convinced body parts aren't theirs</li>
+                        <li><strong>Pica:</strong> Craves eating non-food items (dirt, bones, etc.)</li>
+                        <li><strong>Savior Complex:</strong> Believes they alone can redeem Strahd</li>
+                        <li><strong>Death Seeker:</strong> Takes increasingly reckless risks</li>
+                        <li><strong>Living Nightmare:</strong> Can't distinguish dreams from reality</li>
+                    </ol>
+                    
+                    <h3 class="box-subtitle">MADNESS RECOVERY:</h3>
+                    <ul>
+                        <li><strong>Short-term:</strong> Ends after 1d10 minutes</li>
+                        <li><strong>Long-term:</strong> Save ends after 1d10 hours</li>
+                        <li><strong>Indefinite:</strong> Requires Greater Restoration or quest resolution</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="box">
+                    <h3 class="box-title">PHYSICAL MANIFESTATIONS OF FEAR</h3>
+                    <p>When failing fear saves by 5+:</p>
+                    
+                    <h3 class="box-subtitle">PHYSICAL EFFECTS (d8):</h3>
+                    <ol>
+                        <li><strong>Hair Whitening:</strong> Patch of hair turns white permanently</li>
+                        <li><strong>Nervous Tic:</strong> Eye twitch, lip biting, etc.</li>
+                        <li><strong>Cold Sweat:</strong> Permanently clammy hands</li>
+                        <li><strong>Facial Spasm:</strong> Occasional uncontrollable grimace</li>
+                        <li><strong>Voice Crack:</strong> Voice breaks when stressed</li>
+                        <li><strong>Tremors:</strong> Hands shake during fine motor tasks</li>
+                        <li><strong>Scarring:</strong> Psychosomatic wounds appear</li>
+                        <li><strong>Aging:</strong> Visibly look older from stress</li>
+                    </ol>
+                    
+                    <h3 class="box-subtitle">FEAR-BASED FLAWS (d6):</h3>
+                    <ol>
+                        <li>"I can't sleep without a light source"</li>
+                        <li>"I must check corners for hidden threats"</li>
+                        <li>"I refuse to be the last one in a group"</li>
+                        <li>"I compulsively count objects when nervous"</li>
+                        <li>"I can't enter a room without weapons drawn"</li>
+                        <li>"I hear whispers in the wind"</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Despair -->
+    <h2 class="section-title" id="despair">DESPAIR</h2>
+    <div class="collapsible-content">
         <div class="row">
             <div class="col">
                 <div class="box">
@@ -513,6 +1052,8 @@
                         <li>Suffering lingering injury</li>
                         <li>Seeing madness in a party member</li>
                         <li>Encountering major setback</li>
+                        <li>Failing important objective</li>
+                        <li>Witnessing Strahd's power firsthand</li>
                     </ul>
                     
                     <h3 class="box-subtitle">EFFECTS:</h3>
@@ -520,48 +1061,105 @@
                         <li><strong>Apathy</strong> - Disadvantage on death saves and initiative. Flaw: "I don't believe I can make a difference."</li>
                         <li><strong>Dread</strong> - Disadvantage on all saving throws. Flaw: "I'm convinced this place will kill me."</li>
                         <li><strong>Insanity</strong> - Disadvantage on INT/WIS/CHA checks & saves. Flaw: "I can't tell what's real anymore."</li>
+                        <li><strong>Paranoia</strong> - Disadvantage on Insight. Flaw: "I trust no one, not even my allies."</li>
+                        <li><strong>Nihilism</strong> - Disadvantage on Persuasion. Flaw: "Nothing we do matters anyway."</li>
                     </ol>
-                    
-                    <h3 class="box-subtitle">RECOVERY:</h3>
-                    <p>After short rest, attempt WIS save to end despair. Calm emotions, lesser/greater restoration remove despair.</p>
                 </div>
             </div>
             <div class="col">
                 <div class="box">
-                    <h3 class="box-title">REST MECHANICS</h3>
-                    <h3 class="box-subtitle">SHORT REST:</h3>
+                    <h3 class="box-subtitle">RECOVERY:</h3>
                     <ul>
-                        <li>Roll only 1 Hit Die + CON modifier</li>
+                        <li>After short rest, attempt WIS save to end despair</li>
+                        <li>Calm emotions, lesser/greater restoration remove despair</li>
+                        <li>3 Hope Points can remove despair</li>
+                        <li>Major victory over Strahd's forces removes all despair</li>
                     </ul>
                     
-                    <h3 class="box-subtitle">LONG REST (UNSECURED):</h3>
+                    <h3 class="box-subtitle">DESPAIR ESCALATION:</h3>
+                    <p>For each consecutive day with despair:</p>
+                    <ol>
+                        <li><strong>Day 1:</strong> Disadvantage on one type of roll</li>
+                        <li><strong>Day 3:</strong> Disadvantage expands to related rolls</li>
+                        <li><strong>Day 5:</strong> Physical symptoms appear (tremors, etc.)</li>
+                        <li><strong>Day 7+:</strong> Risk of indefinite madness</li>
+                    </ol>
+                    
+                    <h3 class="box-subtitle">HOPE RESTORATION ACTIONS:</h3>
                     <ul>
-                        <li>Roll remaining Hit Dice + CON modifier</li>
-                        <li>Regain 1 Hit Die</li>
-                        <li>Prepare spells</li>
+                        <li>Protecting innocents: 1d4 Hope Points to party</li>
+                        <li>Discovering Strahd's weakness: 1d6 Hope Points</li>
+                        <li>Major victory: 1d8 Hope Points</li>
+                        <li>Finding a safe haven: 1d4 Hope Points</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Nightmares -->
+    <h2 class="section-title" id="nightmares">NIGHTMARES</h2>
+    <div class="collapsible-content">
+        <div class="row">
+            <div class="col">
+                <div class="box">
+                    <h3 class="box-title">NIGHTMARE MECHANICS</h3>
+                    <p>If below <span class="tooltip">50% HP<span class="tooltiptext">When current hit points are less than half your maximum hit points.</span></span> or <span class="tooltip">exhausted<span class="tooltiptext">Exhaustion has 6 levels with cumulative effects, from disadvantage on ability checks to death.</span></span> before a long rest, make WIS save or gain nightmare effect and only restore half HP normally recovered.</p>
+                    
+                    <h3 class="box-subtitle">SHARED NIGHTMARES:</h3>
+                    <p>When multiple party members fail saves:</p>
+                    <ul>
+                        <li>They experience the same nightmare together</li>
+                        <li>Can interact with each other in the dream</li>
+                        <li>Damage taken is psychic (1d6 per "death" in dream)</li>
+                        <li>Solving the nightmare's puzzle grants full rest benefits</li>
                     </ul>
                     
-                    <h3 class="box-subtitle">LONG REST (SECURED):</h3>
-                    <ul>
-                        <li>Regain all hit points</li>
-                        <li>Regain half Hit Dice</li>
-                        <li>Prepare spells</li>
-                    </ul>
+                    <h3 class="box-subtitle">WEAPONIZING NIGHTMARES:</h3>
+                    <p>Characters can attempt to:</p>
+                    <ol>
+                        <li><strong>Lucid Dreaming:</strong> WIS check to control aspects of nightmare</li>
+                        <li><strong>Nightmare Fuel:</strong> Channel terror into attacks (+1d6 psychic damage next day)</li>
+                        <li><strong>Prophetic Visions:</strong> INT check to gain clues from nightmares</li>
+                        <li><strong>Dream Walking:</strong> Visit other creatures' dreams with CHA save</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col">
+                <div class="box">
+                    <h3 class="box-title">NIGHTMARE CONSEQUENCES</h3>
+                    <p>Failed saves vs nightmares cause lingering effects:</p>
                     
-                    <h3 class="box-subtitle">EXHAUSTION:</h3>
-                    <p>Gain 1 level every 12 hours without long rest</p>
+                    <h3 class="box-subtitle">WAKING EFFECTS (d8):</h3>
+                    <ol>
+                        <li><strong>Exhaustion:</strong> Gain 1 level that can't be removed until next sunset</li>
+                        <li><strong>Phantom Pain:</strong> Random limb hurts (-5ft speed or disadvantage with that limb)</li>
+                        <li><strong>Dream Leakage:</strong> Objects from dream appear in inventory</li>
+                        <li><strong>Nightmare Mark:</strong> Physical change matching dream (scar, white streak in hair)</li>
+                        <li><strong>Echoes:</strong> Occasionally hear nightmare sounds while awake</li>
+                        <li><strong>Sleep Fear:</strong> Next long rest requires CON save or only short rest benefits</li>
+                        <li><strong>Empathic Dread:</strong> Nearby allies have disadvantage on next fear save</li>
+                        <li><strong>Reality Warp:</strong> Minor detail from dream changes in real world</li>
+                    </ol>
+                    
+                    <h3 class="box-subtitle">NIGHTMARE ITEMS (d6):</h3>
+                    <p>Objects that appear after nightmares:</p>
+                    <ol>
+                        <li><strong>Black Rose:</strong> Crumbles to dust at sunset</li>
+                        <li><strong>Child's Drawing:</strong> Depicts a future tragedy</li>
+                        <li><strong>Broken Mirror:</strong> Shows reflections doing things you didn't do</li>
+                        <li><strong>Bloody Bandage:</strong> Always damp with fresh blood</li>
+                        <li><strong>Old Key:</strong> Fits a lock somewhere in Barovia</li>
+                        <li><strong>Music Box:</strong> Plays a haunting lullaby when opened</li>
+                    </ol>
                 </div>
             </div>
         </div>
         
-        <!-- Nightmares & Lingering Injuries -->
-        <h2 class="section-title" id="nightmares">NIGHTMARES</h2>
         <div class="row">
             <div class="col">
                 <div class="box">
-                    <p>If below 50% HP or exhausted before a long rest, make WIS save or gain nightmare effect and only restore half HP normally recovered.</p>
-                    
-                    <h3 class="box-subtitle">NIGHTMARE TABLE (d20):</h3>
+                    <h3 class="box-title">NIGHTMARE TABLE (d20):</h3>
                     <ol>
                         <li><strong>Pursued by Wolves:</strong> You're running through endless woods as a pack of wolves closes in, their hot breath on your neck.</li>
                         <li><strong>Family Slayer:</strong> You murder your own family members one by one, waking just as your blade strikes the last.</li>
@@ -588,49 +1186,479 @@
             </div>
             <div class="col">
                 <div class="box">
-                    <h3 class="box-title">LINGERING INJURIES</h3>
-                    <p>When failing a death save by 5+, suffering a critical hit, or dropping to 0 HP, make CON save or gain lingering injury.</p>
+                    <h3 class="box-title">SOLVING NIGHTMARES</h3>
+                    <p>Shared nightmares can be solved cooperatively:</p>
                     
-                    <h3 class="box-subtitle">LINGERING INJURIES TABLE (d20):</h3>
+                    <h3 class="box-subtitle">NIGHTMARE SOLUTIONS (d6):</h3>
                     <ol>
-                        <li><strong>Lose an Eye:</strong> Disadvantage on Perception and ranged attacks. Blind if both eyes lost.</li>
-                        <li><strong>Lose a Hand:</strong> Can't hold items with two hands or more than one item at a time.</li>
-                        <li><strong>Lose an Arm:</strong> Cannot use two-handed equipment. Disadvantage on STR checks.</li>
-                        <li><strong>Lose a Foot:</strong> Speed halved. DC 10 DEX save after Dash or fall prone.</li>
-                        <li><strong>Lose a Leg:</strong> Speed reduced to 5ft without prosthesis or crutch.</li>
-                        <li><strong>Internal Injury:</strong> DC 15 CON save before any action or lose action/reactions.</li>
-                        <li><strong>Broken Ribs:</strong> As Internal Injury but DC 10. -5ft movement.</li>
-                        <li><strong>Horrible Scar:</strong> Disadvantage on Persuasion, advantage on Intimidation.</li>
-                        <li><strong>Festering Wound:</strong> Lose 1 max HP/day. Die at 0. DC 15 Medicine check daily to heal.</li>
-                        <li><strong>Concussion:</strong> Disadvantage on INT/WIS checks and saves.</li>
-                        <li><strong>Nerve Damage:</strong> Random limb becomes useless for 1d4 hours daily.</li>
-                        <li><strong>Hearing Loss:</strong> Disadvantage on sound-based Perception checks.</li>
-                        <li><strong>Limp:</strong> -5ft speed. DC 10 DEX save after Dash or fall prone.</li>
-                        <li><strong>Minor Scar:</strong> No mechanical effect but visible disfigurement.</li>
-                        <li><strong>Twitching Limb:</strong> Disadvantage on DEX checks with that limb.</li>
-                        <li><strong>Chronic Pain:</strong> Disadvantage on CON saves vs exhaustion.</li>
-                        <li><strong>Fractured Skull:</strong> Vulnerability to bludgeoning damage.</li>
-                        <li><strong>Rotting Flesh:</strong> Creatures within 10ft must make CON save or be sickened.</li>
-                        <li><strong>Phantom Pain:</strong> Random bouts of incapacitating pain (10% chance each hour).</li>
-                        <li><strong>Soul Wound:</strong> Vulnerability to necrotic damage. Undead sense you from 60ft.</li>
+                        <li><strong>Confrontation:</strong> Face the nightmare's source directly</li>
+                        <li><strong>Acceptance:</strong> Embrace the horror to dispel its power</li>
+                        <li><strong>Symbolic Act:</strong> Perform an action that "breaks the dream logic"</li>
+                        <li><strong>Sacrifice:</strong> Give up something important to escape</li>
+                        <li><strong>Awakening Another:</strong> Find and wake another party member in the dream</li>
+                        <li><strong>Reality Anchor:</strong> Focus on a real-world memory or object</li>
                     </ol>
-                    <p><em>Healing:</em> Requires magical healing or Medicine checks (DC 15, 10 successes)</p>
+                    
+                    <h3 class="box-subtitle">NIGHTMARE REWARDS:</h3>
+                    <p>Solving nightmares grants:</p>
+                    <ul>
+                        <li>Full rest benefits despite initial failure</li>
+                        <li>1d4 temporary hit points from adrenaline</li>
+                        <li>Clues about Barovia's secrets</li>
+                        <li>Resistance to psychic damage for 24 hours</li>
+                        <li>1 Hope Point per participant</li>
+                    </ul>
+                    
+                    <h3 class="box-subtitle">STRAHD'S NIGHTMARE INTRUSION:</h3>
+                    <p>When rolling for nightmares, on a 1:</p>
+                    <ul>
+                        <li>Strahd appears in the nightmare</li>
+                        <li>He offers cryptic advice or temptations</li>
+                        <li>May plant false memories or suggestions</li>
+                        <li>Characters remember these encounters vividly</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Corruption System -->
+    <h2 class="section-title" id="corruption">ADVANCED CORRUPTION SYSTEM</h2>
+    <div class="collapsible-content">
+        <div class="row">
+            <div class="col">
+                <div class="box">
+                    <h3 class="box-title">CORRUPTION MECHANICS</h3>
+                    <p>Track Corruption Points (CP) when characters:</p>
+                    <ul>
+                        <li>Use dark powers or forbidden magic</li>
+                        <li>Accept Strahd's gifts or deals</li>
+                        <li>Commit evil acts "for the greater good"</li>
+                        <li>Spend extended time in corrupted areas</li>
+                        <li>Fail saves against supernatural corruption</li>
+                    </ul>
+                    
+                    <h3 class="box-subtitle">CORRUPTION EFFECTS:</h3>
+                    <div class="table-header">
+                        <div class="table-col-1">CP</div>
+                        <div class="table-col-2">EFFECT</div>
+                    </div>
+                    <div class="box-row">
+                        <div class="table-col-1">1-3</div>
+                        <div class="table-col-2">Minor physical changes, bad dreams</div>
+                    </div>
+                    <div class="box-row">
+                        <div class="table-col-1">4-6</div>
+                        <div class="table-col-2">Disadvantage on saves vs dark gifts</div>
+                    </div>
+                    <div class="box-row">
+                        <div class="table-col-1">7-9</div>
+                        <div class="table-col-2">NPCs react with unease, animals avoid you</div>
+                    </div>
+                    <div class="box-row">
+                        <div class="table-col-1">10+</div>
+                        <div class="table-col-2">Risk of transformation, dark powers intervene</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="box">
+                    <h3 class="box-title">PHYSICAL CORRUPTION</h3>
+                    <p>At 3, 6, and 9 CP, roll for physical changes:</p>
+                    
+                    <h3 class="box-subtitle">CORRUPTION MANIFESTATIONS (d12):</h3>
+                    <ol>
+                        <li><strong>Eyes:</strong> Pupils become slitted or solid black</li>
+                        <li><strong>Skin:</strong> Pale with visible veins or patchy scales</li>
+                        <li><strong>Teeth:</strong> Sharpen slightly, gums darken</li>
+                        <li><strong>Hands:</strong> Nails darken and harden into claws</li>
+                        <li><strong>Shadow:</strong> Moves independently occasionally</li>
+                        <li><strong>Voice:</strong> Gains a subtle echo or hiss</li>
+                        <li><strong>Hair:</strong> Streaks of white or black appear</li>
+                        <li><strong>Reflection:</strong> Sometimes shows a twisted version</li>
+                        <li><strong>Temperature:</strong> Body runs colder than normal</li>
+                        <li><strong>Scarring:</strong> Mysterious scars appear overnight</li>
+                        <li><strong>Blood:</strong> Darker and thicker than normal</li>
+                        <li><strong>Scent:</strong> Carry a faint odor of earth and copper</li>
+                    </ol>
                 </div>
             </div>
         </div>
         
-        <!-- Curse Removal & Revenant Resurrection -->
-        <h2 class="section-title" id="curse-removal">CURSE REMOVAL</h2>
+        <div class="row">
+            <div class="col">
+                <div class="box">
+                    <h3 class="box-title">DARK GIFTS</h3>
+                    <p>At 10+ CP, dark powers offer gifts:</p>
+                    
+                    <h3 class="box-subtitle">DARK GIFTS TABLE (d8):</h3>
+                    <ol>
+                        <li><strong>Vampiric Hunger:</strong> Heal 1d6 HP when you deal killing blow to living humanoid. Lose 1 max HP/day until you feed.</li>
+                        <li><strong>Shadow Pact:</strong> Gain <em>Misty Step</em> 1/day. Each use turns your eyes blacker permanently.</li>
+                        <li><strong>Hag's Deal:</strong> Advantage on INT saves. Your laughter occasionally sounds like a hag's cackle.</li>
+                        <li><strong>Werewolf's Fury:</strong> +2 damage to melee attacks. Moonlight reveals your eyes glow amber.</li>
+                        <li><strong>Ghostly Whispers:</strong> Understand all languages. Hear distant sobbing when alone.</li>
+                        <li><strong>Strahd's Favor:</strong> +1 to CHA saves. Your shadow sometimes moves independently.</li>
+                        <li><strong>Lich's Knowledge:</strong> +1 to spell DCs. Your skin becomes unnaturally cold.</li>
+                        <li><strong>Revenant's Purpose:</strong> Return to life 1/day at 1 HP if killed. Your wounds never fully heal.</li>
+                    </ol>
+                    
+                    <h3 class="box-subtitle">GIFT CONSEQUENCES:</h3>
+                    <ul>
+                        <li>Each gift adds 1d4 CP immediately</li>
+                        <li>Additional gifts add +1 CP per existing gift</li>
+                        <li>At 15 CP, risk losing control to dark powers</li>
+                        <li>At 20 CP, transformation into monster begins</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="box">
+                    <h3 class="box-title">REDEMPTION</h3>
+                    <p>Ways to reduce Corruption Points:</p>
+                    
+                    <h3 class="box-subtitle">REDEMPTION ACTS:</h3>
+                    <ul>
+                        <li><strong>Selfless Sacrifice:</strong> Lose 1d4 CP (risk life for others)</li>
+                        <li><strong>Holy Ritual:</strong> Lose 1 CP (requires holy site and offering)</li>
+                        <li><strong>Rejecting Power:</strong> Lose 2 CP (refuse dark gift when offered)</li>
+                        <li><strong>Atonement Quest:</strong> Lose all CP (major story achievement)</li>
+                    </ul>
+                    
+                    <h3 class="box-subtitle">REDEMPTION CONSEQUENCES:</h3>
+                    <ul>
+                        <li>Physical changes fade slowly</li>
+                        <li>Dark powers may retaliate</li>
+                        <li>Strahd takes special notice</li>
+                        <li>Some abilities may be lost</li>
+                    </ul>
+                    
+                    <h3 class="box-subtitle">FINAL CORRUPTION:</h3>
+                    <p>At 20 CP, the character:</p>
+                    <ol>
+                        <li>Becomes an NPC under DM control</li>
+                        <li>Transforms into appropriate monster</li>
+                        <li>Gains final dark gift before turning</li>
+                        <li>May return as a villain later</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Weather System -->
+    <h2 class="section-title" id="weather">ADVANCED WEATHER SYSTEM</h2>
+    <div class="collapsible-content">
+        <div class="row">
+            <div class="col">
+                <div class="box">
+                    <h3 class="box-title">WEATHER MECHANICS</h3>
+                    <p>Roll weather 1d3 times per day (morning/afternoon/evening):</p>
+                    
+                    <h3 class="box-subtitle">WEATHER TABLE (d20):</h3>
+                    <table>
+                        <tr><th>Roll</th><th>Weather</th><th>Effects</th></tr>
+                        <tr><td>1-5</td><td>Thick Fog</td><td>Disadvantage on Perception, -20ft visibility</td></tr>
+                        <tr><td>6-8</td><td>Light Rain</td><td>Everything damp, fires harder to light</td></tr>
+                        <tr><td>9-10</td><td>Heavy Rain</td><td>Disadvantage on hearing Perception, -10ft movement</td></tr>
+                        <tr><td>11-12</td><td>Thunderstorm</td><td>Disadvantage on Concentration, animals skittish</td></tr>
+                        <tr><td>13</td><td>Blood Rain</td><td>1d4 psychic damage per hour exposed, stains everything</td></tr>
+                        <tr><td>14</td><td>Ash Fall</td><td>Air fills with choking ash (CON save or cough)</td></tr>
+                        <tr><td>15</td><td>Unnatural Stillness</td><td>No wind, sounds carry farther, uneasy feeling</td></tr>
+                        <tr><td>16</td><td>Bone-chilling Cold</td><td>CON save each hour or gain 1 level of exhaustion</td></tr>
+                        <tr><td>17</td><td>Wailing Wind</td><td>Hear whispers in the wind (WIS save or frightened)</td></tr>
+                        <tr><td>18</td><td>Strange Eclipse</td><td>Sun/moon turns red, spells cast at -1 level</td></tr>
+                        <tr><td>19</td><td>Shadow Storm</td><td>Darkness spell effect in random 30ft areas</td></tr>
+                        <tr><td>20</td><td>Strahd's Wrath</td><td>Roll twice and combine effects</td></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col">
+                <div class="box">
+                    <h3 class="box-title">WEATHER INTERACTIONS</h3>
+                    <p>Special weather effects:</p>
+                    
+                    <h3 class="box-subtitle">MAGICAL WEATHER EFFECTS:</h3>
+                    <ul>
+                        <li><strong>Blood Rain:</strong> Can be collected for necromantic rituals</li>
+                        <li><strong>Ash Fall:</strong> May contain fragments of past victims</li>
+                        <li><strong>Wailing Wind:</strong> Sometimes carries actual voices</li>
+                        <li><strong>Shadow Storm:</strong> Shadows may detach and move independently</li>
+                    </ul>
+                    
+                    <h3 class="box-subtitle">STRAHD'S MOOD:</h3>
+                    <p>Weather reflects Strahd's emotional state:</p>
+                    <div class="table-header">
+                        <div class="table-col-1">Mood</div>
+                        <div class="table-col-2">Weather</div>
+                    </div>
+                    <div class="box-row">
+                        <div class="table-col-1">Bored</div>
+                        <div class="table-col-2">Thick Fog</div>
+                    </div>
+                    <div class="box-row">
+                        <div class="table-col-1">Angry</div>
+                        <div class="table-col-2">Thunderstorm</div>
+                    </div>
+                    <div class="box-row">
+                        <div class="table-col-1">Amused</div>
+                        <div class="table-col-2">Unnatural Stillness</div>
+                    </div>
+                    <div class="box-row">
+                        <div class="table-col-1">Melancholic</div>
+                        <div class="table-col-2">Light Rain</div>
+                    </div>
+                    <div class="box-row">
+                        <div class="table-col-1">Vengeful</div>
+                        <div class="table-col-2">Blood Rain</div>
+                    </div>
+                    
+                    <h3 class="box-subtitle">WEATHER MAGIC:</h3>
+                    <p>Control Weather spells in Barovia:</p>
+                    <ul>
+                        <li>DC increases by 5</li>
+                        <li>Lasts half as long</li>
+                        <li>10% chance Strahd counters it</li>
+                        <li>May attract his attention</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Locations Tab System -->
+    <h2 class="section-title" id="locations">LOCATIONS OF BAROVIA</h2>
+    <div class="collapsible-content">
+        <div class="tab-system">
+            <div class="tab-buttons">
+                <button class="tab-button active" onclick="openTab(event, 'village-barovia')">Village of Barovia</button>
+                <button class="tab-button" onclick="openTab(event, 'vallaki')">Vallaki</button>
+                <button class="tab-button" onclick="openTab(event, 'krezk')">Krezk</button>
+                <button class="tab-button" onclick="openTab(event, 'castle-ravenloft')">Castle Ravenloft</button>
+            </div>
+            
+            <div id="village-barovia" class="tab-content active">
+                <div class="row">
+                    <div class="col">
+                        <div class="box">
+                            <h3 class="box-title">VILLAGE OF BAROVIA OVERVIEW</h3>
+                            <p>The first settlement players encounter, a miserable town in Strahd's shadow.</p>
+                            
+                            <h3 class="box-subtitle">KEY LOCATIONS:</h3>
+                            <ul>
+                                <li><strong>Blood of the Vine Tavern:</strong> Only gathering place, run by a soulless barkeep</li>
+                                <li><strong>Burgomaster's Mansion:</strong> Abandoned after recent deaths</li>
+                                <li><strong>Church of Barovia:</strong> Contains a corrupted priest and haunted graveyard</li>
+                                <li><strong>Mad Mary's Townhouse:</strong> Grieving mother who wails nightly</li>
+                                <li><strong>Gates of Barovia:</strong> Ancient stone arches leading to Svalich Woods</li>
+                            </ul>
+                            
+                            <h3 class="box-subtitle">NOTABLE NPCs:</h3>
+                            <ul>
+                                <li><strong>Ismark the Lesser:</strong> New burgomaster, seeks help burying his father</li>
+                                <li><strong>Ireena Kolyana:</strong> Ismark's sister, target of Strahd's obsession</li>
+                                <li><strong>Father Donavich:</strong> Failing priest hiding a monstrous secret</li>
+                                <li><strong>Mad Mary:</strong> Mother mourning her missing daughter Gertruda</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="box">
+                            <h3 class="box-title">VILLAGE ENCOUNTERS</h3>
+                            <p>When players spend time in the village:</p>
+                            
+                            <h3 class="box-subtitle">DAYTIME ENCOUNTERS (d6):</h3>
+                            <ol>
+                                <li><strong>Funeral Procession:</strong> Villagers carry a wrapped body to graveyard</li>
+                                <li><strong>Beggar:</strong> Pleads for food, reveals cryptic warning if helped</li>
+                                <li><strong>Bar Fight:</strong> Drunks brawl over imagined slights</li>
+                                <li><strong>Strahd's Spy:</strong> Raven or wolf watches conspicuously</li>
+                                <li><strong>Wandering Merchant:</strong> Sells questionable goods at high prices</li>
+                                <li><strong>Prophet:</strong> Madperson shouts doomsday predictions</li>
+                            </ol>
+                            
+                            <h3 class="box-subtitle">NIGHTTIME ENCOUNTERS (d6):</h3>
+                            <ol>
+                                <li><strong>Wolves Howling:</strong> Close by, but never seen</li>
+                                <li><strong>Ghostly Figure:</strong> Disappears when approached</li>
+                                <li><strong>Mad Mary's Wails:</strong> Echo through empty streets</li>
+                                <li><strong>Shambling Figure:</strong> Turns out to be sleepwalker</li>
+                                <li><strong>Strange Lights:</strong> In abandoned buildings</li>
+                                <li><strong>Vampire Spawn:</strong> Watching from rooftops</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="vallaki" class="tab-content">
+                <div class="row">
+                    <div class="col">
+                        <div class="box">
+                            <h3 class="box-title">VALLAKI OVERVIEW</h3>
+                            <p>The "safest" town in Barovia, ruled by a delusional burgomaster.</p>
+                            
+                            <h3 class="box-subtitle">KEY LOCATIONS:</h3>
+                            <ul>
+                                <li><strong>Blue Water Inn:</strong> Run by wereravens, safe haven</li>
+                                <li><strong>Burgomaster's Mansion:</strong> Extravagant home of Vargas Vallakovich</li>
+                                <li><strong>St. Andral's Church:</strong> Site of sacred bones that repel Strahd</li>
+                                <li><strong>Coffin Maker's Shop:</strong> Hides vampire spawn in attic</li>
+                                <li><strong>Wachterhaus:</strong> Home of Lady Wachter's cult</li>
+                            </ul>
+                            
+                            <h3 class="box-subtitle">NOTABLE NPCs:</h3>
+                            <ul>
+                                <li><strong>Burgomaster Vargas Vallakovich:</strong> Insists on mandatory happiness</li>
+                                <li><strong>Lady Fiona Wachter:</strong> Cult leader who wants to overthrow Vargas</li>
+                                <li><strong>Father Lucian Petrovich:</strong> Keeper of St. Andral's bones</li>
+                                <li><strong>Rictavio:</strong> Van Richten in disguise</li>
+                                <li><strong>Blinsky:</strong> Mad toymaker with creepy dolls</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="box">
+                            <h3 class="box-title">VALLAKI POLITICS</h3>
+                            <p>The tension between factions:</p>
+                            
+                            <h3 class="box-subtitle">FACTIONS:</h3>
+                            <ol>
+                                <li><strong>Vallakovich Loyalists:</strong> Believe in forced happiness</li>
+                                <li><strong>Wachter Cultists:</strong> Worship Strahd secretly</li>
+                                <li><strong>Wereravens:</strong> Secretly oppose Strahd</li>
+                                <li><strong>Common Folk:</strong> Just trying to survive</li>
+                            </ol>
+                            
+                            <h3 class="box-subtitle">EVENT CHAIN:</h3>
+                            <p>Possible sequence of events:</p>
+                            <ol>
+                                <li>Festival of the Blazing Sun (mandatory celebration)</li>
+                                <li>Discovery of missing bones from church</li>
+                                <li>Vampire spawn attack at coffin maker's shop</li>
+                                <li>Wachter's coup attempt</li>
+                                <li>Strahd's eventual intervention</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="krezk" class="tab-content">
+                <div class="row">
+                    <div class="col">
+                        <div class="box">
+                            <h3 class="box-title">KREZK OVERVIEW</h3>
+                            <p>Isolated mountain village with dark secrets.</p>
+                            
+                            <h3 class="box-subtitle">KEY LOCATIONS:</h3>
+                            <ul>
+                                <li><strong>Gates:</strong> Heavily guarded against outsiders</li>
+                                <li><strong>Abbey of St. Markovia:</strong> Run by the "Abbot," a celestial gone mad</li>
+                                <li><strong>Pool in the Woods:</strong> Possible escape for Ireena</li>
+                                <li><strong>Winery:</strong> Source of Barovia's wine (when operational)</li>
+                            </ul>
+                            
+                            <h3 class="box-subtitle">NOTABLE NPCs:</h3>
+                            <ul>
+                                <li><strong>The Abbot:</strong> Deva creating flesh golem bride for Strahd</li>
+                                <li><strong>Burgomaster Dmitri Krezkov:</strong> Desperate to keep village safe</li>
+                                <li><strong>The Mongrelfolk:</strong> Abbot's failed experiments</li>
+                                <li><strong>Vasilka:</strong> Flesh golem "bride"</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="box">
+                            <h3 class="box-title">KREZK SECRETS</h3>
+                            <p>Hidden truths about the village:</p>
+                            
+                            <h3 class="box-subtitle">ABBEY SECRETS:</h3>
+                            <ol>
+                                <li>The Abbot believes he's helping Strahd find peace</li>
+                                <li>Vasilka is made from parts of dead women</li>
+                                <li>The bell tower houses a dangerous creature</li>
+                                <li>Mongrelfolk were once normal villagers</li>
+                            </ol>
+                            
+                            <h3 class="box-subtitle">POOL EVENT:</h3>
+                            <p>If Ireena reaches the pool:</p>
+                            <ul>
+                                <li>She may merge with Tatyana's spirit</li>
+                                <li>This enrages Strahd terribly</li>
+                                <li>Could trigger his direct intervention</li>
+                                <li>May provide temporary respite</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="castle-ravenloft" class="tab-content">
+                <div class="row">
+                    <div class="col">
+                        <div class="box">
+                            <h3 class="box-title">CASTLE RAVENLOFT OVERVIEW</h3>
+                            <p>Strahd's ancient fortress, filled with horrors.</p>
+                            
+                            <h3 class="box-subtitle">KEY LOCATIONS:</h3>
+                            <ul>
+                                <li><strong>Great Entrance:</strong> Massive doors with carvings of Strahd's conquests</li>
+                                <li><strong>Dining Hall:</strong> Set for a feast with rotten food</li>
+                                <li><strong>Heart of Sorrow:</strong> Crystal heart that absorbs damage for Strahd</li>
+                                <li><strong>Crypts:</strong> Final resting place of Strahd's family</li>
+                                <li><strong>Spires:</strong> Highest points with terrifying drops</li>
+                            </ul>
+                            
+                            <h3 class="box-subtitle">NOTABLE NPCs:</h3>
+                            <ul>
+                                <li><strong>Rahadin:</strong> Strahd's loyal chamberlain</li>
+                                <li><strong>Cyrus Belview:</strong> Mongrelfolk servant</li>
+                                <li><strong>The Brides:</strong> Strahd's vampire spawn consorts</li>
+                                <li><strong>Patrina Velikovna:</strong> Ghost of a powerful spellcaster</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="box">
+                            <h3 class="box-title">CASTLE FEATURES</h3>
+                            <p>Unique aspects of Ravenloft:</p>
+                            
+                            <h3 class="box-subtitle">SUPERNATURAL EFFECTS:</h3>
+                            <ol>
+                                <li><strong>Shifting Architecture:</strong> Rooms move when unobserved</li>
+                                <li><strong>Echoes of the Past:</strong> Phantom sounds of long-ago events</li>
+                                <li><strong>Living Shadows:</strong> Dark corners move independently</li>
+                                <li><strong>Strahd's Eyes:</strong> Portraits and statues seem to watch</li>
+                            </ol>
+                            
+                            <h3 class="box-subtitle">STRATEGIC POINTS:</h3>
+                            <ul>
+                                <li><strong>Heart of Sorrow:</strong> Destroying it weakens Strahd</li>
+                                <li><strong>Holy Symbol:</strong> Hidden in mother's tomb</li>
+                                <li><strong>Sunsword:</strong> May be in Vladimir's crypt</li>
+                                <li><strong>Strahd's Tomb:</strong> Where he rests during the day</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Curse Removal & Revenant Resurrection -->
+    <h2 class="section-title" id="curse-removal">CURSE REMOVAL</h2>
+    <div class="collapsible-content">
         <div class="row">
             <div class="col">
                 <div class="box">
                     <h3 class="box-title">REMOVE CURSE</h3>
                     <h3 class="box-subtitle">REMOVE CURSE DC TABLE:</h3>
-                    <ul>
-                        <li>Most Curses - DC 15</li>
-                        <li>Vistani Curses - DC 16-20</li>
-                        <li>Lycanthropy - DC 30</li>
-                    </ul>
+<ul>
+    <li>Most <span class="tooltip">Curses<span class="tooltiptext">Magical afflictions that typically require Remove Curse or similar magic to eliminate.</span></span> - DC 15</li>
+    <li>Vistani Curses - DC 16-20</li>
+    <li><span class="tooltip">Lycanthropy<span class="tooltiptext">The affliction of being a werecreature. In Barovia, it's particularly difficult to cure.</span></span> - DC 30</li>
+</ul>
                     
                     <h3 class="box-subtitle">SPECIAL RULE:</h3>
                     <p>Spellcaster must make ability check with spellcasting ability. On natural 1, suffer 1d12 psychic damage and can't cast remove curse until after a long rest.</p>
@@ -664,44 +1692,23 @@
                         <li>Unsightly: Disadvantage on Persuasion/Animal Handling/Performance, advantage on Intimidation</li>
                         <li>Death: At 0 HP, die permanently and become DM-controlled ghost</li>
                     </ul>
-
-                    <h3 class="box-subtitle">DARK GIFTS (d6):</h3>
-                    <ol>
-                        <li><strong>Vampiric Hunger:</strong> Heal 1d6 HP when you deal killing blow to living humanoid. Lose 1 max HP/day until you feed.</li>
-                        <li><strong>Shadow Pact:</strong> Gain <em>Misty Step</em> 1/day. Each use turns your eyes blacker permanently.</li>
-                        <li><strong>Hag's Deal:</strong> Advantage on INT saves. Your laughter occasionally sounds like a hag's cackle.</li>
-                        <li><strong>Werewolf's Fury:</strong> +2 damage to melee attacks. Moonlight reveals your eyes glow amber.</li>
-                        <li><strong>Ghostly Whispers:</strong> Understand all languages. Hear distant sobbing when alone.</li>
-                        <li><strong>Strahd's Favor:</strong> +1 to CHA saves. Your shadow sometimes moves independently.</li>
-                    </ol>
-                    <p><em>Rules:</em> Offer after character death or when a PC fails 3 death saves. Reversible only by <em>Remove Curse</em> + quest.</p>
                 </div>
             </div>
         </div>
-        
-        <!-- Vistani Abilities & Random Encounters -->
-        <h2 class="section-title" id="vistani">VISTANI ABILITIES</h2>
+    </div>
+    
+    <!-- Vistani Abilities & Random Encounters -->
+    <h2 class="section-title" id="vistani">VISTANI ABILITIES</h2>
+    <div class="collapsible-content">
         <div class="row">
             <div class="col">
                 <div class="box">
                     <h3 class="box-title">VISTANI CURSES</h3>
-                    <p>Vistani can curse those who wrong them (WIS save, DC = 8 + prof + CHA). Removing curses deals psychic backlash (1d6-5d6 depending on severity).</p>
+                    <p>Vistani can curse those who wrong them (<span class="tooltip">WIS save<span class="tooltiptext">Wisdom saving throws represent resistance to mental influence and effects that would cloud your judgement or perception.</span></span>, DC = 8 + prof + CHA). Removing curses deals <span class="tooltip">psychic backlash<span class="tooltiptext">Psychic damage represents mental trauma and typically can't be reduced by armor.</span></span> (1d6-5d6 depending on severity).</p>
                     <p><em>Examples:</em> Prevent fine motor skills, cosmetic changes, item disappearance, vulnerability to damage type, disadvantage on ability checks, end attunement, blindness/deafness.</p>
                     
                     <h3 class="box-subtitle">EVIL EYE:</h3>
                     <p>10ft range, duplicates animal friendship, charm person, or hold person (CHA-based save DC). On save, Vistana blinded until end of next turn.</p>
-
-                    <div class="box" style="margin-top: 25px;">
-                        <h3 class="box-title">STRAHD'S CHESSBOARD</h3>
-                        <p>Strahd manipulates players by:</p>
-                        <ul>
-                            <li><strong>Seeding Mistrust:</strong> Forged letters "from allies" with false warnings.</li>
-                            <li><strong>False Safety:</strong> Lets players "overhear" his plans (50% are traps).</li>
-                            <li><strong>Petty Cruelty:</strong> Burns down a shelter after they upgrade it.</li>
-                            <li><strong>Gifts with Hooks:</strong> Magic items that report their location.</li>
-                        </ul>
-                        <p><em>Rule:</em> Never more than 1 major manipulation per 2 sessions.</p>
-                    </div>
                 </div>
             </div>
             <div class="col">
@@ -713,60 +1720,71 @@
                         <li>Road: Encounter on d20 roll of 18+</li>
                         <li>Wilderness: Encounter on d20 roll of 15+</li>
                     </ul>
-                    
-                    <h3 class="box-subtitle">DAYTIME ENCOUNTERS (d12 + d8):</h3>
-                    <table>
-                        <tr><th>Roll</th><th>Encounter</th></tr>
-                        <tr><td>2</td><td>3d6 commoners fleeing something</td></tr>
-                        <tr><td>3</td><td>1d6 scouts from Vallaki</td></tr>
-                        <tr><td>4</td><td>Hunting trap (DC 15 Perception to spot)</td></tr>
-                        <tr><td>5</td><td>Fresh grave with disturbed earth</td></tr>
-                        <tr><td>6</td><td>False trail leading to ambush</td></tr>
-                        <tr><td>7</td><td>1d4 + 1 Vistani bandits</td></tr>
-                        <tr><td>8</td><td>Skeletal rider on nightmare steed</td></tr>
-                        <tr><td>9</td><td>Strange trinket in road (roll on trinket table)</td></tr>
-                        <tr><td>10</td><td>Hidden bundle containing 1d4 severed fingers</td></tr>
-                        <tr><td>11</td><td>1d4 swarm of ravens (50%) or 1 wereraven (50%)</td></tr>
-                        <tr><td>12</td><td>1d6 dire wolves stalking prey</td></tr>
-                        <tr><td>13</td><td>3d6 wolves howling in distance</td></tr>
-                        <tr><td>14</td><td>1d4 berserkers covered in blood</td></tr>
-                        <tr><td>15</td><td>Corpse with face frozen in terror</td></tr>
-                        <tr><td>16</td><td>1d6 werewolves in human form</td></tr>
-                        <tr><td>17</td><td>1 druid with 2d6 twig blights</td></tr>
-                        <tr><td>18</td><td>2d4 needle blights disguised as shrubs</td></tr>
-                        <tr><td>19</td><td>1d6 scarecrows that turn to watch you pass</td></tr>
-                        <tr><td>20</td><td>1 revenant seeking vengeance</td></tr>
-                    </table>
-
-                    <h3 class="box-subtitle">NIGHTTIME ENCOUNTERS (d12 + d8):</h3>
-                    <table>
-                        <tr><th>Roll</th><th>Encounter</th></tr>
-                        <tr><td>2</td><td>1 ghost of a murdered child</td></tr>
-                        <tr><td>3</td><td>Hunting trap baited with rotting meat</td></tr>
-                        <tr><td>4</td><td>Grave being dug by shadowy figures</td></tr>
-                        <tr><td>5</td><td>Cursed trinket that whispers</td></tr>
-                        <tr><td>6</td><td>Corpse that sits up as you pass</td></tr>
-                        <tr><td>7</td><td>Hidden bundle containing a still-beating heart</td></tr>
-                        <tr><td>8</td><td>Skeletal rider dragging chains</td></tr>
-                        <tr><td>9</td><td>1d8 swarm of bats that circle ominously</td></tr>
-                        <tr><td>10</td><td>1d6 dire wolves with glowing red eyes</td></tr>
-                        <tr><td>11</td><td>3d6 wolves that howl your name</td></tr>
-                        <tr><td>12</td><td>1d4 berserkers in bloodstained robes</td></tr>
-                        <tr><td>13</td><td>1 druid and 2d6 twig blights that mimic screams</td></tr>
-                        <tr><td>14</td><td>2d4 needle blights that drip sap like blood</td></tr>
-                        <tr><td>15</td><td>1d6 werewolves in wolf form</td></tr>
-                        <tr><td>16</td><td>3d6 zombies in funeral attire</td></tr>
-                        <tr><td>17</td><td>1d6 scarecrows that move when not observed</td></tr>
-                        <tr><td>18</td><td>1d8 Strahd zombies with personalized torment</td></tr>
-                        <tr><td>19</td><td>1 will-o'-wisp leading to danger</td></tr>
-                        <tr><td>20</td><td>1 revenant with unfinished business</td></tr>
-                    </table>
                 </div>
             </div>
         </div>
         
-        <!-- Barovian Calendar -->
-        <h2 class="section-title" id="calendar">BAROVIAN CALENDAR & DOMAIN</h2>
+        <div class="row">
+            <div class="col">
+                <div class="box">
+                    <h3 class="box-title">DAYTIME ENCOUNTERS (d12 + d8):</h3>
+                    <table>
+                        <tr><th>Roll</th><th>Encounter</th><th></th></tr>
+                        <tr><td>2</td><td>3d6 commoners fleeing something</td><td><button class="roll-button" onclick="rollDice('3d6')">Roll</button></td></tr>
+                        <tr><td>3</td><td>1d6 scouts from Vallaki</td><td><button class="roll-button" onclick="rollDice('1d6')">Roll</button></td></tr>
+                        <tr><td>4</td><td>Hunting trap (DC 15 Perception to spot)</td><td></td></tr>
+                        <tr><td>5</td><td>Fresh grave with disturbed earth</td><td></td></tr>
+                        <tr><td>6</td><td>False trail leading to ambush</td><td></td></tr>
+                        <tr><td>7</td><td>1d4 + 1 Vistani bandits</td><td><button class="roll-button" onclick="rollDice('1d4+1')">Roll</button></td></tr>
+                        <tr><td>8</td><td>Skeletal rider on nightmare steed</td><td></td></tr>
+                        <tr><td>9</td><td>Strange trinket in road (roll on trinket table)</td><td></td></tr>
+                        <tr><td>10</td><td>Hidden bundle containing 1d4 severed fingers</td><td><button class="roll-button" onclick="rollDice('1d4')">Roll</button></td></tr>
+                        <tr><td>11</td><td>1d4 swarm of ravens (50%) or 1 wereraven (50%)</td><td><button class="roll-button" onclick="rollDice('1d4')">Roll</button></td></tr>
+                        <tr><td>12</td><td>1d6 dire wolves stalking prey</td><td><button class="roll-button" onclick="rollDice('1d6')">Roll</button></td></tr>
+                        <tr><td>13</td><td>3d6 wolves howling in distance</td><td><button class="roll-button" onclick="rollDice('3d6')">Roll</button></td></tr>
+                        <tr><td>14</td><td>1d4 berserkers covered in blood</td><td><button class="roll-button" onclick="rollDice('1d4')">Roll</button></td></tr>
+                        <tr><td>15</td><td>Corpse with face frozen in terror</td><td></td></tr>
+                        <tr><td>16</td><td>1d6 werewolves in human form</td><td><button class="roll-button" onclick="rollDice('1d6')">Roll</button></td></tr>
+                        <tr><td>17</td><td>1 druid with 2d6 twig blights</td><td><button class="roll-button" onclick="rollDice('2d6')">Roll</button></td></tr>
+                        <tr><td>18</td><td>2d4 needle blights disguised as shrubs</td><td><button class="roll-button" onclick="rollDice('2d4')">Roll</button></td></tr>
+                        <tr><td>19</td><td>1d6 scarecrows that turn to watch you pass</td><td><button class="roll-button" onclick="rollDice('1d6')">Roll</button></td></tr>
+                        <tr><td>20</td><td>1 revenant seeking vengeance</td><td></td></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col">
+                <div class="box">
+                    <h3 class="box-title">NIGHTTIME ENCOUNTERS (d12 + d8):</h3>
+                    <table>
+                        <tr><th>Roll</th><th>Encounter</th><th></th></tr>
+                        <tr><td>2</td><td>1 ghost of a murdered child</td><td></td></tr>
+                        <tr><td>3</td><td>Hunting trap baited with rotting meat</td><td></td></tr>
+                        <tr><td>4</td><td>Grave being dug by shadowy figures</td><td></td></tr>
+                        <tr><td>5</td><td>Cursed trinket that whispers</td><td></td></tr>
+                        <tr><td>6</td><td>Corpse that sits up as you pass</td><td></td></tr>
+                        <tr><td>7</td><td>Hidden bundle containing a still-beating heart</td><td></td></tr>
+                        <tr><td>8</td><td>Skeletal rider dragging chains</td><td></td></tr>
+                        <tr><td>9</td><td>1d8 swarm of bats that circle ominously</td><td><button class="roll-button" onclick="rollDice('1d8')">Roll</button></td></tr>
+                        <tr><td>10</td><td>1d6 dire wolves with glowing red eyes</td><td><button class="roll-button" onclick="rollDice('1d6')">Roll</button></td></tr>
+                        <tr><td>11</td><td>3d6 wolves that howl your name</td><td><button class="roll-button" onclick="rollDice('3d6')">Roll</button></td></tr>
+                        <tr><td>12</td><td>1d4 berserkers in bloodstained robes</td><td><button class="roll-button" onclick="rollDice('1d4')">Roll</button></td></tr>
+                        <tr><td>13</td><td>1 druid and 2d6 twig blights that mimic screams</td><td><button class="roll-button" onclick="rollDice('2d6')">Roll</button></td></tr>
+                        <tr><td>14</td><td>2d4 needle blights that drip sap like blood</td><td><button class="roll-button" onclick="rollDice('2d4')">Roll</button></td></tr>
+                        <tr><td>15</td><td>1d6 werewolves in wolf form</td><td><button class="roll-button" onclick="rollDice('1d6')">Roll</button></td></tr>
+                        <tr><td>16</td><td>3d6 zombies in funeral attire</td><td><button class="roll-button" onclick="rollDice('3d6')">Roll</button></td></tr>
+                        <tr><td>17</td><td>1d6 scarecrows that move when not observed</td><td><button class="roll-button" onclick="rollDice('1d6')">Roll</button></td></tr>
+                        <tr><td>18</td><td>1d8 Strahd zombies with personalized torment</td><td><button class="roll-button" onclick="rollDice('1d8')">Roll</button></td></tr>
+                        <tr><td>19</td><td>1 will-o'-wisp leading to danger</td><td></td></tr>
+                        <tr><td>20</td><td>1 revenant with unfinished business</td><td></td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Barovian Calendar -->
+    <h2 class="section-title" id="calendar">BAROVIAN CALENDAR & DOMAIN</h2>
+    <div class="collapsible-content">
         <div class="row">
             <div class="col">
                 <div class="box">
@@ -801,13 +1819,13 @@
                                 <li><strong>The Devil Strahd:</strong> Vampire lord who dwells in Castle Ravenloft - none enter without invitation</li>
                                 <li><strong>Ancestral Sin:</strong> Barovians believe Strahd is punishment for their ancestors' forgotten sins</li>
                                 <li><strong>Vampire Weaknesses:</strong> Can't enter homes uninvited, harmed by running water/sunlight</li>
-                                <li><strong>The Mists:</strong> Those who try to leave choke on the fog and perish if they continue</li>
+                                <li><strong>The <span class="tooltip">Mists<span class="tooltiptext">The magical fog surrounding Barovia that prevents escape and brings new victims into the domain.</span></span>:</strong> Those who try to leave choke on the fog and perish if they continue</li>
                                 <li><strong>Outsiders:</strong> Many strangers come to Barovia but all die or disappear quickly</li>
                                 <li><strong>Wildlife:</strong> Wolves and bats serve as Strahd's spies</li>
                                 <li><strong>Settlements:</strong> Three main villages along Old Svalich Road (Barovia, Vallaki, Krezk)</li>
                                 <li><strong>Wine:</strong> Lifeblood of Barovia from Wizard of Wines winery</li>
                                 <li><strong>Mad Wizard:</strong> Powerful outsider in Mount Baratok who opposes Strahd</li>
-                                <li><strong>The Soulless:</strong> Many Barovians lack souls - they're empty, joyless shells</li>
+                                <li><strong><span class="tooltip">The Soulless<span class="tooltiptext">Many Barovians lack true souls - they're empty, emotionless shells going through the motions of life.</span></span>:</strong> Many Barovians lack souls - they're empty, joyless shells</li>
                             </ul>
 
                             <h3 class="box-subtitle">NPC QUIRKS (d6):</h3>
@@ -853,9 +1871,11 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Visceral Descriptors -->
-        <h2 class="section-title" id="descriptors">VISERAL DESCRIPTORS</h2>
+    <!-- Visceral Descriptors -->
+    <h2 class="section-title" id="descriptors">VISERAL DESCRIPTORS</h2>
+    <div class="collapsible-content">
         <div class="row">
             <div class="col">
                 <div class="box">
@@ -921,5 +1941,133 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+</div>
+
+<button class="dark-mode-toggle" onclick="toggleDarkMode()">☀️</button>
+
+<script>
+    // Collapsible sections
+    document.querySelectorAll('.section-title').forEach(title => {
+        title.addEventListener('click', () => {
+            const content = title.nextElementSibling;
+            content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+        });
+    });
+    
+    // Tab system
+    function openTab(evt, tabName) {
+        const tabContents = document.getElementsByClassName('tab-content');
+        for (let i = 0; i < tabContents.length; i++) {
+            tabContents[i].classList.remove('active');
+        }
+        
+        const tabButtons = document.getElementsByClassName('tab-button');
+        for (let i = 0; i < tabButtons.length; i++) {
+            tabButtons[i].classList.remove('active');
+        }
+        
+        document.getElementById(tabName).classList.add('active');
+        evt.currentTarget.classList.add('active');
+    }
+    
+    // Search functionality
+    document.getElementById('search-input').addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        if (searchTerm.length < 3) {
+            removeHighlights();
+            return;
+        }
+        
+        removeHighlights();
+        
+        const textNodes = [];
+        const walker = document.createTreeWalker(
+            document.body,
+            NodeFilter.SHOW_TEXT,
+            null,
+            false
+        );
+        
+        let node;
+        while (node = walker.nextNode()) {
+            if (node.nodeValue.trim() !== '') {
+                textNodes.push(node);
+            }
+        }
+        
+        textNodes.forEach(textNode => {
+            const content = textNode.nodeValue;
+            const index = content.toLowerCase().indexOf(searchTerm);
+            
+            if (index !== -1) {
+                const parent = textNode.parentNode;
+                if (parent.childNodes.length === 1 && parent.nodeName !== 'SCRIPT' && parent.nodeName !== 'STYLE') {
+                    const newContent = content.substring(0, index) +
+                        '<span class="highlight">' +
+                        content.substring(index, index + searchTerm.length) +
+                        '</span>' +
+                        content.substring(index + searchTerm.length);
+                    
+                    const newElement = document.createElement('span');
+                    newElement.innerHTML = newContent;
+                    parent.replaceWith(newElement);
+                }
+            }
+        });
+    });
+    
+    function removeHighlights() {
+        const highlights = document.querySelectorAll('.highlight');
+        highlights.forEach(highlight => {
+            const parent = highlight.parentNode;
+            parent.replaceWith(parent.textContent);
+        });
+    }
+    
+    // Quick roll buttons
+    function rollDice(dice) {
+        const [numDice, numSides] = dice.split('d');
+        let result = 0;
+        let rolls = [];
+        
+        if (dice.includes('+')) {
+            const parts = dice.split('+');
+            const bonus = parseInt(parts[1]);
+            const [d, s] = parts[0].split('d');
+            
+            for (let i = 0; i < parseInt(d); i++) {
+                const roll = Math.floor(Math.random() * parseInt(s)) + 1;
+                rolls.push(roll);
+                result += roll;
+            }
+            
+            result += bonus;
+            alert(`Rolled ${dice}: ${rolls.join(' + ')} + ${bonus} = ${result}`);
+        } else {
+            for (let i = 0; i < parseInt(numDice); i++) {
+                const roll = Math.floor(Math.random() * parseInt(numSides)) + 1;
+                rolls.push(roll);
+                result += roll;
+            }
+            
+            if (numDice > 1) {
+                alert(`Rolled ${dice}: ${rolls.join(' + ')} = ${result}`);
+            } else {
+                alert(`Rolled ${dice}: ${result}`);
+            }
+        }
+    }
+    
+    // Dark mode toggle
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const button = document.querySelector('.dark-mode-toggle');
+        if (document.body.classList.contains('dark-mode')) {
+            button.textContent = '🌙';
+        } else {
+            button.textContent = '☀️';
+        }
+    }
+    
+
+</script>
