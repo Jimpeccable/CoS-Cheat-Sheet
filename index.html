@@ -1065,7 +1065,7 @@ body.dark-mode .sidebar {
                             <li><strong>Fabricated Evidence:</strong> Letters or items appear with false information</li>
                         </ol>
                         
-                        <h3 class="box-subtitle">STRAHD'S MESSAGES (d6):</h3>
+                        <h3 class="box-subtitle">STRAHD'S MESSAGES (d6): <button class="roll-button" onclick="rollDice('1d6')">Roll</button></h3>
                         <ol>
                             <li><strong>"I tasted your fear last night."</strong> PC wakes with two puncture wounds but no HP loss.</li>
                             <li><strong>Blood-written note:</strong> "Your [loved one] begged for mercy. They lied." (No proof this happened)</li>
@@ -1311,16 +1311,22 @@ body.dark-mode .sidebar {
             <div class="box">
                 <h3 class="box-subtitle">SUFFOCATION:</h3>
                 <ul>
-                    <li><strong>Hold Breath:</strong> 1 + CON mod minutes (min. 30 sec).</li>
-                    <li><strong>Choking:</strong> +1 Exhaustion level/turn until air is restored.</li>
-                    <li><strong>Barovian Examples:</strong> Swamps, crypts, Strahd’s telekinetic strangulation.</li>
+                    <li><strong>Hold Breath:</strong> 1 + CON mod minutes (min. 30 sec). <em>Struggling in Barovia's choking fog or Strahd's grasp.</em></li>
+                    <li><strong>Choking:</strong> +1 Exhaustion level/turn until air is restored. <em>Vampire spawn dragging victims underwater.</em></li>
+                    <li><strong>Barovian Examples:</strong> Swamps of Berez, crypts beneath Castle Ravenloft, Strahd’s telekinetic strangulation.</li>
                 </ul>
                 
                 <h3 class="box-subtitle">BURNING:</h3>
                 <ul>
-                    <li><strong>On Fire:</strong> 1d4 fire damage/start of turn until doused.</li>
-                    <li><strong>Dousing:</strong> Action to roll prone + DC 10 DEX check.</li>
-                    <li><strong>Barovian Examples:</strong> Burning buildings, oil traps, <em>Wall of Fire</em>.</li>
+                    <li><strong>On Fire:</strong> 1d4 fire damage/start of turn until doused. <em>Flames spread unnaturally fast in Barovia.</em></li>
+                    <li><strong>Dousing:</strong> Action to roll prone + DC 10 DEX check. <em>Panicked flailing rarely helps.</em></li>
+                    <li><strong>Barovian Examples:</strong> Burning windmill in Vallaki, oil traps in the Amber Temple, <em>Wall of Fire</em> from Strahd’s spells.</li>
+                </ul>
+
+                <h3 class="box-subtitle">POISONOUS MISTS:</h3>
+                <ul>
+                    <li><strong>Inhaled Toxins:</strong> CON save DC 12 or take 1d6 poison damage and become Poisoned for 1 hour. <em>The land itself rejects the living.</em></li>
+                    <li><strong>Barovian Examples:</strong> Death House’s basement, the swamps near Argynvostholt, Strahd’s cursed vineyards.</li>
                 </ul>
             </div>
         </div>
@@ -1328,17 +1334,24 @@ body.dark-mode .sidebar {
             <div class="box">
                 <h3 class="box-subtitle">FALLING:</h3>
                 <ul>
-                    <li><strong>Damage:</strong> 1d6 per 10 ft. (max 20d6). Prone if damage taken.</li>
-                    <li><strong>Liquid Landing:</strong> Reaction DC 15 STR/DEX save to halve damage.</li>
-                    <li><strong>Barovian Examples:</strong> Ravenloft’s cliffs, elevator traps, bridge collapses.</li>
+                    <li><strong>Damage:</strong> 1d6 per 10 ft. (max 20d6). Prone if damage taken. <em>Ravenloft’s heights are unforgiving.</em></li>
+                    <li><strong>Liquid Landing:</strong> Reaction DC 15 STR/DEX save to halve damage. <em>The River Ivlis is cold and treacherous.</em></li>
+                    <li><strong>Barovian Examples:</strong> Ravenloft’s crumbling towers, elevator traps in the castle, the broken bridge to Tsolenka Pass.</li>
                 </ul>
                 
                 <h3 class="box-subtitle">IMPROVISED DAMAGE:</h3>
                 <ul>
-                    <li><strong>Burning Coals:</strong> 5 (1d10) fire</li>
-                    <li><strong>Vat of Acid:</strong> 22 (4d10) acid</li>
-                    <li><strong>Crushed by Rubble:</strong> 55 (10d10) bludgeoning</li>
-                    <li><strong>Barovian Examples:</strong> Falling chandeliers, animated furniture.</li>
+                    <li><strong>Burning Coals:</strong> 5 (1d10) fire. <em>Baba Lysaga’s hearth or the Amber Temple’s braziers.</em></li>
+                    <li><strong>Vat of Acid:</strong> 22 (4d10) acid. <em>The Abbot’s "experiments" or alchemical mishaps.</em></li>
+                    <li><strong>Crushed by Rubble:</strong> 55 (10d10) bludgeoning. <em>Strahd collapsing a tunnel or animated statues.</em></li>
+                    <li><strong>Barovian Examples:</strong> Falling chandeliers in Ravenloft’s dining hall, animated furniture in Death House.</li>
+                </ul>
+
+                <h3 class="box-subtitle">CURSED TERRAIN:</h3>
+                <ul>
+                    <li><strong>Bloodthorn Vines:</strong> 2d6 piercing damage per 5 ft. moved through. <em>The land hungers for blood.</em></li>
+                    <li><strong>Haunted Ground:</strong> WIS save DC 13 or be Frightened. <em>Whispers of the dead rise from the soil.</em></li>
+                    <li><strong>Barovian Examples:</strong> The Svalich Woods, the graveyard of Barovia Village, the ruins of Berez.</li>
                 </ul>
             </div>
         </div>
@@ -1353,17 +1366,26 @@ body.dark-mode .sidebar {
             <div class="box">
                 <h3 class="box-subtitle">ACTIONS IN COMBAT:</h3>
                 <ul>
-                    <li><strong>Grapple:</strong> STR/DEX vs. DC 8+PB+STR. Target must be ≤1 size larger.</li>
-                    <li><strong>Shove:</strong> Push 5 ft. or knock Prone (same DC).</li>
-                    <li><strong>Ready:</strong> Prepare action/spell (requires Concentration).</li>
-                    <li><strong>Hide:</strong> DC 15 Stealth (must be obscured). Grants Invisible.</li>
+                    <li><strong>Grapple:</strong> STR/DEX vs. DC 8+PB+STR. Target must be ≤1 size larger. <em>Useful for vampire spawn dragging victims into shadows.</em></li>
+                    <li><strong>Shove:</strong> Push 5 ft. or knock Prone (same DC). <em>Knock foes into Barovian pitfalls or off Ravenloft’s bridges.</em></li>
+                    <li><strong>Ready:</strong> Prepare action/spell (requires Concentration). <em>Ambush Strahd’s minions from behind cover.</em></li>
+                    <li><strong>Hide:</strong> DC 15 Stealth (must be obscured). Grants Invisible. <em>Barovia’s fog and ruins provide ample hiding spots.</em></li>
+                    <li><strong>Disengage:</strong> Avoid opportunity attacks. <em>Essential for fleeing werewolves or swarms of bats.</em></li>
+                    <li><strong>Dodge:</strong> Enemies have Disadv. on attacks vs you. <em>Survive Strahd’s multiattacks.</em></li>
                 </ul>
                 
                 <h3 class="box-subtitle">COVER:</h3>
                 <ul>
-                    <li><strong>½ Cover:</strong> +2 AC/DEX saves (tables, low walls).</li>
-                    <li><strong>¾ Cover:</strong> +5 AC/DEX saves (arrow slits, dense fog).</li>
-                    <li><strong>Total Cover:</strong> Cannot be targeted (fully behind wall).</li>
+                    <li><strong>½ Cover:</strong> +2 AC/DEX saves (tables, low walls). <em>Barovian tavern brawls or cemetery tombstones.</em></li>
+                    <li><strong>¾ Cover:</strong> +5 AC/DEX saves (arrow slits, dense fog). <em>Ravenloft’s arrow loops or mist-shrouded trees.</em></li>
+                    <li><strong>Total Cover:</strong> Cannot be targeted (fully behind wall). <em>Peeking from behind castle pillars.</em></li>
+                </ul>
+
+                <h3 class="box-subtitle">UNDEAD TRAITS:</h3>
+                <ul>
+                    <li><strong>Turn Undead:</strong> Wis save or flee for 1 min (Cleric feature). <em>Zombies and ghosts recoil from holy symbols.</em></li>
+                    <li><strong>Sunlight Hypersensitivity:</strong> Disadv. on attacks/checks in sunlight. <em>Strahd’s spawn burn in the (rare) Barovian sun.</em></li>
+                    <li><strong>Regeneration:</strong> Some undead heal unless hit by radiant/fire. <em>Strahd laughs as wounds close in the gloom.</em></li>
                 </ul>
             </div>
         </div>
@@ -1371,16 +1393,28 @@ body.dark-mode .sidebar {
             <div class="box">
                 <h3 class="box-subtitle">CONDITION QUICK REFERENCE:</h3>
                 <ul>
-                    <li><strong>Restrained:</strong> Speed 0, Disadv. on attacks/DEX saves.</li>
-                    <li><strong>Invisible:</strong> Adv. on attacks, Disadv. vs. attacks.</li>
-                    <li><strong>Frightened:</strong> Disadv. on checks/attacks; can’t move closer.</li>
+                    <li><strong>Restrained:</strong> Speed 0, Disadv. on attacks/DEX saves. <em>Webs in Berez or Strahd’s telekinesis.</em></li>
+                    <li><strong>Invisible:</strong> Adv. on attacks, Disadv. vs. attacks. <em>Strahd’s favorite trick—strike from nowhere.</em></li>
+                    <li><strong>Frightened:</strong> Disadv. on checks/attacks; can’t move closer. <em>Strahd’s aura or a ghost’s terrifying visage.</em></li>
+                    <li><strong>Charmed:</strong> Can’t harm the charmer, who has Adv. on social checks. <em>Strahd’s hypnotic gaze or a vampire’s seduction.</em></li>
+                    <li><strong>Poisoned:</strong> Disadv. on attacks/checks. <em>Hag brews or swamp gases.</em></li>
+                    <li><strong>Exhaustion:</strong> Cumulative penalties (death at Level 6). <em>Barovia’s oppressive dread wears you down.</em></li>
                 </ul>
                 
                 <h3 class="box-subtitle">STRAHD-SPECIFIC TACTICS:</h3>
                 <ul>
-                    <li><strong>Hit-and-Run:</strong> Use <em>Invisibility</em> + <em>Grapple</em> (via minions).</li>
-                    <li><strong>Environmental Kills:</strong> Shove PCs off cliffs (falling damage).</li>
-                    <li><strong>Charm:</strong> Target isolated PCs (Disadv. on saves in darkness).</li>
+                    <li><strong>Hit-and-Run:</strong> Use <em>Invisibility</em> + <em>Grapple</em> (via minions). <em>Strahd toys with prey before striking.</em></li>
+                    <li><strong>Environmental Kills:</strong> Shove PCs off cliffs (falling damage). <em>The castle’s heights are deadly.</em></li>
+                    <li><strong>Charm:</strong> Target isolated PCs (Disadv. on saves in darkness). <em>Divide the party, then feast.</em></li>
+                    <li><strong>Lair Actions:</strong> Animate objects, seal doors, or summon mist. <em>Ravenloft itself obeys Strahd’s will.</em></li>
+                    <li><strong>Regeneration:</strong> Heals 20 HP/round unless in sunlight. <em>Holy water and radiant spells are key.</em></li>
+                </ul>
+
+                <h3 class="box-subtitle">BAROVIAN HAZARDS:</h3>
+                <ul>
+                    <li><strong>Misty Escape:</strong> Strahd turns to mist when reduced to 0 HP. <em>He reforms in his coffin—destroy it to kill him.</em></li>
+                    <li><strong>Soul Drain:</strong> Shadows/Wraiths reduce STR score. <em>Victims become hollow shells.</em></li>
+                    <li><strong>Haunted Terrain:</strong> Animated vines, grasping hands. <em>The land itself hungers.</em></li>
                 </ul>
             </div>
         </div>
@@ -1716,34 +1750,178 @@ body.dark-mode .sidebar {
         </div>
     </div>
 
-   <!-- Mundane Light Sources -->
+<!-- Mundane Light Sources -->
 <h2 class="section-title" id="light">MUNDANE LIGHT SOURCES</h2>
 <div class="collapsible-content">
     <div class="box">
         <h3 class="box-title">LIGHT SOURCE TABLE</h3>
         <table>
-            <tr><th>Item</th><th>Bright (Dim) Radius</th><th>Duration</th></tr>
-            <tr><td>Candle</td><td>5 ft. (5 ft.)</td><td>1 hour</td></tr>
-            <tr><td>Torch</td><td>20 ft. (20 ft.)</td><td>1 hour</td></tr>
-            <tr><td>Lantern (Hooded)</td><td>30 ft. (30 ft.)</td><td>6 hours</td></tr>
-            <tr><td>Lantern (Bullseye)</td><td>60 ft. cone (60 ft.)</td><td>6 hours</td></tr>
-            <tr><td>Oil Flask (poured & lit)</td><td>10 ft. (10 ft.)</td><td>6 rounds</td></tr>
+            <tr>
+                <th>Item</th>
+                <th>Bright (Dim) Radius</th>
+                <th>Duration</th>
+                <th>Description</th>
+                <th>Barovian Notes</th>
+            </tr>
+            
+            <!-- Candle -->
+            <tr>
+                <td><strong>Candle</strong></td>
+                <td>5 ft. (5 ft.)</td>
+                <td>1 hour</td>
+                <td>A flickering flame barely holding back the oppressive dark. Wax drips like tears.</td>
+                <td><em>Whispers:</em> In Barovia, candles sometimes gutter out inexplicably when Strahd is near.</td>
+            </tr>
+            
+            <!-- Torch -->
+            <tr>
+                <td><strong>Torch</strong></td>
+                <td>20 ft. (20 ft.)</td>
+                <td>1 hour</td>
+                <td>A resin-soaked brand casting dancing shadows. Smoke stings the eyes.</td>
+                <td><em>Dread:</em> Wolves are drawn to torchlight. Roll for random encounters at +2.</td>
+            </tr>
+            
+            <!-- Hooded Lantern -->
+            <tr>
+                <td><strong>Lantern (Hooded)</strong></td>
+                <td>30 ft. (30 ft.)</td>
+                <td>6 hours</td>
+                <td>A shuttered beacon, its glow steady but feeble against the mist.</td>
+                <td><em>Safe Haven:</em> Vistani caravans use these to mark safe paths. Others might attract hags.</td>
+            </tr>
+            
+            <!-- Bullseye Lantern -->
+            <tr>
+                <td><strong>Lantern (Bullseye)</strong></td>
+                <td>60 ft. cone (60 ft.)</td>
+                <td>6 hours</td>
+                <td>A focused beam piercing the fog like a blade. Leaves the periphery darker.</td>
+                <td><em>Trade-off:</em> Advantage to spot threats ahead, but Disadvantage to notice ambushes from the sides.</td>
+            </tr>
+            
+            <!-- Oil Flask -->
+            <tr>
+                <td><strong>Oil Flask (poured & lit)</strong></td>
+                <td>10 ft. (10 ft.)</td>
+                <td>6 rounds</td>
+                <td>A desperate, sputtering fire. Burns hot but brief.</td>
+                <td><em>Last Resort:</em> The screams of burning oil mimic those of Strahd’s past victims.</td>
+            </tr>
+            
+            <!-- New: Bonefire (Homebrew) -->
+            <tr>
+                <td><strong>Bonefire</strong> (improvised)</td>
+                <td>15 ft. (15 ft.)</td>
+                <td>2 hours</td>
+                <td>A pyre of dried bones and rags. Burns with a sickly green hue.</td>
+                <td><em>Dark Power:</em> 1-in-6 chance each hour to attract a specter or will-o’-wisp.</td>
+            </tr>
+            
+            <!-- New: Church Candle -->
+            <tr>
+                <td><strong>Church Candle</strong> (blessed)</td>
+                <td>10 ft. (10 ft.)</td>
+                <td>3 hours</td>
+                <td>Wax infused with incense. The flame resists supernatural winds.</td>
+                <td><em>Sacred:</em> Undead avoid its light unless commanded by Strahd (WIS save DC 13 to approach).</td>
+            </tr>
         </table>
+        
+        <div class="box-subtitle" style="margin-top: 15px;">
+            <h3>BAROVIAN LIGHT RULES</h3>
+            <ul>
+                <li><strong>The Mists:</strong> Dim light becomes heavily obscured beyond 30 ft.</li>
+                <li><strong>Strahd’s Presence:</strong> All non-magical light sources flicker (10% chance to extinguish) when he watches.</li>
+                <li><strong>Fuel Scarcity:</strong> Torches/oil cost 5x normal price in Vallaki.</li>
+            </ul>
+        </div>
     </div>
 </div>
 
-<!-- Exhaustion Tracker -->
-<h2 class="section-title" id="exhaustion">EXHAUSTION TRACKER</h2>
+<!-- Exhaustion -->
+<h2 class="section-title" id="exhaustion">EXHAUSTION</h2>
 <div class="collapsible-content">
-    <div class="box">
-        <h3 class="box-title">EXHAUSTION LEVELS</h3>
-        <table>
-            <tr><th>Level</th><th>Effect</th></tr>
-            <tr><td>1</td><td>-2 to d20 Tests</td></tr>
-            <tr><td>2</td><td>Speed -5 ft.</td></tr>
-            <tr><td>3+</td><td>Repeat levels 1 and 2. At 6: Death</td></tr>
-        </table>
-        <p><strong>Recover 1 level</strong> per Long Rest.</p>
+    <div class="row">
+        <div class="col">
+            <div class="box">
+                <h3 class="box-subtitle">EXHAUSTION LEVELS:</h3>
+                <table class="exhaustion-table">
+                    <thead>
+                        <tr>
+                            <th>Level</th>
+                            <th>d20 Test Penalty</th>
+                            <th>Speed Reduction</th>
+                            <th>Barovian Effects</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>-2</td>
+                            <td>-5 ft.</td>
+                            <td><em>Whispers of the Land:</em> Disadv. on Perception to hear Strahd’s spies.</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>-4</td>
+                            <td>-10 ft.</td>
+                            <td><em>Mists Close In:</em> -5 passive Perception; shadows seem to move.</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>-6</td>
+                            <td>-15 ft.</td>
+                            <td><em>Bone-deep Fatigue:</em> Disadv. on saves vs. Charm/Frighten.</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>-8</td>
+                            <td>-20 ft.</td>
+                            <td><em>Hollow Eyes:</em> NPCs react with fear (Disadv. on Persuasion).</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>-10</td>
+                            <td>-25 ft.</td>
+                            <td><em>Death’s Shadow:</em> Strahd gains Adv. on attack rolls vs. you.</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td colspan="2"><strong>Death</strong></td>
+                            <td><em>The Dark Powers Claim You:</em> Rises as a zombie/spawn at dusk.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <div class="box">
+                <h3 class="box-subtitle">HOW DO YOU BECOME EXHAUSTED?</h3>
+                <ul>
+                    <li><strong>Starvation:</strong> 5+ days without food (+1 level/day).</li>
+                    <li><strong>Dehydration:</strong> 1 day without water (+1 level/day).</li>
+                    <li><strong>Forced March:</strong> Traveling >8 hours/day (DC 10 CON save or +1 level).</li>
+                    <li><strong>Barovian Mists:</strong> Spending a night outdoors (no shelter).</li>
+                    <li><strong>Strahd’s Curse:</strong> Failed save vs. <em>Nightmare Haunting</em> (see <em>Dream Pastry</em> addiction).</li>
+                </ul>
+                
+                <h3 class="box-subtitle">RECOVERY:</h3>
+                <ul>
+                    <li><strong>Long Rest:</strong> -1 level (if eating/drinking).</li>
+                    <li><strong>Greater Restoration:</strong> Removes all levels.</li>
+                    <li><strong>Abbot’s Blessing:</strong> Rare boon (costs a Dark Gift).</li>
+                    <li><strong>Hope Points:</strong> 3 points remove 1 level.</li>
+                </ul>
+                
+                <h3 class="box-subtitle">BAROVIAN TWISTS:</h3>
+                <ul>
+                    <li><em>Strahd’s Game:</em> At Exhaustion 3+, he may offer "aid" (with strings attached).</li>
+                    <li><em>Vistani "Help":</em> Their cures might add Madness (DMG p.259).</li>
+                    <li><em>Dark Powers:</em> At death, offer resurrection—with a price.</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -1751,18 +1929,35 @@ body.dark-mode .sidebar {
 <h2 class="section-title" id="foraging">FORAGING & STARVATION</h2>
 <div class="collapsible-content">
     <div class="box">
-        <h3 class="box-title">FORAGING DCs</h3>
+        <h3 class="box-title">FORAGING IN BAROVIA</h3>
         <table>
-            <tr><th>Terrain</th><th>DC</th><th>Notes</th></tr>
-            <tr><td>Soft (mud/snow)</td><td>10</td><td>Abundant</td></tr>
-            <tr><td>Dirt/grass</td><td>15</td><td>Limited</td></tr>
-            <tr><td>Bare stone</td><td>20</td><td>Very scarce</td></tr>
+            <tr><th>Terrain</th><th>DC</th><th>Barovian Examples</th><th>Yield (Success)</th></tr>
+            <tr><td><strong>Sallow Fields</strong> (mud/snow)</td><td>10</td><td>Blighted farms, thawing riverbanks</td><td>1d6 + WIS mod lbs (rotten veggies, grubs)</td></tr>
+            <tr><td><strong>Wolfwoods</strong> (dirt/grass)</td><td>15</td><td>Gnarled forests, haunted glades</td><td>1d4 + WIS mod lbs (bitter herbs, crow meat)</td></tr>
+            <tr><td><strong>Ravenloft's Shadow</strong> (bare stone)</td><td>20</td><td>Castle outskirts, mountain passes</td><td>1 lb (lichen, rat bones)</td></tr>
         </table>
-        <h3 class="box-subtitle">STARVATION EFFECTS</h3>
+        
+        <h3 class="box-subtitle">CURSED HARVEST (Special Rules)</h3>
         <ul>
-            <li>&lt;½ food = DC 10 CON save or +1 Exhaustion/day</li>
-            <li>No food 5+ days = Auto +1 Exhaustion/day</li>
-            <li>&lt;½ water = +1 Exhaustion per day</li>
+            <li><strong>Roll 1d6 when foraging:</strong> On a 1, food is tainted (DC 12 CON or poisoned for 1d4 hours).</li>
+            <li><strong>Vistani Aid:</strong> DC 15 Persuasion to trade for safe food (1 GP/day worth).</li>
+            <li><strong>Strahd's Mockery:</strong> After 3 failed foraging checks, wolves "gift" a corpse (cursed meat?).</li>
+        </ul>
+        
+        <h3 class="box-subtitle">STARVATION EFFECTS</h3>
+        <table>
+            <tr><th>Condition</th><th>Effect</th><th>Barovian Flaw</th></tr>
+            <tr><td><strong>Half-Rations</strong> (&lt;½ food/day)</td><td>DC 10 CON save or +1 Exhaustion</td><td>"I'd kill for a scrap of bread."</td></tr>
+            <tr><td><strong>Fasting</strong> (5+ days no food)</td><td>Auto +1 Exhaustion/day</td><td>"The hunger... whispers to me."</td></tr>
+            <tr><td><strong>Dehydrated</strong> (&lt;½ water/day)</td><td>+1 Exhaustion/day until full</td><td>"I see mirages of blood-red wine."</td></tr>
+            <tr><td><strong>Exhaustion 3+</strong></td><td>Disadv. on saves vs. Strahd's Charm</td><td>"Maybe he's right... we belong to him."</td></tr>
+        </table>
+        
+        <h3 class="box-subtitle">DESPERATION ACTIONS</h3>
+        <ul>
+            <li><strong>Eat Questionable Meat:</strong> DC 15 WIS save or gain 1d4 Hope Points but suffer 1d6 necrotic damage.</li>
+            <li><strong>Steal from the Dead:</strong> Advantage on foraging checks in graveyards... but attract revenants.</li>
+            <li><strong>Bargain with Hags:</strong> 1 day of food = 1 "favor" (teeth, memories, etc.).</li>
         </ul>
     </div>
 </div>
@@ -1773,11 +1968,82 @@ body.dark-mode .sidebar {
     <div class="box">
         <h3 class="box-title">COVER TYPES</h3>
         <table>
-            <tr><th>Type</th><th>Effect</th></tr>
-            <tr><td>Half Cover</td><td>+2 to AC and Dex saves</td></tr>
-            <tr><td>Three-Quarters Cover</td><td>+5 to AC and Dex saves</td></tr>
-            <tr><td>Total Cover</td><td>Cannot be targeted directly</td></tr>
+            <tr>
+                <th>Type</th>
+                <th>Effect</th>
+                <th>Barovian Examples</th>
+                <th>Rules Notes</th>
+            </tr>
+            <tr>
+                <td><strong>Half Cover</strong></td>
+                <td>+2 to AC and Dex saves</td>
+                <td>
+                    <ul>
+                        <li>Crumbling gravestones</li>
+                        <li>Fallen trees</li>
+                        <li>Low castle parapets</li>
+                        <li>Market stalls (Vallaki)</li>
+                    </ul>
+                </td>
+                <td>Partial obstruction (e.g., 50% of body exposed).</td>
+            </tr>
+            <tr>
+                <td><strong>Three-Quarters Cover</strong></td>
+                <td>+5 to AC and Dex saves</td>
+                <td>
+                    <ul>
+                        <li>Arrow slits in Ravenloft</li>
+                        <li>Dense fog patches</li>
+                        <li>Barricaded church pews</li>
+                        <li>Iron gates (peering through bars)</li>
+                    </ul>
+                </td>
+                <td>Most of body hidden (e.g., only 25% exposed).</td>
+            </tr>
+            <tr>
+                <td><strong>Total Cover</strong></td>
+                <td>Cannot be targeted directly</td>
+                <td>
+                    <ul>
+                        <li>Behind solid stone walls</li>
+                        <li>Inside coffins</li>
+                        <li>Teleported to Strahd's pocket dimension</li>
+                        <li>Magical darkness (if blinded)</li>
+                    </ul>
+                </td>
+                <td>Fully obscured. AoE spells may still affect.</td>
+            </tr>
+            <tr>
+                <td><strong>Barovian "False" Cover</strong> (DM Tip)</td>
+                <td>None (trap!)</td>
+                <td>
+                    <ul>
+                        <li>Illusory walls (Strahd's trickery)</li>
+                        <li>Animated furniture that moves</li>
+                        <li>Mists that part to reveal enemies</li>
+                    </ul>
+                </td>
+                <td>Perception check (DC 15) to detect deception.</td>
+            </tr>
         </table>
+
+        <h3 class="box-subtitle">COVER STRATEGIES IN BAROVIA</h3>
+        <div class="row">
+            <div class="col">
+                <ul>
+                    <li><strong>Vampires:</strong> Use <em>total cover</em> (coffins/mists) to regenerate.</li>
+                    <li><strong>PCs:</strong> Barricade doors with <em>three-quarters cover</em> vs. spawn.</li>
+                    <li><strong>Strahd:</strong> Lures PCs into <em>half cover</em> positions for ambushes.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul>
+                    <li><strong>Werewolves:</strong> Leap over <em>half cover</em> with 10 ft. jumps.</li>
+                    <li><strong>Hags:</strong> Hide behind <em>illusory cover</em> (false walls).</li>
+                    <li><strong>Wintersplinter:</strong> Ignores cover with roots/tremorsense.</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -1787,32 +2053,76 @@ body.dark-mode .sidebar {
     <div class="box">
         <h3 class="box-title">SELECT CONDITIONS</h3>
         <table>
-            <tr><th>Condition</th><th>Effect</th></tr>
-            <tr><td>Frightened</td><td>Disadv. on checks/attacks; can’t move closer</td></tr>
-            <tr><td>Poisoned</td><td>Disadv. on attacks and checks</td></tr>
-            <tr><td>Prone</td><td>Disadv. on attacks; adv. vs. if melee</td></tr>
-            <tr><td>Grappled</td><td>Speed = 0; escape DC applies</td></tr>
-            <tr><td>Incapacitated</td><td>No actions, reactions, or concentration</td></tr>
+            <tr><th>Condition</th><th>Effect</th><th>Barovian Example</th></tr>
+            
+            <tr><td><strong>Blinded</strong></td><td>Can’t see; fails sight-based checks. Disadv. on attacks, adv. vs. attacks.</td><td>Strahd’s <em>Greater Invisibility</em>, Barovian fog.</td></tr>
+            
+            <tr><td><strong>Charmed</strong></td><td>Can’t harm charmer; charmer has adv. on social checks.</td><td>Strahd’s <em>Charm</em>, vampire spawn seduction.</td></tr>
+            
+            <tr><td><strong>Exhaustion</strong></td><td>Cumulative penalties: −2 to d20 rolls, −5 ft. speed/level. Death at Level 6.</td><td>Forced marches, starvation, <em>Dream Pastry</em> withdrawal.</td></tr>
+            
+            <tr><td><strong>Frightened</strong></td><td>Disadv. on checks/attacks; can’t move closer to source.</td><td>Strahd’s presence, ghostly wails, werewolf howls.</td></tr>
+            
+            <tr><td><strong>Grappled</strong></td><td>Speed = 0. Escape with STR/DEX vs. DC.</td><td>Vampire spawn grabs, animated armor restraints.</td></tr>
+            
+            <tr><td><strong>Incapacitated</strong></td><td>No actions, reactions, or concentration.</td><td><em>Sleep</em> spells, paralytic poisons.</td></tr>
+            
+            <tr><td><strong>Invisible</strong></td><td>Adv. on attacks, disadv. vs. attacks. Can’t be targeted by sight.</td><td>Strahd’s mist form, <em>Invisibility</em> spells.</td></tr>
+            
+            <tr><td><strong>Paralyzed</strong></td><td>Incapacitated + auto-fail STR/DEX saves. Melee hits crit.</td><td>Ghoul claws, <em>Hold Person</em>.</td></tr>
+            
+            <tr><td><strong>Poisoned</td><td>Disadv. on attacks and ability checks.</td><td>Hag brews, swamp gases, assassin’s venom.</td></tr>
+            
+            <tr><td><strong>Prone</strong></td><td>Disadv. on attacks; adv. vs. melee attacks.</td><td>Shoved by zombies, slippery crypt floors.</td></tr>
+            
+            <tr><td><strong>Restrained</strong></td><td>Speed = 0, disadv. on attacks/DEX saves, adv. vs. attacks.</td><td>Vine blights, <em>Web</em> spells.</td></tr>
+            
+            <tr><td><strong>Stunned</strong></td><td>Incapacitated + auto-fail STR/DEX saves. Adv. vs. attacks.</td><td>Mind flayer psionics, <em>Power Word Stun</em>.</td></tr>
+            
+            <tr><td><strong>Unconscious</strong></td><td>Incapacitated, prone, drops held items. Melee hits crit.</td><td>Knocked out by Strahd, <em>Sleep</em> spells.</td></tr>
         </table>
     </div>
 </div>
 
 <!-- Food Prices Table -->
-<h2 class="section-title" id="food">FOOD PRICES</h2>
+<h2 class="section-title" id="food">FOOD PRICES & SCARCITY</h2>
 <div class="collapsible-content">
-    <div class="box">
-        <h3 class="box-title">COMMON MEALS & LODGING</h3>
-        <table>
-            <tr><th>Item</th><th>Cost</th></tr>
-            <tr><td>Bread (loaf)</td><td>2 cp</td></tr>
-            <tr><td>Cheese (wedge)</td><td>1 sp</td></tr>
-            <tr><td>Meat (chunk)</td><td>3 sp</td></tr>
-            <tr><td>Common Wine (pitcher)</td><td>2 sp</td></tr>
-            <tr><td>Fine Wine (bottle)</td><td>10 gp</td></tr>
-            <tr><td>Modest Meal</td><td>1 sp</td></tr>
-            <tr><td>Comfortable Meal</td><td>2 sp</td></tr>
-            <tr><td>Inn (Modest/Comfortable)</td><td>5–8 sp</td></tr>
-        </table>
+    <div class="row">
+        <div class="col">
+            <div class="box">
+                <h3 class="box-title">BAROVIAN MEALS (INFLATED PRICES)</h3>
+                <table>
+                    <tr><th>Item</th><th>Normal Cost</th><th>Barovian Cost</th><th>Notes</th></tr>
+                    <tr><td>Moldy Bread (loaf)</td><td>2 cp</td><td>1 sp</td><td class="text-danger">Disadvantage on CON save vs. disease</td></tr>
+                    <tr><td>Rat Meat (chunk)</td><td>3 sp</td><td>8 sp</td><td class="text-danger">DC 12 CON save or poisoned for 1 hour</td></tr>
+                    <tr><td>Water (pitcher)</td><td>Free</td><td>5 cp</td><td class="text-danger">50% chance tainted (see <a href="#despair">Despair</a>)</td></tr>
+                    <tr><td>"Wine" (vinegar)</td><td>2 sp</td><td>1 gp</td><td class="text-warning">No intoxication, tastes like despair</td></tr>
+                    <tr><td>Hag's Stew (bowl)</td><td>—</td><td>2 gp</td><td class="text-danger">Cursed: -1d4 max HP until Remove Curse</td></tr>
+                    <tr><td>Vistani Provisions</td><td>Modest (1 sp)</td><td>5 gp</td><td class="text-success">Safe, but sold only to allies</td></tr>
+                </table>
+                <p class="text-muted"><em>Prices double in Vallaki during festivals or shortages.</em></p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="box">
+                <h3 class="box-title">LODGING & CONSEQUENCES</h3>
+                <table>
+                    <tr><th>Location</th><th>Cost/Night</th><th>Risks</th></tr>
+                    <tr><td>Abandoned Shack</td><td>Free</td><td class="text-danger">1d4 Shadows attack at midnight</td></tr>
+                    <tr><td>Blood of the Vine Tavern</td><td>1 gp</td><td class="text-warning">Strahd's spies report your location</td></tr>
+                    <tr><td>Vallaki Burgomaster's Guest Room</td><td>10 gp</td><td class="text-danger">Forced to attend festival or arrested</td></tr>
+                    <tr><td>Vistani Camp</td><td>2 gp + favor</td><td class="text-warning">Dreams of Strahd's mocking laughter</td></tr>
+                    <tr><td>Ravenloft Dungeon</td><td>—</td><td class="text-danger">You <strong>are</strong> the meal</td></tr>
+                </table>
+                
+                <h3 class="box-subtitle">STARVATION RULES (BAROVIA)</h3>
+                <ul>
+                    <li><strong>Half Rations:</strong> DC 12 CON save or gain <a href="#despair">Despair</a>.</li>
+                    <li><strong>3 Days Without Food:</strong> Exhaustion level each day.</li>
+                    <li><strong>Eating "Questionable" Food:</strong> Roll on <a href="#madness">Madness</a> table.</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 
