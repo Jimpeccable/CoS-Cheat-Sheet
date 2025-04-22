@@ -707,7 +707,29 @@ body.dark-mode .sidebar {
         padding: 3px;
         font-size: 14px;
     }
-}    </style>
+}    
+
+
+/* Update collapsible section styles */
+.section-title {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+}
+
+.section-title::before {
+    content: "+";
+    position: absolute;
+    left: 0;
+    color: var(--border-color);
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.section-title.active::before {
+    content: "-";
+}
+</style>
 </head>
 <body>
     <div class="container">
