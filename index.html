@@ -788,22 +788,52 @@ body.dark-mode .sidebar {
 
         
         <div class="quick-nav">
-            <h3>QUICK NAVIGATION</h3>
-            <div class="nav-links">
-                <a href="#core-mechanics" class="nav-link">Core Mechanics</a>
-                <a href="#psychological-warfare" class="nav-link">Psychological Warfare</a>
-                <a href="#fear-horror" class="nav-link">Fear & Horror</a>
-                <a href="#despair" class="nav-link">Despair</a>
-                <a href="#nightmares" class="nav-link">Nightmares</a>
-                <a href="#corruption" class="nav-link">Corruption</a>
-                <a href="#weather" class="nav-link">Weather</a>
-                <a href="#locations" class="nav-link">Locations</a>
-                <a href="#curse-removal" class="nav-link">Curse Removal</a>
-                <a href="#vistani" class="nav-link">Vistani</a>
-                <a href="#calendar" class="nav-link">Calendar</a>
-                <a href="#descriptors" class="nav-link">Descriptors</a>
-            </div>
-        </div>
+  <h3>QUICK NAVIGATION</h3>
+
+  <!-- Tab Selectors -->
+  <div class="tab-buttons">
+    <button class="roll-button" onclick="showTab('core')">Core Mechanics</button>
+    <button class="roll-button" onclick="showTab('madness')">Madness & Horror</button>
+    <button class="roll-button" onclick="showTab('survival')">Survival Rules</button>
+    <button class="roll-button" onclick="showTab('world')">World Lore</button>
+  </div>
+
+  <!-- Core Mechanics Tab -->
+  <div class="nav-links tab-content" id="core">
+    <a href="#core-mechanics" class="nav-link">Core Mechanics</a>
+    <a href="#cover" class="nav-link">Cover</a>
+    <a href="#conditions" class="nav-link">Conditions</a>
+    <a href="#exhaustion" class="nav-link">Exhaustion Tracker</a>
+    <a href="#combat" class="nav-link">Combat Quick Reference</a>
+  </div>
+
+  <!-- Madness & Horror Tab -->
+  <div class="nav-links tab-content" id="madness" style="display:none;">
+    <a href="#psychological-warfare" class="nav-link">Psychological Warfare</a>
+    <a href="#fear-horror" class="nav-link">Fear & Horror</a>
+    <a href="#despair" class="nav-link">Despair</a>
+    <a href="#nightmares" class="nav-link">Nightmares</a>
+    <a href="#corruption" class="nav-link">Corruption</a>
+  </div>
+
+  <!-- Survival Rules Tab -->
+  <div class="nav-links tab-content" id="survival" style="display:none;">
+    <a href="#weather" class="nav-link">Weather</a>
+    <a href="#light" class="nav-link">Mundane Light Source</a>
+    <a href="#foraging" class="nav-link">Foraging & Starvation</a>
+    <a href="#food" class="nav-link">Food Prices</a>
+    <a href="#environment" class="nav-link">Environmental Rules</a>
+  </div>
+
+  <!-- World Lore Tab -->
+  <div class="nav-links tab-content" id="world" style="display:none;">
+    <a href="#locations" class="nav-link">Locations</a>
+    <a href="#curse-removal" class="nav-link">Curse Removal</a>
+    <a href="#vistani" class="nav-link">Vistani</a>
+    <a href="#calendar" class="nav-link">Calendar</a>
+    <a href="#descriptors" class="nav-link">Descriptors</a>
+  </div>
+</div>
         
         <div class="divider"></div>
         <div class="divider-thin"></div>
@@ -1272,6 +1302,90 @@ body.dark-mode .sidebar {
             </div>
         </div>
     </div>
+
+<!-- Environmental Hazards -->
+<h2 class="section-title" id="environment">ENVIRONMENTAL HAZARDS</h2>
+<div class="collapsible-content">
+    <div class="row">
+        <div class="col">
+            <div class="box">
+                <h3 class="box-subtitle">SUFFOCATION:</h3>
+                <ul>
+                    <li><strong>Hold Breath:</strong> 1 + CON mod minutes (min. 30 sec).</li>
+                    <li><strong>Choking:</strong> +1 Exhaustion level/turn until air is restored.</li>
+                    <li><strong>Barovian Examples:</strong> Swamps, crypts, Strahd’s telekinetic strangulation.</li>
+                </ul>
+                
+                <h3 class="box-subtitle">BURNING:</h3>
+                <ul>
+                    <li><strong>On Fire:</strong> 1d4 fire damage/start of turn until doused.</li>
+                    <li><strong>Dousing:</strong> Action to roll prone + DC 10 DEX check.</li>
+                    <li><strong>Barovian Examples:</strong> Burning buildings, oil traps, <em>Wall of Fire</em>.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col">
+            <div class="box">
+                <h3 class="box-subtitle">FALLING:</h3>
+                <ul>
+                    <li><strong>Damage:</strong> 1d6 per 10 ft. (max 20d6). Prone if damage taken.</li>
+                    <li><strong>Liquid Landing:</strong> Reaction DC 15 STR/DEX save to halve damage.</li>
+                    <li><strong>Barovian Examples:</strong> Ravenloft’s cliffs, elevator traps, bridge collapses.</li>
+                </ul>
+                
+                <h3 class="box-subtitle">IMPROVISED DAMAGE:</h3>
+                <ul>
+                    <li><strong>Burning Coals:</strong> 5 (1d10) fire</li>
+                    <li><strong>Vat of Acid:</strong> 22 (4d10) acid</li>
+                    <li><strong>Crushed by Rubble:</strong> 55 (10d10) bludgeoning</li>
+                    <li><strong>Barovian Examples:</strong> Falling chandeliers, animated furniture.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Combat Quick Reference -->
+<h2 class="section-title" id="combat">COMBAT QUICK REFERENCE</h2>
+<div class="collapsible-content">
+    <div class="row">
+        <div class="col">
+            <div class="box">
+                <h3 class="box-subtitle">ACTIONS IN COMBAT:</h3>
+                <ul>
+                    <li><strong>Grapple:</strong> STR/DEX vs. DC 8+PB+STR. Target must be ≤1 size larger.</li>
+                    <li><strong>Shove:</strong> Push 5 ft. or knock Prone (same DC).</li>
+                    <li><strong>Ready:</strong> Prepare action/spell (requires Concentration).</li>
+                    <li><strong>Hide:</strong> DC 15 Stealth (must be obscured). Grants Invisible.</li>
+                </ul>
+                
+                <h3 class="box-subtitle">COVER:</h3>
+                <ul>
+                    <li><strong>½ Cover:</strong> +2 AC/DEX saves (tables, low walls).</li>
+                    <li><strong>¾ Cover:</strong> +5 AC/DEX saves (arrow slits, dense fog).</li>
+                    <li><strong>Total Cover:</strong> Cannot be targeted (fully behind wall).</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col">
+            <div class="box">
+                <h3 class="box-subtitle">CONDITION QUICK REFERENCE:</h3>
+                <ul>
+                    <li><strong>Restrained:</strong> Speed 0, Disadv. on attacks/DEX saves.</li>
+                    <li><strong>Invisible:</strong> Adv. on attacks, Disadv. vs. attacks.</li>
+                    <li><strong>Frightened:</strong> Disadv. on checks/attacks; can’t move closer.</li>
+                </ul>
+                
+                <h3 class="box-subtitle">STRAHD-SPECIFIC TACTICS:</h3>
+                <ul>
+                    <li><strong>Hit-and-Run:</strong> Use <em>Invisibility</em> + <em>Grapple</em> (via minions).</li>
+                    <li><strong>Environmental Kills:</strong> Shove PCs off cliffs (falling damage).</li>
+                    <li><strong>Charm:</strong> Target isolated PCs (Disadv. on saves in darkness).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
     
     <!-- Nightmares -->
     <h2 class="section-title" id="nightmares">NIGHTMARES</h2>
@@ -1601,6 +1715,107 @@ body.dark-mode .sidebar {
             </div>
         </div>
     </div>
+
+   <!-- Mundane Light Sources -->
+<h2 class="section-title" id="light">MUNDANE LIGHT SOURCES</h2>
+<div class="collapsible-content">
+    <div class="box">
+        <h3 class="box-title">LIGHT SOURCE TABLE</h3>
+        <table>
+            <tr><th>Item</th><th>Bright (Dim) Radius</th><th>Duration</th></tr>
+            <tr><td>Candle</td><td>5 ft. (5 ft.)</td><td>1 hour</td></tr>
+            <tr><td>Torch</td><td>20 ft. (20 ft.)</td><td>1 hour</td></tr>
+            <tr><td>Lantern (Hooded)</td><td>30 ft. (30 ft.)</td><td>6 hours</td></tr>
+            <tr><td>Lantern (Bullseye)</td><td>60 ft. cone (60 ft.)</td><td>6 hours</td></tr>
+            <tr><td>Oil Flask (poured & lit)</td><td>10 ft. (10 ft.)</td><td>6 rounds</td></tr>
+        </table>
+    </div>
+</div>
+
+<!-- Exhaustion Tracker -->
+<h2 class="section-title" id="exhaustion">EXHAUSTION TRACKER</h2>
+<div class="collapsible-content">
+    <div class="box">
+        <h3 class="box-title">EXHAUSTION LEVELS</h3>
+        <table>
+            <tr><th>Level</th><th>Effect</th></tr>
+            <tr><td>1</td><td>-2 to d20 Tests</td></tr>
+            <tr><td>2</td><td>Speed -5 ft.</td></tr>
+            <tr><td>3+</td><td>Repeat levels 1 and 2. At 6: Death</td></tr>
+        </table>
+        <p><strong>Recover 1 level</strong> per Long Rest.</p>
+    </div>
+</div>
+
+<!-- Foraging & Starvation Rules -->
+<h2 class="section-title" id="foraging">FORAGING & STARVATION</h2>
+<div class="collapsible-content">
+    <div class="box">
+        <h3 class="box-title">FORAGING DCs</h3>
+        <table>
+            <tr><th>Terrain</th><th>DC</th><th>Notes</th></tr>
+            <tr><td>Soft (mud/snow)</td><td>10</td><td>Abundant</td></tr>
+            <tr><td>Dirt/grass</td><td>15</td><td>Limited</td></tr>
+            <tr><td>Bare stone</td><td>20</td><td>Very scarce</td></tr>
+        </table>
+        <h3 class="box-subtitle">STARVATION EFFECTS</h3>
+        <ul>
+            <li>&lt;½ food = DC 10 CON save or +1 Exhaustion/day</li>
+            <li>No food 5+ days = Auto +1 Exhaustion/day</li>
+            <li>&lt;½ water = +1 Exhaustion per day</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Cover Table -->
+<h2 class="section-title" id="cover">COVER IN COMBAT</h2>
+<div class="collapsible-content">
+    <div class="box">
+        <h3 class="box-title">COVER TYPES</h3>
+        <table>
+            <tr><th>Type</th><th>Effect</th></tr>
+            <tr><td>Half Cover</td><td>+2 to AC and Dex saves</td></tr>
+            <tr><td>Three-Quarters Cover</td><td>+5 to AC and Dex saves</td></tr>
+            <tr><td>Total Cover</td><td>Cannot be targeted directly</td></tr>
+        </table>
+    </div>
+</div>
+
+<!-- Conditions Quick-Ref -->
+<h2 class="section-title" id="conditions">CONDITIONS QUICK-REF</h2>
+<div class="collapsible-content">
+    <div class="box">
+        <h3 class="box-title">SELECT CONDITIONS</h3>
+        <table>
+            <tr><th>Condition</th><th>Effect</th></tr>
+            <tr><td>Frightened</td><td>Disadv. on checks/attacks; can’t move closer</td></tr>
+            <tr><td>Poisoned</td><td>Disadv. on attacks and checks</td></tr>
+            <tr><td>Prone</td><td>Disadv. on attacks; adv. vs. if melee</td></tr>
+            <tr><td>Grappled</td><td>Speed = 0; escape DC applies</td></tr>
+            <tr><td>Incapacitated</td><td>No actions, reactions, or concentration</td></tr>
+        </table>
+    </div>
+</div>
+
+<!-- Food Prices Table -->
+<h2 class="section-title" id="food">FOOD PRICES</h2>
+<div class="collapsible-content">
+    <div class="box">
+        <h3 class="box-title">COMMON MEALS & LODGING</h3>
+        <table>
+            <tr><th>Item</th><th>Cost</th></tr>
+            <tr><td>Bread (loaf)</td><td>2 cp</td></tr>
+            <tr><td>Cheese (wedge)</td><td>1 sp</td></tr>
+            <tr><td>Meat (chunk)</td><td>3 sp</td></tr>
+            <tr><td>Common Wine (pitcher)</td><td>2 sp</td></tr>
+            <tr><td>Fine Wine (bottle)</td><td>10 gp</td></tr>
+            <tr><td>Modest Meal</td><td>1 sp</td></tr>
+            <tr><td>Comfortable Meal</td><td>2 sp</td></tr>
+            <tr><td>Inn (Modest/Comfortable)</td><td>5–8 sp</td></tr>
+        </table>
+    </div>
+</div>
+
     
     <!-- Locations Tab System -->
     <h2 class="section-title" id="locations">LOCATIONS OF BAROVIA</h2>
@@ -2126,8 +2341,6 @@ body.dark-mode .sidebar {
     <h3>PLAYER TRACKER</h3>
     <div id="player-list">
         <!-- Players will be added here -->
-    </div>
-    <button class="roll-button" onclick="addPlayer()" style="width: 100%; margin-top: 10px;">ADD PLAYER</button>
 </div>
 
 <button class="dark-mode-toggle" onclick="toggleDarkMode()">☀️</button>
@@ -2360,101 +2573,163 @@ window.onload = function() {
 };
 
 
-// Add draggable attribute to section titles
-document.querySelectorAll('.section-title').forEach(section => {
-  section.setAttribute('draggable', 'true');
-  
-  section.addEventListener('dragstart', function(e) {
-    e.dataTransfer.setData('text/plain', this.id);
-    this.classList.add('dragging');
-    // Store the height of the content to maintain during drag
-    const content = this.nextElementSibling;
-    this.dataset.contentHeight = content.scrollHeight;
-  });
-  
-  section.addEventListener('dragend', function() {
-    this.classList.remove('dragging');
-  });
-});
-
-// Make the container a drop zone
-document.querySelector('.container').addEventListener('dragover', function(e) {
-  e.preventDefault();
-  const dragging = document.querySelector('.dragging');
-  if (!dragging) return;
-  
-  // Get the section element being dragged over (using closest to find the section-title)
-  const afterElement = getDragAfterSection(this, e.clientY);
-  const container = this;
-  
-  if (afterElement == null) {
-    // Append to end
-    const lastSection = container.querySelector('.section-title:last-of-type');
-    if (lastSection !== dragging) {
-      container.appendChild(dragging);
-      container.appendChild(dragging.nextElementSibling);
-    }
-  } else {
-    // Insert before the afterElement
-    if (afterElement !== dragging) {
-      container.insertBefore(dragging, afterElement);
-      container.insertBefore(dragging.nextElementSibling, afterElement);
-    }
-  }
-});
-
-function getDragAfterSection(container, y) {
-  const sections = [...container.querySelectorAll('.section-title:not(.dragging)')];
-  
-  return sections.reduce((closest, child) => {
-    const box = child.getBoundingClientRect();
-    const offset = y - box.top - box.height / 2;
+// Drag and Drop Functionality
+function initializeDragAndDrop() {
+  // Add draggable attribute to section titles
+  document.querySelectorAll('.section-title').forEach(section => {
+    section.setAttribute('draggable', 'true');
     
-    if (offset < 0 && offset > closest.offset) {
-      return { offset: offset, element: child };
-    } else {
-      return closest;
-    }
-  }, { offset: Number.NEGATIVE_INFINITY }).element;
-}
-
-// Save and load section order
-function saveSectionOrder() {
-  const sections = Array.from(document.querySelectorAll('.section-title')).map(section => section.id);
-  localStorage.setItem('dmCheatSheetSectionOrder', JSON.stringify(sections));
-}
-
-function loadSectionOrder() {
-  const savedOrder = localStorage.getItem('dmCheatSheetSectionOrder');
-  if (savedOrder) {
-    const order = JSON.parse(savedOrder);
-    const container = document.querySelector('.container');
-    
-    order.forEach(sectionId => {
-      const section = document.getElementById(sectionId);
-      const content = section.nextElementSibling;
-      if (section && content) {
-        container.appendChild(section);
-        container.appendChild(content);
-      }
+    section.addEventListener('dragstart', function(e) {
+      e.dataTransfer.setData('text/plain', this.id);
+      this.classList.add('dragging');
     });
-  }
-}
-
-// Call loadSectionOrder when the page loads
-window.addEventListener('load', function() {
-  loadSectionOrder();
-  
-  // Save order whenever sections are rearranged
-  document.querySelector('.container').addEventListener('dragend', function() {
-    saveSectionOrder();
     
-    // Restore the content height after reordering
+    section.addEventListener('dragend', function() {
+      this.classList.remove('dragging');
+    });
+  });
+
+  // Make the container a drop zone
+  const container = document.querySelector('.container');
+  if (!container) {
+    console.error('Container element not found');
+    return;
+  }
+
+  container.addEventListener('dragover', function(e) {
+    e.preventDefault();
     const dragging = document.querySelector('.dragging');
-    if (dragging && dragging.dataset.contentHeight) {
-      dragging.nextElementSibling.style.maxHeight = dragging.dataset.contentHeight + 'px';
+    if (!dragging) return;
+    
+    // Get the section element being dragged over
+    const afterElement = getDragAfterElement(container, e.clientY);
+    const content = document.getElementById(dragging.id + '-content');
+    
+    if (!afterElement) {
+      // Append to end
+      container.appendChild(dragging);
+      if (content) container.appendChild(content);
+    } else {
+      // Get the next element after the drop position
+      const nextElement = afterElement.nextElementSibling;
+      
+      // Insert title before the afterElement
+      container.insertBefore(dragging, afterElement);
+      
+      // Insert content right after its title
+      if (content) {
+        container.insertBefore(content, afterElement);
+      }
     }
   });
+
+  function getDragAfterElement(container, y) {
+    const draggableElements = [...container.querySelectorAll('.section-title:not(.dragging)')];
+    
+    return draggableElements.reduce((closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+      
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child };
+      } else {
+        return closest;
+      }
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
+  }
+
+  // Save and load section order
+  function saveSectionOrder() {
+    const sections = Array.from(document.querySelectorAll('.section-title')).map(section => section.id);
+    localStorage.setItem('dmCheatSheetSectionOrder', JSON.stringify(sections));
+  }
+
+  function loadSectionOrder() {
+    const savedOrder = localStorage.getItem('dmCheatSheetSectionOrder');
+    if (savedOrder) {
+      try {
+        const order = JSON.parse(savedOrder);
+        const container = document.querySelector('.container');
+        
+        order.forEach(sectionId => {
+          const section = document.getElementById(sectionId);
+          const content = document.getElementById(sectionId + '-content');
+          if (section) {
+            container.appendChild(section);
+            if (content) {
+              container.appendChild(content);
+            }
+          }
+        });
+      } catch (e) {
+        console.error('Error loading saved order:', e);
+        localStorage.removeItem('dmCheatSheetSectionOrder');
+      }
+    }
+  }
+
+  // Initialize
+  loadSectionOrder();
+  container.addEventListener('dragend', saveSectionOrder);
+}
+
+// Initialize when DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Add IDs to content divs for easier reference
+  document.querySelectorAll('.section-title').forEach(section => {
+    const content = section.nextElementSibling;
+    if (content && content.classList.contains('collapsible-content')) {
+      content.id = section.id + '-content';
+    }
+  });
+  
+  // Initialize drag and drop after setting up IDs
+  initializeDragAndDrop();
 });
+
+async function loadCampaign() {
+    const url = document.getElementById('campaign-url').value;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        // Clear existing players
+        document.getElementById('player-list').innerHTML = '';
+
+        // Add players from the data
+        data.players.forEach(player => {
+            const playerId = 'player-' + Date.now() + Math.random();
+
+            const playerCard = document.createElement('div');
+            playerCard.className = 'player-card';
+            playerCard.id = playerId;
+
+            playerCard.innerHTML = `
+                <input type="text" value="${player.name}" class="player-name">
+                <div class="player-status">
+                    <input type="text" value="${player.ac}" class="player-ac" style="width: 40px;">
+                    <input type="text" value="${player.hp}" class="player-hp" style="width: 40px;">
+                    <button class="status-toggle" onclick="toggleStatus('${playerId}')">Normal</button>
+                    <button onclick="removePlayer('${playerId}')">X</button>
+                </div>
+                <div class="player-effects"></div>
+            `;
+
+            document.getElementById('player-list').appendChild(playerCard);
+        });
+    } catch (error) {
+        alert("Failed to load campaign. Please check the link and try again.");
+        console.error(error);
+    }
+}
+
+
+
+  function showTab(tabId) {
+    const tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => tab.style.display = 'none');
+    document.getElementById(tabId).style.display = 'block';
+  }
 
 </script>
