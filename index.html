@@ -1080,6 +1080,229 @@ body.dark-mode .sidebar {
     }
 }
 
+.npc-full-card {
+    background: var(--box-bg);
+    border-left: 4px solid var(--border-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: visible; /* Ensure content isn't clipped */
+}
+    
+
+    .npc-portrait {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 5px;
+        float: right;
+        margin-left: 15px;
+        border: 2px solid var(--border-light);
+    }
+    
+.npc-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin: 15px 0;
+    }
+    
+.stat-box {
+        background: rgba(139, 0, 0, 0.1);
+        padding: 8px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+
+    .stat-label {
+        font-size: 0.8em;
+        color: var(--title-color);
+    }
+    .stat-value {
+        font-weight: bold;
+    }
+    .npc-loot {
+        background: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin-top: 15px;
+        border-left: 3px solid var(--accent-gold);
+    }
+    .save-npc-btn {
+        background: var(--border-color);
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .music-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+    }
+    .music-card {
+        background: var(--box-bg);
+        border-left: 4px solid var(--border-color);
+        padding: 15px;
+        display: flex;
+        transition: transform 0.3s ease;
+    }
+    .music-card:hover {
+        transform: translateY(-3px);
+    }
+    .music-cover {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        margin-right: 15px;
+    }
+    .music-info {
+        flex: 1;
+    }
+    .music-info h4 {
+        margin: 0 0 5px 0;
+        color: var(--title-color);
+    }
+    .music-info p {
+        margin: 0 0 10px 0;
+        font-size: 0.9em;
+    }
+    .music-link {
+        background: var(--border-color);
+        color: white;
+        padding: 3px 8px;
+        border-radius: 3px;
+        font-size: 0.8em;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+
+  /* NPC Generator Styling */
+#npc-generator {
+    position: relative;
+    z-index: 2; /* Ensure it stays above other content */
+}
+
+#npc-generator .box {
+    min-height: 300px; /* Give it enough initial space */
+    overflow: visible !important; /* Critical: Allow content to extend beyond */
+    margin-bottom: 40px; /* Extra space below */
+    transition: min-height 0.5s ease; /* Smooth expansion */
+}
+
+.npc-full-card {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-left: 3px solid var(--border-color);
+}
+
+.npc-portrait {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 15px;
+    border: 2px solid var(--border-color);
+}
+
+.npc-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.stat-box {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid var(--border-light);
+}
+
+.stat-label {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#npc-result {
+    clear: both;
+    position: relative;
+    z-index: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .npc-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .npc-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Button styling enhancement */
+.roll-button {
+    background-color: var(--accent-color, #8b0000);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.roll-button:hover {
+    background-color: var(--accent-hover, #a00000);
+    transform: translateY(-1px);
+}
+
+.roll-button:active {
+    transform: translateY(1px);
+}
+
+/* Add animation for content appearance */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.npc-full-card {
+    animation: fadeIn 0.4s ease-out;
+}
+
 </style>
 </head>
 <body>
@@ -1106,6 +1329,7 @@ body.dark-mode .sidebar {
     <button class="roll-button" onclick="showTab('survival')">Survival Rules</button>
     <button class="roll-button" onclick="showTab('world')">World Lore</button>
     <button class="roll-button" onclick="showTab('strahd')">Strahd Lore</button>
+    <button class="roll-button" onclick="showTab('misc')">Atmosphere & Misc Tools</button>
   </div>
 
   <!-- Core Mechanics Tab -->
@@ -1139,17 +1363,22 @@ body.dark-mode .sidebar {
   <div class="nav-links tab-content" id="world" style="display:none;">
     <a href="#locations" class="nav-link">Locations</a>
     <a href="#curse-removal" class="nav-link">Curse Removal</a>
-    <a href="#vistani" class="nav-link">Vistani</a>
+    <a href="#vistani" class="nav-link">Vistani / Encounters</a>
     <a href="#calendar" class="nav-link">Calendar</a>
     <a href="#descriptors" class="nav-link">Descriptors</a>
   </div>
 
-<!-- In your quick-nav div -->
+<!-- Strahd Nav -->
 <div class="nav-links tab-content" id="strahd" style="display:none;">
   <a href="#strahd-profile" class="nav-link">Strahd Profile</a>
   <a href="#strahd-abilities" class="nav-link">Strahd's Abilities</a>
   <a href="#npc-relationships" class="nav-link">NPC Relationships</a>
   <a href="#barovian-lore" class="nav-link">Barovian Lore</a>
+</div>
+
+<div class="nav-links tab-content" id="misc" style="display:none;">
+    <a href="#atmosphere-music" class="nav-link">Atmosphere & Music</a>
+    <a href="#npc-generator" class="nav-link">NPC Generator</a>
 </div>
 
 </div>
@@ -2897,7 +3126,7 @@ body.dark-mode .sidebar {
     </div>
     
     <!-- Vistani Abilities & Random Encounters -->
-    <h2 class="section-title" id="vistani">VISTANI ABILITIES</h2>
+    <h2 class="section-title" id="vistani">VISTANI ABILITIES & RANDOM ENCOUNTERS</h2>
     <div class="collapsible-content">
         <div class="row">
             <div class="col">
@@ -3090,6 +3319,89 @@ body.dark-mode .sidebar {
             </div>
         </div>
     </div>
+
+<!-- NPC Generator -->
+<h2 class="section-title" id="npc-generator">NPC GENERATOR</h2>
+<div class="collapsible-content" style="display: block; max-height: none;">
+    <div class="box" style="min-height: 300px; overflow: visible !important;">
+        <h3 class="box-title">BAROVIAN NPC GENERATOR</h3>
+        <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+            <button class="roll-button" onclick="generateNPC('male')">GENERATE MALE NPC</button>
+            <button class="roll-button" onclick="generateNPC('female')">GENERATE FEMALE NPC</button>
+            <button class="roll-button" onclick="generateNPC('any')">GENERATE RANDOM NPC</button>
+        </div>
+        <!-- Result container with explicit dimensions -->
+        <div id="npc-result" style="margin-top: 20px; min-height: 50px; width: 100%;"></div>
+        <!-- Progress or loading indicator -->
+        <div id="npc-loading" style="display: none; text-align: center; margin: 20px 0;">
+            <div class="loading-spinner"></div>
+            <p>Generating NPC...</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- Atmosphere Music -->
+<h2 class="section-title" id="atmosphere-music">ATMOSPHERE & MUSIC</h2>
+<div class="collapsible-content">
+    <div class="box">
+        <h3 class="box-title">IMMERSIVE AUDIO TOOLS</h3>
+        <div class="music-grid">
+            <!-- Curse of Strahd Playlist -->
+            <div class="music-card">
+                <img src="https://i.scdn.co/image/ab67706c0000bebbc0a1a6b2d247bd6b3a1615d1" alt="Curse of Strahd Playlist" class="music-cover">
+                <div class="music-info">
+                    <h4>Curse of Strahd Campaign</h4>
+                    <p>Complete atmospheric soundtrack for your campaign</p>
+                    <a href="https://open.spotify.com/playlist/3x0uLKZPaKK8gTszXzIVXD" target="_blank" class="music-link">Listen on Spotify</a>
+                </div>
+            </div>
+            
+            <!-- Epic Battle Playlist -->
+            <div class="music-card">
+                <img src="https://i.scdn.co/image/ab67706c0000bebbd9d998d6d7a4066e7c968a8b" alt="Epic Battle Music" class="music-cover">
+                <div class="music-info">
+                    <h4>Epic Battle Music</h4>
+                    <p>Thundering orchestral pieces for combat encounters</p>
+                    <a href="https://open.spotify.com/playlist/4YaJdqJzubdx3lEB4UEhLt" target="_blank" class="music-link">Listen on Spotify</a>
+                </div>
+            </div>
+            
+            <!-- Ambient Exploration -->
+            <div class="music-card">
+                <img src="https://i.scdn.co/image/ab67706c0000bebbe6a75d8a3e1e914d1a0d06e8" alt="Ambient Exploration" class="music-cover">
+                <div class="music-info">
+                    <h4>Ambient Exploration</h4>
+                    <p>Eerie soundscapes for travel and discovery</p>
+                    <a href="https://open.spotify.com/playlist/4YaJdqJzubdx3lEB4UEhLt" target="_blank" class="music-link">Listen on Spotify</a>
+                </div>
+            </div>
+            
+            <!-- OBR NPC Generator -->
+            <div class="music-card">
+                <img src="https://owlbear.rodeo/icons/icon-512x512.png" alt="OWLBEAR RADIO" class="music-cover">
+                <div class="music-info">
+                    <h4>OWLBEAR RADIO Generator</h4>
+                    <p>Dynamic NPC generator addon for OBR</p>
+                    <a href="https://npc-generator-obr.onrender.com/manifest.json" target="_blank" class="music-link">Install Addon</a>
+                </div>
+            </div>
+        </div>
+        
+        <h3 class="box-subtitle" style="margin-top: 30px;">MUSIC BY LOCATION</h3>
+        <div class="table-header">
+            <div class="table-col-1">Location</div>
+            <div class="table-col-2">Music Style</div>
+            <div class="table-col-3">Example Track</div>
+        </div>
+        <div class="box-row">
+            <div class="table-col-1">Village of Barovia</div>
+            <div class="table-col-2">Dreary, mournful strings with wolf howls</div>
+            <div class="table-col-3"><a href="https://www.youtube.com/watch?v=..." target="_blank">"Grief" by Cryo Chamber</a></div>
+        </div>
+        <!-- More location rows... -->
+    </div>
+</div>
 
 <!-- Strahd von Zarovich -->
 <h2 class="section-title" id="strahd-profile">STRAHD VON ZAROVICH</h2>
@@ -3768,75 +4080,129 @@ body.dark-mode .sidebar {
     </div>
 </div>
 
-    <!-- Visceral Descriptors -->
-    <h2 class="section-title" id="descriptors">VISERAL DESCRIPTORS</h2>
-    <div class="collapsible-content">
-        <div class="row">
-            <div class="col">
-                <div class="box">
-                    <h3 class="box-title">ENVIRONMENTAL DESCRIPTIONS</h3>
-                    <div class="row">
-                        <div class="col">
-                            <h4 class="box-subtitle">Roads:</h4>
-                            <ul>
-                                <li>The packed earth of the road sucks at your boots like greedy mouths</li>
-                                <li>Fog coils around your ankles like spectral serpents</li>
-                                <li>Wheel ruts fill with rainwater the color of diluted blood</li>
-                                <li>Bare branches scrape together like bones in the wind</li>
-                                <li>Your breath fogs in air that smells of wet earth and rotting leaves</li>
-                            </ul>
-                        </div>
-                        <div class="col">
-                            <h4 class="box-subtitle">Forests:</h4>
-                            <ul>
-                                <li>Tree bark peels away in fleshy strips revealing pulpy wood beneath</li>
-                                <li>Fungus grows in pulsating clusters that release spores when disturbed</li>
-                                <li>Roots twist up from the earth like the fingers of buried corpses</li>
-                                <li>The canopy blocks all light, leaving you in perpetual twilight</li>
-                                <li>Something large moves just out of sight, snapping branches as it goes</li>
-                            </ul>
-                        </div>
+<!-- Visceral Descriptors -->
+<h2 class="section-title" id="descriptors">VISCERAL DESCRIPTORS</h2>
+<div class="collapsible-content">
+    <div class="row">
+        <div class="col">
+            <div class="box">
+                <h3 class="box-title">ENVIRONMENTAL DESCRIPTIONS</h3>
+                <div class="row">
+                    <div class="col">
+                        <h4 class="box-subtitle">Roads:</h4>
+                        <ul>
+                            <li>The packed earth of the road sucks at your boots like greedy mouths</li>
+                            <li>Fog coils around your ankles like spectral serpents</li>
+                            <li>Wheel ruts fill with rainwater the color of diluted blood</li>
+                            <li>Bare branches scrape together like bones in the wind</li>
+                            <li>Your breath fogs in air that smells of wet earth and rotting leaves</li>
+                            <li>The road forks like a broken wishbone</li>
+                            <li>Cold mud squelches underfoot with the sound of something breathing</li>
+                            <li>Each footstep is swallowed by silence too deep to be natural</li>
+                            <li>Cracked stones form runes no one recognizes</li>
+                            <li>The path winds like a serpent through the trees</li>
+                            <li>The air here hums with static, like the moment before a storm</li>
+                            <li>Carved symbols in the mile-markers are freshly bleeding sap</li>
+                            <li>Faint hoofprints vanish halfway down the lane</li>
+                            <li>You pass a child's toy, sodden with rain and caked in blood</li>
+                            <li>A distant bell rings—though no village lies ahead</li>
+                        </ul>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <h4 class="box-subtitle">Settlements:</h4>
-                            <ul>
-                                <li>Windows watch you like the empty eye sockets of skulls</li>
-                                <li>Chimney smoke hangs thick, carrying the scent of burnt hair</li>
-                                <li>Doorways gape like hungry mouths waiting to swallow the unwary</li>
-                                <li>Puddles reflect not your face but something lurking behind you</li>
-                                <li>The creak of signs in the wind sounds like dying men's last breaths</li>
-                            </ul>
-                        </div>
-                        <div class="col">
-                            <h4 class="box-subtitle">Mountains:</h4>
-                            <ul>
-                                <li>Rock faces weep icy tears that freeze on your clothes</li>
-                                <li>Wind howls through passes like the wails of the damned</li>
-                                <li>Loose stones clatter down slopes like fleeing creatures</li>
-                                <li>Cliffs loom overhead like the battlements of some giant's fortress</li>
-                                <li>Your footsteps echo as if something walks just out of sync behind you</li>
-                            </ul>
-                        </div>
+                    <div class="col">
+                        <h4 class="box-subtitle">Forests:</h4>
+                        <ul>
+                            <li>Tree bark peels away in fleshy strips revealing pulpy wood beneath</li>
+                            <li>Fungus grows in pulsating clusters that release spores when disturbed</li>
+                            <li>Roots twist up from the earth like the fingers of buried corpses</li>
+                            <li>The canopy blocks all light, leaving you in perpetual twilight</li>
+                            <li>Something large moves just out of sight, snapping branches as it goes</li>
+                            <li>The air is thick with the hum of insects you never see</li>
+                            <li>A murder of crows follows you from tree to tree, always silent</li>
+                            <li>The moss on the trees seems to squirm when touched</li>
+                            <li>You come across claw marks too high for any beast</li>
+                            <li>Every trunk seems to lean subtly toward the path, listening</li>
+                            <li>The smell of copper lingers despite no visible wound</li>
+                            <li>You find a skeleton impaled on a branch ten feet above the ground</li>
+                            <li>Birdsong is absent. The forest breathes, and waits</li>
+                            <li>A tree is split open, its sap thick and red as blood</li>
+                            <li>Your shadow doesn’t match your movement under the trees</li>
+                        </ul>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h4 class="box-subtitle">Settlements:</h4>
+                        <ul>
+                            <li>Windows watch you like the empty eye sockets of skulls</li>
+                            <li>Chimney smoke hangs thick, carrying the scent of burnt hair</li>
+                            <li>Doorways gape like hungry mouths waiting to swallow the unwary</li>
+                            <li>Puddles reflect not your face but something lurking behind you</li>
+                            <li>The creak of signs in the wind sounds like dying men's last breaths</li>
+                            <li>Every building leans slightly toward you, expectantly</li>
+                            <li>Children’s laughter echoes in alleys devoid of children</li>
+                            <li>The innkeeper greets you with a phrase you've heard in your dreams</li>
+                            <li>All clocks in town have stopped at the same time</li>
+                            <li>A dog stares at you unblinking, unmoving, until you leave</li>
+                            <li>A market stall sells dolls that resemble your companions</li>
+                            <li>Despite the season, every house displays funeral wreaths</li>
+                            <li>Steps echo above you on rooftops—no one is there</li>
+                            <li>Doors are bolted shut with symbols scrawled in ash</li>
+                            <li>The statue in the square weeps blood each dusk</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h4 class="box-subtitle">Mountains:</h4>
+                        <ul>
+                            <li>Rock faces weep icy tears that freeze on your clothes</li>
+                            <li>Wind howls through passes like the wails of the damned</li>
+                            <li>Loose stones clatter down slopes like fleeing creatures</li>
+                            <li>Cliffs loom overhead like the battlements of some giant's fortress</li>
+                            <li>Your footsteps echo as if something walks just out of sync behind you</li>
+                            <li>Clouds gather swiftly, like a shroud pulling tight</li>
+                            <li>Strange symbols carved into the rock glow faintly at night</li>
+                            <li>Echoes reply with voices not your own</li>
+                            <li>The air thins, but you hear someone breathing beside you</li>
+                            <li>Spindly trees grow sideways, as though fleeing the peak</li>
+                            <li>An ancient shrine crumbles into dust as you approach</li>
+                            <li>The trail vanishes, though you never strayed</li>
+                            <li>A goat watches you too intently—and does not blink</li>
+                            <li>Icicles form the shape of faces mid-scream</li>
+                            <li>You hear a lullaby sung in a language you don’t speak</li>
+                        </ul>
+                    </div>
+                </div>
 
-                    <div class="box" style="margin-top: 25px;">
-                        <h3 class="box-subtitle">UNSETTLING SENSATIONS (d6): <button class="roll-button" onclick="rollDice('1d6')">Roll</button></h3>
-                        <ol>
-                            <li><strong>Tactile:</strong> Cobwebs that cling like fingers. Stones that feel warm as flesh.</li>
-                            <li><strong>Auditory:</strong> Children's laughter in empty rooms. Your name whispered from behind.</li>
-                            <li><strong>Olfactory:</strong> Sudden rot smell in clean areas. Perfume of a long-dead noble.</li>
-                            <li><strong>Visual:</strong> Reflections show you older/dead. Shadows form clawed hands.</li>
-                            <li><strong>Temporal:</strong> Clocks run backward. Sunlight seems to move too quickly.</li>
-                            <li><strong>Proprioceptive:</strong> Feeling watched even alone. Unexplained weight on shoulders.</li>
-                        </ol>
-                        <p><em>Usage:</em> Roll when players enter new areas. Describe without explanation.</p>
-                    </div>
+                <div class="box" style="margin-top: 25px;">
+                    <h3 class="box-subtitle">UNSETTLING SENSATIONS (d20): <button class="roll-button" onclick="rollDice('1d20')">Roll</button></h3>
+                    <ol>
+                        <li><strong>Tactile:</strong> Cobwebs cling like fingers. Stones warm as flesh.</li>
+                        <li><strong>Auditory:</strong> Children laughing in empty rooms. Whispers from nowhere.</li>
+                        <li><strong>Olfactory:</strong> The sharp scent of bleach in the middle of the woods.</li>
+                        <li><strong>Visual:</strong> Your shadow moves just a beat too slow.</li>
+                        <li><strong>Temporal:</strong> You blink and it's suddenly dusk.</li>
+                        <li><strong>Proprioceptive:</strong> Your limbs feel slightly too long or too short.</li>
+                        <li><strong>Tactile:</strong> The sensation of ants crawling beneath your skin.</li>
+                        <li><strong>Auditory:</strong> Echoes that repeat words you haven’t spoken yet.</li>
+                        <li><strong>Olfactory:</strong> The smell of someone you loved, long dead.</li>
+                        <li><strong>Visual:</strong> Your reflection blinks out of sync with you.</li>
+                        <li><strong>Temporal:</strong> A memory plays in your mind as if it’s happening now.</li>
+                        <li><strong>Proprioceptive:</strong> You feel heavier—as if gravity is stronger here.</li>
+                        <li><strong>Auditory:</strong> The sound of breathing where no one stands.</li>
+                        <li><strong>Tactile:</strong> Something brushes your neck, but nothing’s there.</li>
+                        <li><strong>Olfactory:</strong> The air reeks of wet fur and rusting iron.</li>
+                        <li><strong>Visual:</strong> The stars above form an unfamiliar constellation.</li>
+                        <li><strong>Temporal:</strong> Your watch spins uncontrollably then stops.</li>
+                        <li><strong>Proprioceptive:</strong> You swear your heartbeat has an echo.</li>
+                        <li><strong>Auditory:</strong> Bells toll with no visible tower nearby.</li>
+                        <li><strong>Visual:</strong> You see a familiar face among the trees, but it vanishes.</li>
+                    </ol>
+                    <p><em>Usage:</em> Roll when players enter new areas. Describe without explanation.</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
 
@@ -4264,5 +4630,264 @@ function rollRandomWeakness() {
             });
         });
     });
+
+
+// NPC Generator Function with all new features
+function generateNPC(gender) {
+    // Clear previous result with animation
+    const resultDiv = document.getElementById('npc-result');
+    resultDiv.style.opacity = '0';
+    resultDiv.style.transform = 'translateY(-10px)';
+
+    // Gender selection logic
+    if (gender === 'any') {
+        gender = Math.random() > 0.5 ? 'male' : 'female';
+    }
+
+    // Names database
+    const maleNames = ["Alek", "Andrej", "Anton", "Balthazar", "Bogan", "Boris", "Dargos", "Darzin", "Dragomir", "Emeric", "Falkon", "Frederich", "Franz", "Gargosh", "Gorek", "Grygori", "Hans", "Harkus", "Ivan", "Jirko", "Kobal", "Korga", "Krystofor", "Lazlo", "Livius", "Marek", "Miroslav", "Nikolaj", "Nimir", "Oleg", "Radovan", "Radu", "Seraz", "Sergei", "Stefan", "Tural", "Valentin", "Vasily", "Vladislav", "Waltar", "Yesper", "Zsolt"];
+    const femaleNames = ["Alana", "Clavdia", "Danya", "Dezdrelda", "Diavola", "Dorina", "Drasha", "Drilvia", "Elisabeta", "Fatima", "Grilsha", "Isabella", "Ivana", "Jarzinka", "Kala", "Katerina", "Kereza", "Korina", "Lavinia", "Magda", "Marta", "Mathilda", "Minodora", "Mirabel", "Miruna", "Nimira", "Nyanka", "Olivenka", "Ruxandra", "Sorina", "Tereska", "Valentina", "Vasha", "Victoria", "Wensencia", "Zondra"];
+    const familyNames = ["Alastroi", "Antonovich", "Barthos", "Belasco", "Cantemir", "Dargovich", "Diavolov", "Diminski", "Dilisnya", "Drazkoi", "Garvinski", "Grejenko", "Groza", "Grygorovich", "Ivanovich", "Janek", "Karushkin", "Konstantinovich", "Krezkov", "Krykski", "Lansten", "Lazarescu", "Lukresh", "Lipsiege", "Martikov", "Mironovich", "Moldovar", "Nikolovich", "Nimirovich", "Oronovich", "Petrovich", "Polensky", "Radovich", "Rilsky", "Stefanovich", "Strazni", "Swilovich", "Taltos", "Targolov", "Tyminski", "Ulbrek", "Ulrich", "Vadu", "Voltanescu", "Zalenski", "Zalken"];
+
+    const malePortraits = [
+        "https://i.pinimg.com/236x/ae/c9/bb/aec9bbe4d2756426b20b54d0b66736bd.jpg",
+        "https://i.pinimg.com/236x/eb/50/c8/eb50c89b56aa4dc51634403b0ceef259.jpg",
+        "https://i.pinimg.com/736x/93/d8/d2/93d8d273434db9b60aa47c26520eda60.jpg",
+        "https://i.pinimg.com/736x/09/5e/89/095e891a798b16b57ce463db51386578.jpg"
+    ];
+    const femalePortraits = [
+        "https://i.pravatar.cc/150?img=3",
+        "https://i.pravatar.cc/150?img=8",
+        "https://i.pravatar.cc/150?img=9",
+        "https://i.pravatar.cc/150?img=10"
+    ];
+
+    const name = gender === 'male' 
+        ? maleNames[Math.floor(Math.random() * maleNames.length)]
+        : femaleNames[Math.floor(Math.random() * femaleNames.length)];
+
+    const familyName = familyNames[Math.floor(Math.random() * familyNames.length)];
+    const portrait = gender === 'male'
+        ? malePortraits[Math.floor(Math.random() * malePortraits.length)]
+        : femalePortraits[Math.floor(Math.random() * femalePortraits.length)];
+
+    let fullFamilyName = familyName;
+    if (gender === 'female') {
+        if (familyName.endsWith('vich')) fullFamilyName = familyName.replace('vich', 'vna');
+        else if (familyName.endsWith('ov')) fullFamilyName = familyName + 'a';
+    }
+
+    const stats = {
+        STR: rollDiceNotation("3d6"),
+        DEX: rollDiceNotation("3d6"),
+        CON: rollDiceNotation("3d6"),
+        INT: rollDiceNotation("3d6"),
+        WIS: rollDiceNotation("3d6"),
+        CHA: rollDiceNotation("3d6")
+    };
+
+    const npcHTML = `
+        <div class="npc-full-card">
+            <img src="${portrait}" alt="${name}" class="npc-portrait">
+            <h4>${name} ${fullFamilyName}</h4>
+            <p><strong>${generateAge()} • ${generateOccupation()}</strong></p>
+            <p><em>"${generateQuote()}"</em></p>
+            
+            <div class="npc-stats">
+                ${Object.entries(stats).map(([stat, value]) => `
+                    <div class="stat-box">
+                        <div class="stat-label">${stat}</div>
+                        <div class="stat-value">
+                            ${value} 
+                            <button class="roll-button" style="margin-left:5px;padding:2px 5px;font-size:0.8em;" 
+                                    onclick="rollStatCheck('${stat}', ${value})">Roll</button>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+            
+            <p><strong>Personality:</strong> ${generatePersonality()}</p>
+            <p><strong>Secret:</strong> ${generateSecret()}</p>
+        </div>
+    `;
+
+    // Create a temporary div to measure content height
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = npcHTML;
+    tempDiv.style.position = 'absolute';
+    tempDiv.style.visibility = 'hidden';
+    tempDiv.style.width = resultDiv.clientWidth + 'px';
+    document.body.appendChild(tempDiv);
+    
+    // Get the height of the content
+    const contentHeight = tempDiv.offsetHeight;
+    document.body.removeChild(tempDiv);
+    
+    // Get the box container and adjust its height before showing content
+    const box = resultDiv.closest('.box');
+    if (box) {
+        // Add extra padding to the calculated height
+        box.style.minHeight = (contentHeight + 60) + 'px';
+    }
+
+    // Fade-in logic after delay
+    setTimeout(() => {
+        resultDiv.innerHTML = npcHTML;
+        resultDiv.style.opacity = '1';
+        resultDiv.style.transform = 'translateY(0)';
+        
+        // Additional adjustment after content is rendered
+        setTimeout(() => {
+            // Double-check the actual rendered height
+            const actualHeight = resultDiv.offsetHeight;
+            if (box && actualHeight > contentHeight) {
+                box.style.minHeight = (actualHeight + 60) + 'px';
+            }
+        }, 50);
+    }, 300);
+}
+
+// Helper functions that need to be implemented
+function rollDiceNotation(notation) {
+    // Parse dice notation (e.g., "3d6") and return result
+    const [count, sides] = notation.split('d').map(Number);
+    let total = 0;
+    for (let i = 0; i < count; i++) {
+        total += Math.floor(Math.random() * sides) + 1;
+    }
+    return total;
+}
+
+function generateAge() {
+    const ages = ["Child", "Teenager", "Young adult", "Adult", "Middle-aged", "Elder"];
+    return ages[Math.floor(Math.random() * ages.length)];
+}
+
+function generateOccupation() {
+    const occupations = ["Noble", "Merchant", "Guard", "Farmer", "Craftsman", "Servant", "Innkeeper", "Hunter", "Scholar", "Priest/ess", "Entertainer", "Soldier", "Beggar", "Fisherman", "Herbalist", "Blacksmith"];
+    return occupations[Math.floor(Math.random() * occupations.length)];
+}
+
+function generateQuote() {
+    const quotes = [
+        "The mists take us all in the end...",
+        "In Barovia, fear is the only faithful companion.",
+        "Trust no one, especially those who smile too much.",
+        "The wolves may howl, but it's the silent predators you should fear.",
+        "Even the brightest day in Barovia carries shadows.",
+        "The old ways are the only ways that keep us safe.",
+        "Don't look into their eyes—they'll steal your soul.",
+        "Fortune favors the cautious in these lands.",
+        "When night falls, keep to your home and pray.",
+        "I've seen things in the fog that cannot be unseen.",
+        "The devil walks among us wearing a human face.",
+        "Some secrets are better left buried with our ancestors.",
+        "There is no escape from Barovia, only survival.",
+        "We are all pawns in a game we cannot comprehend.",
+        "Hope is a luxury few can afford in these times."
+    ];
+    return quotes[Math.floor(Math.random() * quotes.length)];
+}
+
+function generatePersonality() {
+    const traits = [
+        "Suspicious of strangers",
+        "Deeply superstitious",
+        "Quietly resourceful",
+        "Resigned to fate",
+        "Protective of family",
+        "Darkly humorous",
+        "Practical and pragmatic",
+        "Collector of old folklore",
+        "Secretly hopeful",
+        "Stoic in adversity",
+        "Quick to blame others",
+        "Overly cautious",
+        "Surprisingly brave",
+        "Silent observer",
+        "Keeper of traditions",
+        "Bitter and resentful",
+        "Hospitable despite fears",
+        "Nervous in darkness",
+        "Distrustful of authority",
+        "Resourceful survivor"
+    ];
+    return traits[Math.floor(Math.random() * traits.length)];
+}
+
+function generateSecret() {
+    const secrets = [
+        "Has seen the devil and lived to tell the tale.",
+        "Keeps a forbidden trinket hidden under the floorboards.",
+        "Is actually a spy for the Vistani.",
+        "Has wolf's blood in their veins.",
+        "Lost a child to the mists years ago.",
+        "Knows a hidden path through the woods.",
+        "Carries an ancient family curse.",
+        "Once served in Castle Ravenloft.",
+        "Has visions of past horrors.",
+        "Hides scars from a vampire attack.",
+        "Secretly worships the Morning Lord.",
+        "Has made a pact with a dark entity.",
+        "Is related to a famous monster hunter.",
+        "Knows the true name of a local witch.",
+        "Guards an ancient family heirloom.",
+        "Has a forbidden romance with an outsider.",
+        "Witnessed a ritual that cannot be unseen.",
+        "Keeps a journal of strange occurrences.",
+        "Can sense when evil is near.",
+        "Remembers the time before the mists came."
+    ];
+    return secrets[Math.floor(Math.random() * secrets.length)];
+}
+
+function rollStatCheck(stat, value) {
+    // Implement stat check rolling functionality
+    const roll = Math.floor(Math.random() * 20) + 1;
+    const modifier = Math.floor((value - 10) / 2);
+    const total = roll + modifier;
+    
+    // Create result message
+    let resultMessage = `${stat} Check: Rolled ${roll}`;
+    if (modifier !== 0) {
+        resultMessage += ` ${modifier >= 0 ? '+' : ''}${modifier} = ${total}`;
+    }
+    
+    // Display result (implement as needed)
+    alert(resultMessage);
+}
+
+// Dice rolling functions
+function rollDie(sides) {
+    return Math.floor(Math.random() * sides) + 1;
+}
+
+function rollDiceNotation(notation) {
+    const parts = notation.split(/([+-])/);
+    let total = 0;
+    let currentOp = '+';
+    
+    for (let part of parts) {
+        if (part === '+' || part === '-') {
+            currentOp = part;
+            continue;
+        }
+        
+        if (part.includes('d')) {
+            const [count, sides] = part.split('d').map(Number);
+            let sum = 0;
+            for (let i = 0; i < count; i++) {
+                sum += rollDie(sides);
+            }
+            total = currentOp === '+' ? total + sum : total - sum;
+        } else if (part) {
+            const num = parseInt(part, 10);
+            total = currentOp === '+' ? total + num : total - num;
+        }
+    }
+    
+    return total;
+}
+
 
 </script>
