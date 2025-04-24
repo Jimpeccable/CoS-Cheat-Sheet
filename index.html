@@ -99,33 +99,38 @@
         }
         
         .section-title {
-            font-family: var(--font-header);
-            color: var(--title-color);
-            font-size: 28px;
-            font-weight: bold;
-            margin-top: 50px;
-            margin-bottom: 25px;
-            border-bottom: 1px solid var(--border-light);
-            padding-bottom: 8px;
-            position: relative;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+    font-family: var(--font-header);
+    color: var(--title-color);
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background: linear-gradient(90deg, rgba(139,0,0,0.1) 0%, rgba(212,175,55,0.05) 100%);
+    border-left: 4px solid var(--border-color);
+    position: relative;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 0 4px 4px 0;
+    box-shadow: var(--shadow-light);
+}
+
+.section-title:hover {
+    color: #6b0000;
+    background: linear-gradient(90deg, rgba(139,0,0,0.15) 0%, rgba(212,175,55,0.08) 100%);
+}
         
-        .section-title:hover {
-            color: #6b0000;
-        }
-        
-        .section-title:after {
-            content: "";
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 100px;
-            height: 2px;
-            background-color: var(--border-color);
-        }
+.section-title:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border-color), var(--border-light), transparent);
+    opacity: 0.5;
+}
         
         .row {
             display: flex;
@@ -720,7 +725,7 @@ body.dark-mode .sidebar {
 .section-title::before {
     content: "+";
     position: absolute;
-    left: 0;
+    left: 10px;
     color: var(--border-color);
     font-weight: bold;
     transition: transform 0.3s ease;
@@ -1304,6 +1309,7 @@ body.dark-mode .sidebar {
 }
 
 </style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%238b0000'>🧛</text></svg>">
 </head>
 <body>
     <div class="container">
@@ -1377,7 +1383,7 @@ body.dark-mode .sidebar {
 </div>
 
 <div class="nav-links tab-content" id="misc" style="display:none;">
-    <a href="#atmosphere-music" class="nav-link">Atmosphere & Music</a>
+    <a href="#atmosphere-music" class="nav-link">Music & Tools</a>
     <a href="#npc-generator" class="nav-link">NPC Generator</a>
 </div>
 
@@ -1484,8 +1490,8 @@ body.dark-mode .sidebar {
                         </div>
                         
                         <h3 class="box-subtitle">RECOVERY:</h3>
-			<h3 class="box-subtitle">RECOVERY:</h3>
-<p>After <span class="tooltip">short rest<span class="tooltiptext">A period of downtime (at least 1 hour) where characters tend wounds and regain some resources.</span></span>, attempt WIS save to end despair. <span class="tooltip">Calm emotions<span class="tooltiptext">2nd-level spell: Suppresses strong emotions or removes frightened/charmed conditions.</span></span>, <span class="tooltip">lesser/greater restoration<span class="tooltiptext">Lesser: 2nd-level, ends conditions like paralyzed or poisoned. Greater: 5th-level, reduces exhaustion or removes curses.</span></span> remove despair.</p>
+	
+                        <p>After <span class="tooltip">short rest<span class="tooltiptext">A period of downtime (at least 1 hour) where characters tend wounds and regain some resources.</span></span>, attempt WIS save to end despair. <span class="tooltip">Calm emotions<span class="tooltiptext">2nd-level spell: Suppresses strong emotions or removes frightened/charmed conditions.</span></span>, <span class="tooltip">lesser/greater restoration<span class="tooltiptext">Lesser: 2nd-level, ends conditions like paralyzed or poisoned. Greater: 5th-level, reduces exhaustion or removes curses.</span></span> remove despair.</p>
                         <ul>
                             <li>Regain 1 SP after a safe long rest</li>
                             <li>Greater Restoration restores all SP</li>
@@ -3322,7 +3328,7 @@ body.dark-mode .sidebar {
 
 <!-- NPC Generator -->
 <h2 class="section-title" id="npc-generator">NPC GENERATOR</h2>
-<div class="collapsible-content" style="display: block; max-height: none;">
+<div class="collapsible-content">
     <div class="box" style="min-height: 300px; overflow: visible !important;">
         <h3 class="box-title">BAROVIAN NPC GENERATOR</h3>
         <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
@@ -3342,24 +3348,34 @@ body.dark-mode .sidebar {
 
 
 <!-- Atmosphere Music -->
-<h2 class="section-title" id="atmosphere-music">ATMOSPHERE & MUSIC</h2>
+<h2 class="section-title" id="atmosphere-music">MUSIC & TOOLS</h2>
 <div class="collapsible-content">
     <div class="box">
         <h3 class="box-title">IMMERSIVE AUDIO TOOLS</h3>
         <div class="music-grid">
             <!-- Curse of Strahd Playlist -->
             <div class="music-card">
-                <img src="https://i.scdn.co/image/ab67706c0000bebbc0a1a6b2d247bd6b3a1615d1" alt="Curse of Strahd Playlist" class="music-cover">
+                <img src="https://sheffieldgothic.home.blog/wp-content/uploads/2016/04/c3149-dd_curse_of_strahd_portrait_of_strahd_von_zarovich.jpg" alt="Curse of Strahd Playlist" class="music-cover">
                 <div class="music-info">
                     <h4>Curse of Strahd Campaign</h4>
                     <p>Complete atmospheric soundtrack for your campaign</p>
                     <a href="https://open.spotify.com/playlist/3x0uLKZPaKK8gTszXzIVXD" target="_blank" class="music-link">Listen on Spotify</a>
                 </div>
             </div>
+
+            <!-- Pre-Game Strahd -->
+            <div class="music-card">
+                <img src="https://i.etsystatic.com/16542616/r/il/f70687/4363165323/il_570xN.4363165323_jlk9.jpg" alt="Pre-Game Strahd" class="music-cover">
+                <div class="music-info">
+                    <h4>Pre-Game Strahd</h4>
+                    <p>Set the atmosphere and tone for the upcoming session - good mood setter and session recap</p>
+                    <a href="https://open.spotify.com/playlist/4eTsagHD9jfhRcHMoeVS6h?si=DJEhqx9IQ_2dp6DaOEgMiw" target="_blank" class="music-link">Listen on Spotify</a>
+                </div>
+            </div>
             
             <!-- Epic Battle Playlist -->
             <div class="music-card">
-                <img src="https://i.scdn.co/image/ab67706c0000bebbd9d998d6d7a4066e7c968a8b" alt="Epic Battle Music" class="music-cover">
+                <img src="https://4.bp.blogspot.com/-QvkOq20fzTU/UX5CmUc7UFI/AAAAAAAAAUU/gB_Lf-RShBg/s1600/meph56_dsa_dorf3.jpg" alt="Epic Battle Music" class="music-cover">
                 <div class="music-info">
                     <h4>Epic Battle Music</h4>
                     <p>Thundering orchestral pieces for combat encounters</p>
@@ -3369,36 +3385,144 @@ body.dark-mode .sidebar {
             
             <!-- Ambient Exploration -->
             <div class="music-card">
-                <img src="https://i.scdn.co/image/ab67706c0000bebbe6a75d8a3e1e914d1a0d06e8" alt="Ambient Exploration" class="music-cover">
+                <img src="https://robertofont.github.io/assets/img/CityAtNight_partII.png" alt="Ambient Exploration" class="music-cover">
                 <div class="music-info">
                     <h4>Ambient Exploration</h4>
                     <p>Eerie soundscapes for travel and discovery</p>
                     <a href="https://open.spotify.com/playlist/4YaJdqJzubdx3lEB4UEhLt" target="_blank" class="music-link">Listen on Spotify</a>
                 </div>
             </div>
-            
-            <!-- OBR NPC Generator -->
+
+            <!-- Foreboding -->
             <div class="music-card">
-                <img src="https://owlbear.rodeo/icons/icon-512x512.png" alt="OWLBEAR RADIO" class="music-cover">
+                <img src="https://i.pinimg.com/736x/ed/5f/f1/ed5ff1a0876f04c89cda5ba7eb25524e.jpg" alt="Strahd Foreboding" class="music-cover">
                 <div class="music-info">
-                    <h4>OWLBEAR RADIO Generator</h4>
-                    <p>Dynamic NPC generator addon for OBR</p>
-                    <a href="https://npc-generator-obr.onrender.com/manifest.json" target="_blank" class="music-link">Install Addon</a>
+                    <h4>Strahd Foreboding</h4>
+                    <p>Foreboding atmosphere for travel and exploration</p>
+                    <a href="https://open.spotify.com/playlist/0IT55bfRRe2nAMEY5q38aj?si=leCffOe8QhOvkGur2Q47xw" target="_blank" class="music-link">Listen on Spotify</a>
                 </div>
             </div>
         </div>
+
+        </div>
+
+        <div class="box">
+            <h3 class="box-title">GAME TOOLS</h3>
+            <div class="music-grid">
+                                
+                <!-- OBR NPC Generator -->
+                <div class="music-card">
+                    <img src="https://npc-generator-obr.onrender.com/crit.png" alt="OWLBEAR RADIO" class="music-cover">
+                    <div class="music-info">
+                        <h4>OWLBEAR RODEO NPC Generator</h4>
+                        <p>FREE Dynamic NPC generator addon for OBR - Copy and paste link into addons 👇</p>
+                        https://npc-generator-obr.onrender.com/manifest.json
+                        <p></p>
+                        <a href="https://www.owlbear.rodeo/" target="_blank" class="music-link">Open OwlBear Rodeo VTT</a>
+                    </div>
+                </div>
+
+                <!-- TIKTOK -->
+                <div class="music-card">
+                    <img src="https://cdn.beacons.ai/user_content/rIDafriKi5f81R1d73HxPizPLyi1/profile_youwannaplay.png" alt="BBEG Monologues" class="music-cover">
+                    <div class="music-info">
+                        <h4>NAT20 Free Monologues for NPC's & BBEG's</h4>
+                        <p>FREE Monologues for games and campaigns</p>
+                        <p></p>
+                        <a href="https://www.tiktok.com/@rollnat20" target="_blank" class="music-link">TikTok - NPC / BBEG Monologues</a>
+                    </div>
+                </div>
+
+                <!-- Handout Generator -->
+                <div class="music-card">
+                    <img src="https://img.freepik.com/free-photo/parchment-with-ink-stains-near-candles-keys_23-2147777457.jpg" alt="Handout Generator" class="music-cover">
+                    <div class="music-info">
+                        <h4>Handout Generator</h4>
+                        <p>Create printable letter handouts</p>
+                        <p></p>
+                        <a href="https://rpgportrait.app/free-tools/letter-creator" target="_blank" class="music-link">Open Handout Generator</a>
+                    </div>
+                </div>
+
+                <!-- Printable Tarroka Deck -->
+                <div class="music-card">
+                    <img src="https://boardwipe.com/cdn/shop/products/Thumbnail_3.jpg" alt="Tarroka Deck" class="music-cover">
+                    <div class="music-info">
+                        <h4>Printable Tarroka Deck</h4>
+                        <p>Printable Tarroka Deck courtesy of Reddit user: meninosousa</p>
+                        <p></p>
+                        <a href="https://www.dropbox.com/scl/fi/vkbgrmwbfqbysq2widlpb/Tarokka_All.pdf?rlkey=5y5t46adrb8akv082gfu0iwko&e=1&st=81h4w5n9&dl=0" target="_blank" class="music-link">Open Dropbox</a>
+                    </div>
+                </div>
+
+                <!-- Spoiler Free Map -->
+                <div class="music-card">
+                    <img src="https://i.pinimg.com/736x/62/aa/62/62aa6210cccbf03c58eb892bf65f2e92.jpg" alt="Spoiler Free Map" class="music-cover">
+                    <div class="music-info">
+                        <h4>High Res: Spoiler Free Barovia Map</h4>
+                        <p>Spoiler free Barovia Map courtesy of Reddit user: Heppburr</p>
+                        <p></p>
+                        <a href="https://www.reddit.com/media?url=https%3A%2F%2Fpreview.redd.it%2F51s3lxug73o71.png%3Fwidth%3D3375%26format%3Dpng%26auto%3Dwebp%26s%3D26641f1ed823b880958cae56005d3fcabc5d242c" target="_blank" class="music-link">Open Image</a>
+                    </div>
+                </div>
+
+            </div>
         
         <h3 class="box-subtitle" style="margin-top: 30px;">MUSIC BY LOCATION</h3>
         <div class="table-header">
             <div class="table-col-1">Location</div>
             <div class="table-col-2">Music Style</div>
-            <div class="table-col-3">Example Track</div>
+            <div class="table-col-3">Youtube Link/Artist</div>
         </div>
         <div class="box-row">
-            <div class="table-col-1">Village of Barovia</div>
-            <div class="table-col-2">Dreary, mournful strings with wolf howls</div>
-            <div class="table-col-3"><a href="https://www.youtube.com/watch?v=..." target="_blank">"Grief" by Cryo Chamber</a></div>
+            <div class="table-col-1">Lands of Barovia</div>
+            <div class="table-col-2">Dark Background Music</div>
+            <div class="table-col-3"><a href="https://www.youtube.com/watch?v=rHf-4IkzapM&pp=ygUMc3RyYWhkIG11c2lj" target="_blank">Fabo Music</a></div>
         </div>
+
+        <div class="box-row">
+            <div class="table-col-1">Into the Mists</div>
+            <div class="table-col-2">Atmospheric Background Music</div>
+            <div class="table-col-3"><a href="https://www.youtube.com/watch?v=Py9uKaZQcgo&list=PLQBqJdSe3H4E7e-Vibw_RZ2bKTH03Z-yX" target="_blank">Fabo Music</a></div>
+        </div>
+
+        <div class="box-row">
+            <div class="table-col-1">Old Svalich Road</div>
+            <div class="table-col-2">On-the road atmospheric Background Music</div>
+            <div class="table-col-3"><a href="https://www.youtube.com/watch?v=m7tR2IJg8yg&pp=ygUMc3RyYWhkIG11c2lj" target="_blank">Fabo Music</a></div>
+        </div>
+
+        <div class="box-row">
+            <div class="table-col-1">Village of Barovia</div>
+            <div class="table-col-2">Music for the Village of Barovia</div>
+            <div class="table-col-3"><a href="https://www.youtube.com/watch?v=ZOoFtJWJXL4&pp=ygUMc3RyYWhkIG11c2lj" target="_blank">Fabo Music</a></div>
+        </div>
+
+        <div class="box-row">
+            <div class="table-col-1">Tser Pool Encampment</div>
+            <div class="table-col-2">Vistani encampment</div>
+            <div class="table-col-3"><a href="https://www.youtube.com/watch?v=bsuF-HNoTqk&pp=ygURc3RyYWhkIG11c2ljIHRzZXI%3D" target="_blank">James RPG Art</a></div>
+        </div>
+
+        <div class="box-row">
+            <div class="table-col-1">Town of Vallaki</div>
+            <div class="table-col-2">Town of Vallaki Background Music</div>
+            <div class="table-col-3"><a href="https://www.youtube.com/watch?v=sxy7Csc2p2g&pp=ygUMc3RyYWhkIG11c2lj" target="_blank">MAB Music TTRPG</a></div>
+        </div>
+
+        <div class="box-row">
+            <div class="table-col-1">Town of Vallaki / Alternative</div>
+            <div class="table-col-2">Town of Vallaki Background Music</div>
+            <div class="table-col-3"><a href="https://www.youtube.com/watch?v=P5ahzE4N7zc&pp=ygUMc3RyYWhkIG11c2lj" target="_blank">Fabo Music</a></div>
+        </div>
+
+        <div class="box-row">
+            <div class="table-col-1">Yester Hill</div>
+            <div class="table-col-2">Music for Yester Hill atmosphere</div>
+            <div class="table-col-3"><a href="https://www.youtube.com/watch?v=3djSaBlWPzo&pp=ygUMc3RyYWhkIG11c2lj" target="_blank">MAB Music TTRPG</a></div>
+        </div>
+
+        
         <!-- More location rows... -->
     </div>
 </div>
@@ -4632,10 +4756,22 @@ function rollRandomWeakness() {
     });
 
 
-// NPC Generator Function with all new features
-function generateNPC(gender) {
-    // Clear previous result with animation
+    function generateNPC(gender) {
+    // Ensure the collapsible content is open when generating
     const resultDiv = document.getElementById('npc-result');
+    const collapsibleContent = resultDiv.closest('.collapsible-content');
+    
+    // Save original styles to restore collapse functionality later
+    const originalDisplay = collapsibleContent.style.display;
+    const originalMaxHeight = collapsibleContent.style.maxHeight;
+    const originalOverflow = collapsibleContent.style.overflow;
+    
+    // Temporarily set styles to ensure content is visible during generation
+    collapsibleContent.style.display = 'block';
+    collapsibleContent.style.maxHeight = 'none';
+    collapsibleContent.style.overflow = 'visible';
+    
+    // Clear previous result with animation
     resultDiv.style.opacity = '0';
     resultDiv.style.transform = 'translateY(-10px)';
 
@@ -4653,13 +4789,28 @@ function generateNPC(gender) {
         "https://i.pinimg.com/236x/ae/c9/bb/aec9bbe4d2756426b20b54d0b66736bd.jpg",
         "https://i.pinimg.com/236x/eb/50/c8/eb50c89b56aa4dc51634403b0ceef259.jpg",
         "https://i.pinimg.com/736x/93/d8/d2/93d8d273434db9b60aa47c26520eda60.jpg",
-        "https://i.pinimg.com/736x/09/5e/89/095e891a798b16b57ce463db51386578.jpg"
+        "https://i.pinimg.com/236x/6d/09/f0/6d09f0833270538d709581cfe42bb8d3.jpg",
+        "https://i.pinimg.com/236x/2d/b7/b7/2db7b7e559f7bc9556820b8b22bb6eae.jpg",
+        "https://i.pinimg.com/564x/2c/72/40/2c7240b4e205b31668fd5b3048188575.jpg",
+        "https://i.pinimg.com/474x/2a/6f/31/2a6f3178a1b273e853c67b9cf8c58265.jpg",
+        "https://i.pinimg.com/474x/a4/eb/e0/a4ebe023bc751f6a23a3125f7cae341e.jpg",
+        "https://i.pinimg.com/564x/8c/ff/4c/8cff4cede09d58fb7738f04750416613.jpg",
+        "https://i.pinimg.com/736x/09/5e/89/095e891a798b16b57ce463db51386578.jpg",
     ];
     const femalePortraits = [
-        "https://i.pravatar.cc/150?img=3",
-        "https://i.pravatar.cc/150?img=8",
-        "https://i.pravatar.cc/150?img=9",
-        "https://i.pravatar.cc/150?img=10"
+        "https://i.pinimg.com/736x/8a/9d/2d/8a9d2d45e80763ff3ff988e092e14f9b.jpg",
+        "https://img.freepik.com/premium-photo/woman-with-long-hair-green-dress-with-white-collar-long-skirt_579873-4845.jpg",
+        "https://i.pinimg.com/736x/27/65/d1/2765d174c346def20f8470bde5fe985e.jpg",
+        "https://i.pinimg.com/736x/ca/14/52/ca1452915cff66a9c931f5afddf68a4d.jpg",
+        "https://i.pinimg.com/236x/ab/61/15/ab61153de83e4995b87662586b7ae2d9.jpg",
+        "https://i.pinimg.com/236x/ab/61/15/ab61153de83e4995b87662586b7ae2d9.jpg",
+        "https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/c8d9ca9a-b95d-4926-b713-87df086e2796/anim=false,width=450/00139-3444351597.jpeg",
+        "https://i.pinimg.com/474x/39/a6/74/39a67485307966b803303de55b35db51.jpg",
+        "https://i.pinimg.com/originals/7f/0d/af/7f0daf326c05bfe776688df2dce25869.png",
+        "https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/fd7b4f39-c759-46cf-85ce-adb420f68be5/width=800,original=false/00089-3488879182.jpeg",
+        "https://i.pinimg.com/236x/4a/ab/3b/4aab3beac6e5a42178b378521414bc3c.jpg",
+        "https://i.pinimg.com/564x/82/f3/7d/82f37d95452221eb315417855a71c674.jpg",
+        "https://i.pinimg.com/736x/21/29/cc/2129cc16faa2f924904b418b851cd9c3.jpg"
     ];
 
     const name = gender === 'male' 
@@ -4686,6 +4837,11 @@ function generateNPC(gender) {
         CHA: rollDiceNotation("3d6")
     };
 
+    // Generate additional traits using the new functions
+    const physicalTrait = generatePhysicalTrait();
+    const fear = generateFear();
+    const appearance = generateAppearance();
+
     const npcHTML = `
         <div class="npc-full-card">
             <img src="${portrait}" alt="${name}" class="npc-portrait">
@@ -4706,8 +4862,13 @@ function generateNPC(gender) {
                 `).join('')}
             </div>
             
-            <p><strong>Personality:</strong> ${generatePersonality()}</p>
-            <p><strong>Secret:</strong> ${generateSecret()}</p>
+            <div class="npc-details">
+                <p><strong>Appearance:</strong> ${appearance}</p>
+                <p><strong>Distinctive Trait:</strong> ${physicalTrait}</p>
+                <p><strong>Greatest Fear:</strong> ${fear}</p>
+                <p><strong>Personality:</strong> ${generatePersonality()}</p>
+                <p><strong>Secret:</strong> ${generateSecret()}</p>
+            </div>
         </div>
     `;
 
@@ -4743,6 +4904,9 @@ function generateNPC(gender) {
             if (box && actualHeight > contentHeight) {
                 box.style.minHeight = (actualHeight + 60) + 'px';
             }
+            
+            // Save the current height as a data attribute for future reference
+            collapsibleContent.dataset.contentHeight = box.style.minHeight;
         }, 50);
     }, 300);
 }
@@ -4764,82 +4928,566 @@ function generateAge() {
 }
 
 function generateOccupation() {
-    const occupations = ["Noble", "Merchant", "Guard", "Farmer", "Craftsman", "Servant", "Innkeeper", "Hunter", "Scholar", "Priest/ess", "Entertainer", "Soldier", "Beggar", "Fisherman", "Herbalist", "Blacksmith"];
+    const occupations = [
+        // Authority & Noble Class
+        "Noble", "Burgomeister", "Town Council Member", "Tax Collector", "Magistrate", "Estate Manager", 
+        "Minor Lord/Lady", "Disinherited Noble", "Courtier", "Land Owner",
+        
+        // Commerce
+        "Merchant", "Shopkeeper", "Trader", "Peddler", "Money Lender", "Vistani Trader", "Artisan Dealer",
+        "Wine Merchant", "Antique Dealer", "Rare Goods Collector", "Market Stall Owner", "Smuggler",
+        
+        // Service & Hospitality
+        "Innkeeper", "Barkeep", "Server", "Cook", "Stable Master", "Courier", "Guide", "Servant", 
+        "House Steward", "Wet Nurse", "Grave Digger", "Undertaker", "Coffin Maker", "Launderer",
+        "Rat Catcher", "Chimney Sweep", "Lamp Lighter", "Bath House Attendant", "Housemaid",
+        
+        // Crafts & Production
+        "Blacksmith", "Tanner", "Cooper", "Wheelwright", "Carpenter", "Stonemason", "Cobbler", 
+        "Tailor", "Weaver", "Potter", "Glass Blower", "Candle Maker", "Rope Maker", "Leather Worker",
+        "Woodcarver", "Taxidermist", "Bookbinder", "Jeweler", "Icon Painter", "Toy Maker",
+        
+        // Food Production
+        "Baker", "Butcher", "Brewer", "Vintner", "Miller", "Cheese Maker", "Distiller", "Fish Monger",
+        "Apiarian", "Pickle Maker", "Sausage Maker", "Spice Merchant",
+        
+        // Agriculture
+        "Farmer", "Shepherd", "Goatherd", "Orchard Keeper", "Vintner's Assistant", "Field Hand",
+        "Woodcutter", "Charcoal Burner", "Mushroom Harvester", "Forager", "Raven Keeper",
+        "Animal Breeder", "Wolf Trapper",
+        
+        // Defense & Protection
+        "Guard", "Soldier", "Militia Member", "Watchman", "Scout", "Former Knight", "Bounty Hunter",
+        "Monster Hunter", "Vampire Hunter", "Wolf Hunter", "Bodyguard", "Mercenary", "Town Gatekeeper",
+        
+        // Knowledge & Religion
+        "Priest/ess", "Acolyte", "Monk/Nun", "Scholar", "Scribe", "Historian", "Fortune Teller",
+        "Librarian", "Teacher", "Astronomer", "Philosopher", "Investigator", "Cartographer",
+        "Translator of Old Texts", "Occultist", "Heretic", "Religious Exile",
+        
+        // Medicine & Nature
+        "Herbalist", "Midwife", "Healer", "Barber-Surgeon", "Apothecary", "Leech Collector",
+        "Plague Doctor", "Mortician", "Hedge Witch", "Root Cutter", "Folk Healer",
+        
+        // Hunting & Wilderness
+        "Hunter", "Trapper", "Falconer", "Fisherman", "Forester", "Tracker", "Game Warden",
+        "Wilderness Guide", "Fur Trader", "Poacher",
+        
+        // Arts & Entertainment
+        "Minstrel", "Storyteller", "Puppeteer", "Artist", "Musician", "Dancer", "Actor", 
+        "Carnival Performer", "Poet", "Playwright", "Shadow Puppeteer", "Mask Maker",
+        
+        // Outcast & Fringe
+        "Beggar", "Vagabond", "Hermit", "Orphan Caretaker", "Madman/woman", "Escaped Servant",
+        "Con Artist", "Fence", "Gravedigger", "Night Soil Collector", "Prisoner", "Exile",
+        "Dishonored Soldier", "Ruined Merchant", "Branded Criminal", "Witch's Apprentice",
+        
+        // Unusual Occupations
+        "Relic Hunter", "Fog Watcher", "Dream Interpreter", "Raven Keeper", "Ghost Whisperer",
+        "Sin Eater", "Curse Detector", "Wolf Charmer", "Undead Warden", "Mist Walker",
+        "Haunted House Caretaker", "Bone Collector", "Doll Maker", "Effigy Builder"
+    ];
     return occupations[Math.floor(Math.random() * occupations.length)];
 }
 
 function generateQuote() {
     const quotes = [
+        // Resignation & Doom
         "The mists take us all in the end...",
+        "We're all just waiting for our time to come.",
+        "Born in the shadow, die in the shadow.",
+        "The sun may rise, but light never truly reaches Barovia.",
+        "Death is not the end in these lands, merely a different kind of prison.",
+        "I've accepted my fate, as should you.",
+        "The ravens watch and the ravens know. They'll watch you too.",
+        "My grandmother always said: 'Sleep comes, the night watches, and morning never truly arrives.'",
+        "We are all just meat for the grinder eventually.",
+        
+        // Fear & Warnings
         "In Barovia, fear is the only faithful companion.",
         "Trust no one, especially those who smile too much.",
         "The wolves may howl, but it's the silent predators you should fear.",
-        "Even the brightest day in Barovia carries shadows.",
+        "When you hear laughter at night, seal your windows and pray.",
+        "Never accept gifts from strangers. Nothing comes without a price here.",
+        "The mists bring nothing but sorrow.",
+        "Some who enter the woods return... changed.",
+        "If you hear singing on a moonless night, cover your ears and hide.",
+        "Three signs warn of his coming: dead birds, red fog, and children's laughter.",
+        "Always burn your hair and nail clippings. They can use these things against you.",
+        
+        // Superstition & Advice
+        "Wear your garlic close and your faith closer.",
+        "Silver and sunlight, stranger. Remember these two things if you wish to see another dawn.",
+        "A circle of salt keeps more than just slugs away.",
         "The old ways are the only ways that keep us safe.",
         "Don't look into their eyes—they'll steal your soul.",
         "Fortune favors the cautious in these lands.",
         "When night falls, keep to your home and pray.",
+        "Never trust a path that wasn't there yesterday.",
+        "A raven's feather under your pillow keeps the nightmares at bay... sometimes.",
+        "Speak not ill of the dead in Barovia. They might be listening.",
+        
+        // Cryptic Knowledge
         "I've seen things in the fog that cannot be unseen.",
         "The devil walks among us wearing a human face.",
         "Some secrets are better left buried with our ancestors.",
+        "Even the stones of Barovia remember the blood spilled upon them.",
+        "The castle has eyes that see into your very soul.",
+        "The water here carries whispers from upstream. Best not to listen too closely.",
+        "In this land, even your shadow might betray you.",
+        "The oldest graves are the quietest. It's the fresh ones you need to worry about.",
+        "Those who dance with the devil often find themselves leading.",
+        "I've counted the stars every night for twenty years. Sometimes, there's one too many.",
+        
+        // Entrapment & Hopelessness
         "There is no escape from Barovia, only survival.",
         "We are all pawns in a game we cannot comprehend.",
-        "Hope is a luxury few can afford in these times."
+        "Hope is a luxury few can afford in these times.",
+        "The mists are both our prison walls and our jailers.",
+        "You may have entered willingly, but none leave by choice.",
+        "I've tried running. The roads always bring you back to where you started.",
+        "Barovia doesn't just trap bodies; it traps souls.",
+        "Every generation hopes for freedom. Every generation dies waiting.",
+        "Even the brightest day in Barovia carries shadows.",
+        "Some say there are other worlds beyond the mist. I stopped believing such fairy tales years ago.",
+        
+        // The Count
+        "He only takes what he needs... until he doesn't.",
+        "They say he cannot enter unless invited. Don't make the mistake of testing this.",
+        "His mercy is more terrifying than his wrath.",
+        "Speak not his name thrice, for he may answer your call.",
+        "The Count remembers every slight, every prayer, every drop of blood spilled in his domain.",
+        "When the bats circle at twilight, he hunts.",
+        "A red rose on your doorstep is not a gift, but a warning.",
+        "Some serve him willingly, believing it better than the alternative.",
+        "I've seen him standing motionless for hours, just watching the village.",
+        "They say he honors bargains to the letter, never the spirit.",
+        
+        // Hidden Resistance
+        "The sun will shine on Barovia again someday.",
+        "Not all who serve the darkness do so willingly. Remember that.",
+        "There are safe houses for those who know where to look.",
+        "The old symbols still hold power for those who remember them.",
+        "Keep faith in the Morning Lord, but keep it quietly.",
+        "The trees themselves resist his influence. That's why he cannot abide natural things.",
+        "Find me when the moon is new. Bring vervain. Say nothing of this.",
+        "Some fight with swords, others with secrets. Both are needed.",
+        "The children's rhymes contain codes. Listen carefully.",
+        "The resistance lives in whispers, in symbols drawn in the dust, in hopes unspoken."
     ];
     return quotes[Math.floor(Math.random() * quotes.length)];
 }
 
 function generatePersonality() {
     const traits = [
-        "Suspicious of strangers",
-        "Deeply superstitious",
-        "Quietly resourceful",
-        "Resigned to fate",
-        "Protective of family",
-        "Darkly humorous",
-        "Practical and pragmatic",
-        "Collector of old folklore",
-        "Secretly hopeful",
-        "Stoic in adversity",
-        "Quick to blame others",
-        "Overly cautious",
-        "Surprisingly brave",
-        "Silent observer",
-        "Keeper of traditions",
-        "Bitter and resentful",
-        "Hospitable despite fears",
-        "Nervous in darkness",
-        "Distrustful of authority",
-        "Resourceful survivor"
+        // Fear-Based
+        "Suspicious of strangers to the point of hostility",
+        "Deeply superstitious, constantly making protective gestures",
+        "Jumps at shadows and unexpected noises",
+        "Constantly looks over their shoulder",
+        "Paralyzed by indecision when faced with new situations",
+        "Fearful of the night to the point of hysteria",
+        "Nervous in darkness, always carries multiple light sources",
+        "Convinced they're being watched by unseen forces",
+        "Mutters protective prayers under their breath",
+        "Refuses to travel anywhere alone",
+        
+        // Survival Adaptations
+        "Quietly resourceful, hiding their true capabilities",
+        "Resigned to fate but prepared for the worst",
+        "Practical and pragmatic to a fault",
+        "Hoards small useful items and food",
+        "Always has an escape route planned",
+        "Treats kindness with suspicion",
+        "Responds to danger with eerie calm",
+        "Shows different faces to different people",
+        "Assesses everyone as either a threat or resource",
+        "Sleeps lightly with a weapon nearby",
+        "Resourceful survivor with hidden talents",
+        "Adaptable but slow to trust new methods",
+        "Knows exactly what can be sacrificed when necessary",
+        "Functions well during crises, falls apart in safety",
+        
+        // Social Behaviors
+        "Protective of family to extreme degrees",
+        "Quick to blame outsiders for misfortunes",
+        "Distrustful of authority figures",
+        "Silent observer who notices everything",
+        "Keeper of traditions and old ways",
+        "Hospitable despite deep-seated fears",
+        "Shares cryptic warnings disguised as pleasantries",
+        "Speaks in local proverbs and superstitions",
+        "Forms rapid but conditional alliances",
+        "Watches strangers' hands and eyes constantly",
+        "Refuses to speak names of feared entities",
+        "Communicates important information indirectly",
+        "Darkly humorous about grim situations",
+        "Chain of gossip for both survival information and social control",
+        
+        // Coping Mechanisms
+        "Collector of old folklore and protective charms",
+        "Drinks heavily after sunset",
+        "Obsessive about specific protective rituals",
+        "Finds momentary joy in small beautiful things",
+        "Creates art depicting both beauty and horror",
+        "Keeps detailed records of strange occurrences",
+        "Seeks prophecies and omens in everyday events",
+        "Maintains elaborate daily routines for sense of control",
+        "Uses gallows humor to cope with horror",
+        "Fixates on minor problems to avoid facing larger threats",
+        "Surprisingly brave in defense of loved ones",
+        "Stoic in adversity, refusing to show weakness",
+        "Secretly hopeful despite overwhelming evidence",
+        "Finds solace in craftsmanship or meticulous work",
+        
+        // Darker Aspects
+        "Bitter and resentful of those who appear more fortunate",
+        "Willing to sacrifice strangers for personal safety",
+        "Has developed a taste for cruelty as a way to feel control",
+        "Self-medicates with herbs of questionable safety",
+        "Collects tokens from the dead for 'protection'",
+        "Performs small blasphemies as personal rebellion",
+        "Believes suffering purifies the soul",
+        "Revels in the misfortune of neighbors",
+        "Has normalized horrific events as ordinary",
+        "Deliberately cultivates an aura of bad luck or madness as protection",
+        "Reports to a greater power for small privileges",
+        "Has abandoned traditional morality in favor of pure survival",
+        
+        // Complex Behaviors
+        "Appears broken but harbors deep inner strength",
+        "Overtly pious while secretly doubting",
+        "Maintains elaborate facades for different social contexts",
+        "Seemingly collaborative while pursuing personal agenda",
+        "Mixes truth and lies so seamlessly even they believe both",
+        "Projects confidence while consumed by dread",
+        "Shows unexpected kindness in specific circumstances",
+        "Fixated on lost normalcy from before darkness fell",
+        "Obsessively preserves knowledge for future generations",
+        "Lives fully in the present, refusing to plan or remember",
+        "Seemingly aloof but deeply affected by others' suffering"
     ];
     return traits[Math.floor(Math.random() * traits.length)];
 }
 
 function generateSecret() {
     const secrets = [
-        "Has seen the devil and lived to tell the tale.",
-        "Keeps a forbidden trinket hidden under the floorboards.",
-        "Is actually a spy for the Vistani.",
-        "Has wolf's blood in their veins.",
-        "Lost a child to the mists years ago.",
-        "Knows a hidden path through the woods.",
-        "Carries an ancient family curse.",
-        "Once served in Castle Ravenloft.",
-        "Has visions of past horrors.",
-        "Hides scars from a vampire attack.",
-        "Secretly worships the Morning Lord.",
-        "Has made a pact with a dark entity.",
-        "Is related to a famous monster hunter.",
-        "Knows the true name of a local witch.",
-        "Guards an ancient family heirloom.",
-        "Has a forbidden romance with an outsider.",
-        "Witnessed a ritual that cannot be unseen.",
-        "Keeps a journal of strange occurrences.",
-        "Can sense when evil is near.",
-        "Remembers the time before the mists came."
+        // Dark Pacts & Allegiances
+        "Has made a blood pact with a dark entity for protection",
+        "Serves as the Count's eyes and ears in town",
+        "Is actually a spy for the Vistani",
+        "Descended from the Count's consorts but doesn't know it",
+        "Secretly corresponds with enemies of the Count",
+        "Has agreed to deliver an innocent to the Count in exchange for mercy",
+        "Is a member of a forbidden cult dedicated to an entity even the Count fears",
+        "Exchanges information with a friendly ghost",
+        "Once served in Castle Ravenloft and still holds a key",
+        "Agreed to host something inhuman inside themselves to save a loved one",
+        "Is the illegitimate child of a noble and potential heir to forgotten lands",
+        "Has sworn fealty to an ancient power beneath the land",
+        "Guards a shrine to a deity whose name has been forgotten",
+        "Secretly dines regularly with a creature of the night",
+        
+        // Supernatural Connections
+        "Has wolf's blood in their veins and changes during the full moon",
+        "Can see glimpses of the future in reflective surfaces",
+        "Has visions of past horrors through touch",
+        "Knows the true name of a local witch",
+        "Can speak with ravens and receives warnings from them",
+        "Has a twin who died at birth that now haunts them as a protective ghost",
+        "Bears a birthmark that glows in the presence of undead",
+        "Can sense when evil is near, feeling a chill down their spine",
+        "Has dreams that sometimes come true in twisted ways",
+        "Was born during an eclipse and can sometimes see invisible creatures",
+        "Survived a vampire attack and now can sense their presence",
+        "Is dead but doesn't know it, continuing their routine",
+        "Can briefly animate small objects with their mind when frightened",
+        "Has slowly developing powers they don't understand and fear",
+        "Was cursed by a hag and now sees omens of death before they occur",
+        
+        // Hidden Knowledge
+        "Knows a hidden path through the woods that bypasses the mists",
+        "Possesses an ancient map marking forgotten catacombs beneath the village",
+        "Has decoded part of an ancient prophecy about Barovia's liberation",
+        "Keeps forbidden books of lore hidden in their cellar",
+        "Has discovered the true purpose of the standing stones",
+        "Knows the weakness of a local monster that terrorizes the region",
+        "Remembers the time before the mists came but tells no one",
+        "Has found an ancient journal revealing the Count's origins",
+        "Knows the location of a powerful artifact thought to be destroyed",
+        "Has discovered a way to temporarily neutralize the poisonous effects of certain Barovian plants",
+        "Keeps a journal of strange occurrences that reveals a disturbing pattern",
+        "Has found letters suggesting the village's history has been deliberately falsified",
+        "Knows which local families have tainted bloodlines",
+        "Has discovered that certain local festivities are actually binding rituals",
+        
+        // Crimes & Misdeeds
+        "Murdered a neighbor they believed was turning into a monster",
+        "Stole a religious relic they now keep hidden under floorboards",
+        "Abandoned a child to the woods as part of a bargain",
+        "Betrayed a group of travelers to save their own skin",
+        "Poisoned their abusive spouse and now serves the meat to guests",
+        "Has been stealing from the church's poor box for years",
+        "Helped bury a body on their property in exchange for payment",
+        "Set fire to a rival's home and watched it burn",
+        "Sells watered-down medicine that sometimes worsens conditions",
+        "Lured a suspiciously friendly stranger to their death",
+        "Trades secrets to multiple opposing factions",
+        "Accuses others of witchcraft to settle personal vendettas",
+        "Sold information that led to a family's disappearance",
+        "Deliberately led children to dangerous areas to 'test' if they were changelings",
+        
+        // Personal Tragedies
+        "Lost a child to the mists years ago and still leaves offerings",
+        "Is slowly transforming into something inhuman but hides the changes",
+        "Hides scars from a vampire attack beneath high collars",
+        "Had their shadow stolen and now fears what purpose it serves",
+        "Survived an attack that killed their entire family by hiding and doing nothing",
+        "Carries an ancient family curse that manifests in subtle ways",
+        "Was replaced by a duplicate but escaped and now lives as someone else",
+        "Lost their spouse to the Count's attentions and now receives 'gifts'",
+        "Witnessed a ritual that cannot be unseen and is slowly losing their mind",
+        "Was forced to choose which family member would be sacrificed",
+        "Bears the mark of a witch's kiss and feels an urging toward the woods",
+        "Has recurring nightmares that are actually memories of a past life in Barovia",
+        "Keeps the preserved remains of a loved one who speaks to them",
+        "Is haunted by a spirit that only they can see",
+        
+        // Resistance & Hope
+        "Secretly worships the Morning Lord despite the danger",
+        "Is part of an underground network helping people escape Barovia",
+        "Hides a child with special abilities who might threaten the Count",
+        "Creates maps of the mists' movements looking for patterns",
+        "Is related to a famous monster hunter and carries their techniques",
+        "Guards an ancient family heirloom that can harm the darkness",
+        "Maintains a hidden garden of plants thought extinct in Barovia",
+        "Has been gradually poisoning a powerful evil entity",
+        "Carries a seed of foreign tree said to be able to purify tainted ground",
+        "Has been teaching children forbidden knowledge of the outside world",
+        "Is gathering components for a ritual to break a specific curse",
+        "Has a forbidden romance with an outsider who brings news and hope",
+        "Harbors a wounded entity of light hiding from the Count's servants",
+        "Has discovered an ancient song that temporarily repels the mists"
     ];
     return secrets[Math.floor(Math.random() * secrets.length)];
 }
+
+function generatePhysicalTrait() {
+    const traits = [
+        // Face & Head
+        "Deep-set eyes that seem to recede into their skull",
+        "Perpetual dark circles beneath their eyes from poor sleep",
+        "Gaunt, hollow cheeks from years of poor nutrition",
+        "A crooked nose, broken and never properly set",
+        "Sickly pale complexion that rarely sees true sunlight",
+        "Cracked, dry lips constantly licked nervously",
+        "A facial tic that worsens when they're lying",
+        "Premature wrinkles from constant worry",
+        "A birthmark in the shape some say resembles a bat",
+        "Visible blue veins beneath translucent skin",
+        "A wandering eye that never quite focuses properly",
+        "Teeth filed to points in the old Barovian tradition",
+        "A scarred ear from a childhood encounter with something clawed",
+        "Wispy, thinning hair despite their age",
+        "Mismatched eye colors, one significantly darker",
+        
+        // Body Language & Movement
+        "Hunched posture as if perpetually expecting a blow",
+        "Constantly wringing hands when anxious",
+        "Moves with unusual quietness, barely disturbing the air",
+        "Jerky, birdlike head movements when scanning for threats",
+        "A pronounced limp from an old injury",
+        "Fidgets with a personal charm or token when nervous",
+        "Flinches at sudden movements or loud noises",
+        "Stands unnaturally still when observing others",
+        "Avoids direct eye contact, looking just past people",
+        "Walks with a shuffling gait to avoid attention",
+        "Trembling hands they try to hide",
+        "Quick, darting eyes that miss nothing",
+        "Exaggerated startled response to being touched",
+        "Body oriented toward exits and escape routes",
+        
+        // Voice & Speech
+        "Speaks in a whisper as if afraid of being overheard",
+        "Voice cracks and rasps from an old injury or illness",
+        "Thick Barovian accent that grows stronger when emotional",
+        "Stutters when speaking of certain subjects",
+        "Occasional slips into an archaic dialect",
+        "Nervous laugh that punctuates inappropriate moments",
+        "Hums or mutters to themselves when distracted",
+        "Speaks to inanimate objects as if they're listening",
+        "Voice drops to inaudibility when discussing certain topics",
+        "Peculiar cadence that sometimes places emphasis on odd syllables",
+        "Frequently clears throat before speaking difficult truths",
+        "Peppers speech with old Barovian sayings and superstitions",
+        
+        // Hands & Features
+        "Cracked, work-worn hands stained by their trade",
+        "Long, yellowed fingernails they refuse to trim",
+        "Missing fingers from frostbite or punishment",
+        "Burn scars on palms from a protective ritual",
+        "Knuckles heavily calloused from physical labor",
+        "Unusually cold touch that lingers after contact",
+        "Hands perpetually stained from their craft",
+        "Fingers adorned with crude protective symbols",
+        "Black dirt beneath fingernails that never fully washes away",
+        "Oddly long fingers with too many joints",
+        "Hands that shake visibly in the presence of certain people",
+        
+        // Clothing & Appearance
+        "Wears multiple layers regardless of weather",
+        "Adorned with subtle protective symbols sewn into clothing",
+        "Carries an unusual number of small pouches and pockets",
+        "Clothes patched many times with mismatched materials",
+        "Wears a distinctive piece of jewelry with supposed protective powers",
+        "Dressed in faded colors that once were vibrant",
+        "Clothing adorned with small bones or teeth as charms",
+        "Wears high collars and long sleeves regardless of season",
+        "A collection of seemingly random trinkets tied to their belt",
+        "Clothing that smells of strange herbs and incense",
+        "Wears clothes at least one size too large to hide their frame",
+        "Bears a small, crude tattoo visible only when sleeves are rolled up",
+        
+        // Distinctive Features
+        "Vitiligo creating patches of pale skin in distinctive patterns",
+        "A wall eye that seems to look into another place",
+        "Albinism with reddish eyes that unnerve others",
+        "A shock of white hair from a traumatic experience",
+        "Unusual number of moles arranged in what resembles a constellation",
+        "Webbed fingers partially hidden by gloves",
+        "Heterochromia that locals whisper is a mark of the fey",
+        "Ritual scarification hidden beneath clothing",
+        "A brand or burn mark poorly concealed",
+        "Six fingers on one hand, carefully hidden",
+        "Patch of hair that grows in white where a scar crosses the scalp",
+        "Unusually pointed ears they try to hide beneath hair",
+        "Pupils that contract vertically rather than circularly"
+    ];
+    return traits[Math.floor(Math.random() * traits.length)];
+}
+
+function generateName() {
+    const firstNames = [
+        // Male Barovian Names
+        "Alek", "Anton", "Balthazar", "Boris", "Bogan", "Dargos", "Demetri", "Dragomir", "Emil", "Franz",
+        "Grigori", "Gustav", "Ivanov", "Kobal", "Lazlo", "Livius", "Mikhail", "Miroslav", "Nikolai", "Oleg",
+        "Petru", "Radovan", "Radu", "Stefan", "Tomas", "Valentin", "Vasili", "Viktor", "Vladislav", "Yesper",
+        
+        // Female Barovian Names
+        "Alina", "Anca", "Anastasia", "Catrina", "Clavdia", "Danya", "Diavola", "Dorina", "Elena", "Fatima",
+        "Grilsha", "Hortensia", "Irina", "Ivana", "Katerina", "Lavinia", "Magda", "Marta", "Natalia", "Olivenka",
+        "Raisa", "Sabina", "Sorina", "Tereska", "Valentina", "Vasha", "Vera", "Viktoriya", "Yelena", "Zondra"
+    ];
+    
+    const surnames = [
+        "Antonovich", "Barthos", "Belasco", "Cantemir", "Dargovich", "Diavolov", "Diminski", "Dilisnya", 
+        "Fleischer", "Groza", "Ivanov", "Konstantinov", "Krezkov", "Krolov", "Lupescu", "Milovich", 
+        "Markovia", "Popofsky", "Radovich", "Richemulot", "Stefanovich", "Swilova", "Taltos", "Targolov", 
+        "Ulrich", "Vadu", "Voltanescu", "Wachter", "Zakharov", "Zaran"
+    ];
+    
+    const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+    const surname = surnames[Math.floor(Math.random() * surnames.length)];
+    
+    return `${firstName} ${surname}`;
+}
+
+function generateFear() {
+    const fears = [
+        // Natural Phenomena
+        "Fog and mist (homichlophobia)",
+        "Darkness (nyctophobia)",
+        "Thunder and lightning (astraphobia)",
+        "Running water (potamophobia)",
+        "The woods after sunset",
+        "Full moons",
+        "Winter's approach",
+        "Reflections in still water",
+        "The sound of wolves howling",
+        "Stillness before a storm",
+        
+        // Supernatural
+        "Undead rising from the cemetery",
+        "Being watched by unseen eyes",
+        "The Count's attention falling upon them",
+        "Their ancestors' spirits judging them",
+        "Curses and hexes",
+        "Witches disguised as ordinary folk",
+        "Shadow creatures that steal children",
+        "The old gods returning",
+        "Prophecies coming true",
+        "Dreams becoming reality",
+        "Being replaced by a doppelgänger",
+        "Losing their soul to dark forces",
+        "Something watching through animals' eyes",
+        "Ancient buried things awakening",
+        
+        // Practical Barovian Fears
+        "Failing to protect their family",
+        "Starvation during the harsh winters",
+        "Illness with no healer nearby",
+        "Being taken to Castle Ravenloft",
+        "Outsiders bringing disaster",
+        "Change to the fragile status quo",
+        "Their secrets being discovered",
+        "Becoming like those they fear",
+        "Betrayal by trusted neighbors",
+        "Losing their sanity from what they've witnessed",
+        "Being buried alive in Barovian soil",
+        "Breaking an unknown taboo",
+        "The hidden meanings in old folktales coming true",
+        "Their children inheriting their mistakes"
+    ];
+    return fears[Math.floor(Math.random() * fears.length)];
+}
+
+function generateAppearance() {
+    const appearances = [
+        // General Appearance Descriptions
+        "Gaunt and hollow-cheeked with darting eyes",
+        "Robust but weathered with calloused hands",
+        "Hunched and wiry with surprising strength",
+        "Pallid complexion with a perpetual frown",
+        "Sturdy build with suspicious eyes",
+        "Thin and tall with nervous mannerisms",
+        "Round-faced with a false cheerfulness",
+        "Small-statured with a shuffling gait",
+        "Broad-shouldered with a stiff posture",
+        "Haggard appearance with alert eyes",
+        
+        // Clothing & Presentation
+        "Wears multiple layers of patched clothing",
+        "Dressed practically in drab, dark colors",
+        "Adorned with small protective charms",
+        "Clothes slightly too large as if inherited",
+        "Wrapped in shawls regardless of weather",
+        "Neat and presentable despite worn attire",
+        "Distinctive hat pulled low over eyes",
+        "Boots wrapped with rags for silence",
+        "High-collared coat buttoned to the neck",
+        "Dressed above their station with one fine item",
+        "Clothing stained by the tools of their trade",
+        "Wears gloves even indoors",
+        
+        // Face & Notable Features
+        "Face lined beyond their years from hardship",
+        "Cloudy eye from an old injury",
+        "Burns partially visible at collar or sleeve",
+        "Hair prematurely grey at the temples",
+        "Missing teeth revealed when they speak",
+        "Distinctive birthmark they try to hide",
+        "Facial scar with an unusual pattern",
+        "Permanently reddened nose and cheeks from cold",
+        "Unnaturally pale with visible blue veins",
+        "Deep shadows beneath sunken eyes",
+        "Unusually bright eyes in a gaunt face",
+        "Twitching facial muscles when nervous"
+    ];
+    return appearances[Math.floor(Math.random() * appearances.length)];
+}
+
+
+
 
 function rollStatCheck(stat, value) {
     // Implement stat check rolling functionality
@@ -4888,6 +5536,70 @@ function rollDiceNotation(notation) {
     
     return total;
 }
+
+function setupCollapsibleSections() {
+    // Find all collapsible section headers
+    const sectionHeaders = document.querySelectorAll('.section-title');
+    
+    sectionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            // Get the collapsible content that follows this header
+            const content = this.nextElementSibling;
+            
+            if (content && content.classList.contains('collapsible-content')) {
+                // Toggle display state
+                if (content.style.display === 'block') {
+                    // Collapsing - animate out
+                    content.style.maxHeight = '0';
+                    
+                    // After animation completes, set display to none
+                    setTimeout(() => {
+                        content.style.display = 'none';
+                    }, 300); // Match the CSS transition time
+                } else {
+                    // Expanding
+                    content.style.display = 'block';
+                    
+                    // Get stored height for NPC generator content that's been used
+                    if (this.id === 'npc-generator' && window.npcGenerated && content.dataset.contentHeight) {
+                        const box = content.querySelector('.box');
+                        if (box) {
+                            box.style.minHeight = content.dataset.contentHeight;
+                            content.style.maxHeight = 'none';
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + 'px';
+                        }
+                    } else {
+                        // Regular content - set max height to scroll height
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    }
+                }
+                
+                // Toggle the active class on the header for styling
+                this.classList.toggle('active');
+            }
+        });
+    });
+    
+    // Initialize - all sections except active ones should be collapsed
+    sectionHeaders.forEach(header => {
+        const content = header.nextElementSibling;
+        if (content && content.classList.contains('collapsible-content')) {
+            // If not marked as active initially, collapse it
+            if (!header.classList.contains('active')) {
+                content.style.display = 'none';
+                content.style.maxHeight = '0';
+            } else {
+                // It's active, so make sure it's expanded properly
+                content.style.display = 'block';
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        }
+    });
+}
+
+// Call this function when the DOM is loaded
+document.addEventListener('DOMContentLoaded', setupCollapsibleSections);
 
 
 </script>
