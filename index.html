@@ -1308,10 +1308,330 @@ body.dark-mode .sidebar {
     animation: fadeIn 0.4s ease-out;
 }
 
+/* just added */
+ /* ================= BLOOD DRIP TABS ================= */
+.tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 30px 0;
+    position: relative;
+}
+
+.roll-button:hover, .roll-button.active {
+    background-color: transparent; /* Changed from #2a0000 */
+    color: #856262;
+}
+
+/* Blood drip effect */
+.roll-button:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 0;
+    top: 0;
+    left: 0;
+    background-color: #9c0e0e;
+    transition: height 0.3s ease;
+    z-index: -1;
+}
+
+.roll-button:hover:before, .roll-button.active:before {
+    height: 5px;
+}
+
+.roll-button:after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 0;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #9c0e0e;
+    transition: height 0.5s ease-out;
+    transition-delay: 0.2s;
+    z-index: -1;
+}
+
+.roll-button:hover:after, .roll-button.active:after {
+    height: 15px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+/* Tab content */
+.tab-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #6e0000;
+    margin-top: 10px;
+    animation: fadeIn 0.5s;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+/* ================= ENHANCED STRAHD EYES ================= */
+footer {
+  position: relative;
+  text-align: center;
+  padding: 60px 20px 80px; /* Extra space for eyes */
+  font-family: Arial, sans-serif;
+  min-height: 120px;
+  overflow: hidden;
+  border-top: 1px solid #6e0000;
+}
+
+/* Improved fog effect */
+footer .footer-fog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(20,0,0,0.7) 100%),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="fog"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" /><feComponentTransfer><feFuncR type="linear" slope="0.1" intercept="0" /><feFuncG type="linear" slope="0.1" intercept="0" /><feFuncB type="linear" slope="0.1" intercept="0" /></feComponentTransfer><feBlend mode="screen" /></filter><rect width="100%" height="100%" filter="url(%23fog)" opacity="0.15" /></svg>');
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+/* Eyes container */
+footer .strahd-eyes-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 50px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Realistic eye styling */
+footer .strahd-eye {
+  position: absolute;
+  width: 36px;
+  height: 24px;
+  background: 
+    radial-gradient(circle at 30% 30%, #fff 0%, #e0e0e0 45%, #c0c0c0 100%);
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 
+    0 0 10px rgba(156, 14, 14, 0.8),
+    inset 0 0 15px rgba(0, 0, 0, 0.5);
+  border: 1px solid #400;
+}
+
+footer .strahd-eye-left {
+  left: 5px;
+}
+
+footer .strahd-eye-right {
+  right: 5px;
+}
+
+/* Enhanced pupil with glow */
+footer .strahd-pupil {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: 
+    radial-gradient(circle at 30% 30%, #9c0e0e 0%, #600 70%, #300 100%);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 
+    0 0 5px rgba(156, 14, 14, 0.8),
+    inset 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+/* More realistic eye details */
+footer .strahd-pupil::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #000;
+  border-radius: 50%;
+  top: 30%;
+  left: 30%;
+}
+
+footer .strahd-pupil::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  top: 25%;
+  left: 25%;
+}
+
+/* Eyelid for blinking */
+footer .eyelid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #200;
+  top: -100%;
+  left: 0;
+  border-radius: 50%;
+  transition: top 0.2s ease;
+}
+
+/* Blink animation */
+footer .blink {
+  animation: strahdBlink 8s infinite;
+}
+
+@keyframes strahdBlink {
+  0%, 96%, 100% { transform: translateX(-50%) scaleY(1); }
+  97%, 99% { transform: translateX(-50%) scaleY(0.05); }
+}
+
+/* Mouse follow effect - will be added via JavaScript */
+
+/* Update the fangs SVG in your CSS */
+footer .strahd-fangs {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 20px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 20"><path d="M10,20 L12,5 L8,5 Z" fill="white" stroke="%23400" stroke-width="0.5"/><path d="M30,20 L28,5 L32,5 Z" fill="white" stroke="%23400" stroke-width="0.5"/></svg>') no-repeat center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+  filter: drop-shadow(0 0 2px rgba(156,14,14,0.8));
+}
+
+footer .strahd-eyes-container.squinting .strahd-eye {
+  height: 8px;
+  transition: height 0.3s ease;
+}
+
+footer .strahd-eyes-container.squinting .strahd-pupil {
+  transform: translate(-50%, -50%) scaleY(1.5);
+}
+
+footer .strahd-eyes-container.showing-fangs .strahd-fangs {
+  opacity: 1;
+}
+
+/* Add these new styles */
+.strahd-eyes-container.disappearing {
+  animation: disappear 0.5s forwards;
+}
+
+@keyframes disappear {
+  0% { opacity: 1; transform: translateX(-50%) scale(1); }
+  100% { opacity: 0; transform: translateX(-50%) scale(0.5); }
+}
+
+.strahd-eyes-container.laughing .strahd-eye {
+  background: radial-gradient(circle at 30% 30%, #ff0000 0%, #800000 45%, #400000 100%);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+}
+
+.strahd-eyes-container.threatening {
+  animation: threaten 0.5s infinite alternate;
+}
+
+@keyframes threaten {
+  0% { transform: translateX(-50%) scale(1); }
+  100% { transform: translateX(-50%) scale(1.1); }
+}
+
+.strahd-eyes-container.threatening .strahd-eye {
+  background: radial-gradient(circle at 30% 30%, #ff0000 0%, #600000 70%, #300000 100%);
+}
+
+.strahd-eyes-container.threatening .strahd-pupil {
+  background: #000;
+}
+
+.strahd-eyes-container.transforming {
+  animation: transform 2s forwards;
+}
+
+@keyframes transform {
+  0% { transform: translateX(-50%) scale(1); opacity: 1; }
+  50% { transform: translateX(-50%) scale(0.1); opacity: 0; }
+  100% { transform: translateX(-50%) scale(1); opacity: 1; }
+}
+
+/* FOG! */
+
+/* ================= STRAHD'S ENHANCED FOG ================= */
+.page-fog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    /* Blood-red animated fog */
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><filter id="fog"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0.3 0 0 0 0.1 0 0.1 0 0 0 0 0 0.1 0 0 0 0 0 0.3 0"/></filter><rect width="100%" height="100%" filter="url(%23fog)"/></svg>'),
+    /* Gradient for depth */
+    radial-gradient(ellipse at center, rgba(20,0,0,0.1) 40%, rgba(50,0,0,0.6) 100%);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1000;
+  mix-blend-mode: overlay;
+  animation: 
+    fogDrift 60s infinite linear,
+    fogPulse 30s infinite alternate;
+}
+
+/* SVG-based fog animation (better performance than GIF) */
+@keyframes fogDrift {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 400px 400px, 0 0; }
+}
+
+@keyframes fogPulse {
+  0% { opacity: 0.4; }
+  100% { opacity: 0.7; }
+}
+
+/* Enhanced vignette with blood moon effect */
+.page-vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+  background: 
+    radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, 
+    rgba(20,0,0,0.7) 100%),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="2"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.05"/></svg>');
+  mix-blend-mode: multiply;
+  box-shadow: inset 0 0 200px rgba(40,0,0,0.9);
+}
+
+
+
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%238b0000'>🧛</text></svg>">
 </head>
 <body>
+    <div class="page-fog-overlay"></div>
+<div class="page-vignette"></div>
     <div class="container">
         <div class="header-container">
             <div class="logo-container">
@@ -1335,7 +1655,7 @@ body.dark-mode .sidebar {
     <button class="roll-button" onclick="showTab('survival')">Survival Rules</button>
     <button class="roll-button" onclick="showTab('world')">World Lore</button>
     <button class="roll-button" onclick="showTab('strahd')">Strahd Lore</button>
-    <button class="roll-button" onclick="showTab('misc')">Atmosphere & Misc Tools</button>
+    <button class="roll-button" onclick="showTab('misc')">Music & Misc Tools</button>
   </div>
 
   <!-- Core Mechanics Tab -->
@@ -3351,7 +3671,7 @@ body.dark-mode .sidebar {
 <h2 class="section-title" id="atmosphere-music">MUSIC & TOOLS</h2>
 <div class="collapsible-content">
     <div class="box">
-        <h3 class="box-title">IMMERSIVE AUDIO TOOLS</h3>
+        <h3 class="box-title">SPOTIFY PLAYLISTS</h3>
         <div class="music-grid">
             <!-- Curse of Strahd Playlist -->
             <div class="music-card">
@@ -3468,7 +3788,7 @@ body.dark-mode .sidebar {
 
             </div>
         
-        <h3 class="box-subtitle" style="margin-top: 30px;">MUSIC BY LOCATION</h3>
+        <h3 class="box-subtitle" style="margin-top: 30px;">YOUTUBE MUSIC BY LOCATION</h3>
         <div class="table-header">
             <div class="table-col-1">Location</div>
             <div class="table-col-2">Music Style</div>
@@ -4342,15 +4662,27 @@ body.dark-mode .sidebar {
 
 <!-- Your other HTML code above -->
 
-<footer style="text-align: center; padding: 20px; font-family: Arial, sans-serif;">
-  <p>Made with ❤️ by Jimpeccable</p>
-  <p>
-    Follow me on 
-    <a href="https://www.tiktok.com/@rollnat20" target="_blank" style="text-decoration: none; color: #000;">
-      TikTok | @Rollnat20 🎵🍻⚔️
-    </a>
-  </p>
-</footer>
+<footer>
+    <div class="strahd-eyes-container blink">
+      <div class="strahd-eye strahd-eye-left">
+        <div class="strahd-pupil"></div>
+        <div class="eyelid"></div>
+      </div>
+      <div class="strahd-eye strahd-eye-right">
+        <div class="strahd-pupil"></div>
+        <div class="eyelid"></div>
+      </div>
+      <div class="strahd-fangs"></div>
+    </div>
+    
+    <p>Made with ❤️ by Jimpeccable</p>
+    <p>
+      Follow me on 
+      <a href="https://www.tiktok.com/@rollnat20" target="_blank" style="text-decoration: none; color: #000;">
+        TikTok | @Rollnat20 🎵🍻⚔️
+      </a>
+    </p>
+  </footer>
 
 
 <script>
@@ -5601,5 +5933,162 @@ function setupCollapsibleSections() {
 // Call this function when the DOM is loaded
 document.addEventListener('DOMContentLoaded', setupCollapsibleSections);
 
+document.addEventListener('DOMContentLoaded', function() {
+  const eyesContainer = document.querySelector('footer .strahd-eyes-container');
+  if (!eyesContainer) return;
+
+  // Get all eye elements
+  const leftPupil = document.querySelector('footer .strahd-eye-left .strahd-pupil');
+  const rightPupil = document.querySelector('footer .strahd-eye-right .strahd-pupil');
+  const fangs = document.querySelector('footer .strahd-fangs');
+  
+  // Make eyes clickable
+  eyesContainer.style.pointerEvents = 'auto';
+  eyesContainer.style.cursor = 'pointer';
+
+  // Strahd actions array
+  const strahdActions = [
+    { name: 'disappear', probability: 0.4 },
+    { name: 'laugh', probability: 0.3 },
+    { name: 'threaten', probability: 0.2 },
+    { name: 'transform', probability: 0.1 }
+  ];
+
+  // Mouse tracking
+  document.addEventListener('mousemove', (e) => {
+    const footerRect = document.querySelector('footer').getBoundingClientRect();
+    const eyesRect = eyesContainer.getBoundingClientRect();
+    
+    // Calculate mouse position relative to eyes
+    const mouseX = e.clientX - eyesRect.left - eyesRect.width/2;
+    const mouseY = e.clientY - eyesRect.top - eyesRect.height/2;
+    
+    // Limit pupil movement range
+    const angle = Math.atan2(mouseY, mouseX);
+    const distance = Math.min(6, Math.sqrt(mouseX*mouseX + mouseY*mouseY)/10);
+    const pupilX = distance * Math.cos(angle);
+    const pupilY = distance * Math.sin(angle);
+    
+    // Apply pupil movement
+    leftPupil.style.transform = `translate(calc(-50% + ${pupilX}px), calc(-50% + ${pupilY}px)`;
+    rightPupil.style.transform = `translate(calc(-50% + ${pupilX}px), calc(-50% + ${pupilY}px))`;
+    
+    // Subtle container movement
+    eyesContainer.style.transform = `translateX(-50%) translateY(${Math.min(5, mouseY/20)}px)`;
+  });
+
+  // Eye click handler
+  eyesContainer.addEventListener('click', function() {
+    // Disappear animation
+    eyesContainer.classList.add('disappearing');
+    
+    // Random Strahd action after a delay
+    setTimeout(() => {
+      const randomAction = getRandomAction(strahdActions);
+      performStrahdAction(randomAction);
+      
+      // Reappear after action completes
+      setTimeout(() => {
+        eyesContainer.classList.remove('disappearing');
+      }, 1500);
+    }, 500);
+  });
+
+  function getRandomAction(actions) {
+    const rand = Math.random();
+    let cumulativeProbability = 0;
+    
+    for (const action of actions) {
+      cumulativeProbability += action.probability;
+      if (rand <= cumulativeProbability) {
+        return action.name;
+      }
+    }
+    
+    return actions[0].name; // fallback
+  }
+
+  function performStrahdAction(action) {
+    switch(action) {
+      case 'disappear':
+        // Already handled by the disappearing class
+        break;
+        
+      case 'laugh':
+        // Show red glow and play laugh sound
+        eyesContainer.classList.add('laughing');
+        playSound('https://www.soundjay.com/human/sounds/laugh-evil-01.mp3');
+        setTimeout(() => {
+          eyesContainer.classList.remove('laughing');
+        }, 2000);
+        break;
+        
+      case 'threaten':
+        // Show fangs and red eyes
+        eyesContainer.classList.add('threatening');
+        playSound('https://www.soundjay.com/human/sounds/growl-01.mp3');
+        setTimeout(() => {
+          eyesContainer.classList.remove('threatening');
+        }, 1500);
+        break;
+        
+      case 'transform':
+        // Bat transformation effect
+        eyesContainer.classList.add('transforming');
+        playSound('https://www.soundjay.com/nature/sounds/bat-01.mp3');
+        setTimeout(() => {
+          eyesContainer.classList.remove('transforming');
+        }, 2000);
+        break;
+    }
+  }
+
+  function playSound(url) {
+    const audio = new Audio(url);
+    audio.volume = 0.3;
+    audio.play().catch(e => console.log("Audio play failed:", e));
+  }
+
+  // Eye animation controller (same as before)
+  function setRandomEyeBehavior() {
+    // Random blinking (more frequent)
+    setTimeout(() => {
+      eyesContainer.classList.add('blinking');
+      setTimeout(() => {
+        eyesContainer.classList.remove('blinking');
+        setRandomEyeBehavior();
+      }, 200);
+    }, 3000 + Math.random() * 5000);
+
+    // Random squinting (20% chance when not blinking)
+    if (Math.random() < 0.2 && !eyesContainer.classList.contains('blinking')) {
+      setTimeout(() => {
+        eyesContainer.classList.add('squinting');
+        setTimeout(() => {
+          eyesContainer.classList.remove('squinting');
+        }, 1000 + Math.random() * 2000);
+      }, 100);
+    }
+
+    // Random fang appearance (15% chance)
+    if (Math.random() < 0.15) {
+      setTimeout(() => {
+        eyesContainer.classList.add('showing-fangs');
+        
+        if (Math.random() < 0.5) {
+          eyesContainer.classList.add('squinting');
+        }
+        
+        setTimeout(() => {
+          eyesContainer.classList.remove('showing-fangs');
+          eyesContainer.classList.remove('squinting');
+        }, 800 + Math.random() * 1200);
+      }, 200);
+    }
+  }
+
+  // Start the eye behavior cycle
+  setRandomEyeBehavior();
+});
 
 </script>
