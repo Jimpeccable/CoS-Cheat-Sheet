@@ -1627,353 +1627,24 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
 
 /* JUST ADDED */
 
-/* Player Tracker Styles */
-.sidebar {
-    position: fixed;
-    top: 0;
-    right: -300px; /* Slightly wider for better readability */
-    width: 300px;
-    height: 100vh;
-    background-color: var(--box-bg, #1e1e1e);
-    padding: 20px;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.3);
-    overflow-y: auto;
-    z-index: 1000;
-    transition: transform 0.3s ease;
-    border-left: 3px solid var(--border-color, #6b0202);
-}
-
-.sidebar.open {
-    transform: translateX(-300px); /* Match width */
-}
-
-.sidebar-toggle {
-    position: fixed;
-    right: 20px;
-    top: 20px;
-    background-color: var(--border-color, #6b0202);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 3px;
-    cursor: pointer;
-    z-index: 1001;
-    font-family: var(--font-header, serif);
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.sidebar h3 {
-    color: var(--title-color, #d6ba8a);
-    font-family: var(--font-header, serif);
-    border-bottom: 1px solid var(--border-light, #333);
-    padding-bottom: 8px;
-    margin-top: 0;
-    text-align: center;
-    letter-spacing: 1px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.player-card {
-    background-color: var(--background-dark, #111);
-    padding: 15px;
-    margin-bottom: 15px;
-    border-left: 3px solid var(--border-color, #6b0202);
-    border-radius: 3px;
-    position: relative;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.player-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-}
-
-.player-card input.player-name {
-    width: calc(100% - 25px);
-    padding: 8px;
-    margin-bottom: 10px;
-    background-color: var(--background-main, #222);
-    border: 1px solid var(--border-light, #333);
-    color: var(--text-color, #ddd);
-    font-family: var(--font-main, sans-serif);
-    font-weight: bold;
-    font-size: 14px;
-    border-radius: 3px;
-}
-
-.status-row {
-    display: flex;
-    align-items: center;
-    margin: 8px 0;
-    gap: 8px;
-}
-
-.status-label {
-    font-size: 12px;
-    width: 80px;
-    color: var(--text-color, #ddd);
-    font-family: var(--font-main, sans-serif);
-    font-weight: bold;
-}
-
-.status-select {
-    flex-grow: 1;
-    background-color: var(--background-main, #222);
-    border: 1px solid var(--border-light, #333);
-    color: var(--text-color, #ddd);
-    padding: 5px;
-    font-size: 12px;
-    font-family: var(--font-main, sans-serif);
-    border-radius: 3px;
-    cursor: pointer;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
-    background-repeat: no-repeat;
-    background-position: right 5px center;
-    padding-right: 25px;
-}
-
-.status-select:focus {
-    outline: none;
-    border-color: var(--border-color, #6b0202);
-}
-
-/* Color indicators for select options - these will apply on selection */
-.status-select option {
-    background-color: var(--background-main, #222);
-}
-
-.counter-input {
-    width: 40px;
-    background-color: var(--background-main, #222);
-    border: 1px solid var(--border-light, #333);
-    color: var(--text-color, #ddd);
-    text-align: center;
-    padding: 5px;
-    font-size: 12px;
-    border-radius: 3px;
-    -moz-appearance: textfield; /* Firefox */
-}
-
-.counter-input::-webkit-outer-spin-button,
-.counter-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.counter-input:focus {
-    outline: none;
-    border-color: var(--border-color, #6b0202);
-}
-
-.remove-player {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    color: var(--text-color, #ddd);
-    cursor: pointer;
-    font-size: 16px;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: all 0.2s;
-}
-
-.remove-player:hover {
-    background-color: rgba(255, 0, 0, 0.2);
-    color: #ff6b6b;
-}
-
-.add-player-btn {
-    width: 100%;
-    background-color: var(--border-color, #6b0202);
-    color: white;
-    border: none;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-family: var(--font-main, sans-serif);
-    font-weight: bold;
-    transition: background-color 0.2s;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.add-player-btn:hover {
-    background-color: #8b0000;
-}
-
-/* Color indicators for selected values */
-.status-select[data-value="Apathy"],
-.apathy-color {
-    border-left: 3px solid #6b7280 !important;
-}
-
-.status-select[data-value="Dread"],
-.dread-color {
-    border-left: 3px solid #8b5cf6 !important;
-}
-
-.status-select[data-value="Insanity"],
-.insanity-color {
-    border-left: 3px solid #ec4899 !important;
-}
-
-.status-select[data-value="Paranoia"],
-.paranoia-color {
-    border-left: 3px solid #f59e0b !important;
-}
-
-.status-select[data-value="Nihilism"],
-.nihilism-color {
-    border-left: 3px solid #10b981 !important;
-}
-
-.status-select[data-value="Short-term"],
-.short-madness-color {
-    border-left: 3px solid #ef4444 !important;
-}
-
-.status-select[data-value="Long-term"],
-.long-madness-color {
-    border-left: 3px solid #b91c1c !important;
-}
-
-.status-select[data-value="Indefinite"],
-.indefinite-madness-color {
-    border-left: 3px solid #7f1d1d !important;
-}
-
-.status-select[data-value="Frightened"],
-.frightened-color {
-    border-left: 3px solid #f97316 !important;
-}
-
-.status-select[data-value="Horror"],
-.horror-color {
-    border-left: 3px solid #c2410c !important;
-}
-
-/* Corruption progress bar */
-.corruption-container {
-    position: relative;
-    height: 10px;
-    flex-grow: 1;
-    background-color: var(--background-main, #222);
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 0 5px;
-}
-
-.corruption-bar {
-    height: 100%;
-    background: linear-gradient(90deg, #6b0202 0%, #ff4500 50%, #800000 100%);
-    width: 0%;
-    transition: width 0.3s ease;
-}
-
-.hope-container {
-    position: relative;
-    height: 10px;
-    flex-grow: 1;
-    background-color: var(--background-main, #222);
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 0 5px;
-}
-
-.hope-bar {
-    height: 100%;
-    background: linear-gradient(90deg, #1e40af 0%, #60a5fa 50%, #93c5fd 100%);
-    width: 0%;
-    transition: width 0.3s ease;
-}
-
-/* Note section */
-.player-notes {
-    margin-top: 10px;
-}
-
-.player-notes textarea {
-    width: 100%;
-    height: 60px;
-    background-color: var(--background-main, #222);
-    border: 1px solid var(--border-light, #333);
-    color: var(--text-color, #ddd);
-    padding: 5px;
-    font-size: 12px;
-    font-family: var(--font-main, sans-serif);
-    resize: vertical;
-    border-radius: 3px;
-}
-
-.player-notes textarea:focus {
-    outline: none;
-    border-color: var(--border-color, #6b0202);
-}
-
-/* Status indicators */
-.status-badge {
-    display: inline-block;
-    padding: 2px 6px;
-    font-size: 10px;
-    border-radius: 10px;
-    margin-right: 4px;
-    background-color: var(--background-dark, #111);
-    color: var(--text-color, #ddd);
-}
-
-.status-badge.active {
-    color: white;
-}
-
-.status-badge.despair {
-    background-color: #6b7280;
-}
-
-.status-badge.madness {
-    background-color: #ef4444;
-}
-
-.status-badge.fear {
-    background-color: #f97316;
-}
-
-.madness-note {
-    font-size: 11px;
-    font-style: italic;
-    color: #999;
-    margin-top: 5px;
-}
-
-/* Divider */
-.status-divider {
-    width: 100%;
-    height: 1px;
-    background-color: var(--border-light, #333);
-    margin: 10px 0;
-}
-
-/* Mobile responsive adjustments */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 80%;
-        right: -80%;
-    }
-    
-    .sidebar.open {
-        transform: translateX(-100%);
-    }
-}
+/* Theme Colors */
+--corruption-gradient: linear-gradient(90deg, #4a6bff, #8a2be2, #6b0202);
+            --hope-gradient: linear-gradient(90deg, #1e40af, #60a5fa, #e6f7ff);
+            --days-gradient: linear-gradient(90deg, #60a5fa, #ef4444);
+            
+            /* Status Colors */
+            --color-none: transparent;
+            --color-apathy: #6b7280;
+            --color-dread: #8b5cf6;
+            --color-insanity: #ec4899;
+            --color-paranoia: #f59e0b;
+            --color-nihilism: #10b981;
+            --color-shortterm: #ef4444;
+            --color-longterm: #b91c1c;
+            --color-indefinite: #7f1d1d;
+            --color-frightened: #f97316;
+            --color-horror: #c2410c;
+        }
 
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%238b0000'>🧛</text></svg>">
@@ -1990,7 +1661,7 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
             <h2 class="page-subtitle">Shadows of Barovia: Enhanced Cheat Sheet</h2>
         </div>
 
-<button class="sidebar-toggle" onclick="toggleSidebar()">PLAYERS ►</button>
+
         
 
         
@@ -5003,11 +4674,13 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
 
 <!-- Player Sidebar -->
 <div id="player-sidebar" class="sidebar">
-    <h3>PLAYER TRACKER</h3>
+    <div class="sidebar-header">
+        <h3>PLAYER TRACKER</h3>
+        <button id="add-player" class="add-player-btn">+ Add Player</button>
+    </div>
     <div id="player-list">
         <!-- Players will be added here dynamically -->
     </div>
-    <button id="add-player" class="add-player-btn">+ Add Player</button>
 </div>
 
 <button class="dark-mode-toggle" onclick="toggleDarkMode()">☀️</button>
@@ -5039,27 +4712,22 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
 
 <script>
 // Player Tracker Functions
-function addPlayer() {
-    const playerList = document.getElementById('player-list');
-    const playerId = 'player-' + Date.now();
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize sidebar toggle button
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'sidebar-toggle';
+    toggleBtn.textContent = 'PLAYERS ►';
+    toggleBtn.onclick = toggleSidebar;
+    document.body.appendChild(toggleBtn);
     
-    const playerCard = document.createElement('div');
-    playerCard.className = 'player-card';
-    playerCard.id = playerId;
+    // Load saved players
+    loadPlayers();
     
-    playerCard.innerHTML = `
-        <input type="text" placeholder="Player Name" class="player-name">
-        <div class="player-status">
-            <input type="text" placeholder="AC" class="player-ac" style="width: 40px;">
-            <input type="text" placeholder="HP" class="player-hp" style="width: 40px;">
-            <button class="status-toggle" onclick="toggleStatus('${playerId}')">Normal</button>
-            <button onclick="removePlayer('${playerId}')">X</button>
-        </div>
-        <div class="player-effects"></div>
-    `;
-    
-    playerList.appendChild(playerCard);
-}
+    // Add player button functionality
+    document.getElementById('add-player').addEventListener('click', function() {
+        addNewPlayer();
+    });
+});
 
 function removePlayer(id) {
     const player = document.getElementById(id);
@@ -5084,19 +4752,15 @@ function toggleStatus(id) {
 // Sidebar toggle functionality
 function toggleSidebar() {
     const sidebar = document.getElementById('player-sidebar');
-    if (!sidebar) return;
-    
     sidebar.classList.toggle('open');
     
     const toggleBtn = document.querySelector('.sidebar-toggle');
-    if (toggleBtn) {
-        if (sidebar.classList.contains('open')) {
-            toggleBtn.textContent = '◄';
-            toggleBtn.style.right = '270px';
-        } else {
-            toggleBtn.textContent = 'PLAYERS ►';
-            toggleBtn.style.right = '20px';
-        }
+    if (sidebar.classList.contains('open')) {
+        toggleBtn.textContent = '◄ PLAYERS';
+        toggleBtn.style.right = '320px';
+    } else {
+        toggleBtn.textContent = 'PLAYERS ►';
+        toggleBtn.style.right = '20px';
     }
 }
 
@@ -6495,8 +6159,6 @@ function addNewPlayer(playerData = null) {
     const playerList = document.getElementById('player-list');
     const newPlayerCard = createPlayerCard(playerData);
     playerList.appendChild(newPlayerCard);
-    
-    // Save state after adding
     savePlayers();
 }
 
@@ -6508,7 +6170,10 @@ function createPlayerCard(playerData = null) {
     // Default values
     const defaults = {
         name: 'New Player',
-        despair: 'None', 
+        ac: '',
+        hp: '',
+        maxHp: '',
+        despair: 'None',
         despairDays: 0,
         madness: 'None',
         madnessEffect: '',
@@ -6518,18 +6183,19 @@ function createPlayerCard(playerData = null) {
         notes: ''
     };
     
-    // Use provided data or defaults
     const data = playerData || defaults;
     
-    // Player name
+    // Player Header (Name + Remove)
+    const playerHeader = document.createElement('div');
+    playerHeader.className = 'player-header';
+    
     const nameInput = document.createElement('input');
     nameInput.type = 'text';
     nameInput.className = 'player-name';
     nameInput.value = data.name;
     nameInput.addEventListener('change', savePlayers);
-    playerCard.appendChild(nameInput);
+    playerHeader.appendChild(nameInput);
     
-    // Remove button
     const removeBtn = document.createElement('button');
     removeBtn.className = 'remove-player';
     removeBtn.textContent = '×';
@@ -6537,7 +6203,69 @@ function createPlayerCard(playerData = null) {
         playerCard.remove();
         savePlayers();
     });
-    playerCard.appendChild(removeBtn);
+    playerHeader.appendChild(removeBtn);
+    
+    playerCard.appendChild(playerHeader);
+    
+    // Vitals (AC, HP)
+    const vitalsRow = document.createElement('div');
+    vitalsRow.className = 'vitals';
+    
+    // AC
+    const acContainer = document.createElement('div');
+    acContainer.className = 'vital-stat';
+    
+    const acLabel = document.createElement('div');
+    acLabel.className = 'vital-label';
+    acLabel.textContent = 'AC';
+    acContainer.appendChild(acLabel);
+    
+    const acInput = document.createElement('input');
+    acInput.type = 'text';
+    acInput.className = 'vital-value';
+    acInput.value = data.ac;
+    acInput.addEventListener('change', savePlayers);
+    acContainer.appendChild(acInput);
+    
+    vitalsRow.appendChild(acContainer);
+    
+    // Current HP
+    const hpContainer = document.createElement('div');
+    hpContainer.className = 'vital-stat';
+    
+    const hpLabel = document.createElement('div');
+    hpLabel.className = 'vital-label';
+    hpLabel.textContent = 'HP';
+    hpContainer.appendChild(hpLabel);
+    
+    const hpInput = document.createElement('input');
+    hpInput.type = 'text';
+    hpInput.className = 'vital-value';
+    hpInput.value = data.hp;
+    hpInput.addEventListener('change', savePlayers);
+    hpContainer.appendChild(hpInput);
+    
+    vitalsRow.appendChild(hpContainer);
+    
+    // Max HP
+    const maxHpContainer = document.createElement('div');
+    maxHpContainer.className = 'vital-stat';
+    
+    const maxHpLabel = document.createElement('div');
+    maxHpLabel.className = 'vital-label';
+    maxHpLabel.textContent = 'Max HP';
+    maxHpContainer.appendChild(maxHpLabel);
+    
+    const maxHpInput = document.createElement('input');
+    maxHpInput.type = 'text';
+    maxHpInput.className = 'vital-value';
+    maxHpInput.value = data.maxHp || '';
+    maxHpInput.addEventListener('change', savePlayers);
+    maxHpContainer.appendChild(maxHpInput);
+    
+    vitalsRow.appendChild(maxHpContainer);
+    
+    playerCard.appendChild(vitalsRow);
     
     // Despair tracking
     const despairRow = createStatusRow('Despair', [
@@ -6554,6 +6282,20 @@ function createPlayerCard(playerData = null) {
     daysLabel.textContent = 'Days:';
     daysRow.appendChild(daysLabel);
     
+    const daysSliderContainer = document.createElement('div');
+    daysSliderContainer.className = 'slider-container';
+    
+    const daysSlider = document.createElement('div');
+    daysSlider.className = 'corruption-slider';
+    
+    const daysThumb = document.createElement('div');
+    daysThumb.className = 'slider-thumb';
+    daysThumb.style.left = `${(data.despairDays / 7) * 100}%`;
+    
+    daysSlider.appendChild(daysThumb);
+    daysSliderContainer.appendChild(daysSlider);
+    daysRow.appendChild(daysSliderContainer);
+    
     const daysInput = document.createElement('input');
     daysInput.type = 'number';
     daysInput.min = 0;
@@ -6561,17 +6303,16 @@ function createPlayerCard(playerData = null) {
     daysInput.value = data.despairDays;
     daysInput.className = 'counter-input';
     daysInput.addEventListener('change', function() {
-        updateDayEffects(this);
+        daysThumb.style.left = `${(this.value / 7) * 100}%`;
+        updateDayEffectText(dayEffect, this.value);
         savePlayers();
     });
     daysRow.appendChild(daysInput);
     
     // Day effects display
     const dayEffect = document.createElement('span');
-    dayEffect.className = 'madness-note';
-    dayEffect.style.marginLeft = '8px';
-    dayEffect.style.flexGrow = '1';
-    updateDayEffectText(dayEffect, daysInput.value);
+    dayEffect.className = 'madness-effect';
+    updateDayEffectText(dayEffect, data.despairDays);
     daysRow.appendChild(dayEffect);
     
     playerCard.appendChild(daysRow);
@@ -6595,6 +6336,61 @@ function createPlayerCard(playerData = null) {
     madnessEffectInput.addEventListener('change', savePlayers);
     madnessEffectRow.appendChild(madnessEffectInput);
     
+    // Add madness roll button
+    const rollMadnessBtn = document.createElement('button');
+    rollMadnessBtn.textContent = 'Roll';
+    rollMadnessBtn.className = 'add-player-btn';
+    rollMadnessBtn.style.marginLeft = '10px';
+    rollMadnessBtn.style.fontSize = '0.8em';
+    rollMadnessBtn.addEventListener('click', function() {
+        const type = madnessRow.querySelector('select').value;
+        if (type === 'None') return;
+        
+        const effects = {
+            'Short-term': [
+                "Incorrigible Flirt: Must compliment everyone excessively",
+                "Nervous Laughter: Can't stop giggling inappropriately",
+                "Selective Mutism: Can only whisper for 1d10 minutes",
+                "Paranoia: Convinced someone is watching (might be true)",
+                "Flashbacks: Relives traumatic event (disadvantage on next check)",
+                "Hyperactivity: Can't stop moving/talking (disadvantage on Stealth)",
+                "Catatonia: Stares blankly for 1d10 minutes",
+                "Phobia: Develops temporary fear of something nearby",
+                "Echolalia: Repeats last words heard (disadvantage on social checks)",
+                "Synesthesia: Experiences crossed senses ('I can taste the color red')"
+            ],
+            'Long-term': [
+                "Phantom Pain: Random limbs hurt (disadvantage on physical checks 1/day)",
+                "Face Blindness: Can't recognize friends (Wisdom check to identify)",
+                "Time Skips: Loses minutes/hours with no memory",
+                "Compulsive Ritual: Must perform specific action when stressed",
+                "Emotional Inversion: Laughs at sad things, cries at happy things",
+                "Doppelgänger Fear: Convinced someone has been replaced",
+                "Blood Fascination: Compelled to touch/stare at blood",
+                "Mirror Phobia: Can't look at reflections without panic",
+                "Sleepwalker: Acts out dreams with no memory",
+                "Psychic Echo: Hears thoughts of nearby creatures occasionally"
+            ],
+            'Indefinite': [
+                "Split Personality: Alternate identity emerges under stress",
+                "Reality Fracture: Sees ghosts of possible futures/pasts",
+                "Corpse Empathy: Believes dead bodies are just 'resting'",
+                "Vampiric Delusion: Convinced they're becoming a vampire",
+                "Strahd Worship: Develops twisted admiration for the Count",
+                "Body Dysmorphia: Convinced body parts aren't theirs",
+                "Pica: Craves eating non-food items (dirt, bones, etc.)",
+                "Savior Complex: Believes they alone can redeem Strahd",
+                "Death Seeker: Takes increasingly reckless risks",
+                "Living Nightmare: Can't distinguish dreams from reality"
+            ]
+        };
+        
+        const randomEffect = effects[type][Math.floor(Math.random() * effects[type].length)];
+        madnessEffectInput.value = randomEffect;
+        savePlayers();
+    });
+    madnessEffectRow.appendChild(rollMadnessBtn);
+    
     playerCard.appendChild(madnessEffectRow);
     
     // Divider
@@ -6602,7 +6398,7 @@ function createPlayerCard(playerData = null) {
     divider1.className = 'status-divider';
     playerCard.appendChild(divider1);
     
-    // Corruption tracking with progress bar
+    // Corruption tracking with slider
     const corruptionRow = document.createElement('div');
     corruptionRow.className = 'status-row';
     
@@ -6611,31 +6407,31 @@ function createPlayerCard(playerData = null) {
     corruptionLabel.textContent = 'Corruption:';
     corruptionRow.appendChild(corruptionLabel);
     
-    const corruptionContainer = document.createElement('div');
-    corruptionContainer.className = 'corruption-container';
+    const corruptionSliderContainer = document.createElement('div');
+    corruptionSliderContainer.className = 'slider-container';
     
-    const corruptionBar = document.createElement('div');
-    corruptionBar.className = 'corruption-bar';
-    corruptionContainer.appendChild(corruptionBar);
-    corruptionRow.appendChild(corruptionContainer);
+    const corruptionSlider = document.createElement('div');
+    corruptionSlider.className = 'corruption-slider';
+    
+    const corruptionThumb = document.createElement('div');
+    corruptionThumb.className = 'slider-thumb';
+    corruptionThumb.style.left = `${(data.corruption / 10) * 100}%`;
+    
+    corruptionSlider.appendChild(corruptionThumb);
+    corruptionSliderContainer.appendChild(corruptionSlider);
+    corruptionRow.appendChild(corruptionSliderContainer);
     
     const corruptionInput = document.createElement('input');
     corruptionInput.type = 'number';
     corruptionInput.min = 0;
-    corruptionInput.max = 20;
+    corruptionInput.max = 10;
     corruptionInput.value = data.corruption;
     corruptionInput.className = 'counter-input';
     corruptionInput.addEventListener('change', function() {
-        // Update progress bar
-        const percent = (this.value / 20) * 100;
-        corruptionBar.style.width = percent + '%';
+        corruptionThumb.style.left = `${(this.value / 10) * 100}%`;
         savePlayers();
     });
     corruptionRow.appendChild(corruptionInput);
-    
-    // Set initial corruption bar value
-    const corruptionPercent = (data.corruption / 20) * 100;
-    corruptionBar.style.width = corruptionPercent + '%';
     
     playerCard.appendChild(corruptionRow);
     
@@ -6645,7 +6441,7 @@ function createPlayerCard(playerData = null) {
     ], data.fear);
     playerCard.appendChild(fearRow);
     
-    // Hope tracking with progress bar
+    // Hope tracking with slider
     const hopeRow = document.createElement('div');
     hopeRow.className = 'status-row';
     
@@ -6654,13 +6450,19 @@ function createPlayerCard(playerData = null) {
     hopeLabel.textContent = 'Hope:';
     hopeRow.appendChild(hopeLabel);
     
-    const hopeContainer = document.createElement('div');
-    hopeContainer.className = 'hope-container';
+    const hopeSliderContainer = document.createElement('div');
+    hopeSliderContainer.className = 'slider-container';
     
-    const hopeBar = document.createElement('div');
-    hopeBar.className = 'hope-bar';
-    hopeContainer.appendChild(hopeBar);
-    hopeRow.appendChild(hopeContainer);
+    const hopeSlider = document.createElement('div');
+    hopeSlider.className = 'hope-slider';
+    
+    const hopeThumb = document.createElement('div');
+    hopeThumb.className = 'slider-thumb';
+    hopeThumb.style.left = `${(data.hope / 10) * 100}%`;
+    
+    hopeSlider.appendChild(hopeThumb);
+    hopeSliderContainer.appendChild(hopeSlider);
+    hopeRow.appendChild(hopeSliderContainer);
     
     const hopeInput = document.createElement('input');
     hopeInput.type = 'number';
@@ -6669,16 +6471,10 @@ function createPlayerCard(playerData = null) {
     hopeInput.value = data.hope;
     hopeInput.className = 'counter-input';
     hopeInput.addEventListener('change', function() {
-        // Update progress bar
-        const percent = (this.value / 10) * 100;
-        hopeBar.style.width = percent + '%';
+        hopeThumb.style.left = `${(this.value / 10) * 100}%`;
         savePlayers();
     });
     hopeRow.appendChild(hopeInput);
-    
-    // Set initial hope bar value
-    const hopePercent = (data.hope / 10) * 100;
-    hopeBar.style.width = hopePercent + '%';
     
     playerCard.appendChild(hopeRow);
     
@@ -6692,7 +6488,7 @@ function createPlayerCard(playerData = null) {
     notesSection.className = 'player-notes';
     
     const notesTextarea = document.createElement('textarea');
-    notesTextarea.placeholder = 'Player notes, afflictions, etc...';
+    notesTextarea.placeholder = 'Player notes, afflictions, physical manifestations, etc...';
     notesTextarea.value = data.notes;
     notesTextarea.addEventListener('change', savePlayers);
     notesSection.appendChild(notesTextarea);
@@ -6701,6 +6497,7 @@ function createPlayerCard(playerData = null) {
     
     return playerCard;
 }
+
 
 // Create a status row with label and dropdown
 function createStatusRow(label, options, selectedValue = 'None') {
@@ -6722,13 +6519,8 @@ function createStatusRow(label, options, selectedValue = 'None') {
         select.appendChild(optElement);
     });
     
-    // Set selected value
     select.value = selectedValue;
-    
-    // Set data value for styling
     select.setAttribute('data-value', selectedValue);
-    
-    // Update on change
     select.addEventListener('change', function() {
         this.setAttribute('data-value', this.value);
         savePlayers();
@@ -6769,8 +6561,11 @@ function savePlayers() {
     playerCards.forEach(card => {
         const player = {
             name: card.querySelector('.player-name').value,
+            ac: card.querySelectorAll('.vital-value')[0].value,
+            hp: card.querySelectorAll('.vital-value')[1].value,
+            maxHp: card.querySelectorAll('.vital-value')[2].value,
             despair: card.querySelectorAll('.status-select')[0].value,
-            despairDays: parseInt(card.querySelector('.counter-input').value) || 0,
+            despairDays: parseInt(card.querySelectorAll('.counter-input')[0].value) || 0,
             madness: card.querySelectorAll('.status-select')[1].value,
             madnessEffect: card.querySelectorAll('input[type="text"]')[1].value,
             corruption: parseInt(card.querySelectorAll('.counter-input')[1].value) || 0,
@@ -6790,7 +6585,6 @@ function loadPlayers() {
     const savedPlayers = localStorage.getItem('dmCheatSheetPlayers');
     const playerList = document.getElementById('player-list');
     
-    // Clear current players
     playerList.innerHTML = '';
     
     if (savedPlayers) {
@@ -6799,7 +6593,6 @@ function loadPlayers() {
             addNewPlayer(player);
         });
     } else {
-        // Add one default player if none saved
         addNewPlayer();
     }
 }
