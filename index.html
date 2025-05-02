@@ -6,23 +6,24 @@
     <title>Curse of Strahd: Shadows of Barovia</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=IM+Fell+English:ital@0;1&display=swap');
-        
-        :root {
-            --background-main: #ffffff;
-            --background-dark: #f0f0f0;
-            --box-bg: #f8f8f8;
-            --border-color: #8b0000;
-            --border-light: #d4af37;
-            --title-color: #8b0000;
-            --subtitle-color: #5c5c5c;
-            --text-color: #333333;
-            --accent-gold: #d4af37;
-            --font-header: 'Cinzel Decorative', serif;
-            --font-main: 'Crimson Text', serif;
-            --font-accent: 'IM Fell English', serif;
-            --shadow-dark: 0 4px 8px rgba(0, 0, 0, 0.3);
-            --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+    
+    :root {
+        --background-main: #ffffff;
+        --background-dark: #f0f0f0;
+        --box-bg: #f8f8f8;
+        --border-color: #8b0000;
+        --border-light: #d4af37;
+        --title-color: #8b0000;
+        --subtitle-color: #5c5c5c;
+        --text-color: #333333;
+        --accent-gold: #d4af37;
+        --font-header: 'Cinzel Decorative', serif;
+        --font-main: 'Crimson Text', serif;
+        --font-accent: 'IM Fell English', serif;
+        --shadow-dark: 0 4px 8px rgba(0, 0, 0, 0.3);
+        --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
         
         body {
             background-color: var(--background-main);
@@ -1625,26 +1626,329 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
 }
 
 
-/* JUST ADDED */
+/* ADDED 5/25 */
+/* ================ PRINT FUNCTIONALITY STYLES ================ */
+/* Section Header Structure */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-right: 15px;
+}
 
-/* Theme Colors */
---corruption-gradient: linear-gradient(90deg, #4a6bff, #8a2be2, #6b0202);
-            --hope-gradient: linear-gradient(90deg, #1e40af, #60a5fa, #e6f7ff);
-            --days-gradient: linear-gradient(90deg, #60a5fa, #ef4444);
-            
-            /* Status Colors */
-            --color-none: transparent;
-            --color-apathy: #6b7280;
-            --color-dread: #8b5cf6;
-            --color-insanity: #ec4899;
-            --color-paranoia: #f59e0b;
-            --color-nihilism: #10b981;
-            --color-shortterm: #ef4444;
-            --color-longterm: #b91c1c;
-            --color-indefinite: #7f1d1d;
-            --color-frightened: #f97316;
-            --color-horror: #c2410c;
-        }
+.section-title {
+    position: relative;
+    padding-right: 40px; /* Space for print controls */
+}
+
+/* Checkbox Selector */
+.print-selector {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin-left: 15px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.print-selector input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-color: transparent;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.print-selector:hover .checkmark {
+    background-color: rgba(139, 0, 0, 0.1);
+}
+
+.print-selector input:checked ~ .checkmark {
+    background-color: var(--border-color);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 8px;
+    top: 4px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.print-selector input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Alternative Button Selector */
+.section-title .print-section-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--border-color);
+    cursor: pointer;
+    font-size: 16px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.section-title .print-section-btn:hover {
+    opacity: 1;
+    color: var(--title-color);
+}
+
+.section-title .print-section-btn::after {
+    content: "✓";
+    margin-left: 5px;
+    font-size: 14px;
+    vertical-align: middle;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.section-title .print-section-btn.selected::after {
+    opacity: 1;
+}
+
+/* Print Control Button */
+.print-control {
+    position: fixed;
+    bottom: 20px;
+    left: 20px; /* Changed from right to left */
+    z-index: 1000;
+    background-color: var(--border-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: var(--shadow-dark);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.print-control:hover {
+    background-color: #6B0000;
+    transform: scale(1.1);
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode {
+    /* Checkbox */
+    .checkmark {
+        border-color: var(--accent-gold);
+    }
+    
+    .print-selector input:checked ~ .checkmark {
+        background-color: var(--accent-gold);
+    }
+    
+    .print-selector:hover .checkmark {
+        background-color: rgba(212, 175, 55, 0.1);
+    }
+    
+    /* Button Selector */
+    .print-section-btn {
+        color: var(--accent-gold);
+    }
+    
+    /* Footer */
+    .site-footer {
+        background-color: var(--background-dark);
+    }
+    
+    .qr-code {
+        background: var(--box-bg);
+        border-color: var(--border-color);
+    }
+}
+
+/* Print-specific styles */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    
+    .section-title, .section-title *,
+    .collapsible-content, .collapsible-content * {
+        visibility: visible;
+    }
+    
+    .section-title {
+        page-break-after: avoid;
+    }
+    
+    .collapsible-content {
+        page-break-inside: avoid;
+    }
+    
+    /* Hide interactive elements */
+    .print-selector, .print-control, .print-section-btn,
+    .tab-buttons, .nav-links, .roll-button, 
+    .tooltip, .dark-mode-toggle {
+        display: none !important;
+    }
+    
+    /* Show only selected sections */
+    .section-title:not(.print-selected),
+    .section-title:not(.print-selected) + .collapsible-content {
+        display: none !important;
+    }
+    
+    /* Footer styling for print */
+    .print-footer {
+        display: block !important;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 10px;
+        padding: 10px;
+        border-top: 1px solid #ccc;
+        font-family: var(--font-main);
+    }
+    
+    .print-footer img.qr-code {
+        height: 50px;
+        margin: 0 10px;
+        vertical-align: middle;
+    }
+    
+    /* Ensure content prints cleanly */
+    .box {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+}
+
+/* ================ UPDATED FOOTER WITH QR CODE ================ */
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 2px solid var(--border-color);
+    font-size: 14px;
+    position: relative;
+    background-color: var(--box-bg);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.qr-code {
+    height: 80px;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+    border: 1px solid var(--border-light);
+    padding: 5px;
+    background: white;
+}
+
+.qr-code:hover {
+    opacity: 1;
+}
+
+.print-footer {
+    display: none;
+}
+
+/* ================ ENHANCED PRINT FUNCTIONALITY ================ */
+/* Enhanced Print Styles */
+/* Box selection styles */
+.box {
+    position: relative;
+    padding-top: 30px;
+}
+
+.box-checkbox {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transform: scale(1.5);
+    z-index: 10;
+    cursor: pointer;
+}
+
+.box-checkbox:checked + .box {
+    outline: 2px solid #8B0000;
+    background-color: rgba(139, 0, 0, 0.05);
+}
+
+@media print {
+  * {
+    overflow: visible !important;
+    position: static !important;
+  }
+}
+
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+
+
+    #print-container {
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    #print-container * {
+        visibility: visible !important;
+    }
+
+
+    .box {
+        border: 1px solid #000 !important;
+        background: white !important;
+        padding: 3mm !important;
+    }
+
+    @page {
+    margin: 0;
+  }
+
+/* Remove any page-breaks at the top */
+    .print-spacer, .page-break {
+    display: none !important;
+  }
+
+
+    ol li::before {
+    content: "" !important; /* Removes CSS-added numbers */
+}
+
 
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%238b0000'>🧛</text></svg>">
@@ -1665,7 +1969,7 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
         
 
         
-        <div class="quick-nav">
+<div class="quick-nav">
   <h3>QUICK NAVIGATION</h3>
 
   <!-- Tab Selectors -->
@@ -1676,7 +1980,11 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
     <button class="roll-button" onclick="showTab('world')">World Lore</button>
     <button class="roll-button" onclick="showTab('strahd')">Strahd Lore</button>
     <button class="roll-button" onclick="showTab('misc')">Music & Misc Tools</button>
-  </div>
+    <button class="roll-button print-selections-btn" onclick="preparePrint()" title="Print Selected Sections">
+        <i class="fas fa-print"></i> Print Selections
+    </button>
+</div>
+
 
   <!-- Core Mechanics Tab -->
   <div class="nav-links tab-content" id="core">
@@ -1734,7 +2042,14 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
         <div class="divider-thin"></div>
         
         <!-- Core Mechanics -->
-        <h2 class="section-title" id="core-mechanics">CORE MECHANICS</h2>
+        <h2 class="section-title" id="core-mechanics">
+            <div class="section-header">
+                <span>CORE MECHANICS</span>
+                <label class="print-selector">
+                    <input type="checkbox" class="section-checkbox" data-section="core-mechanics">
+                </label>
+            </div>
+        </h2>
         <div class="collapsible-content">
             <div class="row">
                 <div class="col">
@@ -1883,7 +2198,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
         </div>
         
         <!-- Psychological Warfare -->
-        <h2 class="section-title" id="psychological-warfare">STRAHD'S PSYCHOLOGICAL WARFARE</h2>
+        <h2 class="section-title" id="psychological-warfare">
+            <div class="section-header">
+                <span>PSYCHOLOGICAL WARFARE</span>
+                <label class="print-selector">
+                    <input type="checkbox" class="section-checkbox" data-section="psychological-warfare">
+                    
+                </label>
+            </div>
+        </h2>
         <div class="collapsible-content">
             <div class="row">
                 <div class="col">
@@ -2030,7 +2353,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
         </div>
         
         <!-- Fear & Horror -->
-        <h2 class="section-title" id="fear-horror">FEAR & HORROR</h2>
+        <h2 class="section-title" id="fear-horror">
+            <div class="section-header">
+                <span>FEAR & HORROR</span>
+                <label class="print-selector">
+                    <input type="checkbox" class="section-checkbox" data-section="fear-horror">
+                    
+                </label>
+            </div>
+        </h2>
         <div class="collapsible-content">
             <div class="row">
                 <div class="col">
@@ -2140,7 +2471,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
     </div>
     
     <!-- Despair -->
-    <h2 class="section-title" id="despair">DESPAIR</h2>
+    <h2 class="section-title" id="despair">
+        <div class="section-header">
+            <span>DESPAIR</span>
+            <label class="print-selector">
+                <input type="checkbox" class="section-checkbox" data-section="despair">
+                
+            </label>
+        </div>
+    </h2>
     <div class="collapsible-content">
         <div class="row">
             <div class="col">
@@ -2199,7 +2538,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
     </div>
 
 <!-- Environmental Hazards -->
-<h2 class="section-title" id="environment">ENVIRONMENTAL HAZARDS</h2>
+<h2 class="section-title" id="environment">
+    <div class="section-header">
+        <span>ENVIRONMENTAL RULES</span>
+        <label class="print-selector">
+            <input type="checkbox" class="section-checkbox" data-section="environment">
+            
+        </label>
+    </div>
+</h2>
 <div class="collapsible-content">
     <div class="row">
         <div class="col">
@@ -2254,7 +2601,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
 </div>
 
 <!-- Combat Quick Reference -->
-<h2 class="section-title" id="combat">COMBAT QUICK REFERENCE</h2>
+<h2 class="section-title" id="combat">
+    <div class="section-header">
+        <span>COMBAT QUICK REFERENCE</span>
+        <label class="print-selector">
+            <input type="checkbox" class="section-checkbox" data-section="combat">
+            
+        </label>
+    </div>
+</h2>
 <div class="collapsible-content">
     <div class="row">
         <div class="col">
@@ -2317,7 +2672,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
 </div>
     
     <!-- Nightmares -->
-    <h2 class="section-title" id="nightmares">NIGHTMARES</h2>
+    <h2 class="section-title" id="nightmares">
+        <div class="section-header">
+            <span>NIGHTMARES</span>
+            <label class="print-selector">
+                <input type="checkbox" class="section-checkbox" data-section="nightmares">
+                
+            </label>
+        </div>
+    </h2>
     <div class="collapsible-content">
         <div class="row">
             <div class="col">
@@ -2442,7 +2805,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
     </div>
     
     <!-- Corruption System -->
-    <h2 class="section-title" id="corruption">ADVANCED CORRUPTION SYSTEM</h2>
+    <h2 class="section-title" id="corruption">
+        <div class="section-header">
+            <span>CORRUPTION</span>
+            <label class="print-selector">
+                <input type="checkbox" class="section-checkbox" data-section="corruption">
+                
+            </label>
+        </div>
+    </h2>
     <div class="collapsible-content">
         <div class="row">
             <div class="col">
@@ -2566,7 +2937,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
     </div>
     
     <!-- Weather System -->
-    <h2 class="section-title" id="weather">ADVANCED WEATHER SYSTEM</h2>
+    <h2 class="section-title" id="weather">
+        <div class="section-header">
+            <span>WEATHER</span>
+            <label class="print-selector">
+                <input type="checkbox" class="section-checkbox" data-section="weather">
+                
+            </label>
+        </div>
+    </h2>
     <div class="collapsible-content">
         <div class="row">
             <div class="col">
@@ -2646,7 +3025,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
     </div>
 
 <!-- Mundane Light Sources -->
-<h2 class="section-title" id="light">MUNDANE LIGHT SOURCES</h2>
+<h2 class="section-title" id="light">
+    <div class="section-header">
+        <span>MUNDANE LIGHT SOURCE</span>
+        <label class="print-selector">
+            <input type="checkbox" class="section-checkbox" data-section="light">
+             
+        </label>
+    </div>
+</h2>
 <div class="collapsible-content">
     <div class="box">
         <h3 class="box-title">LIGHT SOURCE TABLE</h3>
@@ -2735,7 +3122,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
 </div>
 
 <!-- Exhaustion -->
-<h2 class="section-title" id="exhaustion">EXHAUSTION</h2>
+<h2 class="section-title" id="exhaustion">
+    <div class="section-header">
+        <span>EXHAUSTION TRACKER</span>
+        <label class="print-selector">
+            <input type="checkbox" class="section-checkbox" data-section="exhaustion">
+             
+        </label>
+    </div>
+</h2>
 <div class="collapsible-content">
     <div class="row">
         <div class="col">
@@ -2821,7 +3216,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
 </div>
 
 <!-- Foraging & Starvation Rules -->
-<h2 class="section-title" id="foraging">FORAGING & STARVATION</h2>
+<h2 class="section-title" id="foraging">
+    <div class="section-header">
+        <span>FORAGING & STARVATION</span>
+        <label class="print-selector">
+            <input type="checkbox" class="section-checkbox" data-section="foraging">
+             
+        </label>
+    </div>
+</h2>
 <div class="collapsible-content">
     <div class="box">
         <h3 class="box-title">FORAGING IN BAROVIA</h3>
@@ -2858,7 +3261,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
 </div>
 
 <!-- Cover Table -->
-<h2 class="section-title" id="cover">COVER IN COMBAT</h2>
+<h2 class="section-title" id="cover">
+    <div class="section-header">
+        <span>COVER</span>
+        <label class="print-selector">
+            <input type="checkbox" class="section-checkbox" data-section="cover">
+             
+        </label>
+    </div>
+</h2>
 <div class="collapsible-content">
     <div class="box">
         <h3 class="box-title">COVER TYPES</h3>
@@ -2943,7 +3354,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
 </div>
 
 <!-- Conditions Quick-Ref -->
-<h2 class="section-title" id="conditions">CONDITIONS QUICK-REF</h2>
+<h2 class="section-title" id="conditions">
+    <div class="section-header">
+        <span>CONDITIONS</span>
+        <label class="print-selector">
+            <input type="checkbox" class="section-checkbox" data-section="conditions">
+             
+        </label>
+    </div>
+</h2>
 <div class="collapsible-content">
     <div class="box">
         <h3 class="box-title">SELECT CONDITIONS</h3>
@@ -2980,7 +3399,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
 </div>
 
 <!-- Food Prices Table -->
-<h2 class="section-title" id="food">FOOD PRICES & SCARCITY</h2>
+<h2 class="section-title" id="food">
+    <div class="section-header">
+        <span>FOOD PRICES</span>
+        <label class="print-selector">
+            <input type="checkbox" class="section-checkbox" data-section="food">
+             
+        </label>
+    </div>
+</h2>
 <div class="collapsible-content">
     <div class="row">
         <div class="col">
@@ -3057,7 +3484,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
 </div>
     
 <!-- Locations Tab System -->
-<h2 class="section-title" id="locations">LOCATIONS OF BAROVIA</h2>
+<h2 class="section-title" id="locations">
+    <div class="section-header">
+        <span>LOCATIONS</span>
+        <label class="print-selector">
+            <input type="checkbox" class="section-checkbox" data-section="locations">
+             
+        </label>
+    </div>
+</h2>
 <div class="collapsible-content">
     <div class="tab-system">
         <div class="tab-buttons">
@@ -3420,8 +3855,18 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
         </div>
     </div>
 </div>    
+
+
     <!-- Curse Removal & Revenant Resurrection -->
-    <h2 class="section-title" id="curse-removal">CURSE REMOVAL</h2>
+    <h2 class="section-title" id="curse-removal">
+        <div class="section-header">
+            <span>CURSE REMOVAL</span>
+            <label class="print-selector">
+                <input type="checkbox" class="section-checkbox" data-section="curse-removal">
+                 
+            </label>
+        </div>
+    </h2>
     <div class="collapsible-content">
         <div class="row">
             <div class="col">
@@ -3472,7 +3917,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
     </div>
     
     <!-- Vistani Abilities & Random Encounters -->
-    <h2 class="section-title" id="vistani">VISTANI ABILITIES & RANDOM ENCOUNTERS</h2>
+    <h2 class="section-title" id="vistani">
+        <div class="section-header">
+            <span>VISTANI / ENCOUNTERS</span>
+            <label class="print-selector">
+                <input type="checkbox" class="section-checkbox" data-section="vistani">
+                 
+            </label>
+        </div>
+    </h2>
     <div class="collapsible-content">
         <div class="row">
             <div class="col">
@@ -3557,7 +4010,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
     </div>
     
     <!-- Barovian Calendar -->
-    <h2 class="section-title" id="calendar">BAROVIAN CALENDAR & DOMAIN</h2>
+    <h2 class="section-title" id="calendar">
+        <div class="section-header">
+            <span>CALENDAR & DOMAIN</span>
+            <label class="print-selector">
+                <input type="checkbox" class="section-checkbox" data-section="calendar">
+                 
+            </label>
+        </div>
+    </h2>
     <div class="collapsible-content">
         <div class="row">
             <div class="col">
@@ -3729,7 +4190,7 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
                 <div class="music-info">
                     <h4>Ambient Exploration</h4>
                     <p>Eerie soundscapes for travel and discovery</p>
-                    <a href="https://open.spotify.com/playlist/4YaJdqJzubdx3lEB4UEhLt" target="_blank" class="music-link">Listen on Spotify</a>
+                    <a href="https://open.spotify.com/playlist/59vYRdjQE0kHodU5zILaYQ" target="_blank" class="music-link">Listen on Spotify</a>
                 </div>
             </div>
 
@@ -3868,7 +4329,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
 </div>
 
 <!-- Strahd von Zarovich -->
-<h2 class="section-title" id="strahd-profile">STRAHD VON ZAROVICH</h2>
+<h2 class="section-title" id="strahd-profile">
+    <div class="section-header">
+        <span>STRAHD PROFILE</span>
+        <label class="print-selector">
+            <input type="checkbox" class="section-checkbox" data-section="strahd-profile">
+             
+        </label>
+    </div>
+</h2>
 <div class="collapsible-content">
     <div class="box">
         <div class="row">
@@ -3968,7 +4437,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
 
 
 <!-- Barovian Lore -->
-<h2 class="section-title" id="barovian-lore">BAROVIAN LORE</h2>
+<h2 class="section-title" id="barovian-lore">
+    <div class="section-header">
+        <span>BAROVIAN LORE</span>
+        <label class="print-selector">
+            <input type="checkbox" class="section-checkbox" data-section="barovian-lore">
+             
+        </label>
+    </div>
+</h2>
 <div class="collapsible-content">
     <div class="box">
         <div class="row">
@@ -4069,7 +4546,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
 </div>
 
 <!-- NPC Relationships -->
-<h2 class="section-title" id="npc-relationships">NPC RELATIONSHIPS</h2>
+<h2 class="section-title" id="npc-relationships">
+    <div class="section-header">
+        <span>NPC RELATIONSHIPS</span>
+        <label class="print-selector">
+            <input type="checkbox" class="section-checkbox" data-section="npc-relationships">
+             
+        </label>
+    </div>
+</h2>
 <div class="collapsible-content">
     <div class="box">
         <div class="npc-relationship-grid">
@@ -4448,7 +4933,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
     </div>
 </div>
 <!-- Strahd's Abilities -->
-<h2 class="section-title" id="strahd-abilities">STRAHD'S ABILITIES</h2>
+<h2 class="section-title" id="strahd-abilities">
+    <div class="section-header">
+        <span>STRAHD'S ABILITIES</span>
+        <label class="print-selector">
+            <input type="checkbox" class="section-checkbox" data-section="strahd-abilities">
+             
+        </label>
+    </div>
+</h2>
 <div class="collapsible-content">
     <div class="box">
         <div class="row">
@@ -4546,7 +5039,15 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
 </div>
 
 <!-- Visceral Descriptors -->
-<h2 class="section-title" id="descriptors">VISCERAL DESCRIPTORS</h2>
+<h2 class="section-title" id="descriptors">
+    <div class="section-header">
+        <span>DESCRIPTORS</span>
+        <label class="print-selector">
+            <input type="checkbox" class="section-checkbox" data-section="descriptors">
+             
+        </label>
+    </div>
+</h2>
 <div class="collapsible-content">
     <div class="row">
         <div class="col">
@@ -4700,14 +5201,23 @@ footer .strahd-eyes-container.showing-fangs .strahd-fangs {
       <div class="strahd-fangs"></div>
     </div>
     
-    <p>Made with ❤️ by Jimpeccable</p>
-    <p>
-      Follow me on 
-      <a href="https://www.tiktok.com/@rollnat20" target="_blank" style="text-decoration: none; color: #000;">
-        TikTok | @Rollnat20 🎵🍻⚔️
-      </a>
-    </p>
-  </footer>
+    <div class="screen-footer">
+        <p>Made with ❤️ by Nat20</p>
+        <p>For more RPG tools and resources:</p>
+        <a href="https://beacons.bio/youwannaplay" target="_blank">
+            <img src="qr-code.png" alt="QR Code to Beacons.bio" class="qr-code">
+        </a>
+        <p>Scan or visit: beacons.bio/youwannaplay</p>
+    </div>
+
+    <div class="print-footer">
+        <p>Printed from Curse of Strahd DM Cheat Sheet | Created by Jimpeccable | Nat20 Community</p>
+        <p>For more RPG resources: 
+            <img src="qr-code.png" alt="QR Code to Nat20's Beacons.bio" class="qr-code">
+            beacons.bio/youwannaplay
+        </p>
+    </div>
+</footer>
 
 
 <script>
@@ -6596,6 +7106,197 @@ function loadPlayers() {
         addNewPlayer();
     }
 }
+
+// ====================== ENHANCED PRINT FUNCTIONALITY ======================
+let isPrinting = false;
+
+document.addEventListener('DOMContentLoaded', function() {
+    restoreSelections();
+    setupPrintButton();
+    setupSectionCheckboxes();
+    
+    // Add print button if it doesn't exist
+    if (!document.querySelector('.print-control')) {
+        const printBtn = document.createElement('button');
+        printBtn.className = 'print-control';
+        printBtn.innerHTML = '🖨️';
+        printBtn.title = 'Print Selected Sections';
+        printBtn.addEventListener('click', preparePrint);
+        document.body.appendChild(printBtn);
+    }
+    
+    // ===== NEW: Add checkboxes to each box =====
+    document.querySelectorAll('.box').forEach(box => {
+        if (!box.querySelector('.box-checkbox')) {
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'box-checkbox';
+            box.prepend(checkbox);
+        }
+    });
+});
+
+function saveSelections() {
+    const selectedSections = Array.from(document.querySelectorAll('.section-checkbox:checked'))
+        .map(checkbox => checkbox.getAttribute('data-section'));
+    localStorage.setItem('printSections', JSON.stringify(selectedSections));
+}
+
+function restoreSelections() {
+    const selectedSections = JSON.parse(localStorage.getItem('printSections')) || [];
+    selectedSections.forEach(sectionId => {
+        const checkbox = document.querySelector(`.section-checkbox[data-section="${sectionId}"]`);
+        if (checkbox) {
+            checkbox.checked = true;
+            const sectionTitle = document.getElementById(sectionId);
+            if (sectionTitle) {
+                sectionTitle.classList.add('print-selected');
+            }
+        }
+    });
+}
+
+// ===== UPDATED PRINT FUNCTION =====
+function preparePrint() {
+    if (isPrinting) return;
+    isPrinting = true;
+
+    // Save selections
+    saveSelections();
+    
+    const selectedBoxes = Array.from(document.querySelectorAll('.box-checkbox:checked'));
+    const selectedSections = Array.from(document.querySelectorAll('.section-checkbox:checked'));
+
+    if (selectedBoxes.length === 0 && selectedSections.length === 0) {
+        alert('Please select at least one section or box to print');
+        isPrinting = false;
+        return;
+    }
+
+    // Create print container
+    const printContainer = document.createElement('div');
+    printContainer.id = 'print-container';
+    printContainer.style.width = '210mm';
+    printContainer.style.padding = '15mm';
+    printContainer.style.background = 'white';
+// Don't hide it off-screen!
+    printContainer.style.position = 'static';
+    printContainer.style.left = '0';
+    document.body.appendChild(printContainer);
+
+    // Process selected boxes first
+    if (selectedBoxes.length > 0) {
+        selectedBoxes.forEach(checkbox => {
+            const box = checkbox.closest('.box');
+            const clone = box.cloneNode(true);
+            clone.querySelector('.box-checkbox')?.remove();
+            printContainer.appendChild(clone);
+        });
+    } 
+    // Fall back to sections if no boxes selected
+    else {
+        selectedSections.forEach(checkbox => {
+            const sectionId = checkbox.getAttribute('data-section');
+            const sectionTitle = document.getElementById(sectionId);
+            if (sectionTitle) {
+                const titleClone = sectionTitle.cloneNode(true);
+                titleClone.querySelector('.print-selector')?.remove();
+                printContainer.appendChild(titleClone);
+                
+                const content = sectionTitle.nextElementSibling;
+                if (content && content.classList.contains('collapsible-content')) {
+                    const contentClone = content.cloneNode(true);
+                    contentClone.querySelectorAll('.box-checkbox').forEach(cb => cb.remove());
+                    printContainer.appendChild(contentClone);
+                }
+            }
+        });
+    }
+
+    const footer = document.createElement('div');
+footer.className = 'print-footer';
+footer.innerHTML = `
+    <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+        <img src="images/qr-code.png" alt="Nat20 Logo" style="height: 40px;">
+        <p><h4>Curse of Strahd DM Screen - Courtesy of Nat20 • Printed on ${new Date().toLocaleDateString()}</h4></p>
+    </div>
+`;
+printContainer.appendChild(footer);
+
+    // Print with delay
+    setTimeout(() => {
+        window.print();
+        
+        // Cleanup
+        setTimeout(() => {
+            printContainer.remove();
+            isPrinting = false;
+        }, 1000);
+    }, 500);
+}
+
+function setupPrintButton() {
+    const printBtns = document.querySelectorAll('.print-control, .print-selections-btn');
+    printBtns.forEach(btn => {
+        btn.addEventListener('click', preparePrint);
+    });
+}
+
+function setupSectionCheckboxes() {
+    document.querySelectorAll('.section-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const sectionId = this.getAttribute('data-section');
+            const sectionTitle = document.getElementById(sectionId);
+            if (sectionTitle) {
+                sectionTitle.classList.toggle('print-selected', this.checked);
+            }
+            saveSelections();
+        });
+    });
+}
+
+// ====================== PRINT EVENT HANDLERS ======================
+window.addEventListener('beforeprint', function() {
+    // Ensure only selected sections are visible for printing
+    const selectedSections = JSON.parse(localStorage.getItem('printSections')) || [];
+    
+    document.querySelectorAll('.section-title').forEach(title => {
+        title.classList.toggle('print-selected', 
+            selectedSections.includes(title.id));
+    });
+});
+
+window.addEventListener('afterprint', function() {
+    // Clean up after printing
+    document.querySelectorAll('.section-title').forEach(title => {
+        title.classList.remove('print-selected');
+    });
+});
+
+// ====================== TAB FUNCTIONALITY ======================
+function showTab(tabId) {
+    // Hide all tab contents
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.style.display = 'none';
+    });
+    
+    // Show selected tab
+    const selectedTab = document.getElementById(tabId);
+    if (selectedTab) {
+        selectedTab.style.display = 'block';
+    }
+    
+    // Update active tab button
+    document.querySelectorAll('.tab-buttons .roll-button').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('onclick') === `showTab('${tabId}')`);
+    });
+}
+
+// Initialize first tab as active
+document.addEventListener('DOMContentLoaded', function() {
+    showTab('core'); // Default to Core Mechanics tab
+});
+
 
 
 </script>
